@@ -1,0 +1,18 @@
+<!-- {{- define "main" }}
+{{ .Content }}
+{{- end }}{{/* end main */ -}} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面未找到 - {{ .Site.Title }}</title>
+    {{/* 这里可以添加更多的 head 元素，如 CSS 链接 */}}
+</head>
+<body>
+    <div class="container">
+        <h1>哎呀！页面走丢了。</h1>
+        {{ .Content }}
+        <p><a href="{{ "/" | relURL }}">返回首页</a></p>
+    </div>
+</body>
+</html>
