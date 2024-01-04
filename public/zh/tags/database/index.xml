@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Database on Martin&#39;s space</title>
+    <link>https://martinspace.top/zh/tags/database/</link>
+    <description>Recent content in Database on Martin&#39;s space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 03 Jan 2023 20:28:22 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据库复习笔记(COMP207)</title>
+      <link>https://martinspace.top/zh/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0comp207/</link>
+      <pubDate>Tue, 03 Jan 2023 20:28:22 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0comp207/</guid>
+      <description>Weekly Assessment 错题知识点复习 Week 1 insert语句语法 insert into table_name VALUES (value1, value2) 创建外键语法 CONSTRAINT fk_name FOREIGN KEY (从表的属性名) REFERENCES 主表(主表的属性名) 有两个表A(a), B(b)。</description>
+    </item>
+    
+  </channel>
+</rss>

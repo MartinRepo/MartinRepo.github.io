@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Zotero on Martin&#39;s space</title>
+    <link>https://martinspace.top/zh/tags/zotero/</link>
+    <description>Recent content in Zotero on Martin&#39;s space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 30 Dec 2022 14:58:23 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/zotero/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zotero快速上手</title>
+      <link>https://martinspace.top/zh/zotero%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</link>
+      <pubDate>Fri, 30 Dec 2022 14:58:23 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/zotero%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</guid>
+      <description>生成Reference的神器</description>
+    </item>
+    
+  </channel>
+</rss>

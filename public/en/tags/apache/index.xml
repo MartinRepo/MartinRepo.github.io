@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Apache on Martin&#39;s space</title>
+    <link>https://martinspace.top/en/tags/apache/</link>
+    <description>Recent content in Apache on Martin&#39;s space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Jan 2023 00:15:03 +0000</lastBuildDate><atom:link href="https://martinspace.top/en/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Download APache Maven on MacOS</title>
+      <link>https://martinspace.top/en/post_en/tech_en/maven/</link>
+      <pubDate>Thu, 19 Jan 2023 00:15:03 +0000</pubDate>
+      
+      <guid>https://martinspace.top/en/post_en/tech_en/maven/</guid>
+      <description>I finally got maven installed, and the steps were generally easy, but I stepped in a few holes, I&amp;rsquo;ll record them. Download APache Maven Website📡: Apache-Maven Choose Binary zip archive and download it. Unzip the zip archive I unzip it into /Libaray on my computer. Configuration vi .bash_profile Add 2 lines into this profile export M2_HOME=/Library/apache-maven-3.8.7 // Or you can choose your</description>
+    </item>
+    
+  </channel>
+</rss>

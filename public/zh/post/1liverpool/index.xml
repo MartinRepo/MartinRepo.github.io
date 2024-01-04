@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>🇬🇧 课程 on Martin&#39;s space</title>
+    <link>https://martinspace.top/zh/post/1liverpool/</link>
+    <description>Recent content in 🇬🇧 课程 on Martin&#39;s space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 05 Feb 2023 08:42:27 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/post/1liverpool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>金融市场交易(COMP226)</title>
+      <link>https://martinspace.top/zh/%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E4%BA%A4%E6%98%93comp226/</link>
+      <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E4%BA%A4%E6%98%93comp226/</guid>
+      <description>R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor &amp;gt; gender &amp;lt;- fa</description>
+    </item>
+    
+    <item>
+      <title>算法(COMP202)</title>
+      <link>https://martinspace.top/zh/%E7%AE%97%E6%B3%95comp202/</link>
+      <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E7%AE%97%E6%B3%95comp202/</guid>
+      <description>COMP202 笔记</description>
+    </item>
+    
+    <item>
+      <title>High-level Petri Net(COMP201)</title>
+      <link>https://martinspace.top/zh/high-level-petri-netcomp201/</link>
+      <pubDate>Wed, 11 Jan 2023 20:47:53 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/high-level-petri-netcomp201/</guid>
+      <description>复（预）习过程中遇到Petri net，记录一下 Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通</description>
+    </item>
+    
+    <item>
+      <title>数据库复习笔记(COMP207)</title>
+      <link>https://martinspace.top/zh/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0comp207/</link>
+      <pubDate>Tue, 03 Jan 2023 20:28:22 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0comp207/</guid>
+      <description>Weekly Assessment 错题知识点复习 Week 1 insert语句语法 insert into table_name VALUES (value1, value2) 创建外键语法 CONSTRAINT fk_name FOREIGN KEY (从表的属性名) REFERENCES 主表(主表的属性名) 有两个表A(a), B(b)。</description>
+    </item>
+    
+    <item>
+      <title>CYK(COMP218)</title>
+      <link>https://martinspace.top/zh/cykcomp218/</link>
+      <pubDate>Fri, 09 Dec 2022 14:41:23 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/cykcomp218/</guid>
+      <description>CYK——非常高效的解析算法</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>分类1 on Martin&#39;s space</title>
+    <link>https://martinspace.top/zh/categories/%E5%88%86%E7%B1%BB1/</link>
+    <description>Recent content in 分类1 on Martin&#39;s space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 11 Jan 2023 20:47:53 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/categories/%E5%88%86%E7%B1%BB1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>High-level Petri Net(COMP201)</title>
+      <link>https://martinspace.top/zh/high-level-petri-netcomp201/</link>
+      <pubDate>Wed, 11 Jan 2023 20:47:53 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/high-level-petri-netcomp201/</guid>
+      <description>复（预）习过程中遇到Petri net，记录一下 Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通</description>
+    </item>
+    
+    <item>
+      <title>Leetcode每日一题</title>
+      <link>https://martinspace.top/zh/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</link>
+      <pubDate>Sat, 07 Jan 2023 09:36:47 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</guid>
+      <description>总结每天学到的知识点和有价值的题型</description>
+    </item>
+    
+    <item>
+      <title>详解java中的几种hash</title>
+      <link>https://martinspace.top/zh/%E8%AF%A6%E8%A7%A3java%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8Dhash/</link>
+      <pubDate>Sun, 01 Jan 2023 15:37:32 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E8%AF%A6%E8%A7%A3java%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8Dhash/</guid>
+      <description>刷leetcode总能看见哈希表，对哈希表有大致的了解，但是一直不知道HashTable，HashMap和HashSet在Java中的区别。</description>
+    </item>
+    
+    <item>
+      <title>低开高走的一年</title>
+      <link>https://martinspace.top/zh/%E4%BD%8E%E5%BC%80%E9%AB%98%E8%B5%B0%E7%9A%84%E4%B8%80%E5%B9%B4/</link>
+      <pubDate>Sat, 31 Dec 2022 10:56:24 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E4%BD%8E%E5%BC%80%E9%AB%98%E8%B5%B0%E7%9A%84%E4%B8%80%E5%B9%B4/</guid>
+      <description>2022，低开高走并且创出新高的一年。</description>
+    </item>
+    
+    <item>
+      <title>git版本控制</title>
+      <link>https://martinspace.top/zh/git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</link>
+      <pubDate>Fri, 30 Dec 2022 22:51:29 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</guid>
+      <description>贴标签命令实现版本控制</description>
+    </item>
+    
+    <item>
+      <title>Zotero快速上手</title>
+      <link>https://martinspace.top/zh/zotero%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</link>
+      <pubDate>Fri, 30 Dec 2022 14:58:23 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/zotero%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</guid>
+      <description>生成Reference的神器</description>
+    </item>
+    
+    <item>
+      <title>Scotland</title>
+      <link>https://martinspace.top/zh/scotland/</link>
+      <pubDate>Thu, 22 Dec 2022 21:16:51 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/scotland/</guid>
+      <description>图片太大了，很占服务器的资源，想看的去朋友圈自取吧 The images are so big that take up a lot of resources on the server, so if you&amp;rsquo;d like to see them, go to ins and get them yourself.</description>
+    </item>
+    
+    <item>
+      <title>荒诞与真理</title>
+      <link>https://martinspace.top/zh/%E8%8D%92%E8%AF%9E%E4%B8%8E%E7%9C%9F%E7%90%86/</link>
+      <pubDate>Fri, 16 Dec 2022 17:24:27 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E8%8D%92%E8%AF%9E%E4%B8%8E%E7%9C%9F%E7%90%86/</guid>
+      <description>大家都是幸运者，世界上只有幸运者。有朝一日，所有的其他人无一例外，都会被判死刑，他自己也会被判死刑，幸免不了。 这两天在赶due，总会心烦意乱</description>
+    </item>
+    
+    <item>
+      <title>代码上传至github</title>
+      <link>https://martinspace.top/zh/%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E8%87%B3github/</link>
+      <pubDate>Fri, 16 Dec 2022 16:04:33 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E8%87%B3github/</guid>
+      <description>先在github建立一个远程仓库，可以全部是默认设置 全局声明git的用户认证信息 git config --global user.name &amp;#34;name&amp;#34; git config --global user.email &amp;#34;email@gmail.com&amp;#34; 其中name写自己的名字，email@g</description>
+    </item>
+    
+    <item>
+      <title>CYK(COMP218)</title>
+      <link>https://martinspace.top/zh/cykcomp218/</link>
+      <pubDate>Fri, 09 Dec 2022 14:41:23 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/cykcomp218/</guid>
+      <description>CYK——非常高效的解析算法</description>
+    </item>
+    
+    <item>
+      <title>loverDiary</title>
+      <link>https://martinspace.top/zh/loverdiary/</link>
+      <pubDate>Tue, 06 Dec 2022 22:34:10 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/loverdiary/</guid>
+      <description>SYDNEY &lt;!DOCTYPE html&gt; City walk Bondi beach With baby😍 Sydney opera house GOLD COAST &lt;!DOCTYPE html&gt; Francis Favourite😆 surfers paradise With baby😍 Parasail 😍 MELBOURNE &lt;!DOCTYPE html&gt; With Baby 😍</description>
+    </item>
+    
+    <item>
+      <title>London</title>
+      <link>https://martinspace.top/zh/london/</link>
+      <pubDate>Wed, 02 Nov 2022 21:16:51 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/london/</guid>
+      <description>图片太大了，很占服务器的资源，想看的去朋友圈自取吧 The images are so big that take up a lot of resources on the server, so if you&amp;rsquo;d like to see them, go to ins and get them yourself. &lt;!DOCTYPE html&gt; London</description>
+    </item>
+    
+  </channel>
+</rss>
