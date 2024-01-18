@@ -15,7 +15,7 @@ buildExpired: false
 
 # 谷歌统计
 googleAnalytics: G-J8TFFL1ZS7
-# Copyright: Martin
+# Copyright: "@Martingale"
 
 paginate: 7    # 首页每页显示的文章数
 

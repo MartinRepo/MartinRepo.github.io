@@ -26,6 +26,15 @@
     </item>
     
     <item>
+      <title>算法进阶</title>
+      <link>https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/</link>
+      <pubDate>Fri, 17 Mar 2023 17:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/</guid>
+      <description>Algorithmic Paradigms Activity Selection Problem Greedy Choice Property Recursive Property Pattern Matching</description>
+    </item>
+    
+    <item>
       <title>Canonical coins system</title>
       <link>https://martinspace.top/zh/canonical-coins-system/</link>
       <pubDate>Thu, 09 Mar 2023 17:39:49 +0000</pubDate>
@@ -68,6 +77,15 @@
       
       <guid>https://martinspace.top/zh/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</guid>
       <description>总结每天学到的知识点和有价值的题型</description>
+    </item>
+    
+    <item>
+      <title>Dart &amp; Flutter学习笔记</title>
+      <link>https://martinspace.top/zh/dart-flutter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 05 Jan 2023 17:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/dart-flutter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>布局小部件(Layout Widgets) Container Row &amp;amp; Column Stack Padding Align &amp;amp; Center Expanded &amp;amp; Flexible Wrap GridView</description>
     </item>
     
     <item>
