@@ -17,12 +17,12 @@
     </item>
     
     <item>
-      <title>算法进阶</title>
-      <link>https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/</link>
+      <title>算法进阶(COMP309)</title>
+      <link>https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6comp309/</link>
       <pubDate>Fri, 17 Mar 2023 17:39:49 +0000</pubDate>
       
-      <guid>https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/</guid>
-      <description>Algorithmic Paradigms Activity Selection Problem Greedy Choice Property Recursive Property Pattern Matching</description>
+      <guid>https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6comp309/</guid>
+      <description>1. Algorithmic Paradigms Greedy Algorithm Greedy Choice Property 通过每一步的局部最优选择，可以最终构建出全局最优解。 在活动选择问题中的表现：S是一组活动，A是S中具有最早结束时间的活动，对</description>
     </item>
     
     <item>

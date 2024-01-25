@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>算法进阶 | Martin&#39;s space</title>
+<title>算法进阶(COMP309) | Martin&#39;s space</title>
 <meta name="keywords" content="Algorithm">
-<meta name="description" content="Algorithmic Paradigms Activity Selection Problem Greedy Choice Property Recursive Property Pattern Matching">
+<meta name="description" content="1. Algorithmic Paradigms Greedy Algorithm Greedy Choice Property 通过每一步的局部最优选择，可以最终构建出全局最优解。 在活动选择问题中的表现：S是一组活动，A是S中具有最早结束时间的活动，对">
 <meta name="author" content="Martin">
-<link rel="canonical" href="https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/">
+<link rel="canonical" href="https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6comp309/">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <meta name="referrer" content="no-referrer-when-downgrade">
@@ -23,7 +23,7 @@
 <link rel="mask-icon" href="https://martinspace.top/sun.jpg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/">
+<link rel="alternate" hreflang="zh" href="https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6comp309/">
 <noscript>
     <style>
         #theme-toggle,
@@ -85,16 +85,16 @@ if (!doNotTrack) {
 	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="算法进阶" />
-<meta property="og:description" content="Algorithmic Paradigms Activity Selection Problem Greedy Choice Property Recursive Property Pattern Matching" />
+<meta property="og:title" content="算法进阶(COMP309)" />
+<meta property="og:description" content="1. Algorithmic Paradigms Greedy Algorithm Greedy Choice Property 通过每一步的局部最优选择，可以最终构建出全局最优解。 在活动选择问题中的表现：S是一组活动，A是S中具有最早结束时间的活动，对" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6comp309/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2023-03-17T17:39:49+00:00" />
 <meta property="article:modified_time" content="2023-03-17T17:39:49+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="算法进阶"/>
-<meta name="twitter:description" content="Algorithmic Paradigms Activity Selection Problem Greedy Choice Property Recursive Property Pattern Matching"/>
+<meta name="twitter:title" content="算法进阶(COMP309)"/>
+<meta name="twitter:description" content="1. Algorithmic Paradigms Greedy Algorithm Greedy Choice Property 通过每一步的局部最优选择，可以最终构建出全局最优解。 在活动选择问题中的表现：S是一组活动，A是S中具有最早结束时间的活动，对"/>
 
 
 <script type="application/ld+json">
@@ -117,8 +117,8 @@ if (!doNotTrack) {
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "算法进阶",
-      "item": "https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/"
+      "name": "算法进阶(COMP309)",
+      "item": "https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6comp309/"
     }
   ]
 }
@@ -127,14 +127,14 @@ if (!doNotTrack) {
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "算法进阶",
-  "name": "算法进阶",
-  "description": "Algorithmic Paradigms Activity Selection Problem Greedy Choice Property Recursive Property Pattern Matching",
+  "headline": "算法进阶(COMP309)",
+  "name": "算法进阶(COMP309)",
+  "description": "1. Algorithmic Paradigms Greedy Algorithm Greedy Choice Property 通过每一步的局部最优选择，可以最终构建出全局最优解。 在活动选择问题中的表现：S是一组活动，A是S中具有最早结束时间的活动，对",
   "keywords": [
     "Algorithm"
   ],
-  "articleBody": "Algorithmic Paradigms Activity Selection Problem Greedy Choice Property Recursive Property Pattern Matching ",
-  "wordCount" : "12",
+  "articleBody": "1. Algorithmic Paradigms Greedy Algorithm Greedy Choice Property 通过每一步的局部最优选择，可以最终构建出全局最优解。\n在活动选择问题中的表现：S是一组活动，A是S中具有最早结束时间的活动，对于最优解$ X \\subseteq S $, A被包含在X中。\n证明方法： 假设$X \\subseteq S$是一个最优解，A’是X中具有最早结束时间的活动，如果A=A’，证明结束。否则，用A替换A’获得另一个方案X’(X’中的活动数量和X的活动数量相同)，那么X’就是一个包含活动A的最优解。\nRecursive Property 递归性质指的是一种方法或函数能够通过调用自身来解决问题。递归方法将问题分解为更小的子问题，这些子问题结构上与原问题相似但规模更小。\n在活动选择问题中的表现：可以从较小问题实例 S’ 的任何最优解中找到S中包含 A 的最优解： 特别是，如果 X ′′ 是 S′ 的最优解，那么 X ′′ ∪ {A} 是 S 的可行解中包含 A 的最佳解。\n证明方法： 假设X’‘是S’中的最优解，要证明X’’ U {A}有尽可能多的活动，在S的可行方案（包含A）中。通过反证法，假设这里对于S有更好的解Y’ U {A}，那么在S‘中，Y’应该比现存的最优解X’‘更优。这互相矛盾，因此反证成立。\n一些贪心算法不适用的问题 Weighted Activities Selection Problem Fractional Knapsack Problem Divide and Conquer 可以用分治解决Weighted Activities Selection Problem\nDynamic Programming 添加了备忘录的分治就是动态规划，即不用重复计算子问题的解。\n2. Pattern Matching ",
+  "wordCount" : "616",
   "inLanguage": "zh",
   "datePublished": "2023-03-17T17:39:49Z",
   "dateModified": "2023-03-17T17:39:49Z",
@@ -144,7 +144,7 @@ if (!doNotTrack) {
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/"
+    "@id": "https://martinspace.top/zh/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6comp309/"
   },
   "publisher": {
     "@type": "Organization",
@@ -245,7 +245,7 @@ if (!doNotTrack) {
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://martinspace.top/zh/">主页</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/">📒 文章</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/1liverpool/">🇬🇧 课程</a></div>
     <h1 class="post-title">
-      算法进阶
+      算法进阶(COMP309)
     </h1>
     <div class="post-meta">
 
@@ -258,7 +258,7 @@ if (!doNotTrack) {
 
 
 
-创建: 2023-03-17 | 更新: 2023-03-17 | 字数: 12字 | 阅读时长: 1分钟 | 
+创建: 2023-03-17 | 更新: 2023-03-17 | 字数: 616字 | 阅读时长: 2分钟 | 
 作者:Martin&nbsp;|&nbsp;标签: &nbsp;
     <ul class="post-tags-meta">
         <a href="https://martinspace.top/zh/tags/algorithm/">Algorithm</a>
@@ -276,19 +276,23 @@ if (!doNotTrack) {
 
             <div class="inner"><ul>
                     <li>
-                        <a href="#algorithmic-paradigms" aria-label="Algorithmic Paradigms">Algorithmic Paradigms</a><ul>
-                            
+                        <a href="#1-algorithmic-paradigms" aria-label="1. Algorithmic Paradigms">1. Algorithmic Paradigms</a></li>
                     <li>
-                        <a href="#activity-selection-problem" aria-label="Activity Selection Problem">Activity Selection Problem</a><ul>
+                        <a href="#greedy-algorithm" aria-label="Greedy Algorithm">Greedy Algorithm</a><ul>
                             
                     <li>
                         <a href="#greedy-choice-property" aria-label="Greedy Choice Property">Greedy Choice Property</a></li>
                     <li>
-                        <a href="#recursive-property" aria-label="Recursive Property">Recursive Property</a></li></ul>
-                    </li></ul>
+                        <a href="#recursive-property" aria-label="Recursive Property">Recursive Property</a></li>
+                    <li>
+                        <a href="#%e4%b8%80%e4%ba%9b%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95%e4%b8%8d%e9%80%82%e7%94%a8%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="一些贪心算法不适用的问题">一些贪心算法不适用的问题</a></li>
+                    <li>
+                        <a href="#divide-and-conquer" aria-label="Divide and Conquer">Divide and Conquer</a></li>
+                    <li>
+                        <a href="#dynamic-programming" aria-label="Dynamic Programming">Dynamic Programming</a></li></ul>
                     </li>
                     <li>
-                        <a href="#pattern-matching" aria-label="Pattern Matching">Pattern Matching</a>
+                        <a href="#2-pattern-matching" aria-label="2. Pattern Matching">2. Pattern Matching</a>
                     </li>
                 </ul>
             </div>
@@ -354,11 +358,28 @@ if (!doNotTrack) {
         return rect.top + win.pageYOffset;   
     }
 </script>
-  <div class="post-content"><h1 id="algorithmic-paradigms">Algorithmic Paradigms<a hidden class="anchor" aria-hidden="true" href="#algorithmic-paradigms">#</a></h1>
-<h2 id="activity-selection-problem">Activity Selection Problem<a hidden class="anchor" aria-hidden="true" href="#activity-selection-problem">#</a></h2>
-<h3 id="greedy-choice-property">Greedy Choice Property<a hidden class="anchor" aria-hidden="true" href="#greedy-choice-property">#</a></h3>
-<h3 id="recursive-property">Recursive Property<a hidden class="anchor" aria-hidden="true" href="#recursive-property">#</a></h3>
-<h1 id="pattern-matching">Pattern Matching<a hidden class="anchor" aria-hidden="true" href="#pattern-matching">#</a></h1>
+  <div class="post-content"><h1 id="1-algorithmic-paradigms">1. Algorithmic Paradigms<a hidden class="anchor" aria-hidden="true" href="#1-algorithmic-paradigms">#</a></h1>
+<h1 id="greedy-algorithm">Greedy Algorithm<a hidden class="anchor" aria-hidden="true" href="#greedy-algorithm">#</a></h1>
+<h2 id="greedy-choice-property">Greedy Choice Property<a hidden class="anchor" aria-hidden="true" href="#greedy-choice-property">#</a></h2>
+<p>通过每一步的局部最优选择，可以最终构建出全局最优解。</p>
+<p>在活动选择问题中的表现：S是一组活动，A是S中具有最早结束时间的活动，对于最优解$ X \subseteq S $, A被包含在X中。</p>
+<p><strong>证明方法：</strong>
+假设$X \subseteq S$是一个最优解，A&rsquo;是X中具有最早结束时间的活动，如果A=A&rsquo;，证明结束。否则，用A替换A&rsquo;获得另一个方案X&rsquo;(X&rsquo;中的活动数量和X的活动数量相同)，那么X&rsquo;就是一个包含活动A的最优解。</p>
+<h2 id="recursive-property">Recursive Property<a hidden class="anchor" aria-hidden="true" href="#recursive-property">#</a></h2>
+<p>递归性质指的是一种方法或函数能够通过调用自身来解决问题。递归方法将问题分解为更小的子问题，这些子问题结构上与原问题相似但规模更小。</p>
+<p>在活动选择问题中的表现：可以从较小问题实例 S&rsquo; 的任何最优解中找到S中包含 A 的最优解： 特别是，如果 X ′′ 是 S′ 的最优解，那么 X ′′ ∪ {A} 是 S 的可行解中包含 A 的最佳解。</p>
+<p><strong>证明方法：</strong>
+假设X&rsquo;&lsquo;是S&rsquo;中的最优解，要证明X&rsquo;&rsquo; U {A}有尽可能多的活动，在S的可行方案（包含A）中。通过反证法，假设这里对于S有更好的解Y&rsquo; U {A}，那么在S‘中，Y&rsquo;应该比现存的最优解X&rsquo;&lsquo;更优。这互相矛盾，因此反证成立。</p>
+<h2 id="一些贪心算法不适用的问题">一些贪心算法不适用的问题<a hidden class="anchor" aria-hidden="true" href="#一些贪心算法不适用的问题">#</a></h2>
+<ol>
+<li>Weighted Activities Selection Problem</li>
+<li>Fractional Knapsack Problem</li>
+</ol>
+<h2 id="divide-and-conquer">Divide and Conquer<a hidden class="anchor" aria-hidden="true" href="#divide-and-conquer">#</a></h2>
+<p>可以用分治解决Weighted Activities Selection Problem</p>
+<h2 id="dynamic-programming">Dynamic Programming<a hidden class="anchor" aria-hidden="true" href="#dynamic-programming">#</a></h2>
+<p>添加了备忘录的分治就是动态规划，即不用重复计算子问题的解。</p>
+<h1 id="2-pattern-matching">2. Pattern Matching<a hidden class="anchor" aria-hidden="true" href="#2-pattern-matching">#</a></h1>
 
 
   </div>
