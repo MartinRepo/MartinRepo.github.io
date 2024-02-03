@@ -20,20 +20,20 @@ cover:
     relative: false
 ---
 
-- 🧑🏻‍💻 可以叫我**Martin**
+- 🧑🏻‍💻 可以叫我**Martin / Martingale**
 - 🌊 专注于底层逻辑思考的学习者
-- ✏️ CS本科大三，就读于利物浦大学[@LivUni](https://twitter.com/LivUni)
+- ✏️ CS本科大四，就读于利物浦大学[@LivUni](https://twitter.com/LivUni)
 - 💭 热爱开源，学习无止境
 
 # 我最近在干什么？
 - 🪜 现在正在...
-    - ```赶due & 准备雅思```
+    - ```贡献开源项目Casibase ``` **[@Casibase](https://github.com/casibase)**
+    - ```24fall CS硕士申请```
 - 🌟 同步正在研究
-    - ```React.js```
-    - ```C/C++```
-    -  ```Node.js```
+    - ```Go```
+    - ```高性能计算```
+    - ```算法开发```
 - 🤔 不久之后将会
     - ```学习成为hacker（附带正义感的```
-    - ```贡献开源项目```
-    - ```申研，继续学习```
+    - ```继续贡献开源项目 (坚持做自己喜欢的事情✊)```
 

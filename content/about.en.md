@@ -21,23 +21,21 @@ cover:
 ---
 
 - 🌊 An Underlying logic thinker & reflective practitioner
-- ✏️ Studying for BsCS [@LivUni](https://twitter.com/LivUni)
+- ✏️ Studying for BSc(Hons) Computer Science [@LivUni](https://twitter.com/LivUni)
 - ♍️ & ENTJ-A
-- 💭 Wish to contribute to the open source.
+- 💭 Wish to change world.
 - 🇨🇳 Nationality: China
 
 
 # What I'm up to 🔝
 - 🪜 I'm currently ...
-    
-    ``` Fighting with coursework and IELTS```
-
+    - ``` Contribute to an open-source project Casibase ``` **[@Casibase](https://github.com/casibase)**
+    - ``` Apply for computer science postgraduate (Msc) ```
 - 🔆 In the near future, I'm planning to...
-    - ```React.js```
-    - ```C/C++```
-    -  ```Node.js```
+    - ```Go```
+    - ```High Performance Computing```
+    -  ```Algorithm research & development```
 - 🧐 To extend a bit longer, I wish myself...
-    - Learn to be a hacker.
-    - Contribute to some open source project.
-    - postgraduate, continue studying.
+    - ```Learn to be a hacker.```
+    - ```Keep on contributing to open-source projects (Stick to what you love ✊)```
 
