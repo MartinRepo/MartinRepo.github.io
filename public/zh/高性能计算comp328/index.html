@@ -133,8 +133,8 @@ if (!doNotTrack) {
   "keywords": [
     "高性能计算"
   ],
-  "articleBody": "Week1 高性能计算的目标\n对于有限的数据集，最小化解决时间 对于无限的数据集，最大化吞吐量(throughput) 有能力解决一些对于可用的内存来说太大的问题 最大化资源利用 - CPU/内存/网络/加速器(GPU)/电力 一些常用术语 Parallelism vs Concurrency Parallelism: 多个进程同时且独立执行 Concurrency: 多个进程同时执行且共享至少一种资源 Processor, Die \u0026 Socket Processor: 执行程序指令的电路。计算机系统中可能有许多处理器，例如图形处理器、视频处理器。在没有限定的情况下，通常指中央处理器 CPU: 计算机系统中主要的通用处理器（之一），而非特定用途（如视频解压缩）。 Die: 指硅晶片，包含处理器（通常是中央处理器）以及接口所需的其他组件（如内存控制器）。 Socket: 处理器和计算机主板之间的物理接口，它定义了处理器与主板连接的方式。不同的处理器和主板可能需要不同类型的Socket。 Core \u0026 Thread Core: 核心是CPU内部的一个物理处理单元，能够独立执行计算任务。每个核心可以独立处理指令和执行计算操作。 Thread: 线程是操作系统能够进行计算调度的最小单位。它是程序执行流的一个单一顺序，可以被操作系统调度（启动、停止、挂起等）。 核心和线程共同定义了处理器的处理能力 Node 指一个服务器节点（一台计算机） Cluster/Supercomputer 成百上千个节点组成集群 Single precision floating-point 通常占用32位（4字节）的存储空间，C语言中的float32类型，1符号位，8指数位，23有效数字位 Double precision floating-point 通常占用64位（8字节）的存储空间，C语言中的float64类型，1符号位，11指数位，52有效数字位 Flop Floating-point operations per second 如何量化/评估性能 公式如下👇\n$R_{peak} = 2\\times w_{vec} \\times r_{clock} \\times n_{core} \\times n_{socket}$\n变量解释：\n$R_{peak} - $峰值理论性能 $w_{vec} - $向量宽度，表示每个处理器核心每个时钟周期内可以执行的浮点运算数。 $r_{clock} - $表示处理器核心每秒钟可以执行的时钟周期数。 $n_{core} - $表示单个处理器（CPU）或计算节点中的核心数量。 $n_{socket} - $表示系统中处理器（CPU）的数量。 Linpack性能测试：Linpack性能测试是一种衡量计算系统解决高密度线性代数问题能力的测试。这个测试通过测量系统在执行大规模双精度（64位）浮点算术矩阵运算时的性能来评估计算机的速度和效率。Linpack测试的一个典型应用是计算给定大小的矩阵$A$和向量$b$，求解线性方程组$Ax = b$\nWeek2 Plot our programs performance The von Neumann bottleneck How to gain performance form a single core/socket ",
-  "wordCount" : "914",
+  "articleBody": "Week1 高性能计算的目标\n对于有限的数据集，最小化解决时间 对于无限的数据集，最大化吞吐量(throughput) 有能力解决一些对于可用的内存来说太大的问题 最大化资源利用 - CPU/内存/网络/加速器(GPU)/电力 一些常用术语 Parallelism vs Concurrency Parallelism: 多个进程同时且独立执行 Concurrency: 多个进程同时执行且共享至少一种资源 Processor, Die \u0026 Socket Processor: 执行程序指令的电路。计算机系统中可能有许多处理器，例如图形处理器、视频处理器。在没有限定的情况下，通常指中央处理器 CPU: 计算机系统中主要的通用处理器（之一），而非特定用途（如视频解压缩）。 Die: 指硅晶片，包含处理器（通常是中央处理器）以及接口所需的其他组件（如内存控制器）。 Socket: 处理器和计算机主板之间的物理接口，它定义了处理器与主板连接的方式。不同的处理器和主板可能需要不同类型的Socket。 Core \u0026 Thread Core: 核心是CPU内部的一个物理处理单元，能够独立执行计算任务。每个核心可以独立处理指令和执行计算操作。 Thread: 线程是操作系统能够进行计算调度的最小单位。它是程序执行流的一个单一顺序，可以被操作系统调度（启动、停止、挂起等）。 核心和线程共同定义了处理器的处理能力 Node 指一个服务器节点（一台计算机） Cluster/Supercomputer 成百上千个节点组成集群 Single precision floating-point 通常占用32位（4字节）的存储空间，C语言中的float32类型，1符号位，8指数位，23有效数字位 Double precision floating-point 通常占用64位（8字节）的存储空间，C语言中的float64类型，1符号位，11指数位，52有效数字位 Flop Floating-point operations per second 如何量化/评估性能 公式如下👇\n$R_{peak} = 2\\times w_{vec} \\times r_{clock} \\times n_{core} \\times n_{socket}$\n变量解释：\n$R_{peak} - $峰值理论性能 $w_{vec} - $向量宽度，表示每个处理器核心每个时钟周期内可以执行的浮点运算数。 $r_{clock} - $表示处理器核心每秒钟可以执行的时钟周期数。 $n_{core} - $表示单个处理器（CPU）或计算节点中的核心数量。 $n_{socket} - $表示系统中处理器（CPU）的数量。 Linpack性能测试：Linpack性能测试是一种衡量计算系统解决高密度线性代数问题能力的测试。这个测试通过测量系统在执行大规模双精度（64位）浮点算术矩阵运算时的性能来评估计算机的速度和效率。Linpack测试的一个典型应用是计算给定大小的矩阵$A$和向量$b$，求解线性方程组$Ax = b$\nWeek2 Plot programs performance 用\"Arithmetic Intensity\"，记作$I(n)$，来评估性能。$I(n) = {W(n)\\over Q(n)}$。\n$W(n)$:程序执行flops的次数，$Q(n)$:从内存传输到缓存的字节数。\n低Arithmetic Intensity的程序叫内存受限程序 高Arithmetic Intensity的程序叫计算受限程序 对于内存受限的程序，处理器需要花费更多时间等待操作数从内存中传送出来（更多的时间花费在访问内存上，而不是运算上）。 Roofline Model Roofline Model是帮助了解软件性能的可视化工具。\nRoofline Model两个组成部分\n峰值性能（$R_{peak} / R_{max}$）：这是计算系统在理想情况下可以达到的最高计算性能，通常以每秒浮点运算次数（FLOPS）来衡量。峰值性能由处理器的硬件特性决定，比如核心数量、时钟频率和向量化能力。图中水平线就是峰值性能 内存带宽（Memory Bandwidth）：这是计算系统在单位时间内能从内存中读写数据的最大速率，通常以每秒传输的字节数（Bytes/s）来衡量。内存带宽是由系统的内存架构和内存类型决定的。带角度的斜线表示内存带宽 冯·诺伊曼 Von Neumann架构图如下所示👇 由控制单元和算术/逻辑单元组成的CPU。 独立的存储区，可存储指令和数据。 指令由CPU执行，因此必须将指令从存储器带入CPU。 数据也必须从存储器进入CPU才能执行。 CPU包含寄存器，作为临时存储的刮板。 The von Neumann bottleneck: 数据和指令共用一条总线，因此指令获取和数据操作不能同时进行。 冯·诺伊曼瓶颈 从内存中抓取对应程序计数器的指令 解码指令 从内存中抓取数据 执行指令 写回结果 Pipelining Pipelining的基本概念\n流水线技术通过将指令的执行过程分解为多个阶段，并让不同的指令在不同的时间并行处理这些阶段来提高处理速度。这就好比是在组装线上，每个工人负责组装线上的一个特定任务，产品可以更快地完成，因为多个任务是在同时进行，而不是一个接一个地完成。\n在von neumann cycle中的应用\n在应用流水线技术后，处理器可以在完成当前指令的某个阶段的同时，开始执行下一条指令的前一个阶段。例如，当第一条指令在执行阶段时，第二条指令可以同时进行译码，第三条指令可以进行取指。这样，虽然每条指令的执行仍然需要串行经过所有阶段，但处理器可以在同一时刻处理多条指令的不同阶段，从而大大提高了指令的吞吐率。\n对抗冯·诺伊曼瓶颈的方法 在芯片上添加高速缓存（cache)，但高速缓存也存在问题\n例如，高速缓存越大，数据访问速度越慢。可以采用多级缓存架构，通过在处理器和主内存之间引入多个层级的缓存，旨在平衡缓存大小、访问速度和命中率之间的关系。\n高速缓存利用了程序的空间局部性（spatial locality）和时间局部性（temporal locality）。\n时间局部性指的是在较短的时间内，被访问过一次的数据项很可能在不久的将来再次被访问的特性。这种访问模式意味着一旦数据被加载到缓存中，它很可能很快再次被需要，因此保留这些数据项在缓存中可以减少对较慢主存的访问次数。 空间局部性是指如果一个数据项被访问，那么其附近的数据项很快也可能被访问的特性。这种模式基于数据存储的物理结构，相邻的数据项通常也在内存中相邻存储。高速缓存系统利用这一特性通过预取附近的数据项到缓存中，即使这些数据项还没有被显式请求。 AMD Bulldozer 服务器插槽的内存层次结构 How to gain performance form a single core/socket for (int i = 0; i\u003c1000; i++) { b[i] = a[i]*a[i]; } 对于上面这个程序，应该运行1000个clock cycles。假如一个clock cycle不是做一次迭代，而是做4次迭代，那么总共需要250个clock cycles。这就叫vector processing，也叫Single Instruction, Multiple Data（SIMD）。\n在单核上压榨更多性能：SMT(simultaneous multithreading)，通过在单个物理CPU核心上同时执行多个线程来提高处理器的效率和性能。SMT允许单个核心像操作系统和应用程序呈现出多个逻辑核心或线程，使得处理器可以更有效地利用其资源，特别是在一个线程等待数据访问或执行长时间操作时，处理器可以转而执行另一个线程的任务。\n",
+  "wordCount" : "2592",
   "inLanguage": "zh",
   "datePublished": "2024-02-03T17:39:49Z",
   "dateModified": "2024-02-03T17:39:49Z",
@@ -258,7 +258,7 @@ if (!doNotTrack) {
 
 
 
-创建: 2024-02-03 | 更新: 2024-02-03 | 字数: 914字 | 阅读时长: 2分钟 | 
+创建: 2024-02-03 | 更新: 2024-02-03 | 字数: 2592字 | 阅读时长: 6分钟 | 
 作者:Martin&nbsp;|&nbsp;标签: &nbsp;
     <ul class="post-tags-meta">
         <a href="https://martinspace.top/zh/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/">高性能计算</a>
@@ -287,9 +287,21 @@ if (!doNotTrack) {
                         <a href="#week2" aria-label="Week2">Week2</a><ul>
                             
                     <li>
-                        <a href="#plot-our-programs-performance" aria-label="Plot our programs performance">Plot our programs performance</a></li>
+                        <a href="#plot-programs-performance" aria-label="Plot programs performance">Plot programs performance</a><ul>
+                            
                     <li>
-                        <a href="#the-von-neumann-bottleneck" aria-label="The von Neumann bottleneck">The von Neumann bottleneck</a></li>
+                        <a href="#roofline-model" aria-label="Roofline Model">Roofline Model</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%86%af%e8%af%ba%e4%bc%8a%e6%9b%bc" aria-label="冯·诺伊曼">冯·诺伊曼</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%86%af%e8%af%ba%e4%bc%8a%e6%9b%bc%e7%93%b6%e9%a2%88" aria-label="冯·诺伊曼瓶颈">冯·诺伊曼瓶颈</a></li>
+                    <li>
+                        <a href="#pipelining" aria-label="Pipelining">Pipelining</a></li>
+                    <li>
+                        <a href="#%e5%af%b9%e6%8a%97%e5%86%af%e8%af%ba%e4%bc%8a%e6%9b%bc%e7%93%b6%e9%a2%88%e7%9a%84%e6%96%b9%e6%b3%95" aria-label="对抗冯·诺伊曼瓶颈的方法">对抗冯·诺伊曼瓶颈的方法</a></li></ul>
+                    </li>
                     <li>
                         <a href="#how-to-gain-performance-form-a-single-coresocket" aria-label="How to gain performance form a single core/socket">How to gain performance form a single core/socket</a>
                     </li>
@@ -429,9 +441,65 @@ if (!doNotTrack) {
 </ol>
 <p><strong>Linpack性能测试</strong>：Linpack性能测试是一种衡量计算系统解决高密度线性代数问题能力的测试。这个测试通过测量系统在执行大规模双精度（64位）浮点算术矩阵运算时的性能来评估计算机的速度和效率。Linpack测试的一个典型应用是计算给定大小的矩阵$A$和向量$b$，求解线性方程组$Ax = b$</p>
 <h1 id="week2">Week2<a hidden class="anchor" aria-hidden="true" href="#week2">#</a></h1>
-<h2 id="plot-our-programs-performance">Plot our programs performance<a hidden class="anchor" aria-hidden="true" href="#plot-our-programs-performance">#</a></h2>
-<h2 id="the-von-neumann-bottleneck">The von Neumann bottleneck<a hidden class="anchor" aria-hidden="true" href="#the-von-neumann-bottleneck">#</a></h2>
+<h2 id="plot-programs-performance">Plot programs performance<a hidden class="anchor" aria-hidden="true" href="#plot-programs-performance">#</a></h2>
+<p>用&quot;Arithmetic Intensity&quot;，记作$I(n)$，来评估性能。$I(n) = {W(n)\over Q(n)}$。</p>
+<p>$W(n)$:程序执行flops的次数，$Q(n)$:从内存传输到缓存的字节数。</p>
+<ul>
+<li>低Arithmetic Intensity的程序叫内存受限程序</li>
+<li>高Arithmetic Intensity的程序叫计算受限程序</li>
+<li>对于内存受限的程序，处理器需要花费更多时间等待操作数从内存中传送出来（更多的时间花费在访问内存上，而不是运算上）。</li>
+</ul>
+<h3 id="roofline-model">Roofline Model<a hidden class="anchor" aria-hidden="true" href="#roofline-model">#</a></h3>
+<p>Roofline Model是帮助了解软件性能的可视化工具。</p>
+<p>Roofline Model两个组成部分</p>
+<ul>
+<li><strong>峰值性能（$R_{peak} / R_{max}$）</strong>：这是计算系统在理想情况下可以达到的最高计算性能，通常以每秒浮点运算次数（FLOPS）来衡量。峰值性能由处理器的硬件特性决定，比如核心数量、时钟频率和向量化能力。图中水平线就是峰值性能</li>
+<li><strong>内存带宽（Memory Bandwidth）</strong>：这是计算系统在单位时间内能从内存中读写数据的最大速率，通常以每秒传输的字节数（Bytes/s）来衡量。内存带宽是由系统的内存架构和内存类型决定的。带角度的斜线表示内存带宽</li>
+</ul>
+<h2 id="冯诺伊曼">冯·诺伊曼<a hidden class="anchor" aria-hidden="true" href="#冯诺伊曼">#</a></h2>
+<p>Von Neumann架构图如下所示👇
+<img loading="lazy" src="/img/comp328/vonNeumann.png" alt="The von Neumann Architecture"  />
+</p>
+<ul>
+<li>由控制单元和算术/逻辑单元组成的CPU。</li>
+<li>独立的存储区，可存储指令和数据。</li>
+<li>指令由CPU执行，因此必须将指令从存储器带入CPU。</li>
+<li>数据也必须从存储器进入CPU才能执行。</li>
+<li>CPU包含寄存器，作为临时存储的刮板。</li>
+<li><strong>The von Neumann bottleneck:</strong> 数据和指令共用一条总线，因此指令获取和数据操作不能同时进行。</li>
+</ul>
+<h3 id="冯诺伊曼瓶颈">冯·诺伊曼瓶颈<a hidden class="anchor" aria-hidden="true" href="#冯诺伊曼瓶颈">#</a></h3>
+<ol>
+<li>从内存中抓取对应程序计数器的指令</li>
+<li>解码指令</li>
+<li>从内存中抓取数据</li>
+<li>执行指令</li>
+<li>写回结果</li>
+</ol>
+<h3 id="pipelining">Pipelining<a hidden class="anchor" aria-hidden="true" href="#pipelining">#</a></h3>
+<p><strong>Pipelining的基本概念</strong></p>
+<p>流水线技术通过将指令的执行过程分解为多个阶段，并让不同的指令在不同的时间并行处理这些阶段来提高处理速度。这就好比是在组装线上，每个工人负责组装线上的一个特定任务，产品可以更快地完成，因为多个任务是在同时进行，而不是一个接一个地完成。</p>
+<p><strong>在von neumann cycle中的应用</strong></p>
+<p>在应用流水线技术后，处理器可以在完成当前指令的某个阶段的同时，开始执行下一条指令的前一个阶段。例如，当第一条指令在执行阶段时，第二条指令可以同时进行译码，第三条指令可以进行取指。这样，虽然每条指令的执行仍然需要串行经过所有阶段，但处理器可以在同一时刻处理多条指令的不同阶段，从而大大提高了指令的吞吐率。</p>
+<h3 id="对抗冯诺伊曼瓶颈的方法">对抗冯·诺伊曼瓶颈的方法<a hidden class="anchor" aria-hidden="true" href="#对抗冯诺伊曼瓶颈的方法">#</a></h3>
+<blockquote>
+<p>在芯片上添加高速缓存（cache)，但高速缓存也存在问题</p>
+</blockquote>
+<p>例如，高速缓存越大，数据访问速度越慢。可以采用多级缓存架构，通过在处理器和主内存之间引入多个层级的缓存，旨在平衡缓存大小、访问速度和命中率之间的关系。</p>
+<p>高速缓存利用了程序的空间局部性（spatial locality）和时间局部性（temporal locality）。</p>
+<ul>
+<li>时间局部性指的是在较短的时间内，被访问过一次的数据项很可能在不久的将来再次被访问的特性。这种访问模式意味着一旦数据被加载到缓存中，它很可能很快再次被需要，因此保留这些数据项在缓存中可以减少对较慢主存的访问次数。</li>
+<li>空间局部性是指如果一个数据项被访问，那么其附近的数据项很快也可能被访问的特性。这种模式基于数据存储的物理结构，相邻的数据项通常也在内存中相邻存储。高速缓存系统利用这一特性通过预取附近的数据项到缓存中，即使这些数据项还没有被显式请求。</li>
+</ul>
+<p>AMD Bulldozer 服务器插槽的内存层次结构
+<img loading="lazy" src="/img/comp328/Hwloc.png" alt="AMD Bulldozer 服务器插槽"  />
+</p>
 <h2 id="how-to-gain-performance-form-a-single-coresocket">How to gain performance form a single core/socket<a hidden class="anchor" aria-hidden="true" href="#how-to-gain-performance-form-a-single-coresocket">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">int</span> i = 0; i&lt;1000; i++) {
+</span></span><span style="display:flex;"><span>    b[i] = a[i]*a[i];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>对于上面这个程序，应该运行1000个clock cycles。假如一个clock cycle不是做一次迭代，而是做4次迭代，那么总共需要250个clock cycles。这就叫vector processing，也叫Single Instruction, Multiple Data（SIMD）。</p>
+<p>在单核上压榨更多性能：SMT(simultaneous multithreading)，通过在单个物理CPU核心上同时执行多个线程来提高处理器的效率和性能。SMT允许单个核心像操作系统和应用程序呈现出多个逻辑核心或线程，使得处理器可以更有效地利用其资源，特别是在一个线程等待数据访问或执行长时间操作时，处理器可以转而执行另一个线程的任务。</p>
 
 
   </div>
