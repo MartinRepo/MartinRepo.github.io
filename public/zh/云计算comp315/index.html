@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>云计算(COMP315) | Martin&#39;s space</title>
+<meta name="keywords" content="云计算">
+<meta name="description" content="虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&ldquo;Hypervisor&rdquo; （虚拟机监控">
+<meta name="author" content="Martin">
+<link rel="canonical" href="https://martinspace.top/zh/%E4%BA%91%E8%AE%A1%E7%AE%97comp315/">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://martinspace.top/img/sun.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/img/sun.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/img/sun.jpg">
+<link rel="apple-touch-icon" href="https://martinspace.top/sun.jpg">
+<link rel="mask-icon" href="https://martinspace.top/sun.jpg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://martinspace.top/zh/%E4%BA%91%E8%AE%A1%E7%AE%97comp315/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+<script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="云计算(COMP315)" />
+<meta property="og:description" content="虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&ldquo;Hypervisor&rdquo; （虚拟机监控" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://martinspace.top/zh/%E4%BA%91%E8%AE%A1%E7%AE%97comp315/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-02-03T17:39:49+00:00" />
+<meta property="article:modified_time" content="2024-02-03T17:39:49+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="云计算(COMP315)"/>
+<meta name="twitter:description" content="虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&ldquo;Hypervisor&rdquo; （虚拟机监控"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "📒 文章",
+      "item": "https://martinspace.top/zh/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "🇬🇧 课程",
+      "item": "https://martinspace.top/zh/post/1liverpool/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "云计算(COMP315)",
+      "item": "https://martinspace.top/zh/%E4%BA%91%E8%AE%A1%E7%AE%97comp315/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "云计算(COMP315)",
+  "name": "云计算(COMP315)",
+  "description": "虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。\u0026ldquo;Hypervisor\u0026rdquo; （虚拟机监控",
+  "keywords": [
+    "云计算"
+  ],
+  "articleBody": "虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。“Hypervisor” （虚拟机监控程序）的软件可直接连接到硬件，从而将一个系统划分为不同的、单独安全环境，即虚拟机（VM）。\nType 1 \u0026 Type 2 虚拟机监控程序 第 1 类虚拟机监控器位于裸机服务器之上，可以直接访问硬件资源。因此，第 1 类虚拟机监控器也称为裸机虚拟机监控器。\n相比之下，第 2 类虚拟机监控器是安装在主机操作系统上的应用程序。此类虚拟机监控器也称为托管或嵌入式虚拟机监控器。\n第 1 类虚拟机监控器或裸机虚拟机监控器直接与底层计算机硬件交互。裸机虚拟机监控器直接安装在主机的物理硬件上，而不是通过操作系统安装。 第 2 类虚拟机监控器或托管虚拟机管理监控器通过主机的操作系统与底层主机硬件进行交互。第 2 类虚拟机监控器安装在计算机上，在其中作为应用程序运行。 Hypervisor属于协调层，同时运行多个虚拟机 JavaScript 比较熟悉了，简单写几个Tutorial的点\n原型链(Prototype Chain)：这个机制的关键点在于当你尝试访问一个对象的属性或方法时，如果该对象本身没有这个属性或方法，JavaScript引擎就会沿着这个对象的原型链向上查找，直到找到这个属性或方法或到达原型链的末端。object.getPrototypeOf() function也是一个object undefine和null是不同的类型， undefine === null False undefine == null True 声明变量别用var。变的就用let，不变就用const，舍弃var \u003cbutton class=\" bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transform transition hover:scale-110\"\u003e Shop Online \u003c/button\u003e map方法 const numbers = [1, 2, 3, 4]; const doubled = numbers.map(num =\u003e num * 2); console.log(doubled); reduce方法 const numbers = [1, 2, 3, 4]; const sum = numbers.reduce((acc, curr) =\u003e acc + curr, 0); console.log(sum); 容器 Docker Docker和Kernel 安全 Vulnerabilities and the Zero-Day Problem 主机防御 SELinux ",
+  "wordCount" : "751",
+  "inLanguage": "zh",
+  "datePublished": "2024-02-03T17:39:49Z",
+  "dateModified": "2024-02-03T17:39:49Z",
+  "author":{
+    "@type": "Person",
+    "name": "Martin"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://martinspace.top/zh/%E4%BA%91%E8%AE%A1%E7%AE%97comp315/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Martin's space",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://martinspace.top/img/sun.jpg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
+                <img src="https://martinspace.top/sun.jpg" alt="" aria-label="logo"
+                    height="35">Martin&#39;s space</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://martinspace.top/en/" title="English"
+                            aria-label="English">English</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://martinspace.top/zh/" title="🏠 主页">
+                    <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/archives/" title="📁 归档">
+                    <span>📁 归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/tags" title="🏷️ 标签">
+                    <span>🏷️ 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                    <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/about" title="💭 关于">
+                    <span>💭 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://martinspace.top/zh/">主页</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/">📒 文章</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/1liverpool/">🇬🇧 课程</a></div>
+    <h1 class="post-title">
+      云计算(COMP315)
+    </h1>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建: 2024-02-03 | 更新: 2024-02-03 | 字数: 751字 | 阅读时长: 2分钟 | 
+作者:Martin&nbsp;|&nbsp;标签: &nbsp;
+    <ul class="post-tags-meta">
+        <a href="https://martinspace.top/zh/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
+    </ul>
+
+
+    
+    </div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e8%99%9a%e6%8b%9f%e6%9c%ba" aria-label="虚拟机">虚拟机</a><ul>
+                            
+                    <li>
+                        <a href="#type-1--type-2-%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%9b%91%e6%8e%a7%e7%a8%8b%e5%ba%8f" aria-label="Type 1 &amp;amp; Type 2 虚拟机监控程序">Type 1 &amp; Type 2 虚拟机监控程序</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#javascript" aria-label="JavaScript">JavaScript</a></li>
+                    <li>
+                        <a href="#%e5%ae%b9%e5%99%a8" aria-label="容器">容器</a><ul>
+                            
+                    <li>
+                        <a href="#docker" aria-label="Docker">Docker</a></li>
+                    <li>
+                        <a href="#docker%e5%92%8ckernel" aria-label="Docker和Kernel">Docker和Kernel</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%ae%89%e5%85%a8" aria-label="安全">安全</a><ul>
+                            
+                    <li>
+                        <a href="#vulnerabilities-and-the-zero-day-problem" aria-label="Vulnerabilities and the Zero-Day Problem">Vulnerabilities and the Zero-Day Problem</a></li>
+                    <li>
+                        <a href="#%e4%b8%bb%e6%9c%ba%e9%98%b2%e5%be%a1" aria-label="主机防御">主机防御</a></li>
+                    <li>
+                        <a href="#selinux" aria-label="SELinux">SELinux</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+  <div class="post-content"><h1 id="虚拟机">虚拟机<a hidden class="anchor" aria-hidden="true" href="#虚拟机">#</a></h1>
+<blockquote>
+<p>借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&ldquo;Hypervisor&rdquo; （虚拟机监控程序）的软件可直接连接到硬件，从而将一个系统划分为不同的、单独安全环境，即虚拟机（VM）。</p>
+</blockquote>
+<h2 id="type-1--type-2-虚拟机监控程序">Type 1 &amp; Type 2 虚拟机监控程序<a hidden class="anchor" aria-hidden="true" href="#type-1--type-2-虚拟机监控程序">#</a></h2>
+<p>第 1 类虚拟机监控器位于裸机服务器之上，可以直接访问硬件资源。因此，第 1 类虚拟机监控器也称为裸机虚拟机监控器。</p>
+<p>相比之下，第 2 类虚拟机监控器是安装在主机操作系统上的应用程序。此类虚拟机监控器也称为托管或嵌入式虚拟机监控器。</p>
+<ul>
+<li>第 1 类虚拟机监控器或裸机虚拟机监控器直接与底层计算机硬件交互。裸机虚拟机监控器直接安装在主机的物理硬件上，而不是通过操作系统安装。</li>
+<li>第 2 类虚拟机监控器或托管虚拟机管理监控器通过主机的操作系统与底层主机硬件进行交互。第 2 类虚拟机监控器安装在计算机上，在其中作为应用程序运行。</li>
+<li>Hypervisor属于协调层，同时运行多个虚拟机
+<img loading="lazy" src="/img/comp315/hypervisor.png" alt="Hypervisor"  />
+</li>
+</ul>
+<h1 id="javascript">JavaScript<a hidden class="anchor" aria-hidden="true" href="#javascript">#</a></h1>
+<blockquote>
+<p>比较熟悉了，简单写几个Tutorial的点</p>
+</blockquote>
+<ul>
+<li>原型链(Prototype Chain)：这个机制的关键点在于当你尝试访问一个对象的属性或方法时，如果该对象本身没有这个属性或方法，JavaScript引擎就会沿着这个对象的原型链向上查找，直到找到这个属性或方法或到达原型链的末端。<code>object.getPrototypeOf()</code></li>
+<li>function也是一个object</li>
+<li>undefine和null是不同的类型，
+<ul>
+<li><code>undefine === null</code> False</li>
+<li><code>undefine == null</code> True</li>
+</ul>
+</li>
+<li>声明变量别用var。变的就用let，不变就用const，舍弃var</li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">button</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    bg-green-500 
+</span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    hover:bg-green-700 
+</span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    text-white 
+</span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    font-bold 
+</span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    py-2 px-4 
+</span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    rounded 
+</span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    transform transition 
+</span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    hover:scale-110&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      Shop Online
+</span></span><span style="display:flex;"><span>  &lt;/<span style="font-weight:bold">button</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#007f7f">&lt;!-- py-2 px-4 指x和y方向上的padding大小--&gt;</span>
+</span></span></code></pre></div></li>
+<li>map方法
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">const</span> numbers = [<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">3</span>, <span style="color:#ff0;font-weight:bold">4</span>];
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">const</span> doubled = numbers.map(num =&gt; num * <span style="color:#ff0;font-weight:bold">2</span>);
+</span></span><span style="display:flex;"><span>console.log(doubled);
+</span></span></code></pre></div></li>
+<li>reduce方法
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">const</span> numbers = [<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">3</span>, <span style="color:#ff0;font-weight:bold">4</span>];
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">const</span> sum = numbers.reduce((acc, curr) =&gt; acc + curr, <span style="color:#ff0;font-weight:bold">0</span>);
+</span></span><span style="display:flex;"><span>console.log(sum);
+</span></span></code></pre></div></li>
+</ul>
+<h1 id="容器">容器<a hidden class="anchor" aria-hidden="true" href="#容器">#</a></h1>
+<h2 id="docker">Docker<a hidden class="anchor" aria-hidden="true" href="#docker">#</a></h2>
+<h2 id="docker和kernel">Docker和Kernel<a hidden class="anchor" aria-hidden="true" href="#docker和kernel">#</a></h2>
+<h1 id="安全">安全<a hidden class="anchor" aria-hidden="true" href="#安全">#</a></h1>
+<h2 id="vulnerabilities-and-the-zero-day-problem">Vulnerabilities and the Zero-Day Problem<a hidden class="anchor" aria-hidden="true" href="#vulnerabilities-and-the-zero-day-problem">#</a></h2>
+<h2 id="主机防御">主机防御<a hidden class="anchor" aria-hidden="true" href="#主机防御">#</a></h2>
+<h2 id="selinux">SELinux<a hidden class="anchor" aria-hidden="true" href="#selinux">#</a></h2>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://martinspace.top/zh/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://martinspace.top/zh/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97comp328/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>高性能计算(COMP328)</span>
+  </a>
+  <a class="next" href="https://martinspace.top/zh/%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>前端刷题笔记</span>
+  </a>
+</nav>
+<script src="https://utteranc.es/client.js"
+        repo="oudushu/utterances"
+        issue-term="title"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+  </footer><script src="https://utteranc.es/client.js"
+    repo="MartinRepo/utterancesInblog"
+    issue-term="pathname"
+    label="Comment"
+    theme="preferred-color-scheme"
+    crossorigin="anonymous"
+    async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+        <br> 
+        
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
+    </span>
+    
+    <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv">
+        被访问了<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    <span id="busuanzi_container_site_uv">
+        迎接了<span id="busuanzi_value_site_uv"></span>位客人 (仅供参考，不准)
+    </span>
+    </div>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script></body>
+
+</html>

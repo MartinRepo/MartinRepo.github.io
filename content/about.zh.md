@@ -29,7 +29,8 @@ cover:
 - 🪜 现在正在...
     - ```24fall CS硕士申请```
     - ```贡献开源项目Casibase ``` 
-        - [feat: support texts and images in the response at the same time (进行中...)](https://github.com/casibase/casibase/pull/718)
+        - [feat: Support chat bot widget (进行中...)](https://github.com/casibase/casibase/pull/724)
+        - [feat: support texts and images in the response at the same time (推迟)](https://github.com/casibase/casibase/pull/718)
         - [feat: support generating images via dalle-3 model (2024-02-20)](https://github.com/casibase/casibase/pull/717)
         - [feat: support sending images to gpt4vision model (2024-02-19)](https://github.com/casibase/casibase/pull/716)
         - [feat: fix reply display for huggingface (2024-01-28)](https://github.com/casibase/casibase/pull/705)
@@ -37,6 +38,7 @@ cover:
 - 🌟 同步正在...
     - ```Go```
     - ```高性能计算```
+    - ```云计算```
     - ```算法刷题```
 - 🤔 不久之后将会
     - ```学习成为hacker（附带正义感的```
