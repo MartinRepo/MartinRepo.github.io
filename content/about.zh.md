@@ -29,8 +29,10 @@ cover:
 - 🪜 现在正在...
     - ```24fall CS硕士申请```
     - ```贡献开源项目Casibase ``` 
+        - [The text output is not fluent, need to improve it (进行中...)](https://github.com/casibase/casibase/issues/728)
         - [feat: Support chat bot widget (进行中...)](https://github.com/casibase/casibase/pull/724)
         - [feat: support texts and images in the response at the same time (推迟)](https://github.com/casibase/casibase/pull/718)
+        - [feat: Support OpenAI embedding v3 as new Casibase embedding providers (2024-02-27)](https://github.com/casibase/casibase/pull/727)
         - [feat: support generating images via dalle-3 model (2024-02-20)](https://github.com/casibase/casibase/pull/717)
         - [feat: support sending images to gpt4vision model (2024-02-19)](https://github.com/casibase/casibase/pull/716)
         - [feat: fix reply display for huggingface (2024-01-28)](https://github.com/casibase/casibase/pull/705)
