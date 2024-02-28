@@ -30,9 +30,9 @@ cover:
 # What I'm up to 🔝
 - 🪜 I'm currently ...
     - ``` Contribute to an open-source project Casibase ```
-        - [The text output is not fluent, need to improve it (in progress...)](https://github.com/casibase/casibase/issues/728)
         - [feat: Support chat bot widget (in progress...)](https://github.com/casibase/casibase/pull/724)
         - [feat: support texts and images in the response at the same time (pending)](https://github.com/casibase/casibase/pull/718)
+        - [feat: improve azure text output (2024-02-28)](https://github.com/casibase/casibase/pull/729)
         - [feat: Support OpenAI embedding v3 as new Casibase embedding providers (2024-02-27)](https://github.com/casibase/casibase/pull/727)
         - [feat: support generating images via dalle-3 model (20/02/2024)](https://github.com/casibase/casibase/pull/717)
         - [feat: support sending images to gpt4vision model (19/02/2024)](https://github.com/casibase/casibase/pull/716)
