@@ -30,7 +30,8 @@ cover:
     - ```24fall CS硕士申请```
     - ```贡献开源项目Casibase ``` 
         - [feat: Support chat bot widget (进行中...)](https://github.com/casibase/casibase/pull/724)
-        - [feat: support texts and images in the response at the same time (推迟)](https://github.com/casibase/casibase/pull/718)
+        - [feat: support texts and images in the response at the same time (进行中...)](https://github.com/casibase/casibase/pull/718)
+        - [fix: Bug that recognizes an ordinary url as an image (2024-02-29)](https://github.com/casibase/casibase/pull/730)
         - [feat: improve azure text output (2024-02-28)](https://github.com/casibase/casibase/pull/729)
         - [feat: Support OpenAI embedding v3 as new Casibase embedding providers (2024-02-27)](https://github.com/casibase/casibase/pull/727)
         - [feat: support generating images via dalle-3 model (2024-02-20)](https://github.com/casibase/casibase/pull/717)
