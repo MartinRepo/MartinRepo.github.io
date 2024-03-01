@@ -32,6 +32,7 @@ cover:
     - ``` Contribute to an open-source project Casibase ```
         - [feat: Support chat bot widget (in progress...)](https://github.com/casibase/casibase/pull/724)
         - [feat: support texts and images in the response at the same time (in progress...)](https://github.com/casibase/casibase/pull/718)
+        - [feat: add calculating tokens and price for embedding provider (2024-03-01)](https://github.com/casibase/casibase/pull/735)
         - [fix: Bug that recognizes an ordinary url as an image (2024-02-29)](https://github.com/casibase/casibase/pull/730)
         - [feat: improve azure text output (2024-02-28)](https://github.com/casibase/casibase/pull/729)
         - [feat: Support OpenAI embedding v3 as new Casibase embedding providers (2024-02-27)](https://github.com/casibase/casibase/pull/727)
