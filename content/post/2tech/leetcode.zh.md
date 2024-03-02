@@ -4,7 +4,7 @@ keywords:
 - leedcode
 - 算法
 date: 2023-01-07T09:36:47Z
-lastmod: 2023-02-04T20:27:51Z
+lastmod: 2024-03-02T20:27:51Z
 draft: false
 author: ["Martin"]
 categories: 
@@ -199,4 +199,48 @@ class Solution {
         return res;
     }
 }
+```
+
+# 受限条件下可到达的节点数目([2368](https://leetcode.cn/problems/reachable-nodes-with-restrictions/description/))
+> 这道题记录下深度优先搜索写法（每次都是看懂了然后再遇到题又忘记了怎么写）
+
+题目描述：现有一棵由 n 个节点组成的无向树，节点编号从 0 到 n - 1 ，共有 n - 1 条边。
+
+给你一个二维整数数组 edges ，长度为 n - 1 ，其中 edges[i] = [ai, bi] 表示树中节点 ai 和 bi 之间存在一条边。另给你一个整数数组 restricted 表示受限节点。
+
+在不访问受限节点的前提下，返回你可以从节点 0 到达的 最多 节点数目。
+
+注意，节点 0 不 会标记为受限节点。
+## 深度优先搜索
+主要是递归思想，目前还不具备，得多练。
+
+```c++
+class Solution {
+public:
+vector<vector<int>> g;
+// 从节点x出发，可以到达的节点数量，fa表示父节点，初始通常为-1
+int dfs(int x, int fa) {
+    int cnt = 1;
+    for(int y : g[x]) {
+        if(y!=fa) {
+            cnt+=dfs(y,x);
+        }
+    }
+    return cnt;
+}
+int reachableNodes(int n, vector<vector<int>>& edges, vector<int>& restricted) {
+    unordered_set<int> r(restricted.begin(), restricted.end());
+    g.resize(n);
+    // 遍历边，两个点不在受限节点中才能被加入临接矩阵g
+    for(auto& e:edges) {
+        int x=e[0], y=e[1];
+        // c++20可用contains，旧版本用r.find(x) == r.end() && r.find(y) == r.end()
+        if(!r.contains(x) && !r.contains(y)) {
+            g[x].push_back(y);
+            g[y].push_back(x);
+        }
+    }
+    return dfs(0, -1);
+}
+};
 ```
