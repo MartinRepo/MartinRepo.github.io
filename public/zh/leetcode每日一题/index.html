@@ -134,7 +134,7 @@ if (!doNotTrack) {
     "leedcode", "算法"
   ],
   "articleBody": "将x减到0的最小操作数(1658) 给你一个整数数组 nums 和一个整数 x 。每一次操作时，你应当移除数组 nums 最左边或最右边的元素，然后从 x 中减去该元素的值。请注意，需要 修改 数组以供接下来的操作使用。\n如果可以将 x 恰好 减到 0 ，返回 最小操作数 ；否则，返回 -1 。\n示例1 输入：nums = [1,1,4,2,3], x = 5 输出：2 解释：最佳解决方案是移除后两个元素，将 x 减到 0 。 双指针 这里引用灵神的一句话\n窗口大小不固定的叫做双指针，窗口大小固定的叫做滑动窗口。 我觉得很合理，虽然官方称自己的解法为滑动窗口，我更愿意称其为双指针。\nclass Solution { public int minOperations(int[] nums, int x) { int n = nums.length; //计算出数组中所有元素总和 int sum = Arrays.stream(nums).sum(); if(sum",
-  "wordCount" : "2693",
+  "wordCount" : "3013",
   "inLanguage": "zh",
   "datePublished": "2023-01-07T09:36:47Z",
   "dateModified": "2024-03-02T20:27:51Z",
@@ -261,7 +261,7 @@ if (!doNotTrack) {
 
 
 
-创建: 2023-01-07 | 更新: 2024-03-02 | 字数: 2693字 | 阅读时长: 6分钟 | 
+创建: 2023-01-07 | 更新: 2024-03-02 | 字数: 3013字 | 阅读时长: 7分钟 | 
 作者:Martin&nbsp;|&nbsp;标签: &nbsp;
     <ul class="post-tags-meta">
         <a href="https://martinspace.top/zh/tags/leetcode/">Leetcode</a>
@@ -312,10 +312,11 @@ if (!doNotTrack) {
                         <a href="#%e5%8f%97%e9%99%90%e6%9d%a1%e4%bb%b6%e4%b8%8b%e5%8f%af%e5%88%b0%e8%be%be%e7%9a%84%e8%8a%82%e7%82%b9%e6%95%b0%e7%9b%ae2368httpsleetcodecnproblemsreachable-nodes-with-restrictionsdescription" aria-label="受限条件下可到达的节点数目(2368)">受限条件下可到达的节点数目(<a href="https://leetcode.cn/problems/reachable-nodes-with-restrictions/description/">2368</a>)</a><ul>
                             
                     <li>
-                        <a href="#%e6%b7%b1%e5%ba%a6%e4%bc%98%e5%85%88%e6%90%9c%e7%b4%a2" aria-label="深度优先搜索">深度优先搜索</a>
+                        <a href="#%e6%b7%b1%e5%ba%a6%e4%bc%98%e5%85%88%e6%90%9c%e7%b4%a2" aria-label="深度优先搜索">深度优先搜索</a></li></ul>
                     </li>
-                </ul>
-                </li>
+                    <li>
+                        <a href="#%e5%b2%9b%e5%b1%bf%e6%95%b0%e9%87%8f-200httpsleetcodecnproblemsnumber-of-islandsdescriptionenvtypestudy-plan-v2envidgraph-theory" aria-label="岛屿数量 (200)">岛屿数量 (<a href="https://leetcode.cn/problems/number-of-islands/description/?envType=study-plan-v2&amp;envId=graph-theory">200</a>)</a>
+                    </li>
                 </ul>
             </div>
         </details>
@@ -559,6 +560,43 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">return</span> dfs(<span style="color:#ff0;font-weight:bold">0</span>, -<span style="color:#ff0;font-weight:bold">1</span>);
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h1 id="岛屿数量-200httpsleetcodecnproblemsnumber-of-islandsdescriptionenvtypestudy-plan-v2envidgraph-theory">岛屿数量 (<a href="https://leetcode.cn/problems/number-of-islands/description/?envType=study-plan-v2&amp;envId=graph-theory">200</a>)<a hidden class="anchor" aria-hidden="true" href="#岛屿数量-200httpsleetcodecnproblemsnumber-of-islandsdescriptionenvtypestudy-plan-v2envidgraph-theory">#</a></h1>
+<blockquote>
+<p>深搜继续练习，好像有点眉目了。</p>
+</blockquote>
+<p>题目描述：给你一个由 &lsquo;1&rsquo;（陆地）和 &lsquo;0&rsquo;（水）组成的的二维网格，请你计算网格中岛屿的数量。</p>
+<p>岛屿总是被水包围，并且每座岛屿只能由水平方向和/或竖直方向上相邻的陆地连接形成。</p>
+<p>此外，你可以假设该网格的四条边均被水包围。</p>
+<p>思路比较简单：遍历整个二维数组，碰到了1就开始深搜，深搜的过程中把1标记成0。这样遍历完就能统计出岛屿个数了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Solution {
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">void</span> dfs(vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">char</span>&gt;&gt;&amp; grid, <span style="color:#fff;font-weight:bold">int</span> r, <span style="color:#fff;font-weight:bold">int</span> c) {
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> nr = grid.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> nc = grid[<span style="color:#ff0;font-weight:bold">0</span>].size();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        grid[r][c] = <span style="color:#0ff;font-weight:bold">&#39;0&#39;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span>(r-<span style="color:#ff0;font-weight:bold">1</span> &gt;= <span style="color:#ff0;font-weight:bold">0</span> &amp;&amp; grid[r-<span style="color:#ff0;font-weight:bold">1</span>][c] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r-<span style="color:#ff0;font-weight:bold">1</span>, c);
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span>(r+<span style="color:#ff0;font-weight:bold">1</span> &lt; nr &amp;&amp; grid[r+<span style="color:#ff0;font-weight:bold">1</span>][c] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r+<span style="color:#ff0;font-weight:bold">1</span>, c);
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span>(c-<span style="color:#ff0;font-weight:bold">1</span> &gt;= <span style="color:#ff0;font-weight:bold">0</span> &amp;&amp; grid[r][c-<span style="color:#ff0;font-weight:bold">1</span>] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r, c-<span style="color:#ff0;font-weight:bold">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span>(c+<span style="color:#ff0;font-weight:bold">1</span> &lt; nc &amp;&amp; grid[r][c+<span style="color:#ff0;font-weight:bold">1</span>] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r, c+<span style="color:#ff0;font-weight:bold">1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">int</span> numIslands(vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">char</span>&gt;&gt;&amp; grid) {
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> nr = grid.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span> (!nr) <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> nc = grid[<span style="color:#ff0;font-weight:bold">0</span>].size();
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> num_islands = <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> r = <span style="color:#ff0;font-weight:bold">0</span>; r&lt;nr; r++) {
+</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> c = <span style="color:#ff0;font-weight:bold">0</span>; c&lt;nc; c++) {
+</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">if</span>(grid[r][c] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) {
+</span></span><span style="display:flex;"><span>                    num_islands++;
+</span></span><span style="display:flex;"><span>                    dfs(grid, r, c);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> num_islands;
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div>
 
