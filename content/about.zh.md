@@ -31,6 +31,7 @@ cover:
     - ```贡献开源项目Casibase ``` 
         - [feat: Support chat bot widget (进行中...)](https://github.com/casibase/casibase/pull/724)
         - [feat: support texts and images in the response at the same time (进行中...)](https://github.com/casibase/casibase/pull/718)
+        - [feat: fix bug for local model provider (2024-03-04)](https://github.com/casibase/casibase/pull/750)
         - [feat: add GetPricing and calculatePrice for all embedding providers (2024-03-02)](https://github.com/casibase/casibase/pull/737)
         - [feat: add calculating tokens and price for embedding provider (2024-03-01)](https://github.com/casibase/casibase/pull/735)
         - [fix: Bug that recognizes an ordinary url as an image (2024-02-29)](https://github.com/casibase/casibase/pull/730)
