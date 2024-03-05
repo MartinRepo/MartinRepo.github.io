@@ -1,5 +1,5 @@
 ---
-title: "(COMP315)"
+title: "多智能体系统(COMP310)"
 date: 2024-03-02T17:39:49Z
 draft: false
 author: "Martin"

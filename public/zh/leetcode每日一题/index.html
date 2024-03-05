@@ -134,7 +134,7 @@ if (!doNotTrack) {
     "leedcode", "算法"
   ],
   "articleBody": "将x减到0的最小操作数(1658) 给你一个整数数组 nums 和一个整数 x 。每一次操作时，你应当移除数组 nums 最左边或最右边的元素，然后从 x 中减去该元素的值。请注意，需要 修改 数组以供接下来的操作使用。\n如果可以将 x 恰好 减到 0 ，返回 最小操作数 ；否则，返回 -1 。\n示例1 输入：nums = [1,1,4,2,3], x = 5 输出：2 解释：最佳解决方案是移除后两个元素，将 x 减到 0 。 双指针 这里引用灵神的一句话\n窗口大小不固定的叫做双指针，窗口大小固定的叫做滑动窗口。 我觉得很合理，虽然官方称自己的解法为滑动窗口，我更愿意称其为双指针。\nclass Solution { public int minOperations(int[] nums, int x) { int n = nums.length; //计算出数组中所有元素总和 int sum = Arrays.stream(nums).sum(); if(sum",
-  "wordCount" : "3013",
+  "wordCount" : "3535",
   "inLanguage": "zh",
   "datePublished": "2023-01-07T09:36:47Z",
   "dateModified": "2024-03-02T20:27:51Z",
@@ -261,7 +261,7 @@ if (!doNotTrack) {
 
 
 
-创建: 2023-01-07 | 更新: 2024-03-02 | 字数: 3013字 | 阅读时长: 7分钟 | 
+创建: 2023-01-07 | 更新: 2024-03-02 | 字数: 3535字 | 阅读时长: 8分钟 | 
 作者:Martin&nbsp;|&nbsp;标签: &nbsp;
     <ul class="post-tags-meta">
         <a href="https://martinspace.top/zh/tags/leetcode/">Leetcode</a>
@@ -315,7 +315,9 @@ if (!doNotTrack) {
                         <a href="#%e6%b7%b1%e5%ba%a6%e4%bc%98%e5%85%88%e6%90%9c%e7%b4%a2" aria-label="深度优先搜索">深度优先搜索</a></li></ul>
                     </li>
                     <li>
-                        <a href="#%e5%b2%9b%e5%b1%bf%e6%95%b0%e9%87%8f-200httpsleetcodecnproblemsnumber-of-islandsdescriptionenvtypestudy-plan-v2envidgraph-theory" aria-label="岛屿数量 (200)">岛屿数量 (<a href="https://leetcode.cn/problems/number-of-islands/description/?envType=study-plan-v2&amp;envId=graph-theory">200</a>)</a>
+                        <a href="#%e5%b2%9b%e5%b1%bf%e6%95%b0%e9%87%8f-200httpsleetcodecnproblemsnumber-of-islandsdescriptionenvtypestudy-plan-v2envidgraph-theory" aria-label="岛屿数量 (200)">岛屿数量 (<a href="https://leetcode.cn/problems/number-of-islands/description/?envType=study-plan-v2&amp;envId=graph-theory">200</a>)</a></li>
+                    <li>
+                        <a href="#%e5%88%b0%e8%be%be%e7%9b%ae%e7%9a%84%e5%9c%b0%e7%9a%84%e6%96%b9%e6%a1%88%e6%95%b0-1976httpsleetcodecnproblemsnumber-of-ways-to-arrive-at-destinationdescription" aria-label="到达目的地的方案数 (1976)">到达目的地的方案数 (<a href="https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/description/">1976</a>)</a>
                     </li>
                 </ul>
             </div>
@@ -596,6 +598,57 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> num_islands;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h1 id="到达目的地的方案数-1976httpsleetcodecnproblemsnumber-of-ways-to-arrive-at-destinationdescription">到达目的地的方案数 (<a href="https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/description/">1976</a>)<a hidden class="anchor" aria-hidden="true" href="#到达目的地的方案数-1976httpsleetcodecnproblemsnumber-of-ways-to-arrive-at-destinationdescription">#</a></h1>
+<p>题目描述：你在一个城市里，城市由 n 个路口组成，路口编号为 0 到 n - 1 ，某些路口之间有 双向 道路。输入保证你可以从任意路口出发到达其他任意路口，且任意两个路口之间最多有一条路。</p>
+<p>给你一个整数 n 和二维整数数组 roads ，其中 roads[i] = [ui, vi, timei] 表示在路口 ui 和 vi 之间有一条需要花费 timei 时间才能通过的道路。你想知道花费 最少时间 从路口 0 出发到达路口 n - 1 的方案数。</p>
+<p>请返回花费 最少时间 到达目的地的 路径数目 。由于答案可能很大，将结果对 109 + 7 取余 后返回。</p>
+<blockquote>
+<p>涉及到权重的图要考虑Dijkstra算法，这道题是统计最小权重和路径的个数，所以就Dijkstra+动态规划。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Solution {
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">int</span> countPaths(<span style="color:#fff;font-weight:bold">int</span> n, vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt;&gt; &amp;roads) {
+</span></span><span style="display:flex;"><span>        vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span>&gt;&gt; g(n, vector&lt;<span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span>&gt;(n, LLONG_MAX / <span style="color:#ff0;font-weight:bold">2</span>)); <span style="color:#007f7f">// 邻接矩阵
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">auto</span> &amp;r : roads) {
+</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">int</span> x = r[<span style="color:#ff0;font-weight:bold">0</span>], y = r[<span style="color:#ff0;font-weight:bold">1</span>], d = r[<span style="color:#ff0;font-weight:bold">2</span>];
+</span></span><span style="display:flex;"><span>            g[x][y] = d;
+</span></span><span style="display:flex;"><span>            g[y][x] = d;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span>&gt; dis(n, LLONG_MAX / <span style="color:#ff0;font-weight:bold">2</span>); <span style="color:#007f7f">// 防止溢出
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        dis[<span style="color:#ff0;font-weight:bold">0</span>] = <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span>        vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt; f(n), done(n);
+</span></span><span style="display:flex;"><span>        f[<span style="color:#ff0;font-weight:bold">0</span>] = <span style="color:#ff0;font-weight:bold">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">while</span> (<span style="color:#fff;font-weight:bold">true</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">int</span> x = -<span style="color:#ff0;font-weight:bold">1</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">int</span> i = <span style="color:#ff0;font-weight:bold">0</span>; i &lt; n; i++) {
+</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">if</span> (!done[i] &amp;&amp; (x &lt; <span style="color:#ff0;font-weight:bold">0</span> || dis[i] &lt; dis[x])) {
+</span></span><span style="display:flex;"><span>                    x = i;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">if</span> (x == n - <span style="color:#ff0;font-weight:bold">1</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#007f7f">// 不可能找到比 dis[n-1] 更短，或者一样短的最短路了（注意本题边权都是正数）
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>                <span style="color:#fff;font-weight:bold">return</span> f[n - <span style="color:#ff0;font-weight:bold">1</span>];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            done[x] = <span style="color:#fff;font-weight:bold">true</span>; <span style="color:#007f7f">// 最短路长度已确定（无法变得更小）
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">int</span> y = <span style="color:#ff0;font-weight:bold">0</span>; y &lt; n; y++) { <span style="color:#007f7f">// 尝试更新 x 的邻居的最短路
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>                <span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span> new_dis = dis[x] + g[x][y];
+</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">if</span> (new_dis &lt; dis[y]) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#007f7f">// 就目前来说，最短路必须经过 x
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>                    dis[y] = new_dis;
+</span></span><span style="display:flex;"><span>                    f[y] = f[x];
+</span></span><span style="display:flex;"><span>                } <span style="color:#fff;font-weight:bold">else</span> if (new_dis == dis[y]) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#007f7f">// 和之前求的最短路一样长
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>                    f[y] = (f[y] + f[x]) % <span style="color:#ff0;font-weight:bold">1&#39;000&#39;000&#39;007</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div>

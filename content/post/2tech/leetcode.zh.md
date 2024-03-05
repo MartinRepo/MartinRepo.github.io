@@ -287,3 +287,60 @@ public:
     }
 };
 ```
+
+# 到达目的地的方案数 ([1976](https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/description/))
+题目描述：你在一个城市里，城市由 n 个路口组成，路口编号为 0 到 n - 1 ，某些路口之间有 双向 道路。输入保证你可以从任意路口出发到达其他任意路口，且任意两个路口之间最多有一条路。
+
+给你一个整数 n 和二维整数数组 roads ，其中 roads[i] = [ui, vi, timei] 表示在路口 ui 和 vi 之间有一条需要花费 timei 时间才能通过的道路。你想知道花费 最少时间 从路口 0 出发到达路口 n - 1 的方案数。
+
+请返回花费 最少时间 到达目的地的 路径数目 。由于答案可能很大，将结果对 109 + 7 取余 后返回。
+
+> 涉及到权重的图要考虑Dijkstra算法，这道题是统计最小权重和路径的个数，所以就Dijkstra+动态规划。
+
+```c++
+class Solution {
+public:
+    int countPaths(int n, vector<vector<int>> &roads) {
+        vector<vector<long long>> g(n, vector<long long>(n, LLONG_MAX / 2)); // 邻接矩阵
+        for (auto &r : roads) {
+            int x = r[0], y = r[1], d = r[2];
+            g[x][y] = d;
+            g[y][x] = d;
+        }
+
+        vector<long long> dis(n, LLONG_MAX / 2); // 防止溢出
+        dis[0] = 0;
+        vector<int> f(n), done(n);
+        f[0] = 1;
+        while (true) {
+            int x = -1;
+            for (int i = 0; i < n; i++) {
+                if (!done[i] && (x < 0 || dis[i] < dis[x])) {
+                    x = i;
+                }
+            }
+
+            if (x == n - 1) {
+                // 不可能找到比 dis[n-1] 更短，或者一样短的最短路了（注意本题边权都是正数）
+                return f[n - 1];
+            }
+
+            done[x] = true; // 最短路长度已确定（无法变得更小）
+            
+            for (int y = 0; y < n; y++) { // 尝试更新 x 的邻居的最短路
+                long long new_dis = dis[x] + g[x][y];
+                if (new_dis < dis[y]) {
+                    // 就目前来说，最短路必须经过 x
+                    dis[y] = new_dis;
+                    f[y] = f[x];
+                } else if (new_dis == dis[y]) {
+                    // 和之前求的最短路一样长
+                    f[y] = (f[y] + f[x]) % 1'000'000'007;
+                }
+            }
+
+        }
+    }
+};
+```
+
