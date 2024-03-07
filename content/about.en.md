@@ -32,6 +32,8 @@ cover:
     - ``` Contribute to an open-source project Casibase ```
         - [feat: Support chat bot widget (in progress...)](https://github.com/casibase/casibase/pull/724)
         - [feat: support texts and images in the response at the same time (in progress...)](https://github.com/casibase/casibase/pull/718)
+        - [feat: feat: improve upload path format for image storage (2024-03-08)](https://github.com/casibase/casibase/pull/758)
+        - [feat: improve image display in input box (2024-03-06)](https://github.com/casibase/casibase/pull/754)
         - [feat: fix bug for local model provider (2024-03-04)](https://github.com/casibase/casibase/pull/750)
         - [feat: add GetPricing and calculatePrice for all embedding providers (2024-03-02)](https://github.com/casibase/casibase/pull/737)
         - [feat: add calculating tokens and price for embedding provider (2024-03-01)](https://github.com/casibase/casibase/pull/735)
