@@ -32,6 +32,7 @@ cover:
     - ``` Contribute to an open-source project Casibase ```
         - [feat: Support chat bot widget (in progress...)](https://github.com/casibase/casibase/pull/724)
         - [feat: support texts and images in the response at the same time (in progress...)](https://github.com/casibase/casibase/pull/718)
+        - [feat: disable New Chat button when there is empty chat (2024-03-16)](https://github.com/casibase/casibase/pull/773)
         - [feat: support Markdown in output (2024-03-11)](https://github.com/casibase/casibase/pull/766)
         - [feat: feat: improve upload path format for image storage (2024-03-08)](https://github.com/casibase/casibase/pull/758)
         - [feat: improve image display in input box (2024-03-06)](https://github.com/casibase/casibase/pull/754)
