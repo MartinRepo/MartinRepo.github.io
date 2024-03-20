@@ -32,6 +32,8 @@ cover:
     - ``` Contribute to an open-source project Casibase ```
         - [feat: Support chat bot widget (in progress...)](https://github.com/casibase/casibase/pull/724)
         - [feat: support texts and images in the response at the same time (in progress...)](https://github.com/casibase/casibase/pull/718)
+        - [fix: improve messages render performance (2024-03-20)](https://github.com/casibase/casibase/pull/777)
+        - [feat: support code block highlight (2024-03-19)](https://github.com/casibase/casibase/pull/776)
         - [feat: support Latex math formula (2024-03-18)](https://github.com/casibase/casibase/pull/775)
         - [feat: format markdown output better (2024-03-17)](https://github.com/casibase/casibase/pull/770)
         - [feat: disable New Chat button when there is empty chat (2024-03-16)](https://github.com/casibase/casibase/pull/773)
