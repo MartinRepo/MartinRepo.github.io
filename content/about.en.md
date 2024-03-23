@@ -30,8 +30,7 @@ cover:
 # What I'm up to 🔝
 - 🪜 I'm currently ...
     - ``` Contribute to an open-source project Casibase ```
-        - [feat: Support chat bot widget (in progress...)](https://github.com/casibase/casibase/pull/724)
-        - [feat: support texts and images in the response at the same time (in progress...)](https://github.com/casibase/casibase/pull/718)
+        - [feat: add new default split provider (2024-03-22)](https://github.com/casibase/casibase/pull/778)
         - [fix: improve messages render performance (2024-03-20)](https://github.com/casibase/casibase/pull/777)
         - [feat: support code block highlight (2024-03-19)](https://github.com/casibase/casibase/pull/776)
         - [feat: support Latex math formula (2024-03-18)](https://github.com/casibase/casibase/pull/775)
@@ -49,9 +48,10 @@ cover:
         - [feat: support sending images to gpt4vision model (19/02/2024)](https://github.com/casibase/casibase/pull/716)
         - [feat: fix reply display for huggingface (28/01/2024)](https://github.com/casibase/casibase/pull/705)
         - [feat: add Cohere Command model provider (25/01/2024)](https://github.com/casibase/casibase/pull/703)
+        - [feat: Support chat bot widget (pending...)](https://github.com/casibase/casibase/pull/724)
+        - [feat: support texts and images in the response at the same time (pending...)](https://github.com/casibase/casibase/pull/718)
     - ``` Apply for computer science postgraduate (Msc) ```
-- 🔆 In the near future, I'm planning to...
-    - ```Go```
+- 🔆 In the near future, I'm planning to do...
     - ```High Performance Computing```
     - ```Cloud Computing```
     -  ```Algorithm research & development```

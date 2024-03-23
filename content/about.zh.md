@@ -29,8 +29,7 @@ cover:
 - 🪜 现在正在...
     - ```24fall CS硕士申请```
     - ```贡献开源项目Casibase ``` 
-        - [feat: Support chat bot widget (进行中...)](https://github.com/casibase/casibase/pull/724)
-        - [feat: support texts and images in the response at the same time (进行中...)](https://github.com/casibase/casibase/pull/718)
+        - [feat: add new default split provider (2024-03-22)](https://github.com/casibase/casibase/pull/778)
         - [fix: improve messages render performance (2024-03-20)](https://github.com/casibase/casibase/pull/777)
         - [feat: support code block highlight (2024-03-19)](https://github.com/casibase/casibase/pull/776)
         - [feat: support Latex math formula (2024-03-18)](https://github.com/casibase/casibase/pull/775)
@@ -48,8 +47,10 @@ cover:
         - [feat: support sending images to gpt4vision model (2024-02-19)](https://github.com/casibase/casibase/pull/716)
         - [feat: fix reply display for huggingface (2024-01-28)](https://github.com/casibase/casibase/pull/705)
         - [feat: add Cohere Command model provider (2024-01-25)](https://github.com/casibase/casibase/pull/703)
-- 🌟 同步正在...
-    - ```Go```
+        - [feat: Support chat bot widget (推迟...)](https://github.com/casibase/casibase/pull/724)
+        - [feat: support texts and images in the response at the same time (推迟...)](https://github.com/casibase/casibase/pull/718)
+- 🌟 同步正在研究...
+    - ```全栈开发```
     - ```高性能计算```
     - ```云计算```
     - ```算法刷题```
