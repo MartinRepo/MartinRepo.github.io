@@ -30,6 +30,7 @@ cover:
 # What I'm up to 🔝
 - 🪜 I'm currently ...
     - ``` Contribute to an open-source project Casibase ```
+        - [feat: add swagger docs (2024-04-04)](https://github.com/casibase/casibase/pull/781)
         - [feat: add new default split provider (2024-03-22)](https://github.com/casibase/casibase/pull/778)
         - [fix: improve messages render performance (2024-03-20)](https://github.com/casibase/casibase/pull/777)
         - [feat: support code block highlight (2024-03-19)](https://github.com/casibase/casibase/pull/776)
