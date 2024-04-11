@@ -29,6 +29,7 @@ cover:
 
 # What I'm up to 🔝
 - 🪜 I'm currently ...
+    - ```Final year project - scheduling for smart grid.```[https://demo-smartgrid.tech](https://demo-smartgrid.tech)<iframe src="https://demo-smartgrid.tech" width="900" height="600"></iframe>
     - ``` Contribute to an open-source project Casibase ```
         - [feat: add swagger docs (2024-04-04)](https://github.com/casibase/casibase/pull/781)
         - [feat: add new default split provider (2024-03-22)](https://github.com/casibase/casibase/pull/778)

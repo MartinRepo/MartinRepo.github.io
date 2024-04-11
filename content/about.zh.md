@@ -27,7 +27,8 @@ cover:
 
 # 我最近在干什么？
 - 🪜 现在正在...
-    - ```24fall CS硕士申请```
+    - ```毕业设计-智能电网调度算法研究 演示站：https://demo-smartgrid.tech```<iframe src="https://demo-smartgrid.tech" width="900" height="600"></iframe>
+        
     - ```贡献开源项目Casibase ``` 
         - [feat: add swagger docs (2024-04-04)](https://github.com/casibase/casibase/pull/781)
         - [feat: add new default split provider (2024-03-22)](https://github.com/casibase/casibase/pull/778)
