@@ -31,6 +31,8 @@ cover:
 - 🪜 I'm currently ...
     - ```Final year project - scheduling for smart grid.```[https://demo-smartgrid.tech](https://demo-smartgrid.tech)<iframe src="https://demo-smartgrid.tech" width="900" height="600"></iframe>
     - ``` Contribute to an open-source project Casibase ```
+        - [feat: feat: support model provider multiplexing (2024-04-21)](https://github.com/casibase/casibase/pull/783)
+        - [feat: support claude3 model provider (2024-04-18)](https://github.com/casibase/casibase/pull/785)
         - [feat: add swagger docs (2024-04-04)](https://github.com/casibase/casibase/pull/781)
         - [feat: add new default split provider (2024-03-22)](https://github.com/casibase/casibase/pull/778)
         - [fix: improve messages render performance (2024-03-20)](https://github.com/casibase/casibase/pull/777)
