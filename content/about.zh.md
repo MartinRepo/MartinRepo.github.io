@@ -27,10 +27,10 @@ cover:
 
 # 我最近在干什么？
 - 🪜 现在正在...
-    - ```毕业设计-智能电网调度算法研究 演示站：https://demo-smartgrid.tech```<iframe src="https://demo-smartgrid.tech" width="900" height="600"></iframe>
-        
     - ```贡献开源项目Casibase ``` 
-        - [feat: feat: support model provider multiplexing (2024-04-21)](https://github.com/casibase/casibase/pull/783)
+        - [feat: support dummy model provider and dummy embedding provider (2024-05-01)](https://github.com/casibase/casibase/pull/798)
+        - [feat: support uploading file (2024-04-27)](https://github.com/casibase/casibase/pull/795)
+        - [feat: support model provider multiplexing (2024-04-21)](https://github.com/casibase/casibase/pull/783)
         - [feat: support claude3 model provider (2024-04-18)](https://github.com/casibase/casibase/pull/785)
         - [feat: add swagger docs (2024-04-04)](https://github.com/casibase/casibase/pull/781)
         - [feat: add new default split provider (2024-03-22)](https://github.com/casibase/casibase/pull/778)
@@ -53,6 +53,8 @@ cover:
         - [feat: add Cohere Command model provider (2024-01-25)](https://github.com/casibase/casibase/pull/703)
         - [feat: Support chat bot widget (推迟...)](https://github.com/casibase/casibase/pull/724)
         - [feat: support texts and images in the response at the same time (推迟...)](https://github.com/casibase/casibase/pull/718)
+    - ```毕业设计-智能电网调度算法研究 演示站：https://demo-smartgrid.tech```<iframe src="https://demo-smartgrid.tech" width="900" height="600">
+    </iframe>
 - 🌟 同步正在研究...
     - ```全栈开发```
     - ```高性能计算```

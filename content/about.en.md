@@ -29,8 +29,9 @@ cover:
 
 # What I'm up to 🔝
 - 🪜 I'm currently ...
-    - ```Final year project - scheduling for smart grid.```[https://demo-smartgrid.tech](https://demo-smartgrid.tech)<iframe src="https://demo-smartgrid.tech" width="900" height="600"></iframe>
     - ``` Contribute to an open-source project Casibase ```
+        - [feat: support dummy model provider and dummy embedding provider (2024-05-01)](https://github.com/casibase/casibase/pull/798)
+        - [feat: support uploading file (2024-04-27)](https://github.com/casibase/casibase/pull/795)
         - [feat: feat: support model provider multiplexing (2024-04-21)](https://github.com/casibase/casibase/pull/783)
         - [feat: support claude3 model provider (2024-04-18)](https://github.com/casibase/casibase/pull/785)
         - [feat: add swagger docs (2024-04-04)](https://github.com/casibase/casibase/pull/781)
@@ -54,7 +55,8 @@ cover:
         - [feat: add Cohere Command model provider (25/01/2024)](https://github.com/casibase/casibase/pull/703)
         - [feat: Support chat bot widget (pending...)](https://github.com/casibase/casibase/pull/724)
         - [feat: support texts and images in the response at the same time (pending...)](https://github.com/casibase/casibase/pull/718)
-    - ``` Apply for computer science postgraduate (Msc) ```
+    - ``` Apply for computer science postgraduate (Msc) / PhD ```
+    - ```Final year project - scheduling for smart grid.```[https://demo-smartgrid.tech](https://demo-smartgrid.tech)<iframe src="https://demo-smartgrid.tech" width="900" height="600"></iframe>
 - 🔆 In the near future, I'm planning to do...
     - ```High Performance Computing```
     - ```Cloud Computing```
