@@ -6,7 +6,16 @@
     <description>Recent content on Martin&#39;s space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 26 Feb 2024 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 May 2024 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>多智能体系统(COMP310)</title>
+      <link>https://martinspace.top/zh/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9Fcomp310/</link>
+      <pubDate>Sun, 05 May 2024 17:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9Fcomp310/</guid>
+      <description>Intelligent Agents Agents are objects with attitude, which are autonomous, smart, active. Properties in Environment (环境性质描述) Fully observable / partially observable Deterministic / non-deterministic Static / dynamic Discrete / continuous Episodic / non-episodic Real time Social ability (社交能力) The ability to interact with other agents via cooperation, coordination, and negotiation. Abstract Architectures for Agents (代理的</description>
+    </item>
+    
     <item>
       <title>云计算(COMP315)</title>
       <link>https://martinspace.top/zh/%E4%BA%91%E8%AE%A1%E7%AE%97comp315/</link>

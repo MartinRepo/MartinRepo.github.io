@@ -30,6 +30,7 @@ cover:
 # What I'm up to 🔝
 - 🪜 I'm currently ...
     - ``` Contribute to an open-source project Casibase ```
+        - [Bug: fix chat window error when pressing F5 during text output (2024-05-14)](https://github.com/casibase/casibase/pull/808)
         - [feat: support dummy model provider and dummy embedding provider (2024-05-01)](https://github.com/casibase/casibase/pull/798)
         - [feat: support uploading file (2024-04-27)](https://github.com/casibase/casibase/pull/795)
         - [feat: feat: support model provider multiplexing (2024-04-21)](https://github.com/casibase/casibase/pull/783)
