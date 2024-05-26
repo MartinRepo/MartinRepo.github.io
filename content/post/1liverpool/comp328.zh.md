@@ -482,3 +482,75 @@ int MPI_Recv(
     MPI_Status* status     // 用于返回关于接收的消息的状态信息
 );
 ```
+## Blocking Communications
+阻塞通信指的是在通信操作（如发送或接收消息）完成之前，发起通信的进程会被暂停（阻塞）。
+- **MPI_Send**：在消息完全发送到接收缓冲区之前，发送操作不会完成，发送方进程会被阻塞。
+- **MPI_Recv**：如果没有数据到达，接收方进程将等待，直到消息到达并被完全接收后才继续执行。
+阻塞通信简化了程序的编写，因为你可以确信在调用返回后通信已经完成。但是，这种方式可能会导致效率低下，特别是在大规模并行计算任务中，因为它可能导致资源的闲置。
+## Non-blocking Communications
+非阻塞通信允许一个进程发起一个通信操作后立即继续执行其他工作，而不必等待通信操作完成。这种方式可以提高应用程序的并行性。
+- **MPI_Isend**：启动一个发送操作，但立即返回，让发送进程可以继续执行其他计算或发起更多的非阻塞通信。
+- **MPI_Irecv**：开始接收操作，同时允许进程执行其他任务，直到数据到达。
+# Lab Tips
+> 英文记录了，方便答题。
+## Lab02
+1. What is the difference between **usigned int** and **int**
+    - **Unsigned int** only allows natural numbers, which means it can store larger positive integers.
+2. If you were to parallelise this program, and divide the problem into different iterations, what may cause an issue in parallel performance?
+    - Load imbalance would affect this program. Some iterations take longer which means some threads will complete earlier, and wait (do nothing).
+
+## Lab03
+1. What optimisation levels do you think contributed most to the decrease in execution time?
+    - O2 seemed to produce the biggest decrease in execution time. Even though O1 decreased it the most from the previous (roughly 6000ms to 1400ms) O2 achieved roughly 200ms. This would be because of vectorisation which O2 performs, but not O1. O3 did not reduce the time much after this.
+2. Why, as the number of cores increased, do you think the scalability began to decrease?
+    - Multiple reasons, one could be resource contention as more threads begin to access memory locations used by other threads. But considering that mkl is meant to be heavily optimised reducing this, the more likely reason would be Amdahl's law, as the number of threads increase, the serial portion of the program begins to dominate compared to the parallel time.
+## Lab04
+1. Avoiding excessive synchronization in programming is important for several reasons, primarily related to performance and complexity:
+    - Performance Degradation: Synchronization often means that some operations must wait for others to complete, leading to thread blocking. This waiting reduces the efficiency of program execution. In high-performance computing or applications where response time is critical, such delays are unacceptable.
+    - Risk of Deadlocks: Improper synchronization can lead to deadlocks, where multiple processes or threads wait indefinitely for each other to release resources, thus halting their execution. Deadlocks are not only difficult to debug but can also cause the program to stop responding entirely.
+    - Increased Programming Complexity: Implementing and maintaining synchronization mechanisms requires careful design to ensure all threads or processes acquire and release resources at the correct times. This not only complicates the code but also makes debugging and testing more challenging.
+    - Scalability Issues: Over-reliance on synchronization can limit a program’s scalability on multicore or multiprocessor systems. Synchronization restricts the possibility of parallel execution, potentially underutilizing multiple cores or processors.
+2. Use mutex to remove race condition
+    - ``` c
+        void* mutex_testing(void* param){
+            int i;
+            for (i = 0; i < 5; i++) {
+                pthread_mutex_lock(&myMutex);/*lock..*/
+                counter++;
+                printf("thread %d counter = %d\n", (int)param, counter);
+                pthread_mutex_unlock(&myMutex); /*unlock..*/
+            }
+        }
+
+        int main() {
+            int one = 1, two = 2, three = 3;
+            pthread_t thread1, thread2, thread3;
+            pthread_mutex_init(&myMutex, 0);
+
+            pthread_create(&thread1, 0, mutex_testing, (void*)one);
+            pthread_create(&thread2, 0, mutex_testing, (void*)two);
+            pthread_create(&thread3, 0, mutex_testing, (void*)three);
+            pthread_join(thread1, 0);
+            pthread_join(thread2, 0);
+            pthread_join(thread3, 0);
+
+            pthread_mutex_destroy(&myMutex);
+            return 0;
+        }
+        ```
+    - Mechanism for Removing Race Conditions
+        - Locking (pthread_mutex_lock): Before each modification of counter, the thread attempts to acquire the mutex. If the mutex is already held by another thread, the current thread will block until the mutex is released.
+        - Unlocking (pthread_mutex_unlock): After modifying counter, the thread releases the mutex, allowing other waiting threads to acquire the lock and proceed with their execution.
+    - Trade-offs and Consequences
+        - Performance Impact: The use of mutexes introduces synchronization overhead. Acquiring and releasing locks takes time, especially in high-contention environments, where frequent locking operations can lead to significant performance bottlenecks.
+        - Reduced Scalability: As the number of threads increases, contention for locks can become more frequent, further impacting the program's scalability. Mutexes can become a bottleneck in scenarios where many threads try to access the same resource, limiting the program’s ability to scale on multiprocessor systems.
+        - Risk of Deadlocks: Although unlikely in this simple example, improper use of locks in more complex applications (such as acquiring multiple locks in an incorrect order) can lead to deadlocks, causing the program to hang or crash.
+## Lab05
+1. Difference between replication and workshare
+    - **Replication** refers to duplicating the same computational tasks across multiple processors or computing nodes. In this strategy, every node or processor performs exactly the same code and operations, typically used to enhance fault tolerance and reliability. For example, in a high-availability system, multiple servers might replicate the same request processing tasks to ensure that if one server fails, others can seamlessly take over, thereby improving the overall availability of the system.
+    - **Workshare** involves dividing a larger task into smaller chunks, which are then distributed among multiple processors or nodes for parallel execution. Each processor is responsible for a portion of the overall task. This method effectively utilizes the parallel processing capabilities of multicore or multi-node systems to enhance computational efficiency. For example, in parallel loops, iterations of the loop can be distributed among several processors, with each processor handling a segment of the iterations.
+## Lab06
+1. What is race condition?
+    - A condition where the program's behaviour changes depending on the sequence or timing of events outside the control of the program, non-deterministic results.
+2. What is false sharing?
+    - False sharing occurs when 2 threads are accessing the same cache line. When one thread modifies a variable in the cache line, the cache line is considered stale due to how cache lines are designed for serial code. Because of this, data can be stored in.

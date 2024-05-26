@@ -28,6 +28,8 @@ cover:
 # 我最近在干什么？
 - 🪜 现在正在...
     - ```贡献开源项目Casibase ``` 
+        - [feat: use vision models for question with image (2024-05-16)](https://github.com/casibase/casibase/pull/811)
+        - [feat: improve refresh bug fix (2024-05-15)](https://github.com/casibase/casibase/pull/810)
         - [Bug: fix chat window error when pressing F5 during text output (2024-05-14)](https://github.com/casibase/casibase/pull/808)
         - [feat: support dummy model provider and dummy embedding provider (2024-05-01)](https://github.com/casibase/casibase/pull/798)
         - [feat: support uploading file (2024-04-27)](https://github.com/casibase/casibase/pull/795)

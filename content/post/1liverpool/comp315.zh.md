@@ -211,4 +211,75 @@ SELinux的安全标签通常由以下几部分组成：
 - 类型（Type）：也称为域（Domain）对于进程而言。类型是SELinux中最重要的部分，它为对象和主体定义了具体的安全策略。通过类型，SELinux策略可以非常细致地控制哪些主体可以访问哪些对象。
 - 敏感度（Sensitivity）/清晰度（Clearance）：这些是用于多级安全（MLS）策略的可选部分，它们定义了数据的敏感度级别和主体的访问级别。
 
+# Ansible
+## Inventory file
+使用Ansible之前，Inventory 文件是一个定义了可被 Ansible 管理的所有主机及其组的关键组件。这些文件可以是静态的或动态的，允许 Ansible 知道它可以连接哪些服务器，以及这些服务器如何组织。
+```yaml
+leafs:
+    hosts:
+        leaf01:
+            ansible_host: 10.16.10.11
+        leaf02:
+            ansible_host: 10.16.10.12
+spines:
+    hosts:
+        spine01:
+            ansible_host: 10.16.10.13
+        spine02:
+            ansible_host: 10.16.10.14
+```
+有了inventory file之后，可以使用ansible命令行工具在主机上运行inventory中的指令，例如使用ping检查inventory中所有主机的连接。
+```shell
+ansible -i hosts.ini local -m ping
+```
+## Playbook
+Playbook能描述比命令行更复杂的配置，例如：
+```yaml
+---
+- name: Ping all hosts
+  hosts: all
+  tasks:
+    - name: Check connectivity
+      ping:
+      loop: "{{ range(1, 4) | list }}"
+      loop_control:
+        label: "Ping number {{ item }}"
+```
 
+## Playbook的结构
+Playbook由以下几个部分组成
+- **Plays:** 运行任务的基本单元。每个 Play 指定了目标主机、需要执行的 Tasks，以及可能的一些变量设置。一个 Playbook 可以包含一个或多个 Play，每个 Play 为不同的主机或主机组定义操作。
+- **Tasks:** 是 Play 中执行的具体操作。每个 Task 通常调用一个 Ansible Module，用于执行特定的操作，如安装包、编辑文件或同步目录等。
+- **Modules:** 是 Ansible 的功能单元，它们可以独立执行或由 Task 调用。每个 Module 设计为处理特定的任务，如管理系统包（yum, apt）、操作文件系统（file, copy）等。
+- **Become:** 是一种权限提升机制，允许用户任务在目标主机上以其他用户的权限执行。这在需要执行管理员权限的操作时非常有用。例如，使用 ```become: yes``` 可以使任务以 root 用户执行。
+- **When:** 一种条件语句，用于控制 Tasks 的执行。只有当指定的条件满足时，相关的 Task 才会执行。
+- **Register:** Register用于捕获 Task 的输出并将其存储到一个变量中。
+- **Loops:** 允许在 Playbook 中重复执行一个 Task 多次，每次可以使用不同的数据。这对于执行批量操作（如创建多个用户、安装多个软件包等）非常有用。
+# Networking
+## Protocol and Protocol Stacks
+协议是一组规则和标准，用于定义数据在网络中的传输方式。这些规则包括数据如何被格式化、传输、接收，以及如何对错误进行响应。
+
+网络协议栈，是一组工作在不同层次上的网络协议的集合。每一层都承担特定的网络通信子任务，通过层与层之间定义良好的接口相互作用。数据在一个层处理后，会传递到另一个层进一步处理，直到发送到网络上，接收方则按相反顺序处理数据。
+
+> 两个主要的协议栈：OSI和TCP/IPTCP/IP
+### OSI模型
+OSI模型有7层
+- Layer 7: 应用层(Application)
+- Layer 6: 表示层(Presentation)
+- Layer 5: 会话层(Session)
+- Layer 4: 传输层(Transport)
+- Layer 3: 网络层(Network)
+- Layer 2: 数据链路层(Data Link)
+- Layer 1: 物理层(Physical)
+
+# Hosting
+
+# Storage
+
+# Typescript
+
+# Kubernetes
+
+# React
+
+# Next.js

@@ -61,8 +61,22 @@ $$Ag: R^E \rightarrow Ac$$
 **Systems**
 系统可以表示为$R(Ag, Env)$，意思是代理$Ag$在环境$Env$上的一些列runs
 
+**Purely Reactive Agents**
+- 他们不根据历史做决定
+- 他们做的决定全部根据现在的情况
 
+$$Ag: E\rightarrow Ac$$
+温控器就是一个purely reactive agents，当e = temperature, $Ag(e) =$ off，否则，$Ag(e) =$ on。
+## Utilities
+> Agent在特定环境中目标满意度的量化衡量指标。
 
+期望效用（Expected Utility）的计算在多智能体系统（MAS）和决策理论中有多种用途，主要用于评估、优化和指导智能体的行为与策略。
+Expected Utility计算公式如下
+$$EU(Ag, Env) = \sum_{r\in R(Ag, Env)} u(r)P(r|Ag, Env)$$
 
+# Deductive Reasoning Agents
+## Symbolic Reasoning Agents
+建立agents的一个经典方法就是把他们看作一种特别的知识库系统，并且把相关的方法应用到这个系统中。这类范畴就属于symbolic AI。
+## Agents as Theorem Provers
 
-
+## Agent-Oriented Programming
