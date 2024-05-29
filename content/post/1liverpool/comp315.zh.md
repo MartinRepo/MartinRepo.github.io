@@ -211,6 +211,32 @@ SELinux的安全标签通常由以下几部分组成：
 - 类型（Type）：也称为域（Domain）对于进程而言。类型是SELinux中最重要的部分，它为对象和主体定义了具体的安全策略。通过类型，SELinux策略可以非常细致地控制哪些主体可以访问哪些对象。
 - 敏感度（Sensitivity）/清晰度（Clearance）：这些是用于多级安全（MLS）策略的可选部分，它们定义了数据的敏感度级别和主体的访问级别。
 
+## Tutorial for SELinux
+1. SELinux标签在文件管理系统中的作用
+    - Every process has a lable, and every file/directory object in the operating system has a label
+    - Network ports, devices, and potentially host names also have labels assigned to them
+    - Rules are written to control the access of a process label to an object lable
+    - The kernel enforces these rules
+2. What is the purpose of ls -Z
+    - General information about the file, such as permission, owner, size, and modification time.
+    - SELinux security context for each file and directory.
+3. ```chcon -t https_sys_content_t /var/www/html/index.html``` -t标签的作用和chcon的作用
+    - chcon is a command to change the security context. like "change context"
+    - -t indicates the type, in this case, the SELinux type is https_sys_content_t
+4. SELinux中enforcing和permissive模型的区别
+    - In enforcing mode, SELinux policies are enforced and access violations are logged.
+    - In permissive mode, SELinux policies are not enforced but access violations are logged.
+5. 怎么查看SELinux布尔运算的状态(以httpd_can_network_connect为例)
+    ```shell
+    $ getsebool httpd_can_network_connect
+    $ setsebool httpd_can_network_connect on // 暂时更改，重启后不保持连接
+    $ setsebool -P httpd_can_network_connect on // P是permanent，重启后依然保持连接
+    ```
+6. ```audit2allow```指令的作用，怎么用它排除违反SELinux策略的故障
+    - Used to analyse permission issues caused by SELinux. It mainly reads policy violations from SELinux's audit logs and then generates policy rules that allow these behaviours.
+    - ```audit2allow -w -a```Reads audit logs and generates comprehensible descriptions explaining why certain operations were denied.
+7. How do you set selinux to permissive mode for a specific daemon, such as httpd, without affecting the global SELinux mode?
+    - 
 # Ansible
 ## Inventory file
 使用Ansible之前，Inventory 文件是一个定义了可被 Ansible 管理的所有主机及其组的关键组件。这些文件可以是静态的或动态的，允许 Ansible 知道它可以连接哪些服务器，以及这些服务器如何组织。

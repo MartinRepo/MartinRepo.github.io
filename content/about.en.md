@@ -30,6 +30,7 @@ cover:
 # What I'm up to 🔝
 - 🪜 I'm currently ...
     - ``` Contribute to an open-source project Casibase ```
+        - [feat: use model providers with higher token limit (2024-05-29)](https://github.com/casibase/casibase/pull/818)
         - [feat: use vision models for question with image (2024-05-16)](https://github.com/casibase/casibase/pull/811)
         - [feat: improve refresh bug fix (2024-05-15)](https://github.com/casibase/casibase/pull/810)
         - [Bug: fix chat window error when pressing F5 during text output (2024-05-14)](https://github.com/casibase/casibase/pull/808)
