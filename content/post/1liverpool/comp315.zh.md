@@ -236,7 +236,21 @@ SELinux的安全标签通常由以下几部分组成：
     - Used to analyse permission issues caused by SELinux. It mainly reads policy violations from SELinux's audit logs and then generates policy rules that allow these behaviours.
     - ```audit2allow -w -a```Reads audit logs and generates comprehensible descriptions explaining why certain operations were denied.
 7. How do you set selinux to permissive mode for a specific daemon, such as httpd, without affecting the global SELinux mode?
-    - 
+    - 确认daemon的 SELinux 类型，```ps -eZ | grep httpd```
+    - 设定daemon为permissive模式，```sudo semanage permissive -a httpd_t```
+    - 验证设置，```semanage permissive -l```
+    - 通过以上步骤就可以单独为 httpd 守护进程设置 SELinux 为 permissive 模式，而不改变系统的全局 SELinux 状态。
+8. How do you undo this change
+    - 要撤销之前将特定守护进程如 httpd 设为 permissive 模式的更改，您需要将它从 permissive 类型列表中移除，使其重新受到 enforcing 模式的控制。
+    - 移除守护进程的 permissive 类型设置，```sudo semanage permissive -d httpd_t```
+    - 验证是否移除成功，```semanage permissive -l```
+    - 重启守护进程```sudo systemctl restart httpd```
+9. IPv4地址是192.168.100.14，网络掩码是255.255.255.0，怎么计算network address
+    - 把IPv4和网络掩码都转成二进制，and操作，得出的结果再转回十进制，得出的结果就是network address
+    - 这里计算好的network address是192.168.100.0
+10. 上面提到的这个网络能支持多少个主机？
+    - 根据网络掩码，最后一个八位组是为主机分配的，其中有8个0，可配置主机数就是256个，但是要减去一个网络地址(192.168.100.0)和一个广播地址(192.168.100.255)，可配置主机数就是254个
+11. 
 # Ansible
 ## Inventory file
 使用Ansible之前，Inventory 文件是一个定义了可被 Ansible 管理的所有主机及其组的关键组件。这些文件可以是静态的或动态的，允许 Ansible 知道它可以连接哪些服务器，以及这些服务器如何组织。
@@ -704,6 +718,20 @@ Worker nodes可以处理容器的执行。它包含以下组件
 - kubelet: 这是运行在所有 Kubernetes 节点上的主要节点代理。它负责启动、停止和管理容器（通过容器运行时）、维护容器的生命周期、执行如健康检查之类的操作，并与 Kubernetes 的控制平面通信，以报告节点上的资源使用情况和状态信息。
 - Container runtimes: 这是实际运行容器的软件。Kubernetes 本身不直接创建或运行容器，而是依赖容器运行时。常见的容器运行时包括 Docker、containerd 和 CRI-O。这些运行时负责镜像管理和容器执行。
 - Apkube Proxy: 运行在每一个worker node上，给节点提供网络。
+
+## Canary releases
+Canary releases 是一种软件发布策略，目的是通过将新版本软件推送到一小部分用户中，来测试其性能和稳定性。这种策略可以帮助开发团队识别和解决潜在的问题，而不会影响到所有用户。
+
+## Set up Kubernetes Cluster
+由于kubeadm工具的存在，Kubernetes集群很容易设置，有两种指令来初始化
+- ```kubeadm init```这个命令初始化Kubernetes control-plane node。
+- ```kubeadm join```这个命令初始化Kubernetes worker node并把它加入集群。
+## 禁用Swap和SELinux
+在Linux中，swap space（交换空间）是硬盘上的一部分空间，用作当物理内存（RAM）使用完时的备用存储。当系统的RAM被完全使用时，较少使用的数据可以被临时转移到swap空间，从而为需要更频繁访问的数据腾出空间。Kubernetes不支持交换空间的存在，如果检测到交换内存，kubelets会失败。
+
+如何在master和worker nodes上禁用SELinux? 需要编辑/etc配置文件，修改成```SELINUX=disabled```
+
+```reboot```命令用来重新启动系统使一些改动生效。
 # React
 
 # Next.js

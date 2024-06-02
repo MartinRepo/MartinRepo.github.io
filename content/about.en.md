@@ -21,7 +21,8 @@ cover:
 ---
 
 - 🌊 An Underlying logic thinker & reflective practitioner
-- ✏️ Studying for BSc(Hons) Computer Science [@LivUni](https://twitter.com/LivUni)
+- 🎓 Graduate from BSc(Hons) Computer Science @ [University of Liverpool](https://twitter.com/LivUni)
+- 📚 Studying MSc Artificial Intelligence @ [University of Edinburgh](https://informatics.ed.ac.uk/)
 - ♍️ & ENTJ-A
 - 💭 Wish to change world.
 - 🇨🇳 Nationality: China
@@ -29,42 +30,58 @@ cover:
 
 # What I'm up to 🔝
 - 🪜 I'm currently ...
-    - ``` Contribute to an open-source project Casibase ```
-        - [feat: use model providers with higher token limit (2024-05-29)](https://github.com/casibase/casibase/pull/818)
-        - [feat: use vision models for question with image (2024-05-16)](https://github.com/casibase/casibase/pull/811)
-        - [feat: improve refresh bug fix (2024-05-15)](https://github.com/casibase/casibase/pull/810)
-        - [Bug: fix chat window error when pressing F5 during text output (2024-05-14)](https://github.com/casibase/casibase/pull/808)
-        - [feat: support dummy model provider and dummy embedding provider (2024-05-01)](https://github.com/casibase/casibase/pull/798)
-        - [feat: support uploading file (2024-04-27)](https://github.com/casibase/casibase/pull/795)
-        - [feat: feat: support model provider multiplexing (2024-04-21)](https://github.com/casibase/casibase/pull/783)
-        - [feat: support claude3 model provider (2024-04-18)](https://github.com/casibase/casibase/pull/785)
-        - [feat: add swagger docs (2024-04-04)](https://github.com/casibase/casibase/pull/781)
-        - [feat: add new default split provider (2024-03-22)](https://github.com/casibase/casibase/pull/778)
-        - [fix: improve messages render performance (2024-03-20)](https://github.com/casibase/casibase/pull/777)
-        - [feat: support code block highlight (2024-03-19)](https://github.com/casibase/casibase/pull/776)
-        - [feat: support Latex math formula (2024-03-18)](https://github.com/casibase/casibase/pull/775)
-        - [feat: format markdown output better (2024-03-17)](https://github.com/casibase/casibase/pull/770)
-        - [feat: disable New Chat button when there is empty chat (2024-03-16)](https://github.com/casibase/casibase/pull/773)
-        - [feat: feat: improve upload path format for image storage (2024-03-08)](https://github.com/casibase/casibase/pull/758)
-        - [feat: improve image display in input box (2024-03-06)](https://github.com/casibase/casibase/pull/754)
-        - [feat: fix bug for local model provider (2024-03-04)](https://github.com/casibase/casibase/pull/750)
-        - [feat: add GetPricing and calculatePrice for all embedding providers (2024-03-02)](https://github.com/casibase/casibase/pull/737)
-        - [feat: add calculating tokens and price for embedding provider (2024-03-01)](https://github.com/casibase/casibase/pull/735)
-        - [fix: Bug that recognizes an ordinary url as an image (2024-02-29)](https://github.com/casibase/casibase/pull/730)
-        - [feat: improve azure text output (2024-02-28)](https://github.com/casibase/casibase/pull/729)
-        - [feat: Support OpenAI embedding v3 as new Casibase embedding providers (2024-02-27)](https://github.com/casibase/casibase/pull/727)
-        - [feat: support generating images via dalle-3 model (20/02/2024)](https://github.com/casibase/casibase/pull/717)
-        - [feat: support sending images to gpt4vision model (19/02/2024)](https://github.com/casibase/casibase/pull/716)
-        - [feat: fix reply display for huggingface (28/01/2024)](https://github.com/casibase/casibase/pull/705)
-        - [feat: add Cohere Command model provider (25/01/2024)](https://github.com/casibase/casibase/pull/703)
-        - [feat: Support chat bot widget (pending...)](https://github.com/casibase/casibase/pull/724)
-        - [feat: support texts and images in the response at the same time (pending...)](https://github.com/casibase/casibase/pull/718)
-    - ``` Apply for computer science postgraduate (Msc) / PhD ```
-    - ```Final year project - scheduling for smart grid.```[https://demo-smartgrid.tech](https://demo-smartgrid.tech)<iframe src="https://demo-smartgrid.tech" width="900" height="600"></iframe>
+    <details>
+    <summary>N8 CIR Bede Summer Internship Programme 2024</summary>
+
+    - Project: Benchmarking LLM for Reading Biomedical Literature
+    - Supervised by Dr Antony McCabe and Dr Jianping Meng
+    - Duration: 12 weeks (full time)
+
+    </details>
+    <details>
+    <summary> Contribute to an open-source project - Casibase </summary>
+
+    - [feat: use model providers with higher token limit (2024-05-29)](https://github.com/casibase/casibase/pull/818)
+    - [feat: use vision models for question with image (2024-05-16)](https://github.com/casibase/casibase/pull/811)
+    - [feat: improve refresh bug fix (2024-05-15)](https://github.com/casibase/casibase/pull/810)
+    - [Bug: fix chat window error when pressing F5 during text output (2024-05-14)](https://github.com/casibase/casibase/pull/808)
+    - [feat: support dummy model provider and dummy embedding provider (2024-05-01)](https://github.com/casibase/casibase/pull/798)
+    - [feat: support uploading file (2024-04-27)](https://github.com/casibase/casibase/pull/795)
+    - [feat: feat: support model provider multiplexing (2024-04-21)](https://github.com/casibase/casibase/pull/783)
+    - [feat: support claude3 model provider (2024-04-18)](https://github.com/casibase/casibase/pull/785)
+    - [feat: add swagger docs (2024-04-04)](https://github.com/casibase/casibase/pull/781)
+    - [feat: add new default split provider (2024-03-22)](https://github.com/casibase/casibase/pull/778)
+    - [fix: improve messages render performance (2024-03-20)](https://github.com/casibase/casibase/pull/777)
+    - [feat: support code block highlight (2024-03-19)](https://github.com/casibase/casibase/pull/776)
+    - [feat: support Latex math formula (2024-03-18)](https://github.com/casibase/casibase/pull/775)
+    - [feat: format markdown output better (2024-03-17)](https://github.com/casibase/casibase/pull/770)
+    - [feat: disable New Chat button when there is empty chat (2024-03-16)](https://github.com/casibase/casibase/pull/773)
+    - [feat: feat: improve upload path format for image storage (2024-03-08)](https://github.com/casibase/casibase/pull/758)
+    - [feat: improve image display in input box (2024-03-06)](https://github.com/casibase/casibase/pull/754)
+    - [feat: fix bug for local model provider (2024-03-04)](https://github.com/casibase/casibase/pull/750)
+    - [feat: add GetPricing and calculatePrice for all embedding providers (2024-03-02)](https://github.com/casibase/casibase/pull/737)
+    - [feat: add calculating tokens and price for embedding provider (2024-03-01)](https://github.com/casibase/casibase/pull/735)
+    - [fix: Bug that recognizes an ordinary url as an image (2024-02-29)](https://github.com/casibase/casibase/pull/730)
+    - [feat: improve azure text output (2024-02-28)](https://github.com/casibase/casibase/pull/729)
+    - [feat: Support OpenAI embedding v3 as new Casibase embedding providers (2024-02-27)](https://github.com/casibase/casibase/pull/727)
+    - [feat: support generating images via dalle-3 model (20/02/2024)](https://github.com/casibase/casibase/pull/717)
+    - [feat: support sending images to gpt4vision model (19/02/2024)](https://github.com/casibase/casibase/pull/716)
+    - [feat: fix reply display for huggingface (28/01/2024)](https://github.com/casibase/casibase/pull/705)
+    - [feat: add Cohere Command model provider (25/01/2024)](https://github.com/casibase/casibase/pull/703)
+    - [feat: Support chat bot widget (pending...)](https://github.com/casibase/casibase/pull/724)
+    - [feat: support texts and images in the response at the same time (pending...)](https://github.com/casibase/casibase/pull/718)
+
+    </details>
+    <details>
+    <summary>Final year project - scheduling for smart grid.</summary>
+
+    - <iframe src="https://demo-smartgrid.tech" width="900" height="600"></iframe>
+
+    </details>
 - 🔆 In the near future, I'm planning to do...
     - ```High Performance Computing```
-    - ```Cloud Computing```
-    -  ```Algorithm research & development```
+    - ```LLM Application Research```
+    -  ```Apply for a PhD```
 - 🧐 To extend a bit longer, I wish myself...
     - ```Learn to be a hacker.```
     - ```Keep on contributing to open-source projects (Stick to what you love ✊)```
