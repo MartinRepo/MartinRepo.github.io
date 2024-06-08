@@ -41,6 +41,7 @@ cover:
     <details>
     <summary> Contribute to an open-source project - Casibase </summary>
 
+    - [feat: support model usage map in GetAnswer() API (2024-06-07)](https://github.com/casibase/casibase/pull/828)
     - [feat: use model providers with higher token limit (2024-05-29)](https://github.com/casibase/casibase/pull/818)
     - [feat: use vision models for question with image (2024-05-16)](https://github.com/casibase/casibase/pull/811)
     - [feat: improve refresh bug fix (2024-05-15)](https://github.com/casibase/casibase/pull/810)

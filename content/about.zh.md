@@ -29,9 +29,9 @@ cover:
 # 我最近在干什么？
 - 🪜 现在正在...
     <details>
-    <summary>英国N8计算密集型研究卓越中心 - 2024暑期实习生</summary>
+    <summary>英国N8联盟计算密集型研究中心Bede - 2024暑期实习生</summary>
 
-    - 项目主题：微调并评估LLM在阅读生物医学文献方面的作用
+    - 项目工作：微调LLM以适应生物领域文献阅读，评估各类LLM的微调结果
     - 项目导师：Dr Antony McCabe and Dr Jianping Meng
     - 项目时长：12周（全职）
 
@@ -40,6 +40,7 @@ cover:
     <details>
     <summary>贡献开源项目Casibase</summary>
 
+    - [feat: support model usage map in GetAnswer() API (2024-06-07)](https://github.com/casibase/casibase/pull/828)
     - [feat: use model providers with higher token limit (2024-05-29)](https://github.com/casibase/casibase/pull/818)
     - [feat: use vision models for question with image (2024-05-16)](https://github.com/casibase/casibase/pull/811)
     - [feat: improve refresh bug fix (2024-05-15)](https://github.com/casibase/casibase/pull/810)
