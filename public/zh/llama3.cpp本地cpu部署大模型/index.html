@@ -5,15 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>📒 文章 | Martin&#39;s space</title>
-<meta name="keywords" content="">
-<meta name="description" content="📒 文章 - Martin&#39;s space">
+<title>Llama3.cpp本地CPU部署大模型 | Martin&#39;s space</title>
+<meta name="keywords" content="大模型">
+<meta name="description" content="机器是2021年M1的MacBook Pro，斗胆一试。">
 <meta name="author" content="Martin">
-<link rel="canonical" href="https://martinspace.top/zh/post/">
+<link rel="canonical" href="https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <meta name="referrer" content="no-referrer-when-downgrade">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://martinspace.top/img/sun.jpg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/img/sun.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/img/sun.jpg">
@@ -21,9 +23,7 @@
 <link rel="mask-icon" href="https://martinspace.top/sun.jpg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://martinspace.top/zh/post/index.xml">
-<link rel="alternate" hreflang="zh" href="https://martinspace.top/zh/post/">
-<link rel="alternate" hreflang="en" href="https://martinspace.top/en/post/">
+<link rel="alternate" hreflang="zh" href="https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
 <noscript>
     <style>
         #theme-toggle,
@@ -85,14 +85,16 @@ if (!doNotTrack) {
 	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="📒 文章" />
-<meta property="og:description" content="Martin的个人博客" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://martinspace.top/zh/post/" />
+<meta property="og:title" content="Llama3.cpp本地CPU部署大模型" />
+<meta property="og:description" content="机器是2021年M1的MacBook Pro，斗胆一试。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-06-15T17:39:49+00:00" />
+<meta property="article:modified_time" content="2024-06-15T17:39:49+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="📒 文章"/>
-<meta name="twitter:description" content="Martin的个人博客"/>
+<meta name="twitter:title" content="Llama3.cpp本地CPU部署大模型"/>
+<meta name="twitter:description" content="机器是2021年M1的MacBook Pro，斗胆一试。"/>
 
 
 <script type="application/ld+json">
@@ -105,13 +107,58 @@ if (!doNotTrack) {
       "position":  1 ,
       "name": "📒 文章",
       "item": "https://martinspace.top/zh/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "👨🏻‍💻 技术",
+      "item": "https://martinspace.top/zh/post/2tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Llama3.cpp本地CPU部署大模型",
+      "item": "https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/"
     }
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Llama3.cpp本地CPU部署大模型",
+  "name": "Llama3.cpp本地CPU部署大模型",
+  "description": "机器是2021年M1的MacBook Pro，斗胆一试。",
+  "keywords": [
+    "大模型"
+  ],
+  "articleBody": " 机器是2021年M1的MacBook Pro，斗胆一试。\n",
+  "wordCount" : "27",
+  "inLanguage": "zh",
+  "datePublished": "2024-06-15T17:39:49Z",
+  "dateModified": "2024-06-15T17:39:49Z",
+  "author":{
+    "@type": "Person",
+    "name": "Martin"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Martin's space",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://martinspace.top/img/sun.jpg"
+    }
+  }
+}
+</script>
 </head>
 
-<body class="list" id="top">
+<body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -123,6 +170,9 @@ if (!doNotTrack) {
 
 </script>
 
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
 
 <header class="header">
@@ -189,107 +239,71 @@ if (!doNotTrack) {
         </ul>
     </nav>
 </header>
-<main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://martinspace.top/zh/">主页</a></div>
-  <h1>
-    📒 文章
-  </h1>
-</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://martinspace.top/zh/">主页</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/">📒 文章</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/2tech/">👨🏻‍💻 技术</a></div>
+    <h1 class="post-title">
+      Llama3.cpp本地CPU部署大模型
+    </h1>
+    <div class="post-meta">
 
 
 
-<article class="post-entry">
-  
-  <div class="post-info">
-  <header class="entry-header">
-    <h2>👨🏻‍💻 技术
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
+
+
+
+
+
+
+
+创建: 2024-06-15 | 更新: 2024-06-15 | 字数: 27字 | 阅读时长: 1分钟 | 
+作者:Martin&nbsp;|&nbsp;标签: &nbsp;
+    <ul class="post-tags-meta">
+        <a href="https://martinspace.top/zh/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>
+    </ul>
+
+
+    
+    </div>
+  </header> 
+  <div class="post-content"><blockquote>
+<p>机器是2021年M1的MacBook Pro，斗胆一试。</p>
+</blockquote>
+
+
   </div>
-</div>
-  <a class="entry-link" aria-label="post link to 👨🏻‍💻 技术" href="https://martinspace.top/zh/post/2tech/"></a> 
-</article>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://martinspace.top/zh/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://martinspace.top/zh/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9Fcomp310/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>多智能体系统(COMP310)</span>
+  </a>
+</nav>
+<script src="https://utteranc.es/client.js"
+        repo="oudushu/utterances"
+        issue-term="title"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
 
 
 
-<article class="post-entry">
-  
-  <div class="post-info">
-  <header class="entry-header">
-    <h2>🇬🇧 课程
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
-  </div>
-</div>
-  <a class="entry-link" aria-label="post link to 🇬🇧 课程" href="https://martinspace.top/zh/post/1liverpool/"></a> 
-</article>
-
-
-
-<article class="post-entry">
-  
-  <div class="post-info">
-  <header class="entry-header">
-    <h2>👫 生活
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
-  </div>
-</div>
-  <a class="entry-link" aria-label="post link to 👫 生活" href="https://martinspace.top/zh/post/4life/"></a> 
-</article>
-
-
-
-<article class="post-entry">
-  
-  <div class="post-info">
-  <header class="entry-header">
-    <h2>📖 分享
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
-  </div>
-</div>
-  <a class="entry-link" aria-label="post link to 📖 分享" href="https://martinspace.top/zh/post/3share/"></a> 
-</article>
-
-
-
-<article class="post-entry">
-  
-  <div class="post-info">
-  <header class="entry-header">
-    <h2>🎒 旅行
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
-  </div>
-</div>
-  <a class="entry-link" aria-label="post link to 🎒 旅行" href="https://martinspace.top/zh/post/6travel/"></a> 
-</article>
-
-
-
-<article class="post-entry">
-  
-  <div class="post-info">
-  <header class="entry-header">
-    <h2>✍️ 杂记
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
-  </div>
-</div>
-  <a class="entry-link" aria-label="post link to ✍️ 杂记" href="https://martinspace.top/zh/post/5note/"></a> 
+  </footer><script src="https://utteranc.es/client.js"
+    repo="MartinRepo/utterancesInblog"
+    issue-term="pathname"
+    label="Comment"
+    theme="preferred-color-scheme"
+    crossorigin="anonymous"
+    async>
+</script>
 </article>
     </main>
     
@@ -372,6 +386,53 @@ if (!doNotTrack) {
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script></body>
 
 </html>

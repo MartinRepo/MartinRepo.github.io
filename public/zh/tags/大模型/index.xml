@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>大模型 on Martin&#39;s space</title>
+    <link>https://martinspace.top/zh/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+    <description>Recent content in 大模型 on Martin&#39;s space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 15 Jun 2024 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Llama3.cpp本地CPU部署大模型</title>
+      <link>https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Sat, 15 Jun 2024 17:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
+      <description>机器是2021年M1的MacBook Pro，斗胆一试。</description>
+    </item>
+    
+  </channel>
+</rss>

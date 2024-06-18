@@ -6,7 +6,16 @@
     <description>Recent content on Martin&#39;s space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 05 May 2024 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jun 2024 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Llama3.cpp本地CPU部署大模型</title>
+      <link>https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Sat, 15 Jun 2024 17:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
+      <description>机器是2021年M1的MacBook Pro，斗胆一试。</description>
+    </item>
+    
     <item>
       <title>多智能体系统(COMP310)</title>
       <link>https://martinspace.top/zh/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9Fcomp310/</link>

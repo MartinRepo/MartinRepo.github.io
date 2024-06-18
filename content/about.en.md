@@ -39,8 +39,19 @@ cover:
 
     </details>
     <details>
+    <summary>Mentor of OSPP(Open-Source Promotion Plan) 2024</summary>
+
+    - Project: Casibase (An Open-Source AI knowledge base)
+    - Duration: Jul, 2024 - Oct, 2024
+
+    </details>
+    <details>
     <summary> Contribute to an open-source project - Casibase </summary>
 
+    - [feat: support URL link for each chat (2024-06-18)](https://github.com/casibase/casibase/pull/845)
+    - [fix: the error box does not show at the first time (2024-06-17)](https://github.com/casibase/casibase/pull/840)
+    - [feat: fix wrong blinking cursor in UI (2024-06-15)](https://github.com/casibase/casibase/pull/836)
+    - [feat: don't auto refresh answer for aborted connection error (2024-06-14)](https://github.com/casibase/casibase/pull/834)
     - [feat: support model usage map in GetAnswer() API (2024-06-07)](https://github.com/casibase/casibase/pull/828)
     - [feat: use model providers with higher token limit (2024-05-29)](https://github.com/casibase/casibase/pull/818)
     - [feat: use vision models for question with image (2024-05-16)](https://github.com/casibase/casibase/pull/811)
@@ -74,7 +85,7 @@ cover:
 
     </details>
     <details>
-    <summary>Final year project - scheduling for smart grid.</summary>
+    <summary>Thesis project - scheduling for smart grid (Done, First class🎉)</summary>
 
     - <iframe src="https://demo-smartgrid.tech" width="900" height="600"></iframe>
 

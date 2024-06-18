@@ -33,13 +33,24 @@ cover:
 
     - 项目工作：微调LLM以适应生物领域文献阅读，评估各类LLM的微调结果
     - 项目导师：Dr Antony McCabe and Dr Jianping Meng
-    - 项目时长：12周（全职）
+    - 项目时长：2024年6月 - 2024年9月
+
+    </details>
+    <details>
+    <summary>2024开源之夏项目导师（Casbin社区）</summary>
+
+    - 开源AI知识库 - Casibase
+    - 项目时长：2024年7月 - 2024年10月
 
     </details>
 
     <details>
-    <summary>贡献开源项目Casibase</summary>
+    <summary>贡献开源项目（贡献日志👇）</summary>
 
+    - [feat: support URL link for each chat (2024-06-18)](https://github.com/casibase/casibase/pull/845)
+    - [fix: the error box does not show at the first time (2024-06-17)](https://github.com/casibase/casibase/pull/840)
+    - [feat: fix wrong blinking cursor in UI (2024-06-15)](https://github.com/casibase/casibase/pull/836)
+    - [feat: don't auto refresh answer for aborted connection error (2024-06-14)](https://github.com/casibase/casibase/pull/834)
     - [feat: support model usage map in GetAnswer() API (2024-06-07)](https://github.com/casibase/casibase/pull/828)
     - [feat: use model providers with higher token limit (2024-05-29)](https://github.com/casibase/casibase/pull/818)
     - [feat: use vision models for question with image (2024-05-16)](https://github.com/casibase/casibase/pull/811)
@@ -73,7 +84,7 @@ cover:
 
     </details>
     <details>
-    <summary>毕业设计-智能电网调度算法研究 演示站：<a href="https://demo-smartgrid.tech">https://demo-smartgrid.tech</a></summary>
+    <summary>毕业设计-智能电网调度算法研究(已完成，一等毕业🎉)</summary>
 
     - <iframe src="https://demo-smartgrid.tech" width="900" height="600"></iframe>
 
