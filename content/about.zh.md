@@ -22,8 +22,8 @@ cover:
 
 - 🧑🏻‍💻 可以叫我**Martin / Martingale**
 - 🌊 专注于底层逻辑思考的学习者
-- 🎓 毕业于[英国利物浦大学](https://twitter.com/LivUni)，计算机科学学士学位
-- 📚 就读于[英国爱丁堡大学](https://informatics.ed.ac.uk/)，人工智能硕士
+- 🎓 本科毕业于[英国利物浦大学](https://twitter.com/LivUni)，计算机科学专业
+- 📚 目前就读于[英国爱丁堡大学](https://informatics.ed.ac.uk/)，人工智能专业
 - 💭 热爱开源，学习无止境
 
 # 我最近在干什么？
@@ -47,6 +47,10 @@ cover:
     <details>
     <summary>贡献开源项目（贡献日志👇）</summary>
 
+    - [fix: incorrect message answer when anonymous access (2024-06-24)](https://github.com/casibase/casibase/pull/871)
+    - [feat: support sending question via URL GET parameter (2024-06-23)](https://github.com/casibase/casibase/pull/865)
+    - [feat: fix demo site fails bug in guest mode (2024-06-20)](https://github.com/casibase/casibase/pull/858)
+    - [feat: fix bug that cannot access demo-site in guest mode (2024-06-19)](https://github.com/casibase/casibase/pull/854)
     - [feat: support URL link for each chat (2024-06-18)](https://github.com/casibase/casibase/pull/845)
     - [fix: the error box does not show at the first time (2024-06-17)](https://github.com/casibase/casibase/pull/840)
     - [feat: fix wrong blinking cursor in UI (2024-06-15)](https://github.com/casibase/casibase/pull/836)

@@ -48,6 +48,10 @@ cover:
     <details>
     <summary> Contribute to an open-source project - Casibase </summary>
 
+    - [fix: incorrect message answer when anonymous access (2024-06-24)](https://github.com/casibase/casibase/pull/871)
+    - [feat: support sending question via URL GET parameter (2024-06-23)](https://github.com/casibase/casibase/pull/865)
+    - [feat: fix demo site fails bug in guest mode (2024-06-20)](https://github.com/casibase/casibase/pull/858)
+    - [feat: fix bug that cannot access demo-site in guest mode (2024-06-19)](https://github.com/casibase/casibase/pull/854)
     - [feat: support URL link for each chat (2024-06-18)](https://github.com/casibase/casibase/pull/845)
     - [fix: the error box does not show at the first time (2024-06-17)](https://github.com/casibase/casibase/pull/840)
     - [feat: fix wrong blinking cursor in UI (2024-06-15)](https://github.com/casibase/casibase/pull/836)

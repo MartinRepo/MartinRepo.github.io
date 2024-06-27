@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>Llama3.cpp本地CPU部署大模型 | Martin&#39;s space</title>
 <meta name="keywords" content="大模型">
-<meta name="description" content="机器是2021年M1的MacBook Pro，斗胆一试。">
+<meta name="description" content="机器是2021年M1的MacBook Pro，斗胆一试。 引言 master分支的commit记录：2075a66 分别部署了Llama-2-7B-">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
 
@@ -86,7 +86,7 @@ if (!doNotTrack) {
 }
 </script>
 <meta property="og:title" content="Llama3.cpp本地CPU部署大模型" />
-<meta property="og:description" content="机器是2021年M1的MacBook Pro，斗胆一试。" />
+<meta property="og:description" content="机器是2021年M1的MacBook Pro，斗胆一试。 引言 master分支的commit记录：2075a66 分别部署了Llama-2-7B-" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://martinspace.top/zh/llama3.cpp%E6%9C%AC%E5%9C%B0cpu%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2024-06-15T17:39:49+00:00" />
@@ -94,7 +94,7 @@ if (!doNotTrack) {
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Llama3.cpp本地CPU部署大模型"/>
-<meta name="twitter:description" content="机器是2021年M1的MacBook Pro，斗胆一试。"/>
+<meta name="twitter:description" content="机器是2021年M1的MacBook Pro，斗胆一试。 引言 master分支的commit记录：2075a66 分别部署了Llama-2-7B-"/>
 
 
 <script type="application/ld+json">
@@ -129,12 +129,12 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "Llama3.cpp本地CPU部署大模型",
   "name": "Llama3.cpp本地CPU部署大模型",
-  "description": "机器是2021年M1的MacBook Pro，斗胆一试。",
+  "description": "机器是2021年M1的MacBook Pro，斗胆一试。 引言 master分支的commit记录：2075a66 分别部署了Llama-2-7B-",
   "keywords": [
     "大模型"
   ],
-  "articleBody": " 机器是2021年M1的MacBook Pro，斗胆一试。\n",
-  "wordCount" : "27",
+  "articleBody": " 机器是2021年M1的MacBook Pro，斗胆一试。\n引言 master分支的commit记录：2075a66\n分别部署了Llama-2-7B-Chat，Llama-2-13B-Chat, Llama-2-70B-Chat三款大模型，部署方式完全一致，我拿7B模型举例。\nPS: 2-bit量化的7B和13B模型本地完全可以带动，毫无压力。但也是因为损失了太多精度导致结果一般。 由于内存限制，我在本地无法下载70B的模型，索性转战到学校的超级计算中心😎。\n前置知识 为降低本文阅读门槛，我将先介绍一些必备的基础知识。\n量化 众所周知，大模型本质就是一个巨大的矩阵计算，计算的每一个数字都是浮点数。大公司的LLM推理计算一般都是使用float32，确保精度足够高，从而保证准确率。但是float32的唯一缺点就是需要大量的计算资源（约等于马内）， 普通人需要的大模型根本也不需要这么高的精度/准确率。所以量化技术应运而生，最常见的两种，即float32 -\u003e float16和float32 -\u003e int8。 我们可以从huggingface直接下载量化好的大模型（各种量化位数都有），所以这里不过多叙述量化的原理，想要具体了解可以阅读文档。 部署步骤 首先克隆仓库，进入目录并编译项目\n$ git clone https://github.com/ggerganov/llama.cpp $ cd llama.cpp $ make 编译好项目之后，我们主要关注./examples和./models这两个目录\n./examples: 这个目录下主要是一些使用示例。 ./models: 这个目录下主要用来存放我们下载的模型 ",
+  "wordCount" : "603",
   "inLanguage": "zh",
   "datePublished": "2024-06-15T17:39:49Z",
   "dateModified": "2024-06-15T17:39:49Z",
@@ -258,7 +258,7 @@ if (!doNotTrack) {
 
 
 
-创建: 2024-06-15 | 更新: 2024-06-15 | 字数: 27字 | 阅读时长: 1分钟 | 
+创建: 2024-06-15 | 更新: 2024-06-15 | 字数: 603字 | 阅读时长: 2分钟 | 
 作者:Martin&nbsp;|&nbsp;标签: &nbsp;
     <ul class="post-tags-meta">
         <a href="https://martinspace.top/zh/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>
@@ -267,10 +267,114 @@ if (!doNotTrack) {
 
     
     </div>
-  </header> 
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%bc%95%e8%a8%80" aria-label="引言">引言</a></li>
+                    <li>
+                        <a href="#%e5%89%8d%e7%bd%ae%e7%9f%a5%e8%af%86" aria-label="前置知识">前置知识</a></li>
+                    <li>
+                        <a href="#%e9%83%a8%e7%bd%b2%e6%ad%a5%e9%aa%a4" aria-label="部署步骤">部署步骤</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
   <div class="post-content"><blockquote>
 <p>机器是2021年M1的MacBook Pro，斗胆一试。</p>
 </blockquote>
+<h1 id="引言">引言<a hidden class="anchor" aria-hidden="true" href="#引言">#</a></h1>
+<p>master分支的commit记录：<code>2075a66</code></p>
+<p>分别部署了<code>Llama-2-7B-Chat</code>，<code>Llama-2-13B-Chat</code>, <code>Llama-2-70B-Chat</code>三款大模型，部署方式完全一致，我拿7B模型举例。</p>
+<p>PS: 2-bit量化的7B和13B模型本地完全可以带动，毫无压力。但也是因为损失了太多精度导致结果一般。
+由于内存限制，我在本地无法下载70B的模型，索性转战到学校的超级计算中心😎。</p>
+<h1 id="前置知识">前置知识<a hidden class="anchor" aria-hidden="true" href="#前置知识">#</a></h1>
+<p>为降低本文阅读门槛，我将先介绍一些必备的基础知识。</p>
+<ol>
+<li>量化
+<ul>
+<li>众所周知，大模型本质就是一个巨大的矩阵计算，计算的每一个数字都是浮点数。大公司的LLM推理计算一般都是使用float32，确保精度足够高，从而保证准确率。但是float32的唯一缺点就是需要大量的计算资源（约等于马内），
+普通人需要的大模型根本也不需要这么高的精度/准确率。所以量化技术应运而生，最常见的两种，即<code>float32 -&gt; float16</code>和<code>float32 -&gt; int8</code>。</li>
+<li>我们可以从huggingface直接下载量化好的大模型（各种量化位数都有），所以这里不过多叙述量化的原理，想要具体了解可以阅读<a href="https://huggingface.co/docs/optimum/en/concept_guides/quantization">文档</a>。</li>
+</ul>
+</li>
+</ol>
+<h1 id="部署步骤">部署步骤<a hidden class="anchor" aria-hidden="true" href="#部署步骤">#</a></h1>
+<p>首先克隆仓库，进入目录并编译项目</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git clone https://github.com/ggerganov/llama.cpp
+</span></span><span style="display:flex;"><span>$ cd llama.cpp
+</span></span><span style="display:flex;"><span>$ make
+</span></span></code></pre></div><p>编译好项目之后，我们主要关注./examples和./models这两个目录</p>
+<ul>
+<li>./examples: 这个目录下主要是一些使用示例。</li>
+<li>./models: 这个目录下主要用来存放我们下载的模型</li>
+</ul>
 
 
   </div>
