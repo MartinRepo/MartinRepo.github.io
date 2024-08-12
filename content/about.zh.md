@@ -47,6 +47,15 @@ cover:
     <details>
     <summary>贡献开源项目（贡献日志👇）</summary>
 
+    - feat: support new model gpt-4o for openai and azure (2024-08-03) [#931](https://github.com/casibase/casibase/pull/931)
+    - feat: count the number of generated images (2024-08-01) [#930](https://github.com/casibase/casibase/pull/930)
+    - feat: support image output (2024-07-29) [#925](https://github.com/casibase/casibase/pull/925)
+    - feat: fix bug that the first AI message cannot be regenerated (2024-07-25) [#917](https://github.com/casibase/casibase/pull/917)
+    - feat: fix cursor blink incorrectly (2024-07-23) [#913](https://github.com/casibase/casibase/pull/913)
+    - feat: set token count to 0 in usage map (2024-07-19) [#904](https://github.com/casibase/casibase/pull/904)
+    - feat: fix ProvidersUsageTable render error when creating a new store (2024-07-18) [#903](https://github.com/casibase/casibase/pull/903)
+    - feat: show providers usage in real time (2024-07-13) [#898](https://github.com/casibase/casibase/pull/898)
+    - feat: feat: drag the image to the chat box to add attachment (2024-07-11) [#895](https://github.com/casibase/casibase/pull/895)
     - feat: allow deleting welcome message in demo mode (2024-07-06) [#885](https://github.com/casibase/casibase/pull/885)
     - feat: fix bug that sends empty message by mistake in newMessage mode (2024-07-05) [#882](https://github.com/casibase/casibase/pull/882)
     - feat: calculate tokens at last for local model provider (2024-07-01) [#878](https://github.com/casibase/casibase/pull/878)
