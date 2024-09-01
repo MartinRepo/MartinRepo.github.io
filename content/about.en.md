@@ -33,9 +33,10 @@ cover:
     <details>
     <summary>N8 CIR Bede Summer Internship Programme 2024</summary>
 
-    - Project: Benchmarking LLM for Reading Biomedical Literature
-    - Supervised by Dr Antony McCabe and Dr Jianping Meng
+    - Project: Benchmarking various LLMs for Reading Biomedical Literatures
     - Duration: 12 weeks (full time)
+    - Supervised by Dr Antony McCabe and Dr Jianping Meng
+    - Funded by EPSRC
 
     </details>
     <details>
@@ -48,6 +49,8 @@ cover:
     <details>
     <summary> Contribute to an open-source project - Casibase </summary>
 
+    - feat: improve GetNearMessageCount() performance (2024-08-24) [#954](https://github.com/casibase/casibase/pull/954)
+    - feat: fix the issue that DALL-E returned image URL is expired (2024-08-17) [#946](https://github.com/casibase/casibase/pull/946)
     - feat: support new model gpt-4o for openai and azure (2024-08-03) [#931](https://github.com/casibase/casibase/pull/931)
     - feat: count the number of generated images (2024-08-01) [#930](https://github.com/casibase/casibase/pull/930)
     - feat: support image output (2024-07-29) [#925](https://github.com/casibase/casibase/pull/925)

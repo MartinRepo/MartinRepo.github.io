@@ -31,9 +31,10 @@ cover:
     <details>
     <summary>英国N8联盟计算密集型研究中心Bede - 2024暑期实习生</summary>
 
-    - 项目工作：微调LLM以适应生物领域文献阅读，评估各类LLM的微调结果
-    - 项目导师：Dr Antony McCabe and Dr Jianping Meng
+    - 项目主体：量化并微调大模型以适应生物领域文献阅读，评估各类大模型的微调结果
     - 项目时长：2024年6月 - 2024年9月
+    - 项目导师：Dr Antony McCabe & Dr Jianping Meng
+    - 项目资助方：EPSRC (英国工程和自然科学研究委员会)
 
     </details>
     <details>
@@ -47,6 +48,8 @@ cover:
     <details>
     <summary>贡献开源项目（贡献日志👇）</summary>
 
+    - feat: improve GetNearMessageCount() performance (2024-08-24) [#954](https://github.com/casibase/casibase/pull/954)
+    - feat: fix the issue that DALL-E returned image URL is expired (2024-08-17) [#946](https://github.com/casibase/casibase/pull/946)
     - feat: support new model gpt-4o for openai and azure (2024-08-03) [#931](https://github.com/casibase/casibase/pull/931)
     - feat: count the number of generated images (2024-08-01) [#930](https://github.com/casibase/casibase/pull/930)
     - feat: support image output (2024-07-29) [#925](https://github.com/casibase/casibase/pull/925)
