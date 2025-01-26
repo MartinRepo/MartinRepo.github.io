@@ -5,7 +5,6 @@
     <link>https://martinspace.top/zh/post/1liverpool/</link>
     <description>Recent content in 🇬🇧 课程 on Martin&#39;s space</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
     <lastBuildDate>Sun, 05 May 2024 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/post/1liverpool/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>多智能体系统(COMP310)</title>
@@ -35,21 +34,21 @@
     </item>
     
     <item>
-      <title>金融市场交易(COMP226)</title>
-      <link>https://martinspace.top/zh/%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E4%BA%A4%E6%98%93comp226/</link>
-      <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
-      
-      <guid>https://martinspace.top/zh/%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E4%BA%A4%E6%98%93comp226/</guid>
-      <description>R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor &amp;gt; gender &amp;lt;- fa</description>
-    </item>
-    
-    <item>
       <title>算法(COMP202)</title>
       <link>https://martinspace.top/zh/%E7%AE%97%E6%B3%95comp202/</link>
       <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
       
       <guid>https://martinspace.top/zh/%E7%AE%97%E6%B3%95comp202/</guid>
       <description>COMP202 笔记</description>
+    </item>
+    
+    <item>
+      <title>金融市场交易(COMP226)</title>
+      <link>https://martinspace.top/zh/%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E4%BA%A4%E6%98%93comp226/</link>
+      <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E4%BA%A4%E6%98%93comp226/</guid>
+      <description>R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor &amp;gt; gender &amp;lt;- fa</description>
     </item>
     
     <item>

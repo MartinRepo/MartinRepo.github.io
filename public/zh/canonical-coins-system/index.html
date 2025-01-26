@@ -13,7 +13,7 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.94119a957ab6113f1e35765095ab83811d823504931248ce730a3ddc692561b3.css" integrity="sha256-lBGalXq2ET8eNXZQlauDgR2CNQSTEkjOcwo93GklYbM=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://martinspace.top/img/sun.jpg">
@@ -133,7 +133,7 @@ if (!doNotTrack) {
   "keywords": [
     "Algorithm"
   ],
-  "articleBody": "今天上算法课的tutorial，主要是讲贪婪算法。老师在课上提到了canonical coins system，但并没有深入讲解。回来看了一篇论文，整个问题很有意思，写下来记录一下。\n引入 以中国为例，我们的货币系统中，有1角，5角，1元，5元，10元，20元，50元，100元这几种面值。我们的目的是，当给定一个需要找零的值，我们要用最少的货币数量来组合成这个值。用什么策略能达到这个目的？贪婪算法是否对每一种货币系统都有最优解？这是要讨论的问题。\n这是一个NP-hard问题，但是在大多数国家所使用的货币系统中，贪婪算法是会起作用的。即先拿最大的面值去匹配，然后拿第二大的……但是得到的基本上都不是最优解。举个例子，一个货币系统中的基础面值有{1, 3, 4}，如果想要拿出6块。使用贪婪算法会拿出一张4和两张1，这是三张钞票，但实际上最优解是两张3。\n什么是Canonical coins system 贪心和动态规划都可以解决这个问题，只不过在时间复杂度和所得结果上需要权衡\n贪心：贪心算法的基本思想是优先选择面值最大的硬币，直到组合成所需金额。贪心表示的优点是算法简单，计算速度快，但不一定能够得到最少的硬币数。 动态规划：优点是准确性高，但算法复杂度较高。因为它要求对所有可能的状态进行计算和记录，需要消耗大量的计算和空间资源。 详细说一下\n给定一个货币系统的面值集合，是一个向量C=($c_1, c_2, c_3, …, c_n$) 给定一个系数集合，也是一个向量V=($v_1, v_2, v_3, …, v_n$) $C\\cdot V = x$, 即$x=\\sum_{i=1}^n v_ic_i$ 给定$C=(4,3,1), V=(v_1, v_2, v_3), x=24$, 找出对应的i值\n贪心，将每个v都取尽量大，那么$24=6\\times 4 + 0\\times 3 + 0\\times 1$ 动态规划，计算出每一种情况，然后比较，看那种情况需要的货币数量最少。 因此，令G(x)是用贪心计算出的结果，令M(x)表示动态规划计算出的结果（就是最优的结果）。如果G(x)=M(x)，那么我们称这套货币系统为Canonical coins system（经典货币系统）。\n时间复杂度分析 对于M(w)，定义i是第1个非零的系数，j是最后一个非零的系数。系数的排列是这种类型{$0, 0, m_i, m_{i+1}, …, m_j, 0,0$}。\n那么在此引入一个定理，在系数的第1到第j-1项，M(w)=G($c_{i-1}-1$)。具体的证明过程可以到Reference指向的文章中看，这里就不写了。\n那么在一个固定的货币系统中我们可以知道i和j的值。那么就会有$O(n^2)$的时间去分别测试i和j的值。但是定理是需要验证的，w必须是最小的值使得$M(w)",
+  "articleBody": "今天上算法课的tutorial，主要是讲贪婪算法。老师在课上提到了canonical coins system，但并没有深入讲解。回来看了一篇论文，整个问题很有意思，写下来记录一下。\n引入 以中国为例，我们的货币系统中，有1角，5角，1元，5元，10元，20元，50元，100元这几种面值。我们的目的是，当给定一个需要找零的值，我们要用最少的货币数量来组合成这个值。用什么策略能达到这个目的？贪婪算法是否对每一种货币系统都有最优解？这是要讨论的问题。\n这是一个NP-hard问题，但是在大多数国家所使用的货币系统中，贪婪算法是会起作用的。即先拿最大的面值去匹配，然后拿第二大的……但是得到的基本上都不是最优解。举个例子，一个货币系统中的基础面值有{1, 3, 4}，如果想要拿出6块。使用贪婪算法会拿出一张4和两张1，这是三张钞票，但实际上最优解是两张3。\n什么是Canonical coins system 贪心和动态规划都可以解决这个问题，只不过在时间复杂度和所得结果上需要权衡\n 贪心：贪心算法的基本思想是优先选择面值最大的硬币，直到组合成所需金额。贪心表示的优点是算法简单，计算速度快，但不一定能够得到最少的硬币数。 动态规划：优点是准确性高，但算法复杂度较高。因为它要求对所有可能的状态进行计算和记录，需要消耗大量的计算和空间资源。  详细说一下\n 给定一个货币系统的面值集合，是一个向量C=($c_1, c_2, c_3, …, c_n$) 给定一个系数集合，也是一个向量V=($v_1, v_2, v_3, …, v_n$) $C\\cdot V = x$, 即$x=\\sum_{i=1}^n v_ic_i$  给定$C=(4,3,1), V=(v_1, v_2, v_3), x=24$, 找出对应的i值\n 贪心，将每个v都取尽量大，那么$24=6\\times 4 + 0\\times 3 + 0\\times 1$ 动态规划，计算出每一种情况，然后比较，看那种情况需要的货币数量最少。  因此，令G(x)是用贪心计算出的结果，令M(x)表示动态规划计算出的结果（就是最优的结果）。如果G(x)=M(x)，那么我们称这套货币系统为Canonical coins system（经典货币系统）。\n时间复杂度分析 对于M(w)，定义i是第1个非零的系数，j是最后一个非零的系数。系数的排列是这种类型{$0, 0, m_i, m_{i+1}, …, m_j, 0,0$}。\n那么在此引入一个定理，在系数的第1到第j-1项，M(w)=G($c_{i-1}-1$)。具体的证明过程可以到Reference指向的文章中看，这里就不写了。\n那么在一个固定的货币系统中我们可以知道i和j的值。那么就会有$O(n^2)$的时间去分别测试i和j的值。但是定理是需要验证的，w必须是最小的值使得$M(w)Reference👇\nA Polynomial-time Algorithm for the Change-Making Problem\n",
   "wordCount" : "1101",
   "inLanguage": "zh",
   "datePublished": "2023-03-09T17:39:49Z",
@@ -388,10 +388,10 @@ if (!doNotTrack) {
     <br>
     <span>基础数据结构</span>
   </a>
-  <a class="next" href="https://martinspace.top/zh/%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E4%BA%A4%E6%98%93comp226/">
+  <a class="next" href="https://martinspace.top/zh/%E7%AE%97%E6%B3%95comp202/">
     <span class="title">下一页 »</span>
     <br>
-    <span>金融市场交易(COMP226)</span>
+    <span>算法(COMP202)</span>
   </a>
 </nav>
 <script src="https://utteranc.es/client.js"
@@ -416,7 +416,7 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

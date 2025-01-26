@@ -13,7 +13,7 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.94119a957ab6113f1e35765095ab83811d823504931248ce730a3ddc692561b3.css" integrity="sha256-lBGalXq2ET8eNXZQlauDgR2CNQSTEkjOcwo93GklYbM=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://martinspace.top/img/sun.jpg">
@@ -133,7 +133,7 @@ if (!doNotTrack) {
   "keywords": [
     "leedcode", "算法"
   ],
-  "articleBody": "将x减到0的最小操作数(1658) 给你一个整数数组 nums 和一个整数 x 。每一次操作时，你应当移除数组 nums 最左边或最右边的元素，然后从 x 中减去该元素的值。请注意，需要 修改 数组以供接下来的操作使用。\n如果可以将 x 恰好 减到 0 ，返回 最小操作数 ；否则，返回 -1 。\n示例1 输入：nums = [1,1,4,2,3], x = 5 输出：2 解释：最佳解决方案是移除后两个元素，将 x 减到 0 。 双指针 这里引用灵神的一句话\n窗口大小不固定的叫做双指针，窗口大小固定的叫做滑动窗口。 我觉得很合理，虽然官方称自己的解法为滑动窗口，我更愿意称其为双指针。\nclass Solution { public int minOperations(int[] nums, int x) { int n = nums.length; //计算出数组中所有元素总和 int sum = Arrays.stream(nums).sum(); if(sum",
+  "articleBody": "将x减到0的最小操作数(1658) 给你一个整数数组 nums 和一个整数 x 。每一次操作时，你应当移除数组 nums 最左边或最右边的元素，然后从 x 中减去该元素的值。请注意，需要 修改 数组以供接下来的操作使用。\n如果可以将 x 恰好 减到 0 ，返回 最小操作数 ；否则，返回 -1 。\n示例1 输入：nums = [1,1,4,2,3], x = 5 输出：2 解释：最佳解决方案是移除后两个元素，将 x 减到 0 。 双指针 这里引用灵神的一句话\n 窗口大小不固定的叫做双指针，窗口大小固定的叫做滑动窗口。 我觉得很合理，虽然官方称自己的解法为滑动窗口，我更愿意称其为双指针。\n class Solution { public int minOperations(int[] nums, int x) { int n = nums.length; //计算出数组中所有元素总和  int sum = Arrays.stream(nums).sum(); if(sumreturn -1; } int right = 0; // lsum记录前缀的和，rsum记录后缀的和  int lsum = 0, rsum = sum; int ans = n+1; // 初始使前缀为空，left=-1；  // 后缀为整个数组，right不断向右移并做减法。  // 当lsum+rsum // 最后的结果计算是根据左右指针的位置，(left+1)+(n-right)  // left+1表示左边操作多少次，n-right表示右边操作多少次  for(int left = -1; leftif(left!=-1){ lsum += nums[left]; } while(rightx){ rsum -= nums[right]; ++right; } if(lsum+rsum==x){ ans = Math.min(ans, left+1+n-right); } } return ans  n ? -1 : ans; } } 复杂度分析   时间复杂度：O(n)，其中 n 是数组 nums 的长度。left 和 right 均最多遍历整个数组一次。\n  空间复杂度：O(1)\n  还原排列的最少操作步数(1806) 这道题有意思，数学解法，实话说高中毕业后就很少接触数学了，但是好在我还看的懂答案，写在博客里记录一下吧。\n给你一个偶数 n​​​​​​ ，已知存在一个长度为 n 的排列 perm ，其中 perm[i] == i​（下标 从 0 开始 计数）。\n一步操作中，你将创建一个新数组 arr ，对于每个 i ：\n 如果 i % 2 == 0 ，那么 arr[i] = perm[i / 2] 如果 i % 2 == 1 ，那么 arr[i] = perm[n / 2 + (i - 1) / 2]  然后将 arr​​ 赋值​​给 perm 。\n要想使 perm 回到排列初始值，至少需要执行多少步操作？返回最小的 非零 操作步数。\n欧拉定理\u0026欧拉函数 记录题目之前，要先写一下欧拉定理和欧拉函数，方便更多人看懂这道题。\n 欧拉定理：当a和m两个数互素时，即gcd(a, m)=1，则a^(ψ(m)) = 1(mod m) 欧拉函数：ψ(m)就是欧拉函数表示的是小于等于m和m互质的数的个数  数学解法 对于原排列中的第i个元素，设g(i)为进行一次操作后，该元素的新下标，\n g(i)为偶数，arr[g(i)] = perm[g(i)/2]，令x=g(i)/2，则等式转换为arr[2x] = perm[x]，x∈[0, (n−1)/2] g(i)为奇数，arr[g(i)] = perm[n/2+(g(i)-1)/2]，令x=n/2 + (g(i)-1)/2，则等式转换为arr[2x-n-1] = perm[x]，x∈[n/2, n-1]  因此可以总结出\n 0 ; n/2 ;  对于除首尾元素外的其他元素，上述表达式可转换为对(n-1)取模，可以转换为g(i) = 2i(mod(n-1))，这个方法很微妙，我这个水平肯定是想不到了。\n令 g^k (i) 表示原排列 perm 中第 i个元素经过 k 次变换后的下标\n举例： g^2 (i) = g(g(i))\n所以，g^k (i) = 2^k i(mod(n-1))\n根据上述推论，我们直接模拟即找到最小的 k 使得满足 2^k ≡ 1(mod(n−1)) 即可。\n代码\nclass Solution { public int reinitializePermutation(int n) { if (n == 2) { return 1; } int step = 1, pow2 = 2; while (pow2 != 1) { step++; pow2 = pow2 * 2 % (n - 1); } return step; } } 复杂度分析 欧拉定理和欧拉函数用来计算时间复杂度\n由于n是偶数，则n-1一定是奇数，n-1和2互质，根据欧拉定理，gcd(2, n-1)=1，所以2^(ψ(n-1)) = 1(mod (n-1))\n由此可知，k = ψ(n-1)，所以k一定小于n-1，因此总的时间复杂度不超过 O(n)。\n破解保险箱(753) 欧拉回路题目。Leetcode的每日一题真的很耗费精神，但是都很有意思，值得记录一下。\n有一个需要密码才能打开的保险箱。密码是 n 位数, 密码的每一位是 k 位序列 0, 1, ..., k-1 中的一个 。\n你可以随意输入密码，保险箱会自动记住最后 n 位输入，如果匹配，则能够打开保险箱。\n举个例子，假设密码是 345，你可以输入 012345 来打开它，只是你输入了 6 个字符。(保险箱依旧识别最后三位输入)\n请返回一个能打开保险箱的最短字符串。\n贪心构造 这道题的方法很巧妙，值得记录一下\n将所有的n-1位数作为节点，每个节点都有k条边，每个节点通过一条边可以走到对应的另一个节点。\n能构造出连续值的最大数目(1798) 给一个长度为 n 的整数数组 coins ，它代表你拥有的 n 个硬币。第 i 个硬币的值为 coins[i] 。如果你从这些硬币中选出一部分硬币，它们的和为 x ，那么称，你可以 构造 出 x 。\n请返回从 0 开始（包括 0 ），你最多能构造出多少个连续整数。(你可能有多个相同值的硬币。)\n总结 这道题我最初的做法是用hashmap存储coins的值，然后遍历coins中的元素，用目标值coins中的元素，然后看该元素在hashmap中是否存在，但是我忽略了可能有相同硬币这个问题。\n看了答案发现这道题思路很巧，理解了半天才绕过这个弯。首先将coins数组升序排列，然后定义一个区间[l, r]，这个区间意思是有一串连续的整数，从l到r。那么现在可以设一个区间[0, x]，找到一个值y，如果yclass Solution { public int getMaximumConsecutive(int[] coins) { int res = 1; //先将数组升序排列  Arrays.sort(coins); for (int coin : coins) { //判断y,若x+1, 则推出循环，说明后面也不会有值满足条件了  //否则，将结果+1  if (coin  res) { break; } res += i; } return res; } } 受限条件下可到达的节点数目(2368)  这道题记录下深度优先搜索写法（每次都是看懂了然后再遇到题又忘记了怎么写）\n 题目描述：现有一棵由 n 个节点组成的无向树，节点编号从 0 到 n - 1 ，共有 n - 1 条边。\n给你一个二维整数数组 edges ，长度为 n - 1 ，其中 edges[i] = [ai, bi] 表示树中节点 ai 和 bi 之间存在一条边。另给你一个整数数组 restricted 表示受限节点。\n在不访问受限节点的前提下，返回你可以从节点 0 到达的 最多 节点数目。\n注意，节点 0 不 会标记为受限节点。\n深度优先搜索 主要是递归思想，目前还不具备，得多练。\nclass Solution { public: vectorint g; // 从节点x出发，可以到达的节点数量，fa表示父节点，初始通常为-1 int dfs(int x, int fa) { int cnt = 1; for(int y : g[x]) { if(y!=fa) { cnt+=dfs(y,x); } } return cnt; } int reachableNodes(int n, vectorint\u0026 edges, vectorint\u0026 restricted) { unordered_setint r(restricted.begin(), restricted.end()); g.resize(n); // 遍历边，两个点不在受限节点中才能被加入临接矩阵g  for(auto\u0026 e:edges) { int x=e[0], y=e[1]; // c++20可用contains，旧版本用r.find(x) == r.end() \u0026\u0026 r.find(y) == r.end()  if(!r.contains(x) \u0026\u0026 !r.contains(y)) { g[x].push_back(y); g[y].push_back(x); } } return dfs(0, -1); } }; 岛屿数量 (200)  深搜继续练习，好像有点眉目了。\n 题目描述：给你一个由 ‘1’（陆地）和 ‘0’（水）组成的的二维网格，请你计算网格中岛屿的数量。\n岛屿总是被水包围，并且每座岛屿只能由水平方向和/或竖直方向上相邻的陆地连接形成。\n此外，你可以假设该网格的四条边均被水包围。\n思路比较简单：遍历整个二维数组，碰到了1就开始深搜，深搜的过程中把1标记成0。这样遍历完就能统计出岛屿个数了。\nclass Solution { private: void dfs(vectorchar\u0026 grid, int r, int c) { int nr = grid.size(); int nc = grid[0].size(); grid[r][c] = '0'; if(r-1 = 0 \u0026\u0026 grid[r-1][c] == '1') dfs(grid, r-1, c); if(r+1 1][c] == '1') dfs(grid, r+1, c); if(c-1 = 0 \u0026\u0026 grid[r][c-1] == '1') dfs(grid, r, c-1); if(c+1 1] == '1') dfs(grid, r, c+1); } public: int numIslands(vectorchar\u0026 grid) { int nr = grid.size(); if (!nr) return 0; int nc = grid[0].size(); int num_islands = 0; for(int r = 0; rfor(int c = 0; cif(grid[r][c] == '1') { num_islands++; dfs(grid, r, c); } } } return num_islands; } }; 到达目的地的方案数 (1976) 题目描述：你在一个城市里，城市由 n 个路口组成，路口编号为 0 到 n - 1 ，某些路口之间有 双向 道路。输入保证你可以从任意路口出发到达其他任意路口，且任意两个路口之间最多有一条路。\n给你一个整数 n 和二维整数数组 roads ，其中 roads[i] = [ui, vi, timei] 表示在路口 ui 和 vi 之间有一条需要花费 timei 时间才能通过的道路。你想知道花费 最少时间 从路口 0 出发到达路口 n - 1 的方案数。\n请返回花费 最少时间 到达目的地的 路径数目 。由于答案可能很大，将结果对 109 + 7 取余 后返回。\n 涉及到权重的图要考虑Dijkstra算法，这道题是统计最小权重和路径的个数，所以就Dijkstra+动态规划。\n class Solution { public: int countPaths(int n, vectorint \u0026roads) { vectorlong long g(n, vectorlong long(n, LLONG_MAX / 2)); // 邻接矩阵  for (auto \u0026r : roads) { int x = r[0], y = r[1], d = r[2]; g[x][y] = d; g[y][x] = d; } vectorlong long dis(n, LLONG_MAX / 2); // 防止溢出  dis[0] = 0; vectorint f(n), done(n); f[0] = 1; while (true) { int x = -1; for (int i = 0; i if (!done[i] \u0026\u0026 (x 0 || dis[i] if (x == n - 1) { // 不可能找到比 dis[n-1] 更短，或者一样短的最短路了（注意本题边权都是正数）  return f[n - 1]; } done[x] = true; // 最短路长度已确定（无法变得更小）  for (int y = 0; y // 尝试更新 x 的邻居的最短路  long long new_dis = dis[x] + g[x][y]; if (new_dis // 就目前来说，最短路必须经过 x  dis[y] = new_dis; f[y] = f[x]; } else if (new_dis == dis[y]) { // 和之前求的最短路一样长  f[y] = (f[y] + f[x]) % 1'000'000'007; } } } } }; ",
   "wordCount" : "3535",
   "inLanguage": "zh",
   "datePublished": "2023-01-07T09:36:47Z",
@@ -386,54 +386,54 @@ if (!doNotTrack) {
   <div class="post-content"><h1 id="将x减到0的最小操作数1658httpsleetcodecnproblemsminimum-operations-to-reduce-x-to-zero">将x减到0的最小操作数(<a href="https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/">1658</a>)<a hidden class="anchor" aria-hidden="true" href="#将x减到0的最小操作数1658httpsleetcodecnproblemsminimum-operations-to-reduce-x-to-zero">#</a></h1>
 <p>给你一个整数数组 <code>nums</code> 和一个整数 <code>x</code> 。每一次操作时，你应当移除数组 <code>nums</code> 最左边或最右边的元素，然后从 <code>x</code> 中减去该元素的值。请注意，需要 <strong>修改</strong> 数组以供接下来的操作使用。</p>
 <p>如果可以将 <code>x</code> <strong>恰好</strong> 减到 <code>0</code> ，返回 <strong>最小操作数</strong> ；否则，返回 <code>-1</code> 。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>示例1
-</span></span><span style="display:flex;"><span>输入：nums = [1,1,4,2,3], x = 5
-</span></span><span style="display:flex;"><span>输出：2
-</span></span><span style="display:flex;"><span>解释：最佳解决方案是移除后两个元素，将 x 减到 0 。
-</span></span></code></pre></div><h2 id="双指针">双指针<a hidden class="anchor" aria-hidden="true" href="#双指针">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">示例1
+输入：nums = [1,1,4,2,3], x = 5
+输出：2
+解释：最佳解决方案是移除后两个元素，将 x 减到 0 。
+</code></pre></div><h2 id="双指针">双指针<a hidden class="anchor" aria-hidden="true" href="#双指针">#</a></h2>
 <p>这里引用灵神的一句话</p>
 <blockquote>
 <p>窗口大小不固定的叫做双指针，窗口大小固定的叫做滑动窗口。
 我觉得很合理，虽然官方称自己的解法为滑动窗口，我更愿意称其为双指针。</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Solution {
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">public</span> <span style="color:#fff;font-weight:bold">int</span> minOperations(<span style="color:#fff;font-weight:bold">int</span>[] nums, <span style="color:#fff;font-weight:bold">int</span> x) {
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> n = nums.<span style="color:#007f7f">length</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#007f7f">//计算出数组中所有元素总和</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> sum = Arrays.<span style="color:#007f7f">stream</span>(nums).<span style="color:#007f7f">sum</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span>(sum&lt;x){
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">return</span> -1;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> right = 0;
-</span></span><span style="display:flex;"><span>        <span style="color:#007f7f">// lsum记录前缀的和，rsum记录后缀的和</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> lsum = 0, rsum = sum;
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> ans = n+1;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#007f7f">// 初始使前缀为空，left=-1；</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#007f7f">// 后缀为整个数组，right不断向右移并做减法。</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#007f7f">// 当lsum+rsum&lt;x时，前缀指针向右移动，并做加法。</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#007f7f">// 最后的结果计算是根据左右指针的位置，(left+1)+(n-right)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#007f7f">// left+1表示左边操作多少次，n-right表示右边操作多少次</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> left = -1; left&lt;n; ++left){
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">if</span>(left!=-1){
-</span></span><span style="display:flex;"><span>                lsum += nums[left];
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">while</span>(right&lt;n &amp;&amp; lsum+rsum&gt;x){
-</span></span><span style="display:flex;"><span>                rsum -= nums[right];
-</span></span><span style="display:flex;"><span>                ++right;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">if</span>(lsum+rsum==x){
-</span></span><span style="display:flex;"><span>                ans = Math.<span style="color:#007f7f">min</span>(ans, left+1+n-right);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> ans &gt; n ? -1 : ans;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="复杂度分析">复杂度分析<a hidden class="anchor" aria-hidden="true" href="#复杂度分析">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#fff;font-weight:bold">class</span> Solution {
+    <span style="color:#fff;font-weight:bold">public</span> <span style="color:#fff;font-weight:bold">int</span> minOperations(<span style="color:#fff;font-weight:bold">int</span>[] nums, <span style="color:#fff;font-weight:bold">int</span> x) {
+        <span style="color:#fff;font-weight:bold">int</span> n = nums.<span style="color:#007f7f">length</span>;
+        <span style="color:#007f7f">//计算出数组中所有元素总和
+</span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">int</span> sum = Arrays.<span style="color:#007f7f">stream</span>(nums).<span style="color:#007f7f">sum</span>();
+
+        <span style="color:#fff;font-weight:bold">if</span>(sum&lt;x){
+            <span style="color:#fff;font-weight:bold">return</span> -1;
+        }
+
+        <span style="color:#fff;font-weight:bold">int</span> right = 0;
+        <span style="color:#007f7f">// lsum记录前缀的和，rsum记录后缀的和
+</span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">int</span> lsum = 0, rsum = sum;
+        <span style="color:#fff;font-weight:bold">int</span> ans = n+1;
+
+        <span style="color:#007f7f">// 初始使前缀为空，left=-1；
+</span><span style="color:#007f7f"></span>        <span style="color:#007f7f">// 后缀为整个数组，right不断向右移并做减法。
+</span><span style="color:#007f7f"></span>        <span style="color:#007f7f">// 当lsum+rsum&lt;x时，前缀指针向右移动，并做加法。
+</span><span style="color:#007f7f"></span>        <span style="color:#007f7f">// 最后的结果计算是根据左右指针的位置，(left+1)+(n-right)
+</span><span style="color:#007f7f"></span>        <span style="color:#007f7f">// left+1表示左边操作多少次，n-right表示右边操作多少次
+</span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> left = -1; left&lt;n; ++left){
+            <span style="color:#fff;font-weight:bold">if</span>(left!=-1){
+                lsum += nums[left];
+            }
+            <span style="color:#fff;font-weight:bold">while</span>(right&lt;n &amp;&amp; lsum+rsum&gt;x){
+                rsum -= nums[right];
+                ++right;
+            }
+            <span style="color:#fff;font-weight:bold">if</span>(lsum+rsum==x){
+                ans = Math.<span style="color:#007f7f">min</span>(ans, left+1+n-right);
+            }
+
+        }
+
+        <span style="color:#fff;font-weight:bold">return</span> ans &gt; n ? -1 : ans;
+    }
+}
+</code></pre></div><h2 id="复杂度分析">复杂度分析<a hidden class="anchor" aria-hidden="true" href="#复杂度分析">#</a></h2>
 <ul>
 <li>
 <p>时间复杂度：O(n)，其中 <code>n</code> 是数组 <code>nums</code> 的长度。<code>left</code> 和 <code>right</code> 均最多遍历整个数组一次。</p>
@@ -476,20 +476,20 @@ if (!doNotTrack) {
 <p>所以，<code>g^k (i) = 2^k i(mod(n-1))</code></p>
 <p>根据上述推论，我们直接模拟即找到最小的 k 使得满足 <code>2^k ≡ 1(mod(n−1))</code> 即可。</p>
 <p>代码</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Solution {
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">public</span> <span style="color:#fff;font-weight:bold">int</span> reinitializePermutation(<span style="color:#fff;font-weight:bold">int</span> n) {
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span> (n == 2) {
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">return</span> 1;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> step = 1, pow2 = 2;
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">while</span> (pow2 != 1) {
-</span></span><span style="display:flex;"><span>            step++;
-</span></span><span style="display:flex;"><span>            pow2 = pow2 * 2 % (n - 1);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> step;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="复杂度分析-1">复杂度分析<a hidden class="anchor" aria-hidden="true" href="#复杂度分析-1">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#fff;font-weight:bold">class</span> Solution {
+    <span style="color:#fff;font-weight:bold">public</span> <span style="color:#fff;font-weight:bold">int</span> reinitializePermutation(<span style="color:#fff;font-weight:bold">int</span> n) {
+        <span style="color:#fff;font-weight:bold">if</span> (n == 2) {
+            <span style="color:#fff;font-weight:bold">return</span> 1;
+        }
+        <span style="color:#fff;font-weight:bold">int</span> step = 1, pow2 = 2;
+        <span style="color:#fff;font-weight:bold">while</span> (pow2 != 1) {
+            step++;
+            pow2 = pow2 * 2 % (n - 1);
+        }
+        <span style="color:#fff;font-weight:bold">return</span> step;
+    }
+}
+</code></pre></div><h2 id="复杂度分析-1">复杂度分析<a hidden class="anchor" aria-hidden="true" href="#复杂度分析-1">#</a></h2>
 <p>欧拉定理和欧拉函数用来计算时间复杂度</p>
 <p>由于n是偶数，则n-1一定是奇数，n-1和2互质，根据欧拉定理，<code>gcd(2, n-1)=1</code>，所以<code>2^(ψ(n-1)) = 1(mod (n-1))</code></p>
 <p>由此可知，<code>k = ψ(n-1)</code>，所以k一定小于n-1，因此总的时间复杂度不超过 <strong>O(n)</strong>。</p>
@@ -509,23 +509,23 @@ if (!doNotTrack) {
 <p>这道题我最初的做法是用hashmap存储coins的值，然后遍历coins中的元素，用目标值coins中的元素，然后看该元素在hashmap中是否存在，但是我忽略了可能有相同硬币这个问题。</p>
 <p>看了答案发现这道题思路很巧，理解了半天才绕过这个弯。首先将coins数组升序排列，然后定义一个区间[l, r]，这个区间意思是有一串连续的整数，从l到r。那么现在可以设一个区间[0, x]，找到一个值y，如果y&lt;=x+1，那么就证明[0, x+y]也是一组连续的整数。就是这里，我理解了有一会才反应过来。通俗一点讲，已知0到x这串连续整数，新来一个y，y+0一定要小于等于x+1，才可以保持连续。举个例子：现在有一串连续的整数[0, 2]，那么下一个数(即y)一定要小于等于3。因为前方序列中有0, 1, 2。0+3=3, 1+3 = 4, 2+3 = 5。
 代码如下</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Solution {
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">public</span> <span style="color:#fff;font-weight:bold">int</span> getMaximumConsecutive(<span style="color:#fff;font-weight:bold">int</span>[] coins) {
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> res = 1;
-</span></span><span style="display:flex;"><span>        <span style="color:#007f7f">//先将数组升序排列</span>
-</span></span><span style="display:flex;"><span>        Arrays.<span style="color:#007f7f">sort</span>(coins);
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">int</span> coin : coins) {
-</span></span><span style="display:flex;"><span>            <span style="color:#007f7f">//判断y,若&gt;x+1, 则推出循环，说明后面也不会有值满足条件了</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#007f7f">//否则，将结果+1</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">if</span> (coin &gt; res) {
-</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">break</span>;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            res += i;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> res;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h1 id="受限条件下可到达的节点数目2368httpsleetcodecnproblemsreachable-nodes-with-restrictionsdescription">受限条件下可到达的节点数目(<a href="https://leetcode.cn/problems/reachable-nodes-with-restrictions/description/">2368</a>)<a hidden class="anchor" aria-hidden="true" href="#受限条件下可到达的节点数目2368httpsleetcodecnproblemsreachable-nodes-with-restrictionsdescription">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#fff;font-weight:bold">class</span> Solution {
+    <span style="color:#fff;font-weight:bold">public</span> <span style="color:#fff;font-weight:bold">int</span> getMaximumConsecutive(<span style="color:#fff;font-weight:bold">int</span>[] coins) {
+        <span style="color:#fff;font-weight:bold">int</span> res = 1;
+        <span style="color:#007f7f">//先将数组升序排列
+</span><span style="color:#007f7f"></span>        Arrays.<span style="color:#007f7f">sort</span>(coins);
+        <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">int</span> coin : coins) {
+            <span style="color:#007f7f">//判断y,若&gt;x+1, 则推出循环，说明后面也不会有值满足条件了
+</span><span style="color:#007f7f"></span>            <span style="color:#007f7f">//否则，将结果+1
+</span><span style="color:#007f7f"></span>            <span style="color:#fff;font-weight:bold">if</span> (coin &gt; res) {
+                <span style="color:#fff;font-weight:bold">break</span>;
+            }
+            res += i;
+        }
+        <span style="color:#fff;font-weight:bold">return</span> res;
+    }
+}
+</code></pre></div><h1 id="受限条件下可到达的节点数目2368httpsleetcodecnproblemsreachable-nodes-with-restrictionsdescription">受限条件下可到达的节点数目(<a href="https://leetcode.cn/problems/reachable-nodes-with-restrictions/description/">2368</a>)<a hidden class="anchor" aria-hidden="true" href="#受限条件下可到达的节点数目2368httpsleetcodecnproblemsreachable-nodes-with-restrictionsdescription">#</a></h1>
 <blockquote>
 <p>这道题记录下深度优先搜索写法（每次都是看懂了然后再遇到题又忘记了怎么写）</p>
 </blockquote>
@@ -535,35 +535,35 @@ if (!doNotTrack) {
 <p>注意，节点 0 不 会标记为受限节点。</p>
 <h2 id="深度优先搜索">深度优先搜索<a hidden class="anchor" aria-hidden="true" href="#深度优先搜索">#</a></h2>
 <p>主要是递归思想，目前还不具备，得多练。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Solution {
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">public</span>:
-</span></span><span style="display:flex;"><span>vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt;&gt; g;
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">// 从节点x出发，可以到达的节点数量，fa表示父节点，初始通常为-1
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">int</span> dfs(<span style="color:#fff;font-weight:bold">int</span> x, <span style="color:#fff;font-weight:bold">int</span> fa) {
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">int</span> cnt = <span style="color:#ff0;font-weight:bold">1</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> y : g[x]) {
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span>(y!=fa) {
-</span></span><span style="display:flex;"><span>            cnt+=dfs(y,x);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">return</span> cnt;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">int</span> reachableNodes(<span style="color:#fff;font-weight:bold">int</span> n, vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt;&gt;&amp; edges, vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt;&amp; <span style="color:#fff;font-weight:bold">restricted</span>) {
-</span></span><span style="display:flex;"><span>    unordered_set&lt;<span style="color:#fff;font-weight:bold">int</span>&gt; r(<span style="color:#fff;font-weight:bold">restricted</span>.begin(), <span style="color:#fff;font-weight:bold">restricted</span>.end());
-</span></span><span style="display:flex;"><span>    g.resize(n);
-</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">// 遍历边，两个点不在受限节点中才能被加入临接矩阵g
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">auto</span>&amp; e:edges) {
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> x=e[<span style="color:#ff0;font-weight:bold">0</span>], y=e[<span style="color:#ff0;font-weight:bold">1</span>];
-</span></span><span style="display:flex;"><span>        <span style="color:#007f7f">// c++20可用contains，旧版本用r.find(x) == r.end() &amp;&amp; r.find(y) == r.end()
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">if</span>(!r.contains(x) &amp;&amp; !r.contains(y)) {
-</span></span><span style="display:flex;"><span>            g[x].push_back(y);
-</span></span><span style="display:flex;"><span>            g[y].push_back(x);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">return</span> dfs(<span style="color:#ff0;font-weight:bold">0</span>, -<span style="color:#ff0;font-weight:bold">1</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><h1 id="岛屿数量-200httpsleetcodecnproblemsnumber-of-islandsdescriptionenvtypestudy-plan-v2envidgraph-theory">岛屿数量 (<a href="https://leetcode.cn/problems/number-of-islands/description/?envType=study-plan-v2&amp;envId=graph-theory">200</a>)<a hidden class="anchor" aria-hidden="true" href="#岛屿数量-200httpsleetcodecnproblemsnumber-of-islandsdescriptionenvtypestudy-plan-v2envidgraph-theory">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#fff;font-weight:bold">class</span> Solution {
+<span style="color:#fff;font-weight:bold">public</span>:
+vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt;&gt; g;
+<span style="color:#007f7f">// 从节点x出发，可以到达的节点数量，fa表示父节点，初始通常为-1
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">int</span> dfs(<span style="color:#fff;font-weight:bold">int</span> x, <span style="color:#fff;font-weight:bold">int</span> fa) {
+    <span style="color:#fff;font-weight:bold">int</span> cnt = <span style="color:#ff0;font-weight:bold">1</span>;
+    <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> y : g[x]) {
+        <span style="color:#fff;font-weight:bold">if</span>(y!=fa) {
+            cnt+=dfs(y,x);
+        }
+    }
+    <span style="color:#fff;font-weight:bold">return</span> cnt;
+}
+<span style="color:#fff;font-weight:bold">int</span> reachableNodes(<span style="color:#fff;font-weight:bold">int</span> n, vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt;&gt;&amp; edges, vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt;&amp; <span style="color:#fff;font-weight:bold">restricted</span>) {
+    unordered_set&lt;<span style="color:#fff;font-weight:bold">int</span>&gt; r(<span style="color:#fff;font-weight:bold">restricted</span>.begin(), <span style="color:#fff;font-weight:bold">restricted</span>.end());
+    g.resize(n);
+    <span style="color:#007f7f">// 遍历边，两个点不在受限节点中才能被加入临接矩阵g
+</span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">auto</span>&amp; e:edges) {
+        <span style="color:#fff;font-weight:bold">int</span> x=e[<span style="color:#ff0;font-weight:bold">0</span>], y=e[<span style="color:#ff0;font-weight:bold">1</span>];
+        <span style="color:#007f7f">// c++20可用contains，旧版本用r.find(x) == r.end() &amp;&amp; r.find(y) == r.end()
+</span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">if</span>(!r.contains(x) &amp;&amp; !r.contains(y)) {
+            g[x].push_back(y);
+            g[y].push_back(x);
+        }
+    }
+    <span style="color:#fff;font-weight:bold">return</span> dfs(<span style="color:#ff0;font-weight:bold">0</span>, -<span style="color:#ff0;font-weight:bold">1</span>);
+}
+};
+</code></pre></div><h1 id="岛屿数量-200httpsleetcodecnproblemsnumber-of-islandsdescriptionenvtypestudy-plan-v2envidgraph-theory">岛屿数量 (<a href="https://leetcode.cn/problems/number-of-islands/description/?envType=study-plan-v2&amp;envId=graph-theory">200</a>)<a hidden class="anchor" aria-hidden="true" href="#岛屿数量-200httpsleetcodecnproblemsnumber-of-islandsdescriptionenvtypestudy-plan-v2envidgraph-theory">#</a></h1>
 <blockquote>
 <p>深搜继续练习，好像有点眉目了。</p>
 </blockquote>
@@ -571,87 +571,87 @@ if (!doNotTrack) {
 <p>岛屿总是被水包围，并且每座岛屿只能由水平方向和/或竖直方向上相邻的陆地连接形成。</p>
 <p>此外，你可以假设该网格的四条边均被水包围。</p>
 <p>思路比较简单：遍历整个二维数组，碰到了1就开始深搜，深搜的过程中把1标记成0。这样遍历完就能统计出岛屿个数了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Solution {
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">private</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">void</span> dfs(vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">char</span>&gt;&gt;&amp; grid, <span style="color:#fff;font-weight:bold">int</span> r, <span style="color:#fff;font-weight:bold">int</span> c) {
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> nr = grid.size();
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> nc = grid[<span style="color:#ff0;font-weight:bold">0</span>].size();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        grid[r][c] = <span style="color:#0ff;font-weight:bold">&#39;0&#39;</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span>(r-<span style="color:#ff0;font-weight:bold">1</span> &gt;= <span style="color:#ff0;font-weight:bold">0</span> &amp;&amp; grid[r-<span style="color:#ff0;font-weight:bold">1</span>][c] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r-<span style="color:#ff0;font-weight:bold">1</span>, c);
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span>(r+<span style="color:#ff0;font-weight:bold">1</span> &lt; nr &amp;&amp; grid[r+<span style="color:#ff0;font-weight:bold">1</span>][c] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r+<span style="color:#ff0;font-weight:bold">1</span>, c);
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span>(c-<span style="color:#ff0;font-weight:bold">1</span> &gt;= <span style="color:#ff0;font-weight:bold">0</span> &amp;&amp; grid[r][c-<span style="color:#ff0;font-weight:bold">1</span>] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r, c-<span style="color:#ff0;font-weight:bold">1</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span>(c+<span style="color:#ff0;font-weight:bold">1</span> &lt; nc &amp;&amp; grid[r][c+<span style="color:#ff0;font-weight:bold">1</span>] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r, c+<span style="color:#ff0;font-weight:bold">1</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">public</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">int</span> numIslands(vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">char</span>&gt;&gt;&amp; grid) {
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> nr = grid.size();
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">if</span> (!nr) <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> nc = grid[<span style="color:#ff0;font-weight:bold">0</span>].size();
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">int</span> num_islands = <span style="color:#ff0;font-weight:bold">0</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> r = <span style="color:#ff0;font-weight:bold">0</span>; r&lt;nr; r++) {
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> c = <span style="color:#ff0;font-weight:bold">0</span>; c&lt;nc; c++) {
-</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">if</span>(grid[r][c] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) {
-</span></span><span style="display:flex;"><span>                    num_islands++;
-</span></span><span style="display:flex;"><span>                    dfs(grid, r, c);
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> num_islands;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><h1 id="到达目的地的方案数-1976httpsleetcodecnproblemsnumber-of-ways-to-arrive-at-destinationdescription">到达目的地的方案数 (<a href="https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/description/">1976</a>)<a hidden class="anchor" aria-hidden="true" href="#到达目的地的方案数-1976httpsleetcodecnproblemsnumber-of-ways-to-arrive-at-destinationdescription">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#fff;font-weight:bold">class</span> Solution {
+<span style="color:#fff;font-weight:bold">private</span>:
+    <span style="color:#fff;font-weight:bold">void</span> dfs(vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">char</span>&gt;&gt;&amp; grid, <span style="color:#fff;font-weight:bold">int</span> r, <span style="color:#fff;font-weight:bold">int</span> c) {
+        <span style="color:#fff;font-weight:bold">int</span> nr = grid.size();
+        <span style="color:#fff;font-weight:bold">int</span> nc = grid[<span style="color:#ff0;font-weight:bold">0</span>].size();
+
+        grid[r][c] = <span style="color:#0ff;font-weight:bold">&#39;0&#39;</span>;
+        <span style="color:#fff;font-weight:bold">if</span>(r-<span style="color:#ff0;font-weight:bold">1</span> &gt;= <span style="color:#ff0;font-weight:bold">0</span> &amp;&amp; grid[r-<span style="color:#ff0;font-weight:bold">1</span>][c] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r-<span style="color:#ff0;font-weight:bold">1</span>, c);
+        <span style="color:#fff;font-weight:bold">if</span>(r+<span style="color:#ff0;font-weight:bold">1</span> &lt; nr &amp;&amp; grid[r+<span style="color:#ff0;font-weight:bold">1</span>][c] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r+<span style="color:#ff0;font-weight:bold">1</span>, c);
+        <span style="color:#fff;font-weight:bold">if</span>(c-<span style="color:#ff0;font-weight:bold">1</span> &gt;= <span style="color:#ff0;font-weight:bold">0</span> &amp;&amp; grid[r][c-<span style="color:#ff0;font-weight:bold">1</span>] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r, c-<span style="color:#ff0;font-weight:bold">1</span>);
+        <span style="color:#fff;font-weight:bold">if</span>(c+<span style="color:#ff0;font-weight:bold">1</span> &lt; nc &amp;&amp; grid[r][c+<span style="color:#ff0;font-weight:bold">1</span>] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) dfs(grid, r, c+<span style="color:#ff0;font-weight:bold">1</span>);
+    }
+<span style="color:#fff;font-weight:bold">public</span>:
+    <span style="color:#fff;font-weight:bold">int</span> numIslands(vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">char</span>&gt;&gt;&amp; grid) {
+        <span style="color:#fff;font-weight:bold">int</span> nr = grid.size();
+        <span style="color:#fff;font-weight:bold">if</span> (!nr) <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+        <span style="color:#fff;font-weight:bold">int</span> nc = grid[<span style="color:#ff0;font-weight:bold">0</span>].size();
+        <span style="color:#fff;font-weight:bold">int</span> num_islands = <span style="color:#ff0;font-weight:bold">0</span>;
+        <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> r = <span style="color:#ff0;font-weight:bold">0</span>; r&lt;nr; r++) {
+            <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> c = <span style="color:#ff0;font-weight:bold">0</span>; c&lt;nc; c++) {
+                <span style="color:#fff;font-weight:bold">if</span>(grid[r][c] == <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>) {
+                    num_islands++;
+                    dfs(grid, r, c);
+                }
+            }
+        }
+        <span style="color:#fff;font-weight:bold">return</span> num_islands;
+    }
+};
+</code></pre></div><h1 id="到达目的地的方案数-1976httpsleetcodecnproblemsnumber-of-ways-to-arrive-at-destinationdescription">到达目的地的方案数 (<a href="https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/description/">1976</a>)<a hidden class="anchor" aria-hidden="true" href="#到达目的地的方案数-1976httpsleetcodecnproblemsnumber-of-ways-to-arrive-at-destinationdescription">#</a></h1>
 <p>题目描述：你在一个城市里，城市由 n 个路口组成，路口编号为 0 到 n - 1 ，某些路口之间有 双向 道路。输入保证你可以从任意路口出发到达其他任意路口，且任意两个路口之间最多有一条路。</p>
 <p>给你一个整数 n 和二维整数数组 roads ，其中 roads[i] = [ui, vi, timei] 表示在路口 ui 和 vi 之间有一条需要花费 timei 时间才能通过的道路。你想知道花费 最少时间 从路口 0 出发到达路口 n - 1 的方案数。</p>
 <p>请返回花费 最少时间 到达目的地的 路径数目 。由于答案可能很大，将结果对 109 + 7 取余 后返回。</p>
 <blockquote>
 <p>涉及到权重的图要考虑Dijkstra算法，这道题是统计最小权重和路径的个数，所以就Dijkstra+动态规划。</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Solution {
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">public</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">int</span> countPaths(<span style="color:#fff;font-weight:bold">int</span> n, vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt;&gt; &amp;roads) {
-</span></span><span style="display:flex;"><span>        vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span>&gt;&gt; g(n, vector&lt;<span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span>&gt;(n, LLONG_MAX / <span style="color:#ff0;font-weight:bold">2</span>)); <span style="color:#007f7f">// 邻接矩阵
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">auto</span> &amp;r : roads) {
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">int</span> x = r[<span style="color:#ff0;font-weight:bold">0</span>], y = r[<span style="color:#ff0;font-weight:bold">1</span>], d = r[<span style="color:#ff0;font-weight:bold">2</span>];
-</span></span><span style="display:flex;"><span>            g[x][y] = d;
-</span></span><span style="display:flex;"><span>            g[y][x] = d;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        vector&lt;<span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span>&gt; dis(n, LLONG_MAX / <span style="color:#ff0;font-weight:bold">2</span>); <span style="color:#007f7f">// 防止溢出
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        dis[<span style="color:#ff0;font-weight:bold">0</span>] = <span style="color:#ff0;font-weight:bold">0</span>;
-</span></span><span style="display:flex;"><span>        vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt; f(n), done(n);
-</span></span><span style="display:flex;"><span>        f[<span style="color:#ff0;font-weight:bold">0</span>] = <span style="color:#ff0;font-weight:bold">1</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">while</span> (<span style="color:#fff;font-weight:bold">true</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">int</span> x = -<span style="color:#ff0;font-weight:bold">1</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">int</span> i = <span style="color:#ff0;font-weight:bold">0</span>; i &lt; n; i++) {
-</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">if</span> (!done[i] &amp;&amp; (x &lt; <span style="color:#ff0;font-weight:bold">0</span> || dis[i] &lt; dis[x])) {
-</span></span><span style="display:flex;"><span>                    x = i;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">if</span> (x == n - <span style="color:#ff0;font-weight:bold">1</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#007f7f">// 不可能找到比 dis[n-1] 更短，或者一样短的最短路了（注意本题边权都是正数）
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>                <span style="color:#fff;font-weight:bold">return</span> f[n - <span style="color:#ff0;font-weight:bold">1</span>];
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            done[x] = <span style="color:#fff;font-weight:bold">true</span>; <span style="color:#007f7f">// 最短路长度已确定（无法变得更小）
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">int</span> y = <span style="color:#ff0;font-weight:bold">0</span>; y &lt; n; y++) { <span style="color:#007f7f">// 尝试更新 x 的邻居的最短路
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>                <span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span> new_dis = dis[x] + g[x][y];
-</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">if</span> (new_dis &lt; dis[y]) {
-</span></span><span style="display:flex;"><span>                    <span style="color:#007f7f">// 就目前来说，最短路必须经过 x
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>                    dis[y] = new_dis;
-</span></span><span style="display:flex;"><span>                    f[y] = f[x];
-</span></span><span style="display:flex;"><span>                } <span style="color:#fff;font-weight:bold">else</span> if (new_dis == dis[y]) {
-</span></span><span style="display:flex;"><span>                    <span style="color:#007f7f">// 和之前求的最短路一样长
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>                    f[y] = (f[y] + f[x]) % <span style="color:#ff0;font-weight:bold">1&#39;000&#39;000&#39;007</span>;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#fff;font-weight:bold">class</span> Solution {
+<span style="color:#fff;font-weight:bold">public</span>:
+    <span style="color:#fff;font-weight:bold">int</span> countPaths(<span style="color:#fff;font-weight:bold">int</span> n, vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt;&gt; &amp;roads) {
+        vector&lt;vector&lt;<span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span>&gt;&gt; g(n, vector&lt;<span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span>&gt;(n, LLONG_MAX / <span style="color:#ff0;font-weight:bold">2</span>)); <span style="color:#007f7f">// 邻接矩阵
+</span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">auto</span> &amp;r : roads) {
+            <span style="color:#fff;font-weight:bold">int</span> x = r[<span style="color:#ff0;font-weight:bold">0</span>], y = r[<span style="color:#ff0;font-weight:bold">1</span>], d = r[<span style="color:#ff0;font-weight:bold">2</span>];
+            g[x][y] = d;
+            g[y][x] = d;
+        }
+
+        vector&lt;<span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span>&gt; dis(n, LLONG_MAX / <span style="color:#ff0;font-weight:bold">2</span>); <span style="color:#007f7f">// 防止溢出
+</span><span style="color:#007f7f"></span>        dis[<span style="color:#ff0;font-weight:bold">0</span>] = <span style="color:#ff0;font-weight:bold">0</span>;
+        vector&lt;<span style="color:#fff;font-weight:bold">int</span>&gt; f(n), done(n);
+        f[<span style="color:#ff0;font-weight:bold">0</span>] = <span style="color:#ff0;font-weight:bold">1</span>;
+        <span style="color:#fff;font-weight:bold">while</span> (<span style="color:#fff;font-weight:bold">true</span>) {
+            <span style="color:#fff;font-weight:bold">int</span> x = -<span style="color:#ff0;font-weight:bold">1</span>;
+            <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">int</span> i = <span style="color:#ff0;font-weight:bold">0</span>; i &lt; n; i++) {
+                <span style="color:#fff;font-weight:bold">if</span> (!done[i] &amp;&amp; (x &lt; <span style="color:#ff0;font-weight:bold">0</span> || dis[i] &lt; dis[x])) {
+                    x = i;
+                }
+            }
+
+            <span style="color:#fff;font-weight:bold">if</span> (x == n - <span style="color:#ff0;font-weight:bold">1</span>) {
+                <span style="color:#007f7f">// 不可能找到比 dis[n-1] 更短，或者一样短的最短路了（注意本题边权都是正数）
+</span><span style="color:#007f7f"></span>                <span style="color:#fff;font-weight:bold">return</span> f[n - <span style="color:#ff0;font-weight:bold">1</span>];
+            }
+
+            done[x] = <span style="color:#fff;font-weight:bold">true</span>; <span style="color:#007f7f">// 最短路长度已确定（无法变得更小）
+</span><span style="color:#007f7f"></span>            
+            <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">int</span> y = <span style="color:#ff0;font-weight:bold">0</span>; y &lt; n; y++) { <span style="color:#007f7f">// 尝试更新 x 的邻居的最短路
+</span><span style="color:#007f7f"></span>                <span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span> new_dis = dis[x] + g[x][y];
+                <span style="color:#fff;font-weight:bold">if</span> (new_dis &lt; dis[y]) {
+                    <span style="color:#007f7f">// 就目前来说，最短路必须经过 x
+</span><span style="color:#007f7f"></span>                    dis[y] = new_dis;
+                    f[y] = f[x];
+                } <span style="color:#fff;font-weight:bold">else</span> if (new_dis == dis[y]) {
+                    <span style="color:#007f7f">// 和之前求的最短路一样长
+</span><span style="color:#007f7f"></span>                    f[y] = (f[y] + f[x]) % <span style="color:#ff0;font-weight:bold">1&#39;000&#39;000&#39;007</span>;
+                }
+            }
+
+        }
+    }
+};
+</code></pre></div>
 
   </div>
 
@@ -693,7 +693,7 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

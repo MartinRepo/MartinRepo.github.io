@@ -13,7 +13,7 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.94119a957ab6113f1e35765095ab83811d823504931248ce730a3ddc692561b3.css" integrity="sha256-lBGalXq2ET8eNXZQlauDgR2CNQSTEkjOcwo93GklYbM=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://martinspace.top/img/sun.jpg">
@@ -133,7 +133,7 @@ if (!doNotTrack) {
   "keywords": [
     "前端"
   ],
-  "articleBody": "2023年5月7日 为同一个文件添加多种文件格式 \u003cvideo controls\u003e \u003csource src=\"html_5.mp4\" type=\"video/mp4\"\u003e \u003csource src=\"html_5.ogv\" type=\"video/ogg\"\u003e Your browser does not support the video tag. \u003c/video\u003e 为什么要添加多种格式？\n解决备份支持和媒体支持 什么是备份支持和媒体支持？\n备份支持：提供替代方案，一般是相同的浏览器，版本更老的一代需要这个替代方案。 媒体支持：需要提供多种格式的支持来适应不同的浏览器。 标签 与 之间插入的内容不是用来解释控件的，而是在浏览器不支持audio标签时显示的文字。 当 标签中包含 controls 属性时，浏览器将自动为视频播放器提供一组默认的控制选项。用户可以根据自己的需求控制视频的播放。 标签与 标签结合使用，可以为用户提供一个预定义的选项列表。 \u003cinput list=\"fruits\" id=\"fruit\" name=\"fruit\"\u003e \u003cdatalist id=\"fruits\"\u003e \u003coption value=\"Apple\"\u003e \u003coption value=\"Banana\"\u003e \u003c/datalist\u003e 当 标签没有设置 max 和 value 属性时，它会显示一个不确定进度的滚动条。在这种情况下，进度条的动画将自动滑动，但无法显示具体的进度值。 \u003cprogress value=\"50\" max=\"100\"\u003e\u003c/progress\u003e DHTML DHTML（Dynamic HTML）是一种将 HTML、CSS、JavaScript 等技术结合起来，以创建动态、交互式网页的技术组合。 DHTML实现了网页从Web服务器下载后无需再经过服务的处理，而在浏览器中直接动态地更新网页的内容、排版样式和动画的功能 DOM元素带有ID属性 唯一性：ID 必须在整个 HTML 文档中是唯一的。如果有多个元素具有相同的 ID，将导致 JavaScript 在访问元素时出现问题，可能导致意外行为。因此，在为元素分配 ID 时，确保不会重复。 样式污染：如果您的 CSS 使用 ID 选择器为元素应用样式，这可能导致样式污染问题。ID 选择器具有较高的优先级，这可能会导致其他 CSS 规则无法覆盖 ID 选择器的样式。要解决这个问题，您可以考虑使用 CSS 类选择器来应用样式，以便更容易地控制和覆盖样式。 JavaScript 性能：当使用 JavaScript 查询具有特定 ID 的元素时，最好使用 document.getElementById() 方法，因为这是最快的查询方式。使用其他查询方法，如 document.querySelector() 或 document.querySelectorAll()，可能会导致较慢的查询性能，尤其是在大型的 DOM 结构中。 与现有代码冲突：在开发大型应用程序或与其他人协作时，如果不注意命名约定和唯一性，给元素分配 ID 可能会导致与现有代码冲突。在这种情况下，可以采用一致的命名规则和确保 ID 唯一性的方法来避免潜在冲突。 2023年5月8日 今天刷了几道react的题，记录一下\nstate和props state和props都可以控制组件的渲染输出 props和state都是普通的JavaScript对象 Error boundaries 错误边界 Error boundaries是一种react组件，这个组件可以捕获并处理子组件树发生的JS错误，当发生错误时，错误边界组件可以捕获错误，展示一个备用 UI，从而避免整个应用崩溃。 错误边界仅适用于捕获组件渲染阶段、生命周期方法和构造函数中的错误。它无法捕获事件处理程序或异步代码中的错误。 要将一个组件变成错误边界，需要在该组件内定义 componentDidCatch(error, info) 或 static getDerivedStateFromError(error) 生命周期方法之一。 componentDidCatch(error, info) 打印错误信息，如日志记录或向服务器报告错误。这个方法不会改变组件状态。 static getDerivedStateFromError(error) 方法用于在发生错误时更新组件状态，以便根据错误信息渲染备用UI。 React剪贴板事件 onCopy，onCut，onPaste Portal的冒泡逻辑 Portal 是一种特殊的技术，它允许将子组件渲染到父组件以外的 DOM 节点 当使用 ReactDOM.createPortal(child, container) 渲染子节点时，尽管子节点被渲染到父组件以外的 DOM 节点上，但它在 React 组件树中仍然被认为是父组件的子节点。 当通过 Portal 进行事件冒泡时，事件将沿着 React 组件树向上冒泡，而不是 DOM 树。 在事件冒泡过程中，事件将继续向父组件和其他祖先组件传播，就像子节点直接挂载在父组件内部一样。这是 React 事件系统的一个特性，它保证了组件树中的事件行为的一致性，而不受 DOM 结构的影响。 useEffect useEffect()接收两个参数，一个是回调函数，一个是依赖项数组。只有当依赖项发生变化时，回调函数才执行 useEffect 可以模拟不同的生命周期方法(componentDidMount，componentDidUpdate, componentWillUnmount) 2023年5月13日 前几天在赶due，没时间刷题，终于空下来，又刷了几道题\nJSX 使用JSX写的代码最终会转换成使用React.createElement()的形式，React.createElement：创建并返回指定类型的新React元素。 React支持的触摸事件 React支持的触摸事件有onTouchCancel，onTouchEnd，onTouchMove，onTouchStart Redux中的store 不存在store.createStore方法，store可以使用Redux提供的createStore生成 store.getState() // 获取状态 store.dispatch({ type: xxx, data: xxx }) // 分发动作对象 store.subscribe(() =\u003e console.log('@')) // 设置监听函数，一旦 State 发生变化，就自动执行这个函数 ",
+  "articleBody": "2023年5月7日  为同一个文件添加多种文件格式  video controls source src=\"html_5.mp4\" type=\"video/mp4\" source src=\"html_5.ogv\" type=\"video/ogg\" Your browser does not support the video tag. video 为什么要添加多种格式？\n 解决备份支持和媒体支持  什么是备份支持和媒体支持？\n 备份支持：提供替代方案，一般是相同的浏览器，版本更老的一代需要这个替代方案。 媒体支持：需要提供多种格式的支持来适应不同的浏览器。  标签   与  之间插入的内容不是用来解释控件的，而是在浏览器不支持audio标签时显示的文字。 当  标签中包含 controls 属性时，浏览器将自动为视频播放器提供一组默认的控制选项。用户可以根据自己的需求控制视频的播放。  标签与  标签结合使用，可以为用户提供一个预定义的选项列表。  input list=\"fruits\" id=\"fruit\" name=\"fruit\" datalist id=\"fruits\" option value=\"Apple\" option value=\"Banana\" datalist  当  标签没有设置 max 和 value 属性时，它会显示一个不确定进度的滚动条。在这种情况下，进度条的动画将自动滑动，但无法显示具体的进度值。  progress value=\"50\" max=\"100\"progress  DHTML  DHTML（Dynamic HTML）是一种将 HTML、CSS、JavaScript 等技术结合起来，以创建动态、交互式网页的技术组合。 DHTML实现了网页从Web服务器下载后无需再经过服务的处理，而在浏览器中直接动态地更新网页的内容、排版样式和动画的功能   DOM元素带有ID属性  唯一性：ID 必须在整个 HTML 文档中是唯一的。如果有多个元素具有相同的 ID，将导致 JavaScript 在访问元素时出现问题，可能导致意外行为。因此，在为元素分配 ID 时，确保不会重复。 样式污染：如果您的 CSS 使用 ID 选择器为元素应用样式，这可能导致样式污染问题。ID 选择器具有较高的优先级，这可能会导致其他 CSS 规则无法覆盖 ID 选择器的样式。要解决这个问题，您可以考虑使用 CSS 类选择器来应用样式，以便更容易地控制和覆盖样式。 JavaScript 性能：当使用 JavaScript 查询具有特定 ID 的元素时，最好使用 document.getElementById() 方法，因为这是最快的查询方式。使用其他查询方法，如 document.querySelector() 或 document.querySelectorAll()，可能会导致较慢的查询性能，尤其是在大型的 DOM 结构中。 与现有代码冲突：在开发大型应用程序或与其他人协作时，如果不注意命名约定和唯一性，给元素分配 ID 可能会导致与现有代码冲突。在这种情况下，可以采用一致的命名规则和确保 ID 唯一性的方法来避免潜在冲突。    2023年5月8日 今天刷了几道react的题，记录一下\n state和props  state和props都可以控制组件的渲染输出 props和state都是普通的JavaScript对象   Error boundaries 错误边界  Error boundaries是一种react组件，这个组件可以捕获并处理子组件树发生的JS错误，当发生错误时，错误边界组件可以捕获错误，展示一个备用 UI，从而避免整个应用崩溃。 错误边界仅适用于捕获组件渲染阶段、生命周期方法和构造函数中的错误。它无法捕获事件处理程序或异步代码中的错误。 要将一个组件变成错误边界，需要在该组件内定义 componentDidCatch(error, info) 或 static getDerivedStateFromError(error) 生命周期方法之一。 componentDidCatch(error, info) 打印错误信息，如日志记录或向服务器报告错误。这个方法不会改变组件状态。 static getDerivedStateFromError(error) 方法用于在发生错误时更新组件状态，以便根据错误信息渲染备用UI。   React剪贴板事件  onCopy，onCut，onPaste   Portal的冒泡逻辑  Portal 是一种特殊的技术，它允许将子组件渲染到父组件以外的 DOM 节点 当使用 ReactDOM.createPortal(child, container) 渲染子节点时，尽管子节点被渲染到父组件以外的 DOM 节点上，但它在 React 组件树中仍然被认为是父组件的子节点。 当通过 Portal 进行事件冒泡时，事件将沿着 React 组件树向上冒泡，而不是 DOM 树。 在事件冒泡过程中，事件将继续向父组件和其他祖先组件传播，就像子节点直接挂载在父组件内部一样。这是 React 事件系统的一个特性，它保证了组件树中的事件行为的一致性，而不受 DOM 结构的影响。   useEffect  useEffect()接收两个参数，一个是回调函数，一个是依赖项数组。只有当依赖项发生变化时，回调函数才执行 useEffect 可以模拟不同的生命周期方法(componentDidMount，componentDidUpdate, componentWillUnmount)    2023年5月13日 前几天在赶due，没时间刷题，终于空下来，又刷了几道题\n JSX  使用JSX写的代码最终会转换成使用React.createElement()的形式，React.createElement：创建并返回指定类型的新React元素。   React支持的触摸事件  React支持的触摸事件有onTouchCancel，onTouchEnd，onTouchMove，onTouchStart   Redux中的store  不存在store.createStore方法，store可以使用Redux提供的createStore生成  store.getState() // 获取状态 store.dispatch({ type: xxx, data: xxx }) // 分发动作对象 store.subscribe(() = console.log('@')) // 设置监听函数，一旦 State 发生变化，就自动执行这个函数   ",
   "wordCount" : "1871",
   "inLanguage": "zh",
   "datePublished": "2023-05-07T08:42:27Z",
@@ -353,12 +353,12 @@ if (!doNotTrack) {
 <ol>
 <li>为同一个文件添加多种文件格式</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="font-weight:bold">video</span> <span style="color:#007f7f">controls</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="font-weight:bold">source</span> <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;html_5.mp4&#34;</span> <span style="color:#007f7f">type</span>=<span style="color:#0ff;font-weight:bold">&#34;video/mp4&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="font-weight:bold">source</span> <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;html_5.ogv&#34;</span> <span style="color:#007f7f">type</span>=<span style="color:#0ff;font-weight:bold">&#34;video/ogg&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    Your browser does not support the video tag.
-</span></span><span style="display:flex;"><span>&lt;/<span style="font-weight:bold">video</span>&gt;
-</span></span></code></pre></div><p>为什么要添加多种格式？</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="font-weight:bold">video</span> <span style="color:#007f7f">controls</span>&gt;
+    &lt;<span style="font-weight:bold">source</span> <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;html_5.mp4&#34;</span> <span style="color:#007f7f">type</span>=<span style="color:#0ff;font-weight:bold">&#34;video/mp4&#34;</span>&gt;
+    &lt;<span style="font-weight:bold">source</span> <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;html_5.ogv&#34;</span> <span style="color:#007f7f">type</span>=<span style="color:#0ff;font-weight:bold">&#34;video/ogg&#34;</span>&gt;
+    Your browser does not support the video tag.
+&lt;/<span style="font-weight:bold">video</span>&gt;
+</code></pre></div><p>为什么要添加多种格式？</p>
 <ul>
 <li>解决备份支持和媒体支持</li>
 </ul>
@@ -374,16 +374,16 @@ if (!doNotTrack) {
 <li>当 <code>&lt;video&gt;</code> 标签中包含 controls 属性时，浏览器将自动为视频播放器提供一组默认的控制选项。用户可以根据自己的需求控制视频的播放。</li>
 <li><code>&lt;datalist&gt;</code> 标签与 <code>&lt;input&gt;</code> 标签结合使用，可以为用户提供一个预定义的选项列表。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="font-weight:bold">input</span> <span style="color:#007f7f">list</span>=<span style="color:#0ff;font-weight:bold">&#34;fruits&#34;</span> <span style="color:#007f7f">id</span>=<span style="color:#0ff;font-weight:bold">&#34;fruit&#34;</span> <span style="color:#007f7f">name</span>=<span style="color:#0ff;font-weight:bold">&#34;fruit&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="font-weight:bold">datalist</span> <span style="color:#007f7f">id</span>=<span style="color:#0ff;font-weight:bold">&#34;fruits&#34;</span>&gt;      
-</span></span><span style="display:flex;"><span>        &lt;<span style="font-weight:bold">option</span> <span style="color:#007f7f">value</span>=<span style="color:#0ff;font-weight:bold">&#34;Apple&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;<span style="font-weight:bold">option</span> <span style="color:#007f7f">value</span>=<span style="color:#0ff;font-weight:bold">&#34;Banana&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="font-weight:bold">datalist</span>&gt;
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="font-weight:bold">input</span> <span style="color:#007f7f">list</span>=<span style="color:#0ff;font-weight:bold">&#34;fruits&#34;</span> <span style="color:#007f7f">id</span>=<span style="color:#0ff;font-weight:bold">&#34;fruit&#34;</span> <span style="color:#007f7f">name</span>=<span style="color:#0ff;font-weight:bold">&#34;fruit&#34;</span>&gt;
+    &lt;<span style="font-weight:bold">datalist</span> <span style="color:#007f7f">id</span>=<span style="color:#0ff;font-weight:bold">&#34;fruits&#34;</span>&gt;      
+        &lt;<span style="font-weight:bold">option</span> <span style="color:#007f7f">value</span>=<span style="color:#0ff;font-weight:bold">&#34;Apple&#34;</span>&gt;
+        &lt;<span style="font-weight:bold">option</span> <span style="color:#007f7f">value</span>=<span style="color:#0ff;font-weight:bold">&#34;Banana&#34;</span>&gt;
+    &lt;/<span style="font-weight:bold">datalist</span>&gt;
+</code></pre></div><ul>
 <li>当 <code>&lt;progress&gt;</code> 标签没有设置 max 和 value 属性时，它会显示一个不确定进度的滚动条。在这种情况下，进度条的动画将自动滑动，但无法显示具体的进度值。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="font-weight:bold">progress</span> <span style="color:#007f7f">value</span>=<span style="color:#0ff;font-weight:bold">&#34;50&#34;</span> <span style="color:#007f7f">max</span>=<span style="color:#0ff;font-weight:bold">&#34;100&#34;</span>&gt;&lt;/<span style="font-weight:bold">progress</span>&gt;
-</span></span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="font-weight:bold">progress</span> <span style="color:#007f7f">value</span>=<span style="color:#0ff;font-weight:bold">&#34;50&#34;</span> <span style="color:#007f7f">max</span>=<span style="color:#0ff;font-weight:bold">&#34;100&#34;</span>&gt;&lt;/<span style="font-weight:bold">progress</span>&gt;
+</code></pre></div></li>
 <li>DHTML
 <ul>
 <li>DHTML（Dynamic HTML）是一种将 HTML、CSS、JavaScript 等技术结合起来，以创建动态、交互式网页的技术组合。</li>
@@ -454,10 +454,10 @@ if (!doNotTrack) {
 <ul>
 <li>不存在store.createStore方法，store可以使用Redux提供的createStore生成</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>store.getState() <span style="color:#007f7f">// 获取状态      
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>store.dispatch({ type: xxx, data: xxx }) <span style="color:#007f7f">// 分发动作对象      
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>store.subscribe(() =&gt; console.log(<span style="color:#0ff;font-weight:bold">&#39;@&#39;</span>)) <span style="color:#007f7f">// 设置监听函数，一旦 State 发生变化，就自动执行这个函数     
-</span></span></span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">store.getState() <span style="color:#007f7f">// 获取状态      
+</span><span style="color:#007f7f"></span>store.dispatch({ type: xxx, data: xxx }) <span style="color:#007f7f">// 分发动作对象      
+</span><span style="color:#007f7f"></span>store.subscribe(() =&gt; console.log(<span style="color:#0ff;font-weight:bold">&#39;@&#39;</span>)) <span style="color:#007f7f">// 设置监听函数，一旦 State 发生变化，就自动执行这个函数     
+</span></code></pre></div></li>
 </ol>
 
 
@@ -501,7 +501,7 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
