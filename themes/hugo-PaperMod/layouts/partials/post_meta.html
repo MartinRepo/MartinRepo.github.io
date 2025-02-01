@@ -1,21 +1,46 @@
 {{- $scratch := newScratch }}
-
 {{- if not .Date.IsZero -}}
-{{- $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format (default "January 2, 2006" site.Params.DateFormat)))) }}
+{{- if eq .Site.Language.Lang "zh" -}}
+{{- $scratch.Add "meta" (slice (printf "创建: %s" (.Date.Format (default "January 2, 2006" .Site.Params.DateFormat)))) }}
+{{- else -}}
+{{- $scratch.Add "meta" (slice (printf "Created: %s" (.Date.Format (default "January 2, 2006" .Site.Params.DateFormat)))) }}
+{{- end }}
+{{- end }}
+
+{{- if (.Param "ShowLastMod") -}}
+{{- if eq .Site.Language.Lang "zh" -}}
+{{- $scratch.Add "meta" (slice (printf "更新: %s" (.Lastmod.Format (.Site.Params.dateFormat | default "2006-01-02")))) }}
+{{- else -}}
+{{- $scratch.Add "meta" (slice (printf "Updated: %s" (.Lastmod.Format (.Site.Params.dateFormat | default "2006-01-02")))) }}
+{{- end }}
+{{- end }}
+
+{{- if (.Param "ShowWordCounts") -}}
+{{- if eq .Site.Language.Lang "zh" -}}
+{{- $scratch.Add "meta" (slice (default (printf "字数: %d字" .WordCount))) }}
+{{- else -}}
+{{- $scratch.Add "meta" (slice (default (printf "%d Words" .WordCount))) }}
+{{- end }}
 {{- end }}
 
 {{- if (.Param "ShowReadingTime") -}}
-{{- $scratch.Add "meta" (slice (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime))) }}
+{{- if eq .Site.Language.Lang "zh" -}}
+{{- $scratch.Add "meta" (slice (default (printf "阅读时长: %d分钟" .ReadingTime))) }}
+{{- else -}}
+{{- $scratch.Add "meta" (slice (default (printf "Reading Time: %d mins" .ReadingTime))) }}
+{{- end }}
 {{- end }}
 
-{{- if (.Param "ShowWordCount") -}}
-{{- $scratch.Add "meta" (slice (i18n "words" .WordCount | default (printf "%d words" .WordCount))) }}
-{{- end }}
-
-{{- with (partial "author.html" .) }}
+{{- if eq .Site.Language.Lang "zh" -}}
+{{- with (partial "author.zh.html" .) }}
 {{- $scratch.Add "meta" (slice .) }}
+{{- end }}
+{{- else -}}
+{{- with (partial "author.en.html" .) }}
+{{- $scratch.Add "meta" (slice .) }}
+{{- end }}
 {{- end }}
 
 {{- with ($scratch.Get "meta") }}
-{{- delimit . "&nbsp;·&nbsp;" -}}
+{{- delimit . " | " -}}
 {{- end -}}
