@@ -41,22 +41,18 @@ languages:
         title: 小修在深山，大修在世间
         subtitle: "</br>👋 你好，欢迎光临Martin的空间～</br></br>👏 仅以此博客系统记录技术和我的生活。</br></br>愿自己摆脱冷气，只是向上走。</br></br>联系方式 👇 </br>"
         imageUrl: "icebear.jpg"
-        imageTitle: sun
+        imageTitle: chi
         imageWidth: 150
         imageHeight: 150
         buttons:
-          - name: 🇬🇧 课程
+          - name: 🎓 本科生涯
             url: post/1liverpool
-          - name: 👨🏻‍💻 技术
+          - name: 🔬 研究记录
             url: post/2tech
-          - name: 📖 分享
+          - name: 📖 分享&杂记
             url: post/3share
-          - name: 👫 生活
-            url: post/4life
-          - name: ✍️ 杂记
-            url: post/5note
-          - name: 🎒 旅行
-            url: post/6travel
+          - name: 🎒 旅行画廊
+            url: post/4travel
       menu:
         main:
           - identifier: search
@@ -130,10 +126,9 @@ params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Martin的个人博客"
     author: Martin
-    # author: ["Me", "You"] # multiple authors
 
   
-    defaultTheme: auto  # defaultTheme: light or  dark 
+    defaultTheme: auto
     disableThemeToggle: false
     DateFormat: "2006-01-02"
     ShowShareButtons: true
@@ -172,7 +167,7 @@ params:
 
     label: # 左上角图标
       text: "Martin's space"
-      icon: "sun.jpg"
+      icon: "icebear.jpg"
       iconHeight: 35
 
     # editPost:
@@ -185,11 +180,11 @@ params:
     #         SiteVerificationTag: "XYZabc"
 
     assets:
-        favicon: "img/sun.jpg"
-        favicon16x16: "img/sun.jpg"
-        favicon32x32: "img/sun.jpg"
-        apple_touch_icon: "sun.jpg"
-        safari_pinned_tab: "sun.jpg"
+        favicon: "img/icebear.jpg"
+        favicon16x16: "img/icebear.jpg"
+        favicon32x32: "img/icebear.jpg"
+        apple_touch_icon: "icebear.jpg"
+        safari_pinned_tab: "icebear.jpg"
 
     # cover:
     #     hidden: true # hide everywhere but not in structured data
