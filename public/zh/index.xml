@@ -5,6 +5,7 @@
     <link>https://martinspace.top/zh/</link>
     <description>Recent content on Martin&#39;s space</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
     <lastBuildDate>Sat, 01 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>从RNN到Transformers</title>
@@ -16,7 +17,7 @@
     </item>
     
     <item>
-      <title>从RNN到Transformers</title>
+      <title>强化学习</title>
       <link>https://martinspace.top/zh/rl-note/</link>
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
       
@@ -66,7 +67,7 @@
       <pubDate>Tue, 08 Aug 2023 22:34:10 +0000</pubDate>
       
       <guid>https://martinspace.top/zh/australia/</guid>
-      <description>SYDNEY City walk Bondi beach With baby😍 Sydney opera house GOLD COAST Francis Favourite😆 surfers paradise With baby😍 Parasail 😍 MELBOURNE With Baby 😍</description>
+      <description>SYDNEY &lt;!DOCTYPE html&gt; City walk Bondi beach With baby😍 Sydney opera house GOLD COAST &lt;!DOCTYPE html&gt; Francis Favourite😆 surfers paradise With baby😍 Parasail 😍 MELBOURNE &lt;!DOCTYPE html&gt; With Baby 😍</description>
     </item>
     
     <item>
@@ -97,21 +98,21 @@
     </item>
     
     <item>
-      <title>算法(COMP202)</title>
-      <link>https://martinspace.top/zh/comp202/</link>
-      <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
-      
-      <guid>https://martinspace.top/zh/comp202/</guid>
-      <description>COMP202 笔记</description>
-    </item>
-    
-    <item>
       <title>金融市场交易(COMP226)</title>
       <link>https://martinspace.top/zh/comp226/</link>
       <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
       
       <guid>https://martinspace.top/zh/comp226/</guid>
       <description>R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor &amp;gt; gender &amp;lt;- fa</description>
+    </item>
+    
+    <item>
+      <title>算法(COMP202)</title>
+      <link>https://martinspace.top/zh/comp202/</link>
+      <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/comp202/</guid>
+      <description>COMP202 笔记</description>
     </item>
     
     <item>
@@ -237,7 +238,7 @@
       <pubDate>Wed, 02 Nov 2022 21:16:51 +0000</pubDate>
       
       <guid>https://martinspace.top/zh/london/</guid>
-      <description>图片太大了，很占服务器的资源，想看的去朋友圈自取吧 The images are so big that take up a lot of resources on the server, so if you&amp;rsquo;d like to see them, go to ins and get them yourself. London</description>
+      <description>图片太大了，很占服务器的资源，想看的去朋友圈自取吧 The images are so big that take up a lot of resources on the server, so if you&amp;rsquo;d like to see them, go to ins and get them yourself. &lt;!DOCTYPE html&gt; London</description>
     </item>
     
     <item>

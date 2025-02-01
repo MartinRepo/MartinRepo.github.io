@@ -13,7 +13,7 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.94119a957ab6113f1e35765095ab83811d823504931248ce730a3ddc692561b3.css" integrity="sha256-lBGalXq2ET8eNXZQlauDgR2CNQSTEkjOcwo93GklYbM=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://martinspace.top/img/icebear.jpg">
@@ -133,7 +133,7 @@ if (!doNotTrack) {
   "keywords": [
     "git"
   ],
-  "articleBody": "学了一个小技巧实现可以清晰地实现版本控制，记录一下\n1. 列出标签 $ git tag v1.0 v2.0 也可以模糊查询（-l也可以写成–list）\n$ git tag -l \"v1.8.5*\" v1.8.5 v1.8.5-rc0 v1.8.5-rc1 v1.8.5-rc2 v1.8.5-rc3 v1.8.5.1 v1.8.5.2 v1.8.5.3 v1.8.5.4 v1.8.5.5 2. 创建标签 附注标签 $ git tag -a v1.4 -m \"my version 1.4\" $ git tag v0.1 v1.3 v1.4 git show指令可以查看对应的信息\n$ git show v1.4 tag v1.4 Tagger: Ben Straub  Date: Sat May 3 20:19:12 2014 -0700 my version 1.4 commit ca82a6dff817ec66f44342007202690a93763949 Author: Scott Chacon  Date: Mon Mar 17 21:52:11 2008 -0700 changed the version number 轻量标签 $ git tag v1.4-lw $ git tag v0.1 v1.3 v1.4 v1.4-lw v1.5 如果在标签上运行 git show，没有额外的标签信息。 只会显示出提交信息：\n$ git show v1.4-lw commit ca82a6dff817ec66f44342007202690a93763949 Author: Scott Chacon  Date: Mon Mar 17 21:52:11 2008 -0700 changed the version number 后期打标签 命令git log --pretty=oneline 查询提交历史\n$ git log --pretty=oneline 15027957951b64cf874c3557a0f3547bd83b3ff6 Merge branch 'experiment' a6b4c97498bd301d84096da251c98a07c7723e65 beginning write support 0d52aaab4479697da7686c15f77a3d64d9165190 one more thing 6d52a271eda8725415634dd79daabbc4d9b6008e Merge branch 'experiment' 0b7434d86859cc7b8c3d5e1dddfed66ff742fcbc added a commit function 4682c3261057305bdd616e23b64b0857d832627b added a todo file 166ae0c4d3f420721acbb115cc33848dfcc2121a started write support 9fceb02d0ae598e95dc970b74767f19372d61af8 updated rakefile 964f16d36dfccde844893cac5b347e7b3d44abbc commit the todo 8a5cbc430f1a9c3d00faaeffd07798508422908a updated readme 假设在 v1.2 时你忘记给项目打标签，也就是在 updated rakefile 提交。 你可以在之后补上标签。 要在那个提交上打标签，你需要在命令的末尾指定提交的校验和（或部分校验和）：\n$ git tag -a v1.2 9fceb02 git show可以看到已经为指定的提交打上标签\n$ git tag v0.1 v1.2 v1.3 v1.4 v1.4-lw v1.5 $ git show v1.2 tag v1.2 Tagger: Scott Chacon  Date: Mon Feb 9 15:32:16 2009 -0800 version 1.2 commit 9fceb02d0ae598e95dc970b74767f19372d61af8 Author: Magnus Chacon  Date: Sun Apr 27 20:43:35 2008 -0700 updated rakefile ... 推送tag到远程分支 默认情况下，git push 命令并不会传送标签到远程仓库服务器上。 在创建完标签后你必须显式地推送标签到共享服务器上。 这个过程就像共享远程分支一样，运行 git push origin \n$ git push origin v1.5 Counting objects: 14, done. Delta compression using up to 8 threads. Compressing objects: 100% (12/12), done. Writing objects: 100% (14/14), 2.05 KiB | 0 bytes/s, done. Total 14 (delta 3), reused 0 (delta 0) To git@github.com:schacon/simplegit.git * [new tag] v1.5 - v1.5 如果想要一次性推送很多标签，也可以使用带有 --tags 选项的 git push 命令。 这将会把所有不在远程仓库服务器上的标签全部传送到那里。\n$ git push origin --tags Counting objects: 1, done. Writing objects: 100% (1/1), 160 bytes | 0 bytes/s, done. Total 1 (delta 0), reused 0 (delta 0) To git@github.com:schacon/simplegit.git * [new tag] v1.4 - v1.4 * [new tag] v1.4-lw - v1.4-lw 删除本地标签 $ git tag -d v1.4-lw Deleted tag 'v1.4-lw' (was e7d5add) 删除远程标签 $ git push origin --delete  以后每次更新都可以狠狠打上标签了，很开心。\n参考文章👇\nhttps://git-scm.com/book/en/v2\n",
+  "articleBody": "学了一个小技巧实现可以清晰地实现版本控制，记录一下\n1. 列出标签 $ git tag v1.0 v2.0 也可以模糊查询（-l也可以写成–list）\n$ git tag -l \"v1.8.5*\" v1.8.5 v1.8.5-rc0 v1.8.5-rc1 v1.8.5-rc2 v1.8.5-rc3 v1.8.5.1 v1.8.5.2 v1.8.5.3 v1.8.5.4 v1.8.5.5 2. 创建标签 附注标签 $ git tag -a v1.4 -m \"my version 1.4\" $ git tag v0.1 v1.3 v1.4 git show指令可以查看对应的信息\n$ git show v1.4 tag v1.4 Tagger: Ben Straub Date: Sat May 3 20:19:12 2014 -0700 my version 1.4 commit ca82a6dff817ec66f44342007202690a93763949 Author: Scott Chacon Date: Mon Mar 17 21:52:11 2008 -0700 changed the version number 轻量标签 $ git tag v1.4-lw $ git tag v0.1 v1.3 v1.4 v1.4-lw v1.5 如果在标签上运行 git show，没有额外的标签信息。 只会显示出提交信息：\n$ git show v1.4-lw commit ca82a6dff817ec66f44342007202690a93763949 Author: Scott Chacon Date: Mon Mar 17 21:52:11 2008 -0700 changed the version number 后期打标签 命令git log --pretty=oneline 查询提交历史\n$ git log --pretty=oneline 15027957951b64cf874c3557a0f3547bd83b3ff6 Merge branch 'experiment' a6b4c97498bd301d84096da251c98a07c7723e65 beginning write support 0d52aaab4479697da7686c15f77a3d64d9165190 one more thing 6d52a271eda8725415634dd79daabbc4d9b6008e Merge branch 'experiment' 0b7434d86859cc7b8c3d5e1dddfed66ff742fcbc added a commit function 4682c3261057305bdd616e23b64b0857d832627b added a todo file 166ae0c4d3f420721acbb115cc33848dfcc2121a started write support 9fceb02d0ae598e95dc970b74767f19372d61af8 updated rakefile 964f16d36dfccde844893cac5b347e7b3d44abbc commit the todo 8a5cbc430f1a9c3d00faaeffd07798508422908a updated readme 假设在 v1.2 时你忘记给项目打标签，也就是在 updated rakefile 提交。 你可以在之后补上标签。 要在那个提交上打标签，你需要在命令的末尾指定提交的校验和（或部分校验和）：\n$ git tag -a v1.2 9fceb02 git show可以看到已经为指定的提交打上标签\n$ git tag v0.1 v1.2 v1.3 v1.4 v1.4-lw v1.5 $ git show v1.2 tag v1.2 Tagger: Scott Chacon Date: Mon Feb 9 15:32:16 2009 -0800 version 1.2 commit 9fceb02d0ae598e95dc970b74767f19372d61af8 Author: Magnus Chacon Date: Sun Apr 27 20:43:35 2008 -0700 updated rakefile ... 推送tag到远程分支 默认情况下，git push 命令并不会传送标签到远程仓库服务器上。 在创建完标签后你必须显式地推送标签到共享服务器上。 这个过程就像共享远程分支一样，运行 git push origin $ git push origin v1.5 Counting objects: 14, done. Delta compression using up to 8 threads. Compressing objects: 100% (12/12), done. Writing objects: 100% (14/14), 2.05 KiB | 0 bytes/s, done. Total 14 (delta 3), reused 0 (delta 0) To git@github.com:schacon/simplegit.git * [new tag] v1.5 -\u003e v1.5 如果想要一次性推送很多标签，也可以使用带有 --tags 选项的 git push 命令。 这将会把所有不在远程仓库服务器上的标签全部传送到那里。\n$ git push origin --tags Counting objects: 1, done. Writing objects: 100% (1/1), 160 bytes | 0 bytes/s, done. Total 1 (delta 0), reused 0 (delta 0) To git@github.com:schacon/simplegit.git * [new tag] v1.4 -\u003e v1.4 * [new tag] v1.4-lw -\u003e v1.4-lw 删除本地标签 $ git tag -d v1.4-lw Deleted tag 'v1.4-lw' (was e7d5add) 删除远程标签 $ git push origin --delete 以后每次更新都可以狠狠打上标签了，很开心。\n参考文章👇\nhttps://git-scm.com/book/en/v2\n",
   "wordCount" : "715",
   "inLanguage": "zh",
   "datePublished": "2022-12-30T22:51:29Z",
@@ -360,116 +360,116 @@ if (!doNotTrack) {
 </script>
   <div class="post-content"><p>学了一个小技巧实现可以清晰地实现版本控制，记录一下</p>
 <h1 id="1-列出标签">1. 列出标签<a hidden class="anchor" aria-hidden="true" href="#1-列出标签">#</a></h1>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git tag
-v1.0
-v2.0
-</code></pre></div><p>也可以模糊查询（-l也可以写成&ndash;list）</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git tag -l &#34;v1.8.5*&#34;
-v1.8.5
-v1.8.5-rc0
-v1.8.5-rc1
-v1.8.5-rc2
-v1.8.5-rc3
-v1.8.5.1
-v1.8.5.2
-v1.8.5.3
-v1.8.5.4
-v1.8.5.5
-</code></pre></div><h1 id="2-创建标签">2. 创建标签<a hidden class="anchor" aria-hidden="true" href="#2-创建标签">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git tag
+</span></span><span style="display:flex;"><span>v1.0
+</span></span><span style="display:flex;"><span>v2.0
+</span></span></code></pre></div><p>也可以模糊查询（-l也可以写成&ndash;list）</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git tag -l &#34;v1.8.5*&#34;
+</span></span><span style="display:flex;"><span>v1.8.5
+</span></span><span style="display:flex;"><span>v1.8.5-rc0
+</span></span><span style="display:flex;"><span>v1.8.5-rc1
+</span></span><span style="display:flex;"><span>v1.8.5-rc2
+</span></span><span style="display:flex;"><span>v1.8.5-rc3
+</span></span><span style="display:flex;"><span>v1.8.5.1
+</span></span><span style="display:flex;"><span>v1.8.5.2
+</span></span><span style="display:flex;"><span>v1.8.5.3
+</span></span><span style="display:flex;"><span>v1.8.5.4
+</span></span><span style="display:flex;"><span>v1.8.5.5
+</span></span></code></pre></div><h1 id="2-创建标签">2. 创建标签<a hidden class="anchor" aria-hidden="true" href="#2-创建标签">#</a></h1>
 <h2 id="附注标签">附注标签<a hidden class="anchor" aria-hidden="true" href="#附注标签">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git tag -a v1.4 -m &#34;my version 1.4&#34;
-$ git tag
-v0.1
-v1.3
-v1.4
-</code></pre></div><p><code>git show</code>指令可以查看对应的信息</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git show v1.4
-tag v1.4
-Tagger: Ben Straub &lt;ben@straub.cc&gt;
-Date:   Sat May 3 20:19:12 2014 -0700
-
-my version 1.4
-
-commit ca82a6dff817ec66f44342007202690a93763949
-Author: Scott Chacon &lt;schacon@gee-mail.com&gt;
-Date:   Mon Mar 17 21:52:11 2008 -0700
-
-    changed the version number
-</code></pre></div><h2 id="轻量标签">轻量标签<a hidden class="anchor" aria-hidden="true" href="#轻量标签">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git tag v1.4-lw
-$ git tag
-v0.1
-v1.3
-v1.4
-v1.4-lw
-v1.5
-</code></pre></div><p>如果在标签上运行 <code>git show</code>，没有额外的标签信息。 只会显示出提交信息：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git show v1.4-lw
-commit ca82a6dff817ec66f44342007202690a93763949
-Author: Scott Chacon &lt;schacon@gee-mail.com&gt;
-Date:   Mon Mar 17 21:52:11 2008 -0700
-
-    changed the version number
-</code></pre></div><h2 id="后期打标签">后期打标签<a hidden class="anchor" aria-hidden="true" href="#后期打标签">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git tag -a v1.4 -m &#34;my version 1.4&#34;
+</span></span><span style="display:flex;"><span>$ git tag
+</span></span><span style="display:flex;"><span>v0.1
+</span></span><span style="display:flex;"><span>v1.3
+</span></span><span style="display:flex;"><span>v1.4
+</span></span></code></pre></div><p><code>git show</code>指令可以查看对应的信息</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git show v1.4
+</span></span><span style="display:flex;"><span>tag v1.4
+</span></span><span style="display:flex;"><span>Tagger: Ben Straub &lt;ben@straub.cc&gt;
+</span></span><span style="display:flex;"><span>Date:   Sat May 3 20:19:12 2014 -0700
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>my version 1.4
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>commit ca82a6dff817ec66f44342007202690a93763949
+</span></span><span style="display:flex;"><span>Author: Scott Chacon &lt;schacon@gee-mail.com&gt;
+</span></span><span style="display:flex;"><span>Date:   Mon Mar 17 21:52:11 2008 -0700
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    changed the version number
+</span></span></code></pre></div><h2 id="轻量标签">轻量标签<a hidden class="anchor" aria-hidden="true" href="#轻量标签">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git tag v1.4-lw
+</span></span><span style="display:flex;"><span>$ git tag
+</span></span><span style="display:flex;"><span>v0.1
+</span></span><span style="display:flex;"><span>v1.3
+</span></span><span style="display:flex;"><span>v1.4
+</span></span><span style="display:flex;"><span>v1.4-lw
+</span></span><span style="display:flex;"><span>v1.5
+</span></span></code></pre></div><p>如果在标签上运行 <code>git show</code>，没有额外的标签信息。 只会显示出提交信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git show v1.4-lw
+</span></span><span style="display:flex;"><span>commit ca82a6dff817ec66f44342007202690a93763949
+</span></span><span style="display:flex;"><span>Author: Scott Chacon &lt;schacon@gee-mail.com&gt;
+</span></span><span style="display:flex;"><span>Date:   Mon Mar 17 21:52:11 2008 -0700
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    changed the version number
+</span></span></code></pre></div><h2 id="后期打标签">后期打标签<a hidden class="anchor" aria-hidden="true" href="#后期打标签">#</a></h2>
 <p>命令<code>git log --pretty=oneline</code> 查询提交历史</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git log --pretty=oneline
-15027957951b64cf874c3557a0f3547bd83b3ff6 Merge branch &#39;experiment&#39;
-a6b4c97498bd301d84096da251c98a07c7723e65 beginning write support
-0d52aaab4479697da7686c15f77a3d64d9165190 one more thing
-6d52a271eda8725415634dd79daabbc4d9b6008e Merge branch &#39;experiment&#39;
-0b7434d86859cc7b8c3d5e1dddfed66ff742fcbc added a commit function
-4682c3261057305bdd616e23b64b0857d832627b added a todo file
-166ae0c4d3f420721acbb115cc33848dfcc2121a started write support
-9fceb02d0ae598e95dc970b74767f19372d61af8 updated rakefile
-964f16d36dfccde844893cac5b347e7b3d44abbc commit the todo
-8a5cbc430f1a9c3d00faaeffd07798508422908a updated readme
-</code></pre></div><p>假设在 v1.2 时你忘记给项目打标签，也就是在 <code>updated rakefile</code> 提交。 你可以在之后补上标签。 要在那个提交上打标签，你需要在命令的末尾指定提交的校验和（或部分校验和）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git tag -a v1.2 9fceb02
-</code></pre></div><p><code>git show</code>可以看到已经为指定的提交打上标签</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git tag
-v0.1
-v1.2
-v1.3
-v1.4
-v1.4-lw
-v1.5
-
-$ git show v1.2
-tag v1.2
-Tagger: Scott Chacon &lt;schacon@gee-mail.com&gt;
-Date:   Mon Feb 9 15:32:16 2009 -0800
-
-version 1.2
-commit 9fceb02d0ae598e95dc970b74767f19372d61af8
-Author: Magnus Chacon &lt;mchacon@gee-mail.com&gt;
-Date:   Sun Apr 27 20:43:35 2008 -0700
-
-    updated rakefile
-...
-</code></pre></div><h1 id="推送tag到远程分支">推送tag到远程分支<a hidden class="anchor" aria-hidden="true" href="#推送tag到远程分支">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git log --pretty=oneline
+</span></span><span style="display:flex;"><span>15027957951b64cf874c3557a0f3547bd83b3ff6 Merge branch &#39;experiment&#39;
+</span></span><span style="display:flex;"><span>a6b4c97498bd301d84096da251c98a07c7723e65 beginning write support
+</span></span><span style="display:flex;"><span>0d52aaab4479697da7686c15f77a3d64d9165190 one more thing
+</span></span><span style="display:flex;"><span>6d52a271eda8725415634dd79daabbc4d9b6008e Merge branch &#39;experiment&#39;
+</span></span><span style="display:flex;"><span>0b7434d86859cc7b8c3d5e1dddfed66ff742fcbc added a commit function
+</span></span><span style="display:flex;"><span>4682c3261057305bdd616e23b64b0857d832627b added a todo file
+</span></span><span style="display:flex;"><span>166ae0c4d3f420721acbb115cc33848dfcc2121a started write support
+</span></span><span style="display:flex;"><span>9fceb02d0ae598e95dc970b74767f19372d61af8 updated rakefile
+</span></span><span style="display:flex;"><span>964f16d36dfccde844893cac5b347e7b3d44abbc commit the todo
+</span></span><span style="display:flex;"><span>8a5cbc430f1a9c3d00faaeffd07798508422908a updated readme
+</span></span></code></pre></div><p>假设在 v1.2 时你忘记给项目打标签，也就是在 <code>updated rakefile</code> 提交。 你可以在之后补上标签。 要在那个提交上打标签，你需要在命令的末尾指定提交的校验和（或部分校验和）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git tag -a v1.2 9fceb02
+</span></span></code></pre></div><p><code>git show</code>可以看到已经为指定的提交打上标签</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git tag
+</span></span><span style="display:flex;"><span>v0.1
+</span></span><span style="display:flex;"><span>v1.2
+</span></span><span style="display:flex;"><span>v1.3
+</span></span><span style="display:flex;"><span>v1.4
+</span></span><span style="display:flex;"><span>v1.4-lw
+</span></span><span style="display:flex;"><span>v1.5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git show v1.2
+</span></span><span style="display:flex;"><span>tag v1.2
+</span></span><span style="display:flex;"><span>Tagger: Scott Chacon &lt;schacon@gee-mail.com&gt;
+</span></span><span style="display:flex;"><span>Date:   Mon Feb 9 15:32:16 2009 -0800
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>version 1.2
+</span></span><span style="display:flex;"><span>commit 9fceb02d0ae598e95dc970b74767f19372d61af8
+</span></span><span style="display:flex;"><span>Author: Magnus Chacon &lt;mchacon@gee-mail.com&gt;
+</span></span><span style="display:flex;"><span>Date:   Sun Apr 27 20:43:35 2008 -0700
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    updated rakefile
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><h1 id="推送tag到远程分支">推送tag到远程分支<a hidden class="anchor" aria-hidden="true" href="#推送tag到远程分支">#</a></h1>
 <p>默认情况下，<code>git push</code> 命令并不会传送标签到远程仓库服务器上。 在创建完标签后你必须显式地推送标签到共享服务器上。 这个过程就像共享远程分支一样，运行 <code>git push origin &lt;tagname&gt;</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git push origin v1.5
-Counting objects: 14, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (12/12), done.
-Writing objects: 100% (14/14), 2.05 KiB | 0 bytes/s, done.
-Total 14 (delta 3), reused 0 (delta 0)
-To git@github.com:schacon/simplegit.git
- * [new tag]         v1.5 -&gt; v1.5
-</code></pre></div><p>如果想要一次性推送很多标签，也可以使用带有 <code>--tags</code> 选项的 <code>git push</code> 命令。 这将会把所有不在远程仓库服务器上的标签全部传送到那里。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git push origin --tags
-Counting objects: 1, done.
-Writing objects: 100% (1/1), 160 bytes | 0 bytes/s, done.
-Total 1 (delta 0), reused 0 (delta 0)
-To git@github.com:schacon/simplegit.git
-* [new tag]         v1.4 -&gt; v1.4
-* [new tag]         v1.4-lw -&gt; v1.4-lw
-</code></pre></div><h1 id="删除本地标签">删除本地标签<a hidden class="anchor" aria-hidden="true" href="#删除本地标签">#</a></h1>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git tag -d v1.4-lw
-Deleted tag &#39;v1.4-lw&#39; (was e7d5add)
-</code></pre></div><h1 id="删除远程标签">删除远程标签<a hidden class="anchor" aria-hidden="true" href="#删除远程标签">#</a></h1>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git push origin --delete &lt;tagname&gt;
-</code></pre></div><p>以后每次更新都可以狠狠打上标签了，很开心。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git push origin v1.5
+</span></span><span style="display:flex;"><span>Counting objects: 14, done.
+</span></span><span style="display:flex;"><span>Delta compression using up to 8 threads.
+</span></span><span style="display:flex;"><span>Compressing objects: 100% (12/12), done.
+</span></span><span style="display:flex;"><span>Writing objects: 100% (14/14), 2.05 KiB | 0 bytes/s, done.
+</span></span><span style="display:flex;"><span>Total 14 (delta 3), reused 0 (delta 0)
+</span></span><span style="display:flex;"><span>To git@github.com:schacon/simplegit.git
+</span></span><span style="display:flex;"><span> * [new tag]         v1.5 -&gt; v1.5
+</span></span></code></pre></div><p>如果想要一次性推送很多标签，也可以使用带有 <code>--tags</code> 选项的 <code>git push</code> 命令。 这将会把所有不在远程仓库服务器上的标签全部传送到那里。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git push origin --tags
+</span></span><span style="display:flex;"><span>Counting objects: 1, done.
+</span></span><span style="display:flex;"><span>Writing objects: 100% (1/1), 160 bytes | 0 bytes/s, done.
+</span></span><span style="display:flex;"><span>Total 1 (delta 0), reused 0 (delta 0)
+</span></span><span style="display:flex;"><span>To git@github.com:schacon/simplegit.git
+</span></span><span style="display:flex;"><span>* [new tag]         v1.4 -&gt; v1.4
+</span></span><span style="display:flex;"><span>* [new tag]         v1.4-lw -&gt; v1.4-lw
+</span></span></code></pre></div><h1 id="删除本地标签">删除本地标签<a hidden class="anchor" aria-hidden="true" href="#删除本地标签">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git tag -d v1.4-lw
+</span></span><span style="display:flex;"><span>Deleted tag &#39;v1.4-lw&#39; (was e7d5add)
+</span></span></code></pre></div><h1 id="删除远程标签">删除远程标签<a hidden class="anchor" aria-hidden="true" href="#删除远程标签">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git push origin --delete &lt;tagname&gt;
+</span></span></code></pre></div><p>以后每次更新都可以狠狠打上标签了，很开心。</p>
 <p>参考文章👇</p>
 <p><a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></p>
 
@@ -529,7 +529,7 @@ Deleted tag &#39;v1.4-lw&#39; (was e7d5add)
         被访问了<span id="busuanzi_value_site_pv"></span>次
     </span>
     <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人 (仅供参考，不准)
+        迎接了<span id="busuanzi_value_site_uv"></span>位客人
     </span>
     </div>
 </footer>

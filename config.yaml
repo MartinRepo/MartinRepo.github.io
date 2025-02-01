@@ -25,9 +25,8 @@ minify:
 
 permalinks:
   post: "/:slug/"
-  # post: "/:year/:month/:day/:title/"
 
-defaultContentLanguage: en # 最顶部首先展示的语言页面
+defaultContentLanguage: zh
 defaultContentLanguageInSubdir: true
 
 languages:
@@ -63,10 +62,6 @@ languages:
             name: 🏠 主页
             url: /
             weight: 1
-          # - identifier: posts
-          #   name: 📒 文章
-          #   url: post
-          #   weight: 2
           - identifier: archives
             name: 📁 归档
             url: archives/
@@ -79,10 +74,6 @@ languages:
             name: 💭 关于
             url: about
             weight: 50
-          # - identifier: links
-          #   name: 🤝 友链
-          #   url: links
-          #   weight: 60
     en:
         languageName: "English"
         languageAltTitle: English
@@ -165,7 +156,7 @@ params:
         - name: RSS
           url: "index.xml"
 
-    label: # 左上角图标
+    label:
       text: "Martin's space"
       icon: "icebear.jpg"
       iconHeight: 35

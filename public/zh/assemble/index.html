@@ -13,7 +13,7 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.94119a957ab6113f1e35765095ab83811d823504931248ce730a3ddc692561b3.css" integrity="sha256-lBGalXq2ET8eNXZQlauDgR2CNQSTEkjOcwo93GklYbM=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://martinspace.top/img/icebear.jpg">
@@ -276,14 +276,14 @@ if (!doNotTrack) {
 <p>si, di作为变址寄存器，其值递增或递减的本质就是要逐个取得ds:si/ds:di地址上的数据。</p>
 <p>于是我们很难不联想到对于各种串传送的操作，因为串传送就要一个一个地将数据传送到想要的位置，接下来我介绍两个串传送指令：movsb和movsw。</p>
 <p>我以movsb为例（movsw同理 只不过其单位是字word）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">;movsb指令相当于做如下操作：
- 
-((es)*16 + (di)) = ((ds)*16 + (di))  ;将ds:di指向的数据传送到es:si指向的地址
- 
-if(df == 0)  inc si  inc di
- 
-if(df == 1)  dec si  dec di
-</code></pre></div><p>很明显，movsb指令是将一处内存单元中的字节byte送入另一处，然后判断DF的值来决定是递增还是递减。回归到递增递减的本质可以发现，递增就是将这个数据串中的数据正向传入，递减就是反向传入。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>;movsb指令相当于做如下操作：
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>((es)*16 + (di)) = ((ds)*16 + (di))  ;将ds:di指向的数据传送到es:si指向的地址
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>if(df == 0)  inc si  inc di
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>if(df == 1)  dec si  dec di
+</span></span></code></pre></div><p>很明显，movsb指令是将一处内存单元中的字节byte送入另一处，然后判断DF的值来决定是递增还是递减。回归到递增递减的本质可以发现，递增就是将这个数据串中的数据正向传入，递减就是反向传入。</p>
 <p>举例：一个数据串’12345678‘，正向传入的结果是’12345678‘，反向传入的结果是’87654321‘。</p>
 <p>那么作为程序员我们如何控制其方向，总不能是机器说了算吧，于是我们有了CLD和STD指令</p>
 <p>CLD：将DF值设为0</p>
@@ -346,7 +346,7 @@ if(df == 1)  dec si  dec di
         被访问了<span id="busuanzi_value_site_pv"></span>次
     </span>
     <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人 (仅供参考，不准)
+        迎接了<span id="busuanzi_value_site_uv"></span>位客人
     </span>
     </div>
 </footer>

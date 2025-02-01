@@ -13,7 +13,7 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.94119a957ab6113f1e35765095ab83811d823504931248ce730a3ddc692561b3.css" integrity="sha256-lBGalXq2ET8eNXZQlauDgR2CNQSTEkjOcwo93GklYbM=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://martinspace.top/img/icebear.jpg">
@@ -133,7 +133,7 @@ if (!doNotTrack) {
   "keywords": [
     "software engineering"
   ],
-  "articleBody": "复（预）习过程中遇到Petri net，记录一下\nPetri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通常被用于建立离散分布式系统。\nPetri Net组成元素\n place: 通常用圆圈表示 token: 在place中，通常用实心点表示 transition: 通常用直角矩形或实心矩形表示 arc: 通常是带箭头的一条线，权重可以通过标数字在线上，或者画出几条arc来表示。  flowchart LR brid1((...)) id1((...))==2==rr id2((..))--br id2((..))==2==bb bb--id2((..)) rr--id2((..))   找出上述Petri net中reachable state和deadlock state的数量\nflowchart TD id1(3, 2)==bb/br==id2(3, 1) id1(3, 2)==rr==id3(1, 3) id2(3, 1)==rr==id4(1, 2) id3(1, 3)==bb/br==id4(1, 2) id3(1, 3)==br==id5(3, 0) id4(1, 2)==bb/br==id6(1, 1) id5(3, 0)==rr==id6(1, 1) id6(1, 1)==br==id7(1, 0)   由上图可知，这里有7个reachable states，一个死锁状态，当左侧place中没有token并且右侧place只有1个token时，rr, bb, br都不是enabled的状态，因此都不能被fire。所以只有一个死锁状态。\n",
+  "articleBody": "复（预）习过程中遇到Petri net，记录一下\nPetri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通常被用于建立离散分布式系统。\nPetri Net组成元素\nplace: 通常用圆圈表示 token: 在place中，通常用实心点表示 transition: 通常用直角矩形或实心矩形表示 arc: 通常是带箭头的一条线，权重可以通过标数字在线上，或者画出几条arc来表示。 flowchart LR br\u003c--\u003eid1((...)) id1((...))==2==\u003err id2((..))--\u003ebr id2((..))==2==\u003ebb bb--\u003eid2((..)) rr--\u003eid2((..)) 找出上述Petri net中reachable state和deadlock state的数量\nflowchart TD id1(3, 2)==bb/br==\u003eid2(3, 1) id1(3, 2)==rr==\u003eid3(1, 3) id2(3, 1)==rr==\u003eid4(1, 2) id3(1, 3)==bb/br==\u003eid4(1, 2) id3(1, 3)==br==\u003eid5(3, 0) id4(1, 2)==bb/br==\u003eid6(1, 1) id5(3, 0)==rr==\u003eid6(1, 1) id6(1, 1)==br==\u003eid7(1, 0) 由上图可知，这里有7个reachable states，一个死锁状态，当左侧place中没有token并且右侧place只有1个token时，rr, bb, br都不是enabled的状态，因此都不能被fire。所以只有一个死锁状态。\n",
   "wordCount" : "360",
   "inLanguage": "zh",
   "datePublished": "2023-01-11T20:47:53Z",
@@ -316,10 +316,10 @@ id6(1, 1)==br==>id7(1, 0)
       <li><a href="https://martinspace.top/zh/tags/software-engineering/">software engineering</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://martinspace.top/zh/comp226/">
+  <a class="prev" href="https://martinspace.top/zh/comp202/">
     <span class="title">« 上一页</span>
     <br>
-    <span>金融市场交易(COMP226)</span>
+    <span>算法(COMP202)</span>
   </a>
   <a class="next" href="https://martinspace.top/zh/leetcode-note/">
     <span class="title">下一页 »</span>
@@ -364,7 +364,7 @@ id6(1, 1)==br==>id7(1, 0)
         被访问了<span id="busuanzi_value_site_pv"></span>次
     </span>
     <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人 (仅供参考，不准)
+        迎接了<span id="busuanzi_value_site_uv"></span>位客人
     </span>
     </div>
 </footer>

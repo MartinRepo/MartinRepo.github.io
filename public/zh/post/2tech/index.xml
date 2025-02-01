@@ -5,6 +5,7 @@
     <link>https://martinspace.top/zh/post/2tech/</link>
     <description>Recent content in 🔬 研究记录 on Martin&#39;s space</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
     <lastBuildDate>Sat, 01 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/post/2tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>从RNN到Transformers</title>
@@ -16,7 +17,7 @@
     </item>
     
     <item>
-      <title>从RNN到Transformers</title>
+      <title>强化学习</title>
       <link>https://martinspace.top/zh/rl-note/</link>
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
       

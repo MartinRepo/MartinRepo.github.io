@@ -13,7 +13,7 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.94119a957ab6113f1e35765095ab83811d823504931248ce730a3ddc692561b3.css" integrity="sha256-lBGalXq2ET8eNXZQlauDgR2CNQSTEkjOcwo93GklYbM=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://martinspace.top/img/icebear.jpg">
@@ -133,7 +133,7 @@ if (!doNotTrack) {
   "keywords": [
     "git"
   ],
-  "articleBody": "  先在github建立一个远程仓库，可以全部是默认设置\n  全局声明git的用户认证信息\n  git config --global user.name \"name\" git config --global user.email \"email@gmail.com\" 其中name写自己的名字，email@gmail.com写自己的email\n初始化本地git仓库  cd 本地项目根目录 git init 将项目文件添加到git仓库中  git add . .意思是将当前文件夹下的文件全部添加到仓库中，如果想添加某一个问价，将 .替换成对应的文件名就可以了 5. 将文件commit到仓库\ngit commit -m \"提交的消息内容\" 将本地仓库关联到github  git remote add origin 自己仓库的url地址 上传本地仓库代码至github远程仓库  git push -u origin +main git pull git push origin main 由于新项目github的默认分支从master变成了main，所以之前的博客中提到的master对于新项目来说都会报错，用上述指令就可以成功上传啦（记得敲完一行执行一行）\n上传成功之后可以回到github查看自己的仓库是否多了一些文件，记得刷新！ 之后每次代码更新后只要执行第七步就可以啦。\n",
+  "articleBody": " 先在github建立一个远程仓库，可以全部是默认设置\n全局声明git的用户认证信息\ngit config --global user.name \"name\" git config --global user.email \"email@gmail.com\" 其中name写自己的名字，email@gmail.com写自己的email\n初始化本地git仓库 cd 本地项目根目录 git init 将项目文件添加到git仓库中 git add . .意思是将当前文件夹下的文件全部添加到仓库中，如果想添加某一个问价，将 .替换成对应的文件名就可以了 5. 将文件commit到仓库\ngit commit -m \"提交的消息内容\" 将本地仓库关联到github git remote add origin 自己仓库的url地址 上传本地仓库代码至github远程仓库 git push -u origin +main git pull git push origin main 由于新项目github的默认分支从master变成了main，所以之前的博客中提到的master对于新项目来说都会报错，用上述指令就可以成功上传啦（记得敲完一行执行一行）\n上传成功之后可以回到github查看自己的仓库是否多了一些文件，记得刷新！ 之后每次代码更新后只要执行第七步就可以啦。\n",
   "wordCount" : "407",
   "inLanguage": "zh",
   "datePublished": "2022-12-16T16:04:33Z",
@@ -273,33 +273,33 @@ if (!doNotTrack) {
 <p>全局声明git的用户认证信息</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git config --global user.name &#34;name&#34;
-
-git config --global user.email &#34;email@gmail.com&#34;
-</code></pre></div><p>其中name写自己的名字，email@gmail.com写自己的email</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git config --global user.name &#34;name&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git config --global user.email &#34;email@gmail.com&#34;
+</span></span></code></pre></div><p>其中name写自己的名字，email@gmail.com写自己的email</p>
 <ol start="3">
 <li>初始化本地git仓库</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cd 本地项目根目录
-git init
-</code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd 本地项目根目录
+</span></span><span style="display:flex;"><span>git init
+</span></span></code></pre></div><ol start="4">
 <li>将项目文件添加到git仓库中</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git add .
-</code></pre></div><p>.意思是将当前文件夹下的文件全部添加到仓库中，如果想添加某一个问价，将 .替换成对应的文件名就可以了
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git add .
+</span></span></code></pre></div><p>.意思是将当前文件夹下的文件全部添加到仓库中，如果想添加某一个问价，将 .替换成对应的文件名就可以了
 5. 将文件commit到仓库</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git commit -m &#34;提交的消息内容&#34;
-</code></pre></div><ol start="6">
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git commit -m &#34;提交的消息内容&#34;
+</span></span></code></pre></div><ol start="6">
 <li>将本地仓库关联到github</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git remote add origin 自己仓库的url地址
-</code></pre></div><ol start="7">
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git remote add origin 自己仓库的url地址
+</span></span></code></pre></div><ol start="7">
 <li>上传本地仓库代码至github远程仓库</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git push -u origin +main
-git pull
-git push origin main
-</code></pre></div><p>由于新项目github的默认分支从master变成了main，所以之前的博客中提到的master对于新项目来说都会报错，用上述指令就可以成功上传啦（记得敲完一行执行一行）</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git push -u origin +main
+</span></span><span style="display:flex;"><span>git pull
+</span></span><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></div><p>由于新项目github的默认分支从master变成了main，所以之前的博客中提到的master对于新项目来说都会报错，用上述指令就可以成功上传啦（记得敲完一行执行一行）</p>
 <p>上传成功之后可以回到github查看自己的仓库是否多了一些文件，记得刷新！
 之后每次代码更新后只要执行第七步就可以啦。</p>
 
@@ -359,7 +359,7 @@ git push origin main
         被访问了<span id="busuanzi_value_site_pv"></span>次
     </span>
     <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人 (仅供参考，不准)
+        迎接了<span id="busuanzi_value_site_uv"></span>位客人
     </span>
     </div>
 </footer>
