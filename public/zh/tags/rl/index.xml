@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>RL on Martin&#39;s space</title>
+    <link>https://martinspace.top/zh/tags/rl/</link>
+    <description>Recent content in RL on Martin&#39;s space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 01 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/rl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从RNN到Transformers</title>
+      <link>https://martinspace.top/zh/rl-note/</link>
+      <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/rl-note/</guid>
+      <description>多臂老虎机问题(MAB) 问题定义 问题核心(Explore-exploit dilemma) 问题算法 $\epsilon$- greedy Action Selection Upper Confidence Bound (UCB) 马尔可夫决策过程(MDPs) 理论框架 核心数</description>
+    </item>
+    
+  </channel>
+</rss>

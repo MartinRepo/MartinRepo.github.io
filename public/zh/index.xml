@@ -5,7 +5,25 @@
     <link>https://martinspace.top/zh/</link>
     <description>Recent content on Martin&#39;s space</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 15 Jun 2024 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从RNN到Transformers</title>
+      <link>https://martinspace.top/zh/nluplus/</link>
+      <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/nluplus/</guid>
+      <description>递归神经网络 简单的神经网络由三部分组成：输入，隐藏层，输出 RNN变体 LSTM GRU Transformers Self-Attention The fundamental operation of any transformer architecture is the self-attention operation 1. 自注意力机制是一个从序列到序列的操作，它</description>
+    </item>
+    
+    <item>
+      <title>从RNN到Transformers</title>
+      <link>https://martinspace.top/zh/rl-note/</link>
+      <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/rl-note/</guid>
+      <description>多臂老虎机问题(MAB) 问题定义 问题核心(Explore-exploit dilemma) 问题算法 $\epsilon$- greedy Action Selection Upper Confidence Bound (UCB) 马尔可夫决策过程(MDPs) 理论框架 核心数</description>
+    </item>
+    
     <item>
       <title>Llama.cpp本地CPU部署大模型</title>
       <link>https://martinspace.top/zh/llamacpp-tutorial/</link>
@@ -58,15 +76,6 @@
       
       <guid>https://martinspace.top/zh/front-end/</guid>
       <description>记录刷前端时遇到的知识点</description>
-    </item>
-    
-    <item>
-      <title>RNN-LSTM-GRU-Transformers</title>
-      <link>https://martinspace.top/zh/nluplus/</link>
-      <pubDate>Fri, 17 Mar 2023 17:39:49 +0000</pubDate>
-      
-      <guid>https://martinspace.top/zh/nluplus/</guid>
-      <description>递归神经网络</description>
     </item>
     
     <item>
