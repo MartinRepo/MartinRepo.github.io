@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>基础数据结构 | Martin&#39;s space</title>
+<meta name="keywords" content="Algorithm">
+<meta name="description" content="上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。 所以从基础数据结构">
+<meta name="author" content="Martin">
+<link rel="canonical" href="https://martinspace.top/zh/basic-data-structures/">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.94119a957ab6113f1e35765095ab83811d823504931248ce730a3ddc692561b3.css" integrity="sha256-lBGalXq2ET8eNXZQlauDgR2CNQSTEkjOcwo93GklYbM=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://martinspace.top/img/icebear.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/img/icebear.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/img/icebear.jpg">
+<link rel="apple-touch-icon" href="https://martinspace.top/icebear.jpg">
+<link rel="mask-icon" href="https://martinspace.top/icebear.jpg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://martinspace.top/zh/basic-data-structures/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+<script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="基础数据结构" />
+<meta property="og:description" content="上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。 所以从基础数据结构" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://martinspace.top/zh/basic-data-structures/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-03-17T17:39:49+00:00" />
+<meta property="article:modified_time" content="2023-03-17T17:39:49+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基础数据结构"/>
+<meta name="twitter:description" content="上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。 所以从基础数据结构"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "📒 文章",
+      "item": "https://martinspace.top/zh/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "🎓 本科生涯",
+      "item": "https://martinspace.top/zh/post/1liverpool/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "基础数据结构",
+      "item": "https://martinspace.top/zh/basic-data-structures/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "基础数据结构",
+  "name": "基础数据结构",
+  "description": "上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。 所以从基础数据结构",
+  "keywords": [
+    "Algorithm"
+  ],
+  "articleBody": "上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。\n所以从基础数据结构开始，重新系统学习算法，在这里记录学习的过程。\nStacks and Queue 非常简单的两个概念。栈就是后进先出，队列是先进先出。栈和队列都是依靠数组实现，只不过是用上了指针，使其效果看起来像是栈或队列。 比如弹出操作。数组A[1,2,3,4,5,6]，弹出位置6处的元素，并不是位置6真的在这个结构中消失了，而是定义了一个指针，当pop(A)的时候，将指针向前挪一位到5。\n栈中主要有三个方法：push（推入栈），pop（弹出栈），还有判断栈是否为空，因为栈为空了就不能进行pop操作了。\n伪代码也很好理解👇\nSTACK-EMPTY(S) // S.top表示栈顶元素，在数组的末尾。 if S.top==0 return true else return false PUSH(S, x) S.top=S.top+1 S[S.top]=x POP(S) if STACK-EMPTY(S) error \"underflow\" else S.top=S.top-1 return S[S.top+1] 队列\n队列和栈非常相似，也是一个数组。和栈不同的是，队列有两个指针，一个指向队列头部一个指向队列尾部（头部指向第一个元素，尾部指向的是最后一个元素的后面一个位置）。当插入一个元素时，队列的尾部+1，当删除一个元素时，队列的头部+1。 当队列的头和尾两个指针指向的索引位置相同时，队列为空，这是再想拿出来元素，就会underflow。当头部指针=尾部指针+1 或 头部=1，尾部=数组长度，那么队列就是满载的。这是想再插入数据，就会overflow。\n//这里暂时省略判断underflow和overflow的逻辑 // ENQUEUE 向队列中插入数据 ENQUEUE(Q, x) Q[Q.tail] = x if Q.tail == Q.length // 判断是否满载，满载把尾部索引设置回到头部，提示满载 Q.tail = 1 else Q.tail = Q.tail+1 //DEQUEUE 从队列中删除数据 DEQUEUE(Q) x = Q[Q.head] if Q.head==Q.length Q.head = 1 else Q.head = Q.head+1 return x 栈和队列的所有操作都是在O(1)时间内\nLinked lists 链表是一种将对象以线性顺序排列的数据结构。和数组不同，数组是以索引来定义线性顺序。而链表中的顺序是有每个对象上的指针决定的。现在使用的都是双向链表，包含前后(prev, next)两个指针，也就是说，要使列表保持完整，插入的时候prev和next要分别赋值一次和被赋值一次。当x.next为空时，说明x是链表的尾部元素，当x.prev为空时，说明x是链表的头部元素。\n链表还有单向链接的，这还分为有序和无序。还有循环链接的，就是头部元素的prev指针不指向空，而是指向尾部元素。\n//k表示key，就是节点的值，x表示整个节点 LIST-SEARCH(L, k) x = L.head while x is not NULL and x.key is not k x = x.next return x search的复杂度是Θ(n),因为最坏情况可能要遍历整个链表元素\n//插入操作是将x插在链表的头部，而不是尾部。 LIST-INSERT(L, x) x.next = L.head //原来链表的头部赋值到x.next if L.head is not NIL L.head.prev = x //把x赋值到链表头部.prev上，这样才完整 L.head = x //将头部设置成x x.prev = NIL //将x.prev设置为空 insert的复杂度为O(1)。不用过多解释了\n删除操作之前，应该调用search找到想要删除的key的位置。所以时间复杂度是Θ(n)，因为删除之前通常要search\nLIST-DELETE if x.prev is not NIL x.prev.next = x.next else L.head = x.next if x.next is not NIL x.next.prev = x.prev 对于删除操作，要多说一下关于x.prev.next = x.next。为什么不直接使用x=x.next?\n现在已知一个列表1-2-3-4-5，如果删除操作中代码是x=x.next，那么结果会变成1-2-4-4-5，我们想要的结果是1-2-4-5。这就说明3处的节点依然存在，并没有被跳过。而使用x.prev.next = x.next的意思是，将x.prev指向的节点的next位置，赋值给x.next节点。这样是将2和4两个节点跳过3连接起来了。\n",
+  "wordCount" : "1482",
+  "inLanguage": "zh",
+  "datePublished": "2023-03-17T17:39:49Z",
+  "dateModified": "2023-03-17T17:39:49Z",
+  "author":[{
+    "@type": "Person",
+    "name": "Martin"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://martinspace.top/zh/basic-data-structures/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Martin's space",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://martinspace.top/img/icebear.jpg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
+                <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
+                    height="35">Martin&#39;s space</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://martinspace.top/en/" title="English"
+                            aria-label="English">English</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://martinspace.top/zh/" title="🏠 主页">
+                    <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/archives/" title="📁 归档">
+                    <span>📁 归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/tags" title="🏷️ 标签">
+                    <span>🏷️ 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                    <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/about" title="💭 关于">
+                    <span>💭 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://martinspace.top/zh/">主页</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/">📒 文章</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/1liverpool/">🎓 本科生涯</a></div>
+    <h1 class="post-title">
+      基础数据结构
+    </h1>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建: 2023-03-17 | 更新: 2023-03-17 | 字数: 1482字 | 阅读时长: 3分钟 | 
+作者:Martin&nbsp;|&nbsp;标签: &nbsp;
+    <ul class="post-tags-meta">
+        <a href="https://martinspace.top/zh/tags/algorithm/">Algorithm</a>
+    </ul>
+
+
+    
+    </div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#stacks-and-queue" aria-label="Stacks and Queue">Stacks and Queue</a></li>
+                    <li>
+                        <a href="#linked-lists" aria-label="Linked lists">Linked lists</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+  <div class="post-content"><p>上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。</p>
+<p>所以从基础数据结构开始，重新系统学习算法，在这里记录学习的过程。</p>
+<h1 id="stacks-and-queue">Stacks and Queue<a hidden class="anchor" aria-hidden="true" href="#stacks-and-queue">#</a></h1>
+<p>非常简单的两个概念。栈就是后进先出，队列是先进先出。栈和队列都是依靠数组实现，只不过是用上了指针，使其效果看起来像是栈或队列。
+比如弹出操作。数组A[1,2,3,4,5,6]，弹出位置6处的元素，并不是位置6真的在这个结构中消失了，而是定义了一个指针，当pop(A)的时候，将指针向前挪一位到5。</p>
+<p>栈中主要有三个方法：push（推入栈），pop（弹出栈），还有判断栈是否为空，因为栈为空了就不能进行pop操作了。</p>
+<p>伪代码也很好理解👇</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">STACK-EMPTY(S)
+// S.top表示栈顶元素，在数组的末尾。
+if S.top==0
+    return true
+else return false
+
+PUSH(S, x)
+S.top=S.top+1
+S[S.top]=x
+
+POP(S)
+if STACK-EMPTY(S)
+    error &#34;underflow&#34;
+else S.top=S.top-1
+    return S[S.top+1]
+</code></pre></div><p><strong>队列</strong></p>
+<p>队列和栈非常相似，也是一个数组。和栈不同的是，队列有两个指针，一个指向队列头部一个指向队列尾部（头部指向第一个元素，尾部指向的是最后一个元素的后面一个位置）。当插入一个元素时，队列的尾部+1，当删除一个元素时，队列的头部+1。
+当队列的头和尾两个指针指向的索引位置相同时，队列为空，这是再想拿出来元素，就会underflow。当头部指针=尾部指针+1 或 头部=1，尾部=数组长度，那么队列就是满载的。这是想再插入数据，就会overflow。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">//这里暂时省略判断underflow和overflow的逻辑
+// ENQUEUE 向队列中插入数据
+ENQUEUE(Q, x)
+Q[Q.tail] = x
+if Q.tail == Q.length
+    // 判断是否满载，满载把尾部索引设置回到头部，提示满载
+    Q.tail = 1
+else Q.tail = Q.tail+1
+
+//DEQUEUE 从队列中删除数据
+DEQUEUE(Q)
+x = Q[Q.head]
+if Q.head==Q.length
+    Q.head = 1
+else Q.head = Q.head+1
+return x
+</code></pre></div><p>栈和队列的所有操作都是在O(1)时间内</p>
+<h1 id="linked-lists">Linked lists<a hidden class="anchor" aria-hidden="true" href="#linked-lists">#</a></h1>
+<p>链表是一种将对象以线性顺序排列的数据结构。和数组不同，数组是以索引来定义线性顺序。而链表中的顺序是有每个对象上的指针决定的。现在使用的都是双向链表，包含前后(prev, next)两个指针，也就是说，要使列表保持完整，插入的时候prev和next要分别赋值一次和被赋值一次。当x.next为空时，说明x是链表的尾部元素，当x.prev为空时，说明x是链表的头部元素。</p>
+<p>链表还有单向链接的，这还分为有序和无序。还有循环链接的，就是头部元素的prev指针不指向空，而是指向尾部元素。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">//k表示key，就是节点的值，x表示整个节点
+LIST-SEARCH(L, k)
+x = L.head
+while x is not NULL and x.key is not k
+    x = x.next
+return x
+</code></pre></div><p>search的复杂度是Θ(n),因为最坏情况可能要遍历整个链表元素</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">//插入操作是将x插在链表的头部，而不是尾部。
+LIST-INSERT(L, x)
+x.next = L.head //原来链表的头部赋值到x.next
+if L.head is not NIL
+    L.head.prev = x //把x赋值到链表头部.prev上，这样才完整
+L.head = x //将头部设置成x
+x.prev = NIL //将x.prev设置为空
+</code></pre></div><p>insert的复杂度为O(1)。不用过多解释了</p>
+<p>删除操作之前，应该调用search找到想要删除的key的位置。所以时间复杂度是Θ(n)，因为删除之前通常要search</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">LIST-DELETE
+if x.prev is not NIL
+    x.prev.next = x.next
+else L.head = x.next
+if x.next is not NIL
+    x.next.prev = x.prev
+</code></pre></div><p>对于删除操作，要多说一下关于x.prev.next = x.next。为什么不直接使用x=x.next?</p>
+<p>现在已知一个列表1-&gt;2-&gt;3-&gt;4-&gt;5，如果删除操作中代码是x=x.next，那么结果会变成1-&gt;2-&gt;4-&gt;4-&gt;5，我们想要的结果是1-&gt;2-&gt;4-&gt;5。这就说明3处的节点依然存在，并没有被跳过。而使用x.prev.next = x.next的意思是，将x.prev指向的节点的next位置，赋值给x.next节点。这样是将2和4两个节点跳过3连接起来了。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://martinspace.top/zh/tags/algorithm/">Algorithm</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://martinspace.top/zh/nluplus/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>RNN-LSTM-GRU-Transformers</span>
+  </a>
+  <a class="next" href="https://martinspace.top/zh/canonical-coins/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Canonical coins system</span>
+  </a>
+</nav>
+<script src="https://utteranc.es/client.js"
+        repo="oudushu/utterances"
+        issue-term="title"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+  </footer><script src="https://utteranc.es/client.js"
+    repo="MartinRepo/utterancesInblog"
+    issue-term="pathname"
+    label="Comment"
+    theme="preferred-color-scheme"
+    crossorigin="anonymous"
+    async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+        <br> 
+        
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
+    </span>
+    
+    <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv">
+        被访问了<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    <span id="busuanzi_container_site_uv">
+        迎接了<span id="busuanzi_value_site_uv"></span>位客人 (仅供参考，不准)
+    </span>
+    </div>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script></body>
+
+</html>

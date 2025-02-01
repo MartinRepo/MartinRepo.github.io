@@ -8,19 +8,19 @@
     <lastBuildDate>Fri, 30 Dec 2022 22:51:29 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git版本控制</title>
-      <link>https://martinspace.top/zh/git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</link>
+      <link>https://martinspace.top/zh/git-tag/</link>
       <pubDate>Fri, 30 Dec 2022 22:51:29 +0000</pubDate>
       
-      <guid>https://martinspace.top/zh/git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</guid>
+      <guid>https://martinspace.top/zh/git-tag/</guid>
       <description>贴标签命令实现版本控制</description>
     </item>
     
     <item>
       <title>代码上传至github</title>
-      <link>https://martinspace.top/zh/%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E8%87%B3github/</link>
+      <link>https://martinspace.top/zh/git/</link>
       <pubDate>Fri, 16 Dec 2022 16:04:33 +0000</pubDate>
       
-      <guid>https://martinspace.top/zh/%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E8%87%B3github/</guid>
+      <guid>https://martinspace.top/zh/git/</guid>
       <description>先在github建立一个远程仓库，可以全部是默认设置 全局声明git的用户认证信息 git config --global user.name &amp;#34;name&amp;#34; git config --global user.email &amp;#34;email@gmail.com&amp;#34; 其中name写自己的名字，email@g</description>
     </item>
     

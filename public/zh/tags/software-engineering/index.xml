@@ -8,10 +8,10 @@
     <lastBuildDate>Wed, 11 Jan 2023 20:47:53 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/software-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>High-level Petri Net(COMP201)</title>
-      <link>https://martinspace.top/zh/high-level-petri-netcomp201/</link>
+      <link>https://martinspace.top/zh/petri-net/</link>
       <pubDate>Wed, 11 Jan 2023 20:47:53 +0000</pubDate>
       
-      <guid>https://martinspace.top/zh/high-level-petri-netcomp201/</guid>
+      <guid>https://martinspace.top/zh/petri-net/</guid>
       <description>复（预）习过程中遇到Petri net，记录一下 Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通</description>
     </item>
     

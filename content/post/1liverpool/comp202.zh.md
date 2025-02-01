@@ -8,7 +8,7 @@ tags:
 - Algorithm
 description: "COMP202 笔记"
 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
-slug: ""
+slug: "comp202"
 comments: true
 showToc: true # 显示目录
 TocOpen: false # 自动展开目录

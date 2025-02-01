@@ -24,7 +24,7 @@ minify:
     # minifyOutput: true
 
 permalinks:
-  post: "/:title/"
+  post: "/:slug/"
   # post: "/:year/:month/:day/:title/"
 
 defaultContentLanguage: en # 最顶部首先展示的语言页面

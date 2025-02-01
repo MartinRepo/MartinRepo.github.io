@@ -8,28 +8,28 @@
     <lastBuildDate>Fri, 17 Mar 2023 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基础数据结构</title>
-      <link>https://martinspace.top/zh/%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <link>https://martinspace.top/zh/basic-data-structures/</link>
       <pubDate>Fri, 17 Mar 2023 17:39:49 +0000</pubDate>
       
-      <guid>https://martinspace.top/zh/%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <guid>https://martinspace.top/zh/basic-data-structures/</guid>
       <description>上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。 所以从基础数据结构</description>
     </item>
     
     <item>
       <title>Canonical coins system</title>
-      <link>https://martinspace.top/zh/canonical-coins-system/</link>
+      <link>https://martinspace.top/zh/canonical-coins/</link>
       <pubDate>Thu, 09 Mar 2023 17:39:49 +0000</pubDate>
       
-      <guid>https://martinspace.top/zh/canonical-coins-system/</guid>
+      <guid>https://martinspace.top/zh/canonical-coins/</guid>
       <description>今天上算法课的tutorial，主要是讲贪婪算法。老师在课上提到了canonical coins system，但并没有深入讲解。回来看了一篇论文，整个</description>
     </item>
     
     <item>
       <title>算法(COMP202)</title>
-      <link>https://martinspace.top/zh/%E7%AE%97%E6%B3%95comp202/</link>
+      <link>https://martinspace.top/zh/comp202/</link>
       <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
       
-      <guid>https://martinspace.top/zh/%E7%AE%97%E6%B3%95comp202/</guid>
+      <guid>https://martinspace.top/zh/comp202/</guid>
       <description>COMP202 笔记</description>
     </item>
     

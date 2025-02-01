@@ -8,10 +8,10 @@
     <lastBuildDate>Sun, 05 Feb 2023 08:42:27 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/finance/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>金融市场交易(COMP226)</title>
-      <link>https://martinspace.top/zh/%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E4%BA%A4%E6%98%93comp226/</link>
+      <link>https://martinspace.top/zh/comp226/</link>
       <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
       
-      <guid>https://martinspace.top/zh/%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E4%BA%A4%E6%98%93comp226/</guid>
+      <guid>https://martinspace.top/zh/comp226/</guid>
       <description>R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor &amp;gt; gender &amp;lt;- fa</description>
     </item>
     

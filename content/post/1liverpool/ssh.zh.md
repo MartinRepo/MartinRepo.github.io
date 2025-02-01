@@ -10,7 +10,7 @@ tags:
 - 服务器
 description: ""
 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
-slug: ""
+slug: "ssh-bug-fix"
 comments: true
 showToc: true # 显示目录
 TocOpen: true # 自动展开目录

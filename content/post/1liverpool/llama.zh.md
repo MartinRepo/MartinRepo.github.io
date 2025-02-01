@@ -1,5 +1,5 @@
 ---
-title: "Llama3.cpp本地CPU部署大模型"
+title: "Llama.cpp本地CPU部署大模型"
 date: 2024-06-15T17:39:49Z
 draft: false
 author: "Martin"
@@ -7,7 +7,7 @@ tags:
 - 大模型
 description: ""
 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
-slug: ""
+slug: "llamacpp-tutorial"
 comments: true
 showToc: true # 显示目录
 TocOpen: true # 自动展开目录

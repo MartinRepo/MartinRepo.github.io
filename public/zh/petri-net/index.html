@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>High-level Petri Net(COMP201) | Martin&#39;s space</title>
+<meta name="keywords" content="software engineering">
+<meta name="description" content="复（预）习过程中遇到Petri net，记录一下 Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通">
+<meta name="author" content="Martin">
+<link rel="canonical" href="https://martinspace.top/zh/petri-net/">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.94119a957ab6113f1e35765095ab83811d823504931248ce730a3ddc692561b3.css" integrity="sha256-lBGalXq2ET8eNXZQlauDgR2CNQSTEkjOcwo93GklYbM=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://martinspace.top/img/icebear.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/img/icebear.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/img/icebear.jpg">
+<link rel="apple-touch-icon" href="https://martinspace.top/icebear.jpg">
+<link rel="mask-icon" href="https://martinspace.top/icebear.jpg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://martinspace.top/zh/petri-net/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+<script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="High-level Petri Net(COMP201)" />
+<meta property="og:description" content="复（预）习过程中遇到Petri net，记录一下 Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://martinspace.top/zh/petri-net/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-01-11T20:47:53+00:00" />
+<meta property="article:modified_time" content="2023-01-11T20:47:53+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="High-level Petri Net(COMP201)"/>
+<meta name="twitter:description" content="复（预）习过程中遇到Petri net，记录一下 Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "📒 文章",
+      "item": "https://martinspace.top/zh/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "🎓 本科生涯",
+      "item": "https://martinspace.top/zh/post/1liverpool/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "High-level Petri Net(COMP201)",
+      "item": "https://martinspace.top/zh/petri-net/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "High-level Petri Net(COMP201)",
+  "name": "High-level Petri Net(COMP201)",
+  "description": "复（预）习过程中遇到Petri net，记录一下 Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通",
+  "keywords": [
+    "software engineering"
+  ],
+  "articleBody": "复（预）习过程中遇到Petri net，记录一下\nPetri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通常被用于建立离散分布式系统。\nPetri Net组成元素\n place: 通常用圆圈表示 token: 在place中，通常用实心点表示 transition: 通常用直角矩形或实心矩形表示 arc: 通常是带箭头的一条线，权重可以通过标数字在线上，或者画出几条arc来表示。  flowchart LR brid1((...)) id1((...))==2==rr id2((..))--br id2((..))==2==bb bb--id2((..)) rr--id2((..))   找出上述Petri net中reachable state和deadlock state的数量\nflowchart TD id1(3, 2)==bb/br==id2(3, 1) id1(3, 2)==rr==id3(1, 3) id2(3, 1)==rr==id4(1, 2) id3(1, 3)==bb/br==id4(1, 2) id3(1, 3)==br==id5(3, 0) id4(1, 2)==bb/br==id6(1, 1) id5(3, 0)==rr==id6(1, 1) id6(1, 1)==br==id7(1, 0)   由上图可知，这里有7个reachable states，一个死锁状态，当左侧place中没有token并且右侧place只有1个token时，rr, bb, br都不是enabled的状态，因此都不能被fire。所以只有一个死锁状态。\n",
+  "wordCount" : "360",
+  "inLanguage": "zh",
+  "datePublished": "2023-01-11T20:47:53Z",
+  "dateModified": "2023-01-11T20:47:53Z",
+  "author":[{
+    "@type": "Person",
+    "name": "Martin"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://martinspace.top/zh/petri-net/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Martin's space",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://martinspace.top/img/icebear.jpg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
+                <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
+                    height="35">Martin&#39;s space</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://martinspace.top/en/" title="English"
+                            aria-label="English">English</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://martinspace.top/zh/" title="🏠 主页">
+                    <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/archives/" title="📁 归档">
+                    <span>📁 归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/tags" title="🏷️ 标签">
+                    <span>🏷️ 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                    <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://martinspace.top/zh/about" title="💭 关于">
+                    <span>💭 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://martinspace.top/zh/">主页</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/">📒 文章</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/1liverpool/">🎓 本科生涯</a></div>
+    <h1 class="post-title">
+      High-level Petri Net(COMP201)
+    </h1>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建: 2023-01-11 | 更新: 2023-01-11 | 字数: 360字 | 阅读时长: 1分钟 | 
+作者:Martin&nbsp;|&nbsp;标签: &nbsp;
+    <ul class="post-tags-meta">
+        <a href="https://martinspace.top/zh/tags/software-engineering/">software engineering</a>
+    </ul>
+
+
+    
+    </div>
+  </header> 
+  <div class="post-content"><p>复（预）习过程中遇到Petri net，记录一下</p>
+<p>Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通常被用于建立离散分布式系统。</p>
+<p>Petri Net组成元素</p>
+<ul>
+<li>place: 通常用圆圈表示</li>
+<li>token: 在place中，通常用实心点表示</li>
+<li>transition: 通常用直角矩形或实心矩形表示</li>
+<li>arc: 通常是带箭头的一条线，权重可以通过标数字在线上，或者画出几条arc来表示。</li>
+</ul>
+<div align="center">
+<div class="mermaid">
+    
+flowchart LR
+br<-->id1((...))
+id1((...))==2==>rr
+id2((..))-->br
+id2((..))==2==>bb
+bb-->id2((..))
+rr-->id2((..))
+
+  </div>
+</div>
+<p>找出上述Petri net中reachable state和deadlock state的数量</p>
+<div align="center">
+<div class="mermaid">
+    
+flowchart TD
+id1(3, 2)==bb/br==>id2(3, 1)
+id1(3, 2)==rr==>id3(1, 3)
+id2(3, 1)==rr==>id4(1, 2)
+id3(1, 3)==bb/br==>id4(1, 2)
+id3(1, 3)==br==>id5(3, 0)
+id4(1, 2)==bb/br==>id6(1, 1)
+id5(3, 0)==rr==>id6(1, 1)
+id6(1, 1)==br==>id7(1, 0)
+
+  </div>
+</div>
+<p>由上图可知，这里有7个reachable states，一个死锁状态，当左侧place中没有token并且右侧place只有1个token时，rr, bb, br都不是enabled的状态，因此都不能被fire。所以只有一个死锁状态。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://martinspace.top/zh/tags/software-engineering/">software engineering</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://martinspace.top/zh/comp226/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>金融市场交易(COMP226)</span>
+  </a>
+  <a class="next" href="https://martinspace.top/zh/leetcode-note/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Leetcode每日一题</span>
+  </a>
+</nav>
+<script src="https://utteranc.es/client.js"
+        repo="oudushu/utterances"
+        issue-term="title"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+  </footer><script src="https://utteranc.es/client.js"
+    repo="MartinRepo/utterancesInblog"
+    issue-term="pathname"
+    label="Comment"
+    theme="preferred-color-scheme"
+    crossorigin="anonymous"
+    async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+        <br> 
+        
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
+    </span>
+    
+    <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv">
+        被访问了<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    <span id="busuanzi_container_site_uv">
+        迎接了<span id="busuanzi_value_site_uv"></span>位客人 (仅供参考，不准)
+    </span>
+    </div>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script></body>
+
+</html>

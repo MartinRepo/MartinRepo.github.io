@@ -8,10 +8,10 @@
     <lastBuildDate>Tue, 06 Dec 2022 22:34:10 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>重置服务器系统后，ssh连接失败</title>
-      <link>https://martinspace.top/zh/%E9%87%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E5%90%8Essh%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/</link>
+      <link>https://martinspace.top/zh/ssh-bug-fix/</link>
       <pubDate>Tue, 06 Dec 2022 22:34:10 +0000</pubDate>
       
-      <guid>https://martinspace.top/zh/%E9%87%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E5%90%8Essh%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/</guid>
+      <guid>https://martinspace.top/zh/ssh-bug-fix/</guid>
       <description>重置服务器系统后。当使用远程ssh连接后，会显示连接失败。 这里直接给出解决办法(仅以macOS为例): 打开终端 输入 vim ~/.ssh/known_hosts vim会打开该文件，向</description>
     </item>
     

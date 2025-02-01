@@ -8,10 +8,10 @@
     <lastBuildDate>Tue, 16 Nov 2021 20:30:41 +0100</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>对汇编语言中DF标志，CLD，STD，REP等指令的理解</title>
-      <link>https://martinspace.top/zh/%E5%AF%B9%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E4%B8%ADdf%E6%A0%87%E5%BF%97cldstdrep%E7%AD%89%E6%8C%87%E4%BB%A4%E7%9A%84%E7%90%86%E8%A7%A3/</link>
+      <link>https://martinspace.top/zh/assemble/</link>
       <pubDate>Tue, 16 Nov 2021 20:30:41 +0100</pubDate>
       
-      <guid>https://martinspace.top/zh/%E5%AF%B9%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E4%B8%ADdf%E6%A0%87%E5%BF%97cldstdrep%E7%AD%89%E6%8C%87%E4%BB%A4%E7%9A%84%E7%90%86%E8%A7%A3/</guid>
+      <guid>https://martinspace.top/zh/assemble/</guid>
       <description>看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！ 首先，DF作为标志寄存</description>
     </item>
     

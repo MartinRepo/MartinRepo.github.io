@@ -1,5 +1,5 @@
 ---
-title: "Scotland"
+title: "苏格兰"
 date: 2022-12-22T21:16:51Z
 draft: false
 author: ["Martin"]
@@ -10,7 +10,7 @@ tags:
 - 旅行
 description: ""
 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
-slug: ""
+slug: "scotland"
 comments: true
 showToc: true # 显示目录
 TocOpen: true # 自动展开目录
