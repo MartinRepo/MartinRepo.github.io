@@ -13,7 +13,7 @@
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
       
       <guid>https://martinspace.top/zh/nluplus/</guid>
-      <description>递归神经网络 简单的神经网络由三部分组成：输入，隐藏层，输出 RNN变体 LSTM GRU Transformers Self-Attention The fundamental operation of any transformer architecture is the self-attention operation 1. 自注意力机制是一个从序列到序列的操作，它</description>
+      <description>递归神经网络 简单的神经网络由三部分组成：输入，隐藏层，输出 深度神经网络（DNN）一般是增加隐藏层的数量。 递归神经网络（RNN）更加关注的是隐</description>
     </item>
     
   </channel>

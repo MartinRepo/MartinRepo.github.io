@@ -13,7 +13,16 @@
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
       
       <guid>https://martinspace.top/zh/nluplus/</guid>
-      <description>递归神经网络 简单的神经网络由三部分组成：输入，隐藏层，输出 RNN变体 LSTM GRU Transformers Self-Attention The fundamental operation of any transformer architecture is the self-attention operation 1. 自注意力机制是一个从序列到序列的操作，它</description>
+      <description>递归神经网络 简单的神经网络由三部分组成：输入，隐藏层，输出 深度神经网络（DNN）一般是增加隐藏层的数量。 递归神经网络（RNN）更加关注的是隐</description>
+    </item>
+    
+    <item>
+      <title>共形预测理论研究</title>
+      <link>https://martinspace.top/zh/uq-cp/</link>
+      <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/uq-cp/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -22,7 +31,16 @@
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
       
       <guid>https://martinspace.top/zh/rl-note/</guid>
-      <description>多臂老虎机问题(MAB) 问题定义 问题核心(Explore-exploit dilemma) 问题算法 $\epsilon$- greedy Action Selection Upper Confidence Bound (UCB) 马尔可夫决策过程(MDPs) 理论框架 核心数</description>
+      <description>多臂老虎机问题(MAB) 符号&amp;amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，</description>
+    </item>
+    
+    <item>
+      <title>微调加速研究</title>
+      <link>https://martinspace.top/zh/mlsys-ft/</link>
+      <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/mlsys-ft/</guid>
+      <description>PEFT LoRA QLoRA 机器学习系统中有关微调的工作</description>
     </item>
     
     <item>
