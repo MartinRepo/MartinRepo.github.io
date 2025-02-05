@@ -28,6 +28,9 @@ mermaid: true
 
 递归神经网络（RNN）更加关注的是隐藏层中每个神经元在时间上的成长与进步。
 
+# 穿越时间的反向传播
+Back Propogation Through Time
+
 # RNN变体
 ## LSTM
 
