@@ -28,15 +28,159 @@ mermaid: true
 
 递归神经网络（RNN）更加关注的是隐藏层中每个神经元在时间上的成长与进步。
 
-# 穿越时间的反向传播
-Back Propogation Through Time
+## Back Propogation Through Time
+在普通的前馈神经网络 (feed-forward nn) 中，我们可以直接应用反向传播来计算梯度并更新权重。但是在 RNN 这种具有时间依赖的网络中，当前的输出不仅依赖于当前输入，还依赖于过去的隐藏状态。这就导致了参数的梯度计算需要沿时间维度进行传播，而 BPTT 正是解决这一问题的方法。
+数学推导如下：
 
-# RNN变体
-## LSTM
+**(1) 设定符号**
+- 输入序列：$ X = ${$x_1, x_2, ..., x_T$}
+- 输出序列：$ Y = ${$y_1, y_2, ..., y_T$}
+- 隐藏状态：$ h_t $ 表示时间步 $ t $ 的隐藏状态
+- 参数：
+  - $ W_{xh} $：输入到隐藏层的权重
+  - $ W_{hh} $：隐藏层到隐藏层的权重
+  - $ W_{hy} $：隐藏层到输出的权重
+- 损失函数：$ L(Y, \hat{Y}) $（如 MSE 或交叉熵）
 
-## GRU
+**(2) RNN 的前向传播**
+在 RNN 中，每个时间步的计算如下：
+$$
+h_t = f(W_{hh} h_{t-1} + W_{xh} x_t)
+$$
+$$
+\hat{y} _ t = g(W_{hy} h_t)
+$$
+其中：
+- $ f $ 是隐藏状态的激活函数（如 tanh 或 ReLU）
+- $ g $ 是输出层的激活函数（如 softmax）
+
+总损失为：
+$
+L = \sum_{t=1}^{T} L_t(y_t, \hat{y}_t)
+$
+
+**(3) 反向传播 Through Time**
+1. **计算损失对输出的梯度**
+   $
+   \frac{\partial L}{\partial \hat{y} _ t} = \nabla_{\hat{y}_t} L_t
+   $
+   计算损失相对于输出的梯度，这部分和普通 BP 计算类似。
+
+2. **计算损失对隐藏状态的梯度**
+   $
+   \frac{\partial L}{\partial h_t} = \frac{\partial L_t}{\partial h_t} + \frac{\partial L_{t+1}}{\partial h_t} + \frac{\partial L_{t+2}}{\partial h_t} + \dots
+   $
+   由于隐藏状态 $ h_t $ 会影响后续的所有时间步，因此梯度要沿时间方向**反向累积**。
+
+3. **计算参数的梯度**
+   - **对隐藏状态的权重 $ W_{hh} $**：
+     $
+     \frac{\partial L}{\partial W_{hh}} = \sum_{t=1}^{T} \frac{\partial L}{\partial h_t} \cdot \frac{\partial h_t}{\partial W_{hh}}
+     $
+   - **对输入权重 $ W_{xh} $**：
+     $
+     \frac{\partial L}{\partial W_{xh}} = \sum_{t=1}^{T} \frac{\partial L}{\partial h_t} \cdot \frac{\partial h_t}{\partial W_{xh}}
+     $
+   - **对输出权重 $ W_{hy} $**：
+     $
+     \frac{\partial L}{\partial W _ {hy}} = \sum _ {t=1}^{T} \frac{\partial L}{\partial \hat{y} _ t} \cdot \frac{\partial \hat{y} _ t}{\partial W_{hy}}
+     $
+
+4. **反向传播回传梯度**
+   - 计算 **梯度传播路径**，从损失 $ L $ 反向通过时间步 $ T \to 1 $ 逐步更新参数。
+   - 使用 **梯度下降（SGD, Adam）** 来更新权重。
+
+显而易见，BPTT存在两个致命问题：
+- 第一个是梯度消失或爆炸：当权重矩阵的范数$||W_{hh}||$小于1时，随着时间步的增加，梯度指数级衰减，导致早期时间步的梯度几乎为 0，无法有效训练；
+    - 可能的解决方案：使用梯度裁剪（Gradient Clipping） 来限制梯度大小；使用长短时记忆网络（LSTM）或 门控循环单元（GRU） 代替 RNN。
+- 第二个问题在于计算开销：BPTT 需要存储所有时间步的隐藏状态，因此当序列很长是，训练效率低。
+    - 可能的解决方案：Truncated BPTT，仅在固定窗口大小内进行梯度传播，而不回溯整个序列。
+## BPTT Variation
+### Truncted BPTT
+- **策略**：不展开整个时间序列，而是仅在 **固定窗口大小 $ k $** 内进行反向传播（如$ k=10 $）。
+- **优点**：减少计算量，适用于长序列训练。
+- **缺点**：可能导致长程依赖信息丢失。
+### Online BPTT
+- 计算一个时间步的梯度 **立即更新参数**（类似在线学习）。
+- 适用于 **流式数据处理（如语音识别）**。
+
+## RNN Variation
+LSTM 和 GRU 是RNN的两种主要变体，它们被设计用于解决传统RNN的梯度消失和梯度爆炸问题，从而更好地捕捉长程依赖（long-term dependencies）。LSTM和GRU可以通过门控机制（Gates） 控制信息流动，能够选择性保留或遗忘信息，有效缓解梯度消失问题，从而更好地学习长程依赖。
+### LSTM
+**(1) 结构**
+
+LSTM 主要引入了**三个门**（Gates）和**一个记忆单元（Cell State, $ C_t $）**：
+- **遗忘门（Forget Gate）**：决定**丢弃**多少过去的信息。
+- **输入门（Input Gate）**：决定**更新**多少新信息到记忆单元。
+- **输出门（Output Gate）**：决定**输出**多少隐藏状态。
+
+**完整计算流程**：
+$$
+f_t = \sigma(W_f [h_{t-1}, x_t] + b_f)
+$$
+$$
+i_t = \sigma(W_i [h_{t-1}, x_t] + b_i)
+$$
+$$
+\tilde{C} _ t = \tanh(W_c [h_{t-1}, x_t] + b_c)
+$$
+$$
+C _ t = f _ t \odot C _ {t-1} + i _ t \odot \tilde{C} _ t
+$$
+$$
+o_t = \sigma(W_o [h_{t-1}, x_t] + b_o)
+$$
+$$
+h_t = o_t \odot \tanh(C_t)
+$$
+
+**(2) 详细解释**
+- **遗忘门 $ f_t $**：控制是否遗忘过去的记忆。
+- **输入门 $ i_t $**：控制是否写入新的信息。
+- **候选记忆 $ \tilde{C}_t $**：当前时间步的新信息。
+- **记忆单元 $ C_t $**：更新后的长程记忆，**信息可以直接在时间轴上流动，不易丢失**。
+- **输出门 $ o_t $**：决定隐藏状态 $ h_t $ 的输出。
+
+> $ C_t $ 直接通过加法连接，使得梯度流动不会因多次乘法而消失。
+### GRU
+GRU 是 LSTM 的简化版本，去掉了独立的记忆单元 $ C_t $，仅使用隐藏状态 $ h_t $ 作为存储信息的介质。
+
+**(1) 结构**
+GRU 主要有**两个门**：
+- **重置门（Reset Gate）**：控制如何结合新的输入和过去的隐藏状态。
+- **更新门（Update Gate）**：控制多少过去的信息保留，多少新信息加入。
+
+**完整计算流程**：
+$$
+r_t = \sigma(W_r [h_{t-1}, x_t] + b_r)
+$$
+$$
+z_t = \sigma(W_z [h_{t-1}, x_t] + b_z)
+$$
+$$
+\tilde{h} _ t = \tanh(W_h [r_t \odot h_{t-1}, x_t] + b_h)
+$$
+$$
+h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h} _ t
+$$
+
+**(2) 详细解释**
+- **重置门 $ r_t $**：决定**是否遗忘**过去的隐藏状态。
+- **更新门 $ z_t $**：决定**新旧信息的混合比例**，类似 LSTM 的输入门和遗忘门的结合。
+- **候选状态 $ \tilde{h}_t $**：新的信息。
+- **最终隐藏状态 $ h_t $**：
+  - 当 $ z_t $ 逼近 1：当前状态 **接近新信息**。
+  - 当 $ z_t $ 逼近 0：当前状态 **保留过去的隐藏状态**。
+
+> GRU 用更新门合并了 LSTM 的输入门和遗忘门，因此计算更简单。
 
 # Transformers
+虽然 LSTM 和 GRU 仍然被广泛使用，但现代NLP任务大多采用 **Transformer**（基于自注意力机制），因为：
+- Transformer **并行计算** 性能更强，而 LSTM/GRU 依赖序列处理，无法并行。
+- Transformer 通过 **Self-Attention** 直接建模长程依赖，而LSTM/GRU仍然有一定信息衰减问题。
+
+但在语音处理、时间序列预测等任务中，LSTM/GRU仍然具有较好的表现。
+
 ## Self-Attention
 > The fundamental operation of any transformer architecture is the self-attention operation [^1].
 
@@ -100,6 +244,26 @@ $$
 从而防止输入值过大，使 softmax 函数输出的梯度保持稳定，提高训练效率。这样缩放的原因在于 **高维向量的欧几里得长度随着维度 $ k $ 增大而增大**，通过除以 $\sqrt{k}$，可以消除这种放大效应，使不同维度的计算结果保持在合理范围内，从而更稳定地学习注意力权重。
 
 ## Multi-head Attention
+在Self-Attention机制中，每个单词都可以与句子中的其他单词建立关系。然而，在标准的单头注意力（Single-Head Attention）机制下，一个单词只能用一个注意力分布来表示它与所有其他单词的关系。这就导致了一个问题：单个词可能在不同的上下文中承担不同的语义角色，但单头注意力无法区分这些角色。例如Mary gave roses to susan. 在 single-head attention 机制中，所有这些信息都会被简单地加权求和，而不会分别处理不同的语义关系。这意味着，"Mary" 和 "Susan" 都会影响 "gave" 的表示，但它们的影响方式是相同的，无法区分"施事者" 和 "受益者" 的不同语义。
+
+多头注意力如何解决这个问题？
+多头注意力（Multi-Head Attention） 通过使用多个独立的注意力头（attention heads） 来提供更高的表达能力。具体来说,每个注意力头（head）具有自己独立的查询、键和值变换矩阵：$W_q^r, W_k^r, W_v^r$，其中$r$表示不同的注意力头。对于输入$x_i$，每个注意力头都会产生一个输出向量$y_i^r$，把这些向量拼接起来，然后通过一个线性变换把维度降到k。
+
+## 什么是Transformer?
+> Any architecture designed to process a connected set of units—such as the tokens in a sequence or the pixels in an image—where the only interaction between units is through self-attention.
+
+下面是一个比较基础的架构
+![Transoformer](/img/nluplus/transformer_block.png)
+
+## BERT
+> BERT - Bidirectional Embedding Representation Transformer
+
+BERT与GPT架构的区别
+
+# Parsing
+## Decoding with LLMs
+## Neural Parsing
+## Unsupervised Parsing
 
 # References
 [^1]: ‘Transformers from scratch | peterbloem.nl’. Accessed: Feb. 01, 2025. [Online]. Available: https://peterbloem.nl/blog/transformers
