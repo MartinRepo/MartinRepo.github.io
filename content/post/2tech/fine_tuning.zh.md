@@ -26,9 +26,18 @@ mermaid: true
 做了一些初步的调研，脑袋里稍有想法。微调加速可以从两个方面入手，一个是加速训练过程，一个是加速推理过程。看起来加速推理过程要比加速训练受欢迎的多（或许是为了用户体验吧）。而加速训练（例如高速加载训练数据）的工作却寥寥无几（可能是huggingface的datasets太过强大？也可能是我搜索文章的方式不对）。
 
 # 微调在调什么？
-LoRA操作是在hidden layer中添加一些小矩阵层（这两层的连接做的是加法）。输入经过一遍神经网络会产生一个输出，这个输出被用来和期望的输出做比较得出一个损失，然后将这个损失梯度下降反向传播回这个网络，但是在这个反向传播的过程中，原来的hidden layer参数不会再更新，更新的只有加入的LoRA层。反复训练最终得到loRA adapter。
+- 全参数微调（FPFT）：
+- 参数高效微调（PEFT）: 这里主要指LoRA。LoRA操作是在hidden layer中添加一些小矩阵层（这两层的连接做的是加法）。输入经过一遍神经网络会产生一个输出，这个输出被用来和期望的输出做比较得出一个损失，然后将这个损失梯度下降反向传播回这个网络，但是在这个反向传播的过程中，原来的hidden layer参数不会再更新，更新的只有加入的LoRA层。反复训练最终得到loRA adapter。
 
-# 微调技术的前沿工作（系统级别）
+# 微调加速的前沿工作（FPFT）
+## RLHF
+
+## SFT
+
+# 数据加速的前沿工作
+## DataStreaming
+
+# 微调加速的前沿工作（PEFT）
 Huggingface PEFT -> Punica -> S-LoRA -> dLoRA
 ## [dLoRA](#ref-1)
 dLoRA 通过动态管理 LoRA adapter和优化推理任务的调度策略，来提升 LLM 的推理效率。他们发现LoRA adapter的推理服务主要面临计算资源利用率低和负载不均衡两个核心挑战。因此如何高效管理多个LoRA adapter成为一个有趣的问题。
@@ -66,9 +75,6 @@ ILP（整数线性规划）用于优化requests-adapter的迁移策略，但求�
 S-LoRA是一种大规模部署LoRA adapters的技术。不涉及merged和unmerged模式之间的调度，它就是用Unmerged模式。S-LoRA关注的点在存储方式。他们提出Unified Paging，压榨显存，使单个GPU能为上千个adapter服务。
 
 ## Punica
-
-# 微调技术的前沿工作（算法级别）
-## [QLoRA]()
 
 # References
 <a id="ref-1"></a>

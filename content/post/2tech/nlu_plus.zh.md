@@ -109,7 +109,7 @@ LSTM 和 GRU 是RNN的两种主要变体，它们被设计用于解决传统RNN�
 ### LSTM
 **(1) 结构**
 
-LSTM 主要引入了**三个门**（Gates）和**一个记忆单元（Cell State, $ C_t $）**：
+LSTM 主要引入了三个Gates和一个记忆单元（Cell State, $ C_t $）：
 - **遗忘门（Forget Gate）**：决定**丢弃**多少过去的信息。
 - **输入门（Input Gate）**：决定**更新**多少新信息到记忆单元。
 - **输出门（Output Gate）**：决定**输出**多少隐藏状态。
