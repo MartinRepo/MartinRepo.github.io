@@ -6,7 +6,16 @@
     <description>Recent content on Martin&#39;s space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 01 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing</title>
+      <link>https://martinspace.top/zh/dmrl-survey/</link>
+      <pubDate>Sun, 09 Feb 2025 10:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/dmrl-survey/</guid>
+      <description>欢迎引用 🎉</description>
+    </item>
+    
     <item>
       <title>从RNN到Transformers</title>
       <link>https://martinspace.top/zh/nluplus/</link>
@@ -32,6 +41,15 @@
       
       <guid>https://martinspace.top/zh/rl-note/</guid>
       <description>多臂老虎机问题(MAB) 符号&amp;amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，</description>
+    </item>
+    
+    <item>
+      <title>数据分析</title>
+      <link>https://martinspace.top/zh/data-analysis/</link>
+      <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/data-analysis/</guid>
+      <description>记录一些基础方法 时间序列 可视化三种时间序列 Brownian motion (stochastic process) Lorenz attractor (chaotic system) Lotka-Volterra system (deterministic system of differential equations) 随机过程是一种非确定性的过程，即其未来状态依赖于概率分布，无法通过确</description>
     </item>
     
     <item>

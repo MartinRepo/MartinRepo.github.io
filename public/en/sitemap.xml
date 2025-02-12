@@ -3,10 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://martinspace.top/en/post_en/tech_en/</loc>
-    <lastmod>2023-11-05T22:31:02+00:00</lastmod>
+    <lastmod>2025-02-09T10:39:49+00:00</lastmod>
   </url><url>
     <loc>https://martinspace.top/en/post_en/</loc>
-    <lastmod>2023-11-05T22:31:02+00:00</lastmod>
+    <lastmod>2025-02-09T10:39:49+00:00</lastmod>
+  </url><url>
+    <loc>https://martinspace.top/en/tags/diffusion-models/</loc>
+    <lastmod>2025-02-09T10:39:49+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://martinspace.top/zh/tags/diffusion-models/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://martinspace.top/en/tags/diffusion-models/"
+                />
+  </url><url>
+    <loc>https://martinspace.top/en/</loc>
+    <lastmod>2025-02-09T10:39:49+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://martinspace.top/zh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://martinspace.top/en/"
+                />
+  </url><url>
+    <loc>https://martinspace.top/en/tags/preference-alignment/</loc>
+    <lastmod>2025-02-09T10:39:49+00:00</lastmod>
+  </url><url>
+    <loc>https://martinspace.top/en/post_en/tech_en/dmrl-survey/</loc>
+    <lastmod>2025-02-09T10:39:49+00:00</lastmod>
+  </url><url>
+    <loc>https://martinspace.top/en/tags/reinforcement-learning/</loc>
+    <lastmod>2025-02-09T10:39:49+00:00</lastmod>
+  </url><url>
+    <loc>https://martinspace.top/en/tags/</loc>
+    <lastmod>2025-02-09T10:39:49+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://martinspace.top/zh/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://martinspace.top/en/tags/"
+                />
   </url><url>
     <loc>https://martinspace.top/en/tags/algorithm/</loc>
     <lastmod>2023-11-05T22:31:02+00:00</lastmod>
@@ -23,32 +71,6 @@
   </url><url>
     <loc>https://martinspace.top/en/post_en/tech_en/kattis/</loc>
     <lastmod>2023-11-05T22:31:02+00:00</lastmod>
-  </url><url>
-    <loc>https://martinspace.top/en/</loc>
-    <lastmod>2023-11-05T22:31:02+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://martinspace.top/zh/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://martinspace.top/en/"
-                />
-  </url><url>
-    <loc>https://martinspace.top/en/tags/</loc>
-    <lastmod>2023-11-05T22:31:02+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://martinspace.top/zh/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://martinspace.top/en/tags/"
-                />
   </url><url>
     <loc>https://martinspace.top/en/tags/java/</loc>
     <lastmod>2023-02-04T22:31:02+00:00</lastmod>

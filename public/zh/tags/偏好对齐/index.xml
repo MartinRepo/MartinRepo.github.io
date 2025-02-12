@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>偏好对齐 on Martin&#39;s space</title>
+    <link>https://martinspace.top/zh/tags/%E5%81%8F%E5%A5%BD%E5%AF%B9%E9%BD%90/</link>
+    <description>Recent content in 偏好对齐 on Martin&#39;s space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 09 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E5%81%8F%E5%A5%BD%E5%AF%B9%E9%BD%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing</title>
+      <link>https://martinspace.top/zh/dmrl-survey/</link>
+      <pubDate>Sun, 09 Feb 2025 10:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/dmrl-survey/</guid>
+      <description>欢迎引用 🎉</description>
+    </item>
+    
+  </channel>
+</rss>
