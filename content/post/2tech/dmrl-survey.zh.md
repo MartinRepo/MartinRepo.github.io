@@ -18,6 +18,7 @@ disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true #顶部显示当前路径
 cover:
     image: "/img/dmrl-survey.png"
+    hidden: true
     caption: ""
     alt: ""
     relative: true

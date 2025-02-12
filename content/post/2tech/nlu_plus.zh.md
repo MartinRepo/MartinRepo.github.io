@@ -262,8 +262,77 @@ BERT与GPT架构的区别
 
 # Parsing
 ## Decoding with LLMs
+> One naturally wonders if the problem of translation could conceivably be treated as a problem in cryptography. When I look at an article in Russian, I say: ’This is really written in English, but it has been coded in some strange symbols. I will now proceed to decode.
+
+**Terminology: continuation - 补全**
+
+我们如何生成the most probable continuation?
+$$
+\arg\max_{w_1, ..., w_n} p(w_1, ..., w_n | \text{prefix})
+$$
+如何求解？
+- **遍历所有可能的续写**，计算它们的概率，然后选择概率最大的那个。  但在自然语言处理中，可能的序列数量是**指数级增长**的，所以这种方法通常**不可行**。
+- 另一种策略是**逐步生成**，即每一步选择**当前最优**的下一个单词（或 top-k 选项）。这种方法更实用，比如**贪心解码（greedy decoding）** 
+
+### Greedy Decoding
+下面是greedy decoding的具体流程
+![beam search](/img/nluplus/greedy_decoding.png)
+这种解码方式的问题：
+- 我们只做一次continuation，一旦发生错误无法回溯更改。
+### Beam Searching Decoding
+根据greedy decoding的教训，我们选择保留几个continuation，并且每次都扩展most promising的那个。流程如下图所示
+![beam search](/img/nluplus/beam_search_smooth.gif)
+Beam Searching如何实现？
+- 用优先队列这样的数据结构来存储每个continuation
+- 这个队列中保持最多k个解析
+- 当要解码一个单词时，从队列中pop出一个解析，扩展完再push回队列
+- 用priority queue这种结构来做，时间复杂度不会超过O(logk)，甚至能达到O(1)
+
+队列规模k的影响
+- 当k=1，就是greedy decoding。所以当k较小时，我们会出现类似的问题
+- 当k很大时，一方面是计算昂贵，一方面是有工作表明较大的k往往导致worse translation [^2], [^3]。
+- 而且当k很大时，往往生成的contination都很短，因为较短的continuation一般都是优选
+- 因此，选择一个合适的k非常重要
+
+解决方法：
+### Sampling
+与其每次选择概率最大的，不如从输出的概率分布中采样。例如Top-k Sampling和Nucleus sampling
+
+Holtzman et al. 对比了几种方法的效果，如图所示[^4]
+![sampling](/img/nluplus/neuclues-sampling.png)
+
+除此以外，还有Locally Typical Sampling
+### **Top-k Sampling vs. Nucleus Sampling vs. Locally Typical Sampling**
+这些都是**文本生成任务**中用于**解码（decoding）**的策略，旨在**平衡多样性和合理性**，特别是在语言模型（如 GPT、LLM）中应用。  
+它们的核心目标是**避免单一确定性输出（如 Greedy Search）**，让生成文本更加自然和富有变化。
+
+**核心思想**：
+- 选择那些使得**模型生成的下一个单词在上下文中最符合“局部典型性”的单词**。
+- 不只是看单词概率本身，而是看它是否在上下文中“听起来”合理（局部熵最小）。
+
+**流程**：
+1. 计算所有单词的概率 $ p(w \mid \text{context}) $。
+2. 计算这些单词的 **信息熵（self-information）**：
+   $$
+   s(w) = -\log p(w \mid \text{context})
+   $$
+3. 选择**信息熵最接近平均信息熵（典型熵）** 的一部分单词。
+4. 在这个子集中进行采样。
+
+**优点**：
+- 避免了 Top-k 和 Nucleus Sampling 的局限，使得输出更加**符合上下文**，而不是仅仅基于全局概率高低。
+- 适用于**对局部语境要求高的任务**，比如对话生成、摘要等。
+
+**缺点**：
+- 计算复杂度略高，需要额外计算信息熵。
+
+> 采样的目的就是平衡多样性和合理性。避免语言模型单一确定性的输出。
 ## Neural Parsing
+
 ## Unsupervised Parsing
 
 # References
 [^1]: ‘Transformers from scratch | peterbloem.nl’. Accessed: Feb. 01, 2025. [Online]. Available: https://peterbloem.nl/blog/transformers
+[^2]: Tu, Zhaopeng, et al. "Neural machine translation with reconstruction." Proceedings of the AAAI Conference on Artificial Intelligence. Vol. 31. No. 1. 2017.
+[^3]: Koehn, Philipp, and Rebecca Knowles. "Six challenges for neural machine translation." arXiv preprint arXiv:1706.03872 (2017).
+[^4]: Holtzman, Ari, et al. "The curious case of neural text degeneration." arXiv preprint arXiv:1904.09751 (2019).
