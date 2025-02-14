@@ -24,6 +24,6 @@ cover:
     relative: true
 mermaid: true
 ---
-Welcome cite 🎉
+Welcome any citation! 🎉
 
 <embed src="/pdfs/RL_diffusion_model_survey.pdf" type="application/pdf" width="100%" height="800px" />
