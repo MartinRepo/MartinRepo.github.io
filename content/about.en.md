@@ -26,7 +26,6 @@ cover:
 - ♍️ & ENTJ-A
 - 💭 Wish to change world.
 
-
 # What I'm up to 🔝
 🪜 I'm currently researching...
 - Diffusion Model + Reinforcement Learning
@@ -114,3 +113,4 @@ cover:
 
 </details>
 
+<iframe src="https://gravel-carpenter-ef6.notion.site/ebd/15365853615d8081ae72e9a4976b2ca9" width="100%" height="800" frameborder="0" allowfullscreen />

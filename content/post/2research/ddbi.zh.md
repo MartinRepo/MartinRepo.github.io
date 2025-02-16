@@ -106,4 +106,8 @@ Transfer Entropy 的应用
 ## VAR Model for Multivariate Forecasting
 Vector Auto-Regression 模型捕捉多个变量之间的线性相互依存关系。VAR 模型中的每个变量都是系统中所有变量过去值的线性函数。VAR不仅可以同时模拟多个时间序列，而且可以捕捉反馈回路，例如厄尔尼诺/南方涛动如何依赖于大气环流，大气环流又如何依赖于厄尔尼诺/南方涛动等。但是它仍然假设问题是线性的，而且需要静态或非静态差分。还需要估计很多参数，稍有不慎就会导致过度拟合。
 
-
+# Advanced Forecasting Methods
+## MLP Regression
+## Gradient Boosting Regression
+## KalmanForecaster
+## LSTM
