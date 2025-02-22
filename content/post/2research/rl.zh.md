@@ -163,7 +163,13 @@ def UCB(Q, N, t, c=1.0):
 
 # 马尔可夫决策过程(MDPs)
 ## 理论框架
+马尔可夫决策过程包括状态空间$\mathcal{S}$，动作空间$\mathcal{A}$，奖励空间$\mathcal{R}$。MDP is finite if $\mathcal{S}$, $\mathcal{A}$, $\mathcal{R}$ is finite
 
+Markov property: Future state and reward are independent of past states and actions, given the current state and action:
+
+$Pr${$S_{t+1},R_{t+1} | S_t,A_t,S_{t−1},A_{t−1},...,S_0,A_0$}$ = Pr${$S_{t+1},R_{t+1} | S_t,A_t$}
+
+状态$S_t$是交互历史的充分总结。设计compact Markov states是RL中的一项工程工作。
 ## 核心数学概念&函数
 ### Policy
 ### Returns
