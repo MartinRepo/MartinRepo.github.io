@@ -302,7 +302,7 @@ Holtzman et al. 对比了几种方法的效果，如图所示[^4]
 ![sampling](/img/nluplus/neuclues-sampling.png)
 
 除此以外，还有Locally Typical Sampling
-### **Top-k Sampling vs. Nucleus Sampling vs. Locally Typical Sampling**
+**Top-k Sampling vs. Nucleus Sampling vs. Locally Typical Sampling**
 这些都是**文本生成任务**中用于**解码（decoding）**的策略，旨在**平衡多样性和合理性**，特别是在语言模型（如 GPT、LLM）中应用。  
 它们的核心目标是**避免单一确定性输出（如 Greedy Search）**，让生成文本更加自然和富有变化。
 
@@ -328,6 +328,29 @@ Holtzman et al. 对比了几种方法的效果，如图所示[^4]
 
 > 采样的目的就是平衡多样性和合理性。避免语言模型单一确定性的输出。
 ## Neural Parsing
+先复习下Encoder-Decoder架构，如下图所示，Encoder作用是将输入序列（如德语句子）编码成一个固定长度的上下文向量（context vector）。
+- 输入词（如 "natürlich", "hat", "john", "spaß"）首先被映射成词向量（$ x_1, x_2, x_3, x_4 $）。
+- 这些词向量依次输入到一个RNN 编码器（通常是 LSTM 或 GRU），产生隐藏状态 $ h_1, h_2, h_3, h_4 $。
+- 这些隐藏状态捕捉了句子的信息，最终最后一个隐藏状态（这里是 $ h_4 $）被用作整个输入句子的上下文向量（context vector）。
+
+Decoder接收编码器提供的上下文信息，然后逐步生成目标语言的句子（如英文）。
+- 编码器最后的隐藏状态被传入解码器的 RNN 作为初始状态。
+- 解码器使用 RNN（LSTM/GRU）逐步生成目标语言的单词：
+  - 初始状态 $ s_1 $ 依赖于编码器的最后一个隐藏状态。
+  - 每个时间步，解码器的 RNN 生成一个新的隐藏状态 $ s_t $。
+  - 通过一个 **softmax 层**，$ s_t $ 计算当前时间步的输出词 $ y_t $（如 "of", "course", "john", "has", "fun"）。
+  - 解码器的输出作为输入传递到下一步，直到生成完整句子。
+
+
+![Encoder_Decoder](/img/nluplus/encoder_decoder.png)
+
+> Parsing is the task of turning a sequence of words
+
+问题来了，句子解析的输入是一个序列，但输出不是，那我们如何用encoder-decoder模型来进行parsing？
+
+我们可以linearize the syntax tree. 这样我们就有一个序列来表示输出了。例如：
+`(S (NP (Pro You ) ) (VP (V saw ) (NP (Det a ) (N man ) (PP (P with ) (Det
+a ) (N telescope ) ) ) ) )`
 
 ## Unsupervised Parsing
 
