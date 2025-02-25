@@ -3,9 +3,6 @@ title: "澳大利亚"
 date: 2023-08-08T22:34:10Z
 draft: false
 author: ["Martin"]
-categories: 
-- 分类1
-- 分类2
 tags: 
 - None
 description: ""
@@ -24,7 +21,7 @@ cover:
     relative: false
 ---
 
-SYDNEY
+# SYDNEY
 {{< galleries >}}
 {{< gallery src="/img/Sydney/sydney1.jpeg" title="City walk">}}
 {{< gallery src="/img/Sydney/sydney2.jpeg" title="Bondi beach">}}
@@ -38,7 +35,7 @@ SYDNEY
 {{< gallery src="/img/Sydney/sydney9.jpeg" title="Sydney opera house">}}
 {{< /galleries >}}
 
-GOLD COAST
+# GOLD COAST
 {{< galleries >}}
 {{< gallery src="/img//GoldenCoast/goldCoast1.jpeg" title="Francis Favourite😆">}}
 {{< gallery src="/img//GoldenCoast/goldCoast2.jpeg" title="surfers paradise">}}
@@ -55,7 +52,7 @@ GOLD COAST
 {{< gallery src="/img//GoldenCoast/goldCoast14.jpeg">}}
 {{< /galleries >}}
 
-MELBOURNE
+# MELBOURNE
 {{< galleries >}}
 {{< gallery src="/img//Melbourne/melbourne1.jpeg" title="With Baby 😍">}}
 {{< gallery src="/img//Melbourne/melbourne2.jpeg">}}
