@@ -170,10 +170,67 @@ Markov property: Future state and reward are independent of past states and acti
 $Pr${$S_{t+1},R_{t+1} | S_t,A_t,S_{t−1},A_{t−1},...,S_0,A_0$}$ = Pr${$S_{t+1},R_{t+1} | S_t,A_t$}
 
 状态$S_t$是交互历史的充分总结。设计compact Markov states是RL中的一项工程工作。
+
+以recycling robot为例。
+- States
+    - high battery level
+    - low battery level
+- Actions
+    - search for can
+    - wait for someone to bring can
+    - recharge battery at charging station
+- Rewards: number of cans collected
+
+| $s$  | $a$    | $s'$ | $p(s'\mid s, a)$ | $r(s, a, s')$       |
+| ---- |  ----  | ---- | ----             | ----                |
+|high  |search  | high |  $\alpha$        |$r_{\text{research}}$|
+|high  |search  | low  | $1 - \alpha$     |$r_{\text{research}}$|
+|low   |search  | high | $1 - \beta$      |        -3           |
+|low   |search  | low  | $\beta$          |$r_{\text{research}}$|
+|high  |wait    | high | 1                |$r_{\text{wait}}$    |
+|high  |wait    | low  | 0                |-                    |
+|low   |wait    | high | 0                |-                    |
+|low   |wait    | low  | 1                |$r_{\text{wait}}$    |
+|high  |recharge| high | 1                |0                    | 
+|high  |recharge| low  | 0                |-                    |
+
 ## 核心数学概念&函数
 ### Policy
+马尔可夫决策过程由policy控制。
+
+$\pi(a\mid s) = $ prob. of selecting action $a$ when in state $s$
+| $\pi(a\mid s)$  | search  | wait | recharge |
+| ---- |  ----  | ---- | ---- |
+|high  |0.9  | 0.1  | 0       |
+|low   |0.2  | 0.3  | 0.5     |
+
+> Agent’s goal is to learn a policy that maximises cumulative reward
+
 ### Returns
+**Total Return**
+
+Formally, policy should maximise expected return:
+$$
+G_t = R_{t+1} + R_{t+2} + ... + R_{T} = R_{t+1} + G_{t+1}
+$$
+where $T$ is final time step
+
+Assumes terminating episodes: 适用于存在明确终止条件的任务。例如在象棋游戏中，一个玩家获胜就终止。通过设置允许的时间步数来强制终止
+
+**Discounted Return**
+
+For non-terminating (infinite) episodes, can use discount rate $\gamma \in [0, 1)$
+$$
+G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = R_{t+1} + \gamma G_{t+1}
+$$
+$\gamma$是折扣因子，用于降低远期奖励的价值。
+
+这适用于无限回合任务，例如股票交易策略，智能体持续进行交易，没有固定结束时间。
 ### Value Functions
+**State Value Function and the Bellman Equation**
+
+**Action Value Function and the Bellman Equation**
+
 ### Bellman Equation
 
 # 动态规划

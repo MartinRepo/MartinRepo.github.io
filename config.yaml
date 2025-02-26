@@ -142,11 +142,11 @@ params:
     socialIcons:
         - name: github
           url: "https://github.com/MartinRepo"
+        - name: googlescholar
+          url: "https://scholar.google.com/citations?user=deO0nvUAAAAJ&hl=en&oi=sra"
         - name: instagram
-          # url: "img/instagram.png"
           url: "https://www.instagram.com/martinxing7788/"
         - name: twitter
-          # url:  "img/twitter.png"
           url: "https://twitter.com/Mars30920866"
         - name: email
           url: "mailto:martinchi7788@gmail.com"
@@ -212,6 +212,10 @@ markup:
         guessSyntax: true
 
 privacy:
+    googlescholar:
+        disabled: false
+        enableDNT: true
+        simple: true
     vimeo:
         disabled: false
         simple: true
@@ -230,6 +234,8 @@ privacy:
         privacyEnhanced: true
 
 services:
+    googlescholar:
+        disableInlineCSS: true
     instagram:
         disableInlineCSS: true
     twitter:
