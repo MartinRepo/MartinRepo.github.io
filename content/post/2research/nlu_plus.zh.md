@@ -348,9 +348,22 @@ Decoder接收编码器提供的上下文信息，然后逐步生成目标语言�
 
 问题来了，句子解析的输入是一个序列，但输出不是，那我们如何用encoder-decoder模型来进行parsing？
 
-我们可以linearize the syntax tree. 这样我们就有一个序列来表示输出了。例如：
+我们可以linearize the syntax tree. 这样我们就有一个序列来表示输出了。例如：I saw a man with a telescope的句子解析就是
 `(S (NP (Pro You ) ) (VP (V saw ) (NP (Det a ) (N man ) (PP (P with ) (Det
 a ) (N telescope ) ) ) ) )`
+
+此外，还需要一些优化
+- 添加EOS。使解码器知道何时停止生成，而不会一直无限制地预测单词。
+- 反转输入字符串可以带来小幅的性能提升。
+- 加深网络层数。例如对encoder和decoder都使用三层LSTM[^5]。
+- 添加注意力机制
+- 使用word2vec作为输入（预训练的词嵌入）
+- 自动生成训练数据，而不需要人工标注。Vinyals et al. (2015) [^5] 采用 Berkeley Parser（一个已有的句法解析器）来解析大量文本，并用这些解析结果作为训练数据。
+
+可能发生的问题（比例很小，无需担心）：比如我们如何确定opening and closing brackets match? 如何对应输入和输出？如何确保模型输出的是整个序列的最优parsing而不是仅仅预测每个time step上的best symbol?
+
+**Parsing with Transformers**
+Kitaev等人用transformers进行parsing。
 
 ## Unsupervised Parsing
 
@@ -359,3 +372,5 @@ a ) (N telescope ) ) ) ) )`
 [^2]: Tu, Zhaopeng, et al. "Neural machine translation with reconstruction." Proceedings of the AAAI Conference on Artificial Intelligence. Vol. 31. No. 1. 2017.
 [^3]: Koehn, Philipp, and Rebecca Knowles. "Six challenges for neural machine translation." arXiv preprint arXiv:1706.03872 (2017).
 [^4]: Holtzman, Ari, et al. "The curious case of neural text degeneration." arXiv preprint arXiv:1904.09751 (2019).
+[^5]: Vinyals, Oriol, et al. "Grammar as a foreign language." Advances in neural information processing systems 28 (2015).
+[^6]: Kitaev, Nikita, and Dan Klein. "Constituency parsing with a self-attentive encoder." arXiv preprint arXiv:1805.01052 (2018).
