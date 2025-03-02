@@ -364,8 +364,25 @@ a ) (N telescope ) ) ) ) )`
 
 **Parsing with Transformers**
 Kitaev等人用transformers进行parsing。
+- Use a transformer to encode the input
+- This results in a “context aware summary vector” (embedding) for each input word.
+- The embedding encodes word, PoS tag, and position information.
+- The embedding layers are combined to obtain **span scores**
+- But they also try **factored attention heads**, which separate position and content information.
+
+什么是span scores? 在NLP中，尤其是命名实体识别（NER）、句法解析（Parsing） 和 信息抽取（IE） 等任务中用于评估模型性能的指标。
+Span scores 通常基于 Precision（精确率）、Recall（召回率） 和 F1-score（F1 分数） 来评估模型在 span-level 的表现：
+
+Span scores在Transformer解析任务中的计算方法：计算span相关的向量差值，经过线性变换、归一化（LayerNorm）、非线性激活（ReLU）和再次变换，得到 span scores。最终，这些得分用于 解码（decode the output），即找到最优的解析树。
 
 ## Unsupervised Parsing
+Unsupervised Parsing[^7]主要是从未标记的文本中归纳出语法结构。
+
+Unsupervised Parsing的SOTA的F-score只有60，对比supervised parsing来说很难，supervised parsing的F-score可以达到95以上
+
+
+# Scaling Laws
+
 
 # References
 [^1]: ‘Transformers from scratch | peterbloem.nl’. Accessed: Feb. 01, 2025. [Online]. Available: https://peterbloem.nl/blog/transformers
@@ -374,3 +391,4 @@ Kitaev等人用transformers进行parsing。
 [^4]: Holtzman, Ari, et al. "The curious case of neural text degeneration." arXiv preprint arXiv:1904.09751 (2019).
 [^5]: Vinyals, Oriol, et al. "Grammar as a foreign language." Advances in neural information processing systems 28 (2015).
 [^6]: Kitaev, Nikita, and Dan Klein. "Constituency parsing with a self-attentive encoder." arXiv preprint arXiv:1805.01052 (2018).
+[^7]: Cao, Steven, Nikita Kitaev, and Dan Klein. "Unsupervised parsing via constituency tests." arXiv preprint arXiv:2010.03146 (2020).

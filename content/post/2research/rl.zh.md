@@ -229,7 +229,27 @@ $\gamma$是折扣因子，用于降低远期奖励的价值。
 ### Value Functions
 **State Value Function and the Bellman Equation**
 
+根据Markov property (过去的状态和动作对未来的影响完全由当前状态决定)，可以把状态价值函数写成Bellman Equation的递归形式。
+$$
+v_\pi(s) = \mathbb{E}_\pi[G_t \mid S_t = s]
+$$
+
+将$G_{t+1}$继续展开，得到：
+
+$$
+v_{\pi}(s) = \sum_a \pi(a \mid s) \sum_{s', r} p(s', r \mid a, s) [ r + \gamma \mathbb{E}_{\pi} [G_{t+1} \mid S_{t+1} = s' ] ]
+$$
+
+由于 $ v_{\pi}(s') = \mathbb{E}_{\pi} [G_{t+1} \mid S_{t+1} = s'] $，最终公式可以写成：
+
+$$
+v_{\pi}(s) = \sum_a \pi(a \mid s) \sum_{s', r} p(s', r \mid s, a) [ r + \gamma v_{\pi}(s')]
+$$
+
 **Action Value Function and the Bellman Equation**
+$$
+q_\pi(s, a) = \mathbb{E}_\pi[G_t\mid S_t = s, A_t = a]
+$$
 
 ### Bellman Equation
 
