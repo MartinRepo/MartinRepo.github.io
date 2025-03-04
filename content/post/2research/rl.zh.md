@@ -227,6 +227,9 @@ $\gamma$是折扣因子，用于降低远期奖励的价值。
 
 这适用于无限回合任务，例如股票交易策略，智能体持续进行交易，没有固定结束时间。
 ### Value Functions
+**Bellman Equation**
+在强化学习和马尔可夫决策过程中，贝尔曼方程用于描述状态值函数和动作值函数的递归关系。这两是强化学习中求解最优策略的重要数学工具。
+
 **State Value Function and the Bellman Equation**
 
 根据Markov property (过去的状态和动作对未来的影响完全由当前状态决定)，可以把状态价值函数写成Bellman Equation的递归形式。
@@ -237,28 +240,61 @@ $$
 将$G_{t+1}$继续展开，得到：
 
 $$
-v_{\pi}(s) = \sum_a \pi(a \mid s) \sum_{s', r} p(s', r \mid a, s) [ r + \gamma \mathbb{E}_{\pi} [G_{t+1} \mid S_{t+1} = s' ] ]
+v_\pi(s) = \sum_a \pi(a \mid s)r(s, a) + \gamma\sum_{s' \in S} p(s'\mid s, a)\cdot v_\pi(s')
 $$
 
-由于 $ v_{\pi}(s') = \mathbb{E}_{\pi} [G_{t+1} \mid S_{t+1} = s'] $，最终公式可以写成：
+其中$\sum_a \pi(a \mid s)r(s, a)$表示即时奖励，$\gamma$是折扣因子，$\sum_{s' \in S} p(s'\mid s, a)\cdot v_\pi(s')$表示expected future value
 
-$$
-v_{\pi}(s) = \sum_a \pi(a \mid s) \sum_{s', r} p(s', r \mid s, a) [ r + \gamma v_{\pi}(s')]
-$$
+直觉理解：眼前收益+未来收益（带有折扣率来降低影响）
 
 **Action Value Function and the Bellman Equation**
 $$
-q_\pi(s, a) = \mathbb{E}_\pi[G_t\mid S_t = s, A_t = a]
+q_\pi(s, a) = r(s, a) + \gamma \sum_{s' \in S} p(s' \mid s, a)\cdot v_\pi(s')
+$$
+用期望简写
+$$
+q_\pi(s, a) = r(s, a) + \gamma \mathbb{E} _ {s'}[ v _ \pi(s') ]
 $$
 
-### Bellman Equation
+## GridWorld Example
+GridWorld是强化学习中常见的环境之一。它是一个简单的离散状态空间环境，智能体在其中移动，试图最大化其累积奖励。
+
+## Summary (Main idea)
+- Markov Decision Process: the canonical way to model RL problems
+- Policy: $\pi$ is a strategy for assigning actions to states.
+- Value: $v_\pi(s)$ captures expected cumulative discounted reward (Long term view of the quality of a policy)
+- Goal: Find a policy that maximises value.
 
 # 动态规划
-## Policy Iteration
-### Iterative policy evaluation
-### Policy Improvement
+动态规划核心思想：use Bellman Equations to organise search for good policies:
+## DP Algo1: Policy Iteration 
+这个算法包含两个阶段:
+- Policy evaluation: compute $v_\pi$ for $\pi$
+- Policy improvement: make policy $\pi$ greedy with respect to $v_\pi$
 
-## Value Iteration 
+具体表示如下（这个过程会收敛到最优策略）
+$$
+\pi_0 \xrightarrow{E} v_{\pi_0} \xrightarrow{I} \pi_1 \xrightarrow{E} v_{\pi_1} \xrightarrow{I} ... \xrightarrow{I} \pi_* \xrightarrow{E} v_*
+$$
+### Iterative policy evaluation
+伪代码如下
+```plaintext
+Input: pi, the policy to be evaluated
+Initialize an array V(s) = 0, for all s
+Repeat
+    delta <- 0
+    For each s in S:
+        v <- V(s)
+        V(s) <- State Value Function
+        delta <- max(delta, |v - V(s)|)
+until delta < theta (a small positive number)
+Output V \approx= v_pi
+```
+
+### Policy Improvement
+计算在当前state value funtion $V(s)$下，每个状态$s$对不同动作$a$的action value。然后选择最优动作$\pi'(s)$，如果这与之前的$\pi(s)$不同，则策略发生了更新，并继续迭代，否则停止。
+
+## DP Algo2: Value Iteration 
 
 ## Asynchronous and generalised DP
 
