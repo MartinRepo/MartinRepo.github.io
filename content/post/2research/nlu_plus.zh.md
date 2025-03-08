@@ -342,7 +342,7 @@ Decoder接收编码器提供的上下文信息，然后逐步生成目标语言�
   - 解码器的输出作为输入传递到下一步，直到生成完整句子。
 
 
-![Encoder_Decoder](/img/nluplus/encoder_decoder.png)
+![Encoder Decoder](/img/nluplus/encoder_decoder.png)
 
 > Parsing is the task of turning a sequence of words
 
@@ -381,14 +381,90 @@ Unsupervised Parsing[^7]主要是从未标记的文本中归纳出语法结构�
 Unsupervised Parsing的SOTA的F-score只有60，对比supervised parsing来说很难，supervised parsing的F-score可以达到95以上
 
 
-# Scaling Laws
+# LLM前沿研究
+## Scaling Law
+例如，给定固定的计算资源预算，训练Transformer语言模型的最佳模型大小和训练数据集大小是多少？
 
+这类问题就可以用Scaling laws来回答。它提供了Compute Budget(C)，size of model(N)以及number of training tokens(D)之间的一种关系。有一个粗略的共识是，它们可以使用power laws或类似的定律（以及它们的组合）来建模。
+
+### Power Law
+Power Law描述的是变量x和它某些行为之间的关系，公式表示为$f(x) = \alpha x^\mathcal{-K}$
+
+它有一个重要的性质：当$x$乘以一个因子时，$f(x)$也同样作为$κ$的函数乘以一个因子。即：
+$$
+f(cx) = \alpha (cx)^\mathcal{-K} = c^\mathcal{-K}f(x)
+$$
+
+### Kaplan et al. (2020)
+Kaplan等人的研究[^8]总结
+- 模型的性能很大程度上取决于scale（模型参数的数量，数据集大小，计算预算）而不是网络拓扑（层数，每层的宽度）。
+- 数据集大小和模型大小的一起增长是很重要的。
+- 性能可以用power law来建模。
+
+还有一点，我们使用floating-point operations per second (FLOPs) 来衡量compute，而不是单纯依赖时间来衡量。
+
+对他们的工作（Kaplan Scaling Law）的主要批判点在于，他们在训练中使用了相同的学习率。
+
+### Hoffmann et al. (2020)
+以前的scaling law认为，增加计算预算（compute budget）时，优先增加模型大小（model size），其次才增加数据量（data size）。
+比如计算预算 ×100 时，模型参数量 ×25，数据量 ×4。因为直觉上更大的模型能更有效地利用数据，所以数据规模的增长不需要太快。
+但是，过度增加模型大小可能会导致过拟合或计算资源浪费。
+
+Hoffmann等人2022年的研究提出了一个新的结论[^9]：
+
+计算预算增加时，模型大小和数据量应该同比例增长。
+比如计算预算 ×100 时，模型大小 ×10，数据量 ×10。因为之前的策略导致很多大模型在小数据上训练，出现欠训练（undertrained models） 的问题。
+Hoffmann 发现，更大模型并不一定能完全利用固定数量的数据，合理增加数据量可以显著提升模型性能。这个发现也影响了后续 LLM 训练策略，例如 GPT-4、Gemini、PaLM 等更关注 数据与模型规模的均衡增长。
+
+如何推导Hoffmann等人提出的Chinchilla's Scaling Law?
+- L: LM average test loss (entropy loss)
+- D: dataset size, number of tokens
+- N: number of parameters
+- C: compute budget, C=C(N, D)
+已知一个固定的compute budget C*, 找到
+$$
+\arg\min_{N, D}L(N, D) = C^*
+$$
+用power law来建模：
+$$
+L(N, D) = \frac{a}{N^\alpha} + \frac{b}{D^\beta} + c
+$$
+$c$是理想的test loss
+
+因此，Hoffmann等人训练出来了两个模型：
+- Gopher: 280 billion parameters, 300 billion tokens, L(N, D) = 1.993
+- Chinchilla: 70 billion parameters, 1.4 trillion tokens, L(N, D) = 1.936
+
+Chinchilla 遵循这一策略（较小模型 + 更多数据），结果证明它在test loss和下游任务上表现更优。
+
+### 增加效率
+语言模型的训练中，主要做的计算就是矩阵乘法和求和归一化（Softmax）。用一个公式概括Transformer做的事情就是$\text{Softmax}(QK^T)V$
+
+GPU是并行处理器，结构如下图所示
+![gpu hardware](/img/nluplus/gpu_hardware.png)
+- 基础的计算单元是线程
+- 线程被分组成Block，Block中的所有线程都有唯一的ID，但运行相同的代码
+- 这使得GPU可以做极端的并行化
+- Grid是一组Block。每个Block可以运行不同的代码段
+- GPU有很大的global memory，很大，但是很慢
+- 每个Block都有一个共享内存-Block中的所有线程之间共享这个内存，它效率很高，但很小
+- 写代码时要尽可能少用全局内存，多用Block的共享内存
+
+### Double Descent
+Double Descent是深度学习训练过程中出现的一种现象，它描述了模型的test error随着model size或dataset size变化的非单调趋势。
+Double Descent 现象表明，在“过拟合区域”之后，继续增加模型规模，test error反而会再次下降，进入“第二次泛化区域”。
+
+因此，传统统计学习理论预测过拟合会导致泛化能力下降，但Double Descent说明在超大模型下，泛化能力反而会回升。
+
+## LLMs as Formal Machines
 
 # References
-[^1]: ‘Transformers from scratch | peterbloem.nl’. Accessed: Feb. 01, 2025. [Online]. Available: https://peterbloem.nl/blog/transformers
+[^1]: 'Transformers from scratch' Available: https://peterbloem.nl/blog/transformers
 [^2]: Tu, Zhaopeng, et al. "Neural machine translation with reconstruction." Proceedings of the AAAI Conference on Artificial Intelligence. Vol. 31. No. 1. 2017.
 [^3]: Koehn, Philipp, and Rebecca Knowles. "Six challenges for neural machine translation." arXiv preprint arXiv:1706.03872 (2017).
 [^4]: Holtzman, Ari, et al. "The curious case of neural text degeneration." arXiv preprint arXiv:1904.09751 (2019).
 [^5]: Vinyals, Oriol, et al. "Grammar as a foreign language." Advances in neural information processing systems 28 (2015).
 [^6]: Kitaev, Nikita, and Dan Klein. "Constituency parsing with a self-attentive encoder." arXiv preprint arXiv:1805.01052 (2018).
 [^7]: Cao, Steven, Nikita Kitaev, and Dan Klein. "Unsupervised parsing via constituency tests." arXiv preprint arXiv:2010.03146 (2020).
+[^8]: Kaplan, Jared, et al. "Scaling laws for neural language models." arXiv preprint arXiv:2001.08361 (2020).
+[^9]: Hoffmann, Jordan, et al. "Training compute-optimal large language models." arXiv preprint arXiv:2203.15556 (2022).
