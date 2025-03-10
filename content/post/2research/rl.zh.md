@@ -295,8 +295,31 @@ Output V \approx= v_pi
 计算在当前state value funtion $V(s)$下，每个状态$s$对不同动作$a$的action value。然后选择最优动作$\pi'(s)$，如果这与之前的$\pi(s)$不同，则策略发生了更新，并继续迭代，否则停止。
 
 ## DP Algo2: Value Iteration 
+以租车问题为例。有两个车辆租赁点，根据分布随机请求和返回车辆。状态（States）表示为(n1, n2)，其中ni是位置i的汽车数量（每个地方最多20辆）。动作（Actions）表示从一个位置移动到另一个位置的车子的数量。其中如果是从1移到2就是正数，从2移到1就是负数，最多5辆。奖励（Rewards）表示为每个时间步中，租出去一辆车+\$10，移动一辆车-\$2。最后$\gamma$ = 0.9。
 
+Policy iteration使用Bellman equation作为operator:
+$$
+v_{k+1}(s) = \sum_a \pi(a\mid s)\sum_{s', r}p(s', r\mid s, a) [r+\gamma v_k(s')]
+$$
+其中$s\in S$
+
+Value iteration使用Bellman optimality equation作为operator:
+$$
+v_{k+1}(s) = \max_a \sum_{s', r}p(s', r\mid s, a) [r+\gamma v_k(s')]
+$$
+其中$s\in S$
+
+Value iteration的伪代码如下
+![value iteration](/img/rl-note/value_iteration.png)
 ## Asynchronous and generalised DP
+目前为止，动态规划方法执行的是穷举。如果状态空间很大，policy evaluation and improvement就不可计算了。
+
+异步动态规划方法避免了标准动态规划中必须同时更新所有状态的限制，而是选择性地更新某些状态，以提高计算效率和收敛速度。
+
+改进点：
+- 状态异步更新：不要求所有状态在同一时间更新，而是按需更新一部分状态。
+- 优先级更新：优先更新那些 价值变化较大或与最终策略最相关的状态，使有价值的信息更快传播。
+- 加速收敛：减少不必要的计算，特别适用于大规模问题，如机器人控制、路径规划、强化学习等。
 
 # 蒙特卡洛方法
 
