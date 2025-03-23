@@ -33,6 +33,7 @@ cover:
 -   <details>
     <summary>机器学习系统: 贡献ServerlessLLM</summary>
 
+    - feat: support LoRA adapter(s) inference [#221](https://github.com/ServerlessLLM/ServerlessLLM/pull/221)
     - feat: support lora fine-tuning for transformers backend [#189](https://github.com/ServerlessLLM/ServerlessLLM/pull/189)
     - docs: add documentation for deployment on slurm [#135](https://github.com/ServerlessLLM/ServerlessLLM/pull/135)
 
