@@ -323,4 +323,12 @@ Value iteration的伪代码如下
 
 # 蒙特卡洛方法
 
+# Temporal DIfference Learning
+
+# Planning and Learning
+
+# Value function approximation
+
+# Policy Gradient Methods
+
 

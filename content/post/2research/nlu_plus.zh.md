@@ -458,6 +458,17 @@ Double Descent 现象表明，在“过拟合区域”之后，继续增加模�
 
 ## LLMs as Formal Machines
 
+# LLM微调
+
+# Evaluating Generation and Machine Translation
+
+# Ethics
+
+# Evaluation of LLM and Alignment
+
+# QA and RAG
+
+
 # References
 [^1]: 'Transformers from scratch' Available: https://peterbloem.nl/blog/transformers
 [^2]: Tu, Zhaopeng, et al. "Neural machine translation with reconstruction." Proceedings of the AAAI Conference on Artificial Intelligence. Vol. 31. No. 1. 2017.
