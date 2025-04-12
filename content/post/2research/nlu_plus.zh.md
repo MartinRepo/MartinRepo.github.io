@@ -469,6 +469,23 @@ Double Descent 现象表明，在“过拟合区域”之后，继续增加模�
 # QA and RAG
 
 
+# Tutorials
+## Language Models
+1. Softmax Function
+  - What is the purpose of Softmax function?
+    -  The softmax converts an arbitrary vector of |v| dimensions into a valid categorical probability distribution over |v| possible outcomes. In particular it ensures that all individual elements (probabilities) are non-negative and sum to one.
+  - What is the purpose of the expression in the numerator?
+    -  The numerator ensures that all values are positive. Note that this is stronger than needed: the axioms of probability simply require all values to be non-negative. But exponentiation is only zero in the (negative) limit.
+  - What is the purpose of the expression in the denominator?
+    - The denominator normalises the distribution so that all individual probabilities sum to one.
+  - Now consider how a neural language model with a softmax output layer compares with a classic n-gram language model. Typically, we use techniques like smoothing or backoff in conjunction with n-gram models. Does this problem arise in the neural model? Why or why not?
+    - No—softmax ensures that the model will always return a non-zero probability for any n-gram.
+
+2. Feedforward Language Models
+  - 
+3. Model Design
+
+
 # References
 [^1]: 'Transformers from scratch' Available: https://peterbloem.nl/blog/transformers
 [^2]: Tu, Zhaopeng, et al. "Neural machine translation with reconstruction." Proceedings of the AAAI Conference on Artificial Intelligence. Vol. 31. No. 1. 2017.
