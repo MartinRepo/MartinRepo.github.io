@@ -482,7 +482,22 @@ Double Descent 现象表明，在“过拟合区域”之后，继续增加模�
     - No—softmax ensures that the model will always return a non-zero probability for any n-gram.
 
 2. Feedforward Language Models
-  - 
+  - In feedforward language model, the probability $P(w_i\mid w_{i-n+1}, ..., w_{i-1}) = \text{softmax}(Vh_2 + b_2)$, where $h_2 = \text{tanh}(Wh_1 + b_1)$, $h_1 = \text{concatenate}(Cw_{i-n+1}, ..., Cw_{i-1})$, $w_i = \text{onehot}(w_i)$ for all i. Now consider the number of parameters required to represent this model. This number is determined by the size of the vocabulary (given to you by the data), the order $n$, and the dimension of the two hidden layers, $h_1$ and $h_2$, which we will denote $d_1$ and $d_2$, respectively (Note that the first dimension must be divisible by n − 1, but you can ignore this detail in your calculations). Dimensions $d_1$ and $d_2$ are modeling choices, though the practical consideration is how they impact the model’s accuracy.
+    - How to express the number of model parameters in terms of $|V|, n, d_1$ and $d_2$?
+      - For $V$: $d_2|V|$
+      - For $W$: $d_1d_2$ because $d_1$ is predefined, and will be equal to $(n-1) * \text{embedding}$
+      - For $C$: $|V|d_1/(n-1)$ because $|\text{embedding}| = \frac{d_1}{n-1}$
+      - For $b_1$: $d_2$
+      - For the complete model, add up the aboveL $(1+\frac{d_1}{n-1} + d_2){V} + d_1d_2 + d_2$
+    - An effective size for the hidden dimension of a neural NLP model is often in the hundreds. For n from 2 to 5, how many parameters would your model have if $\frac{d_1}{n-1} = d_2 = 100$, what if $\frac{d_1}{n-1} = d_2 = 1000$
+      - The key here is that $(1 + \frac{d_1}{n-1} + d_2)|V|$ dominates, and this is determined by the mapping between the one-hot vocabulary vectors and the hidden dimensions. A reasonable guess for |V| in most neural network language models is 20000 and $\frac{d_1}{n-1} = d_2 = 100$ should give parameters of about 4M parameters. If $\frac{d_1}{n-1} = d_2 = 1000$ then you have about 40M parameters. However if we try to model an open vocabulary in this model we will struggle to fit this in memory on a GPU whose memory is generally far smaller than a CPU  machine.
+    - What do you conclude about the relative memory efficiency of classic n-gram and feedforward neural language models? If you increased n even further, what would happen?
+      - The number of parameters in the n-gram model is highly sensitive to changes in n, while the number of parameters in the neural model is almost unchanged. Hence, the feedforward model can be easily extended to larger n, which might be advantageous.
+    - How would you expect the number of parameters in an RNN model to scale with $n$ and $|V|$
+      - An RNN scales in the same way as the feedforward model: the dominant factor is the vocabulary size. It’s entirely insensitive to n since it (theoretically) models $n = \infty$
+    - Think of any strategies to substantially reduce the number of parameters?
+      - For RNN models, the key to reducing the number of parameters is to reduce vocabulary size. This can be done with subword modeling. Notice that this is inappropriate for the n-gram model, since it would be conditioning on less information! Note that the feedforward model has a similar limitation, though it is easier to increase the order $n$ of the feedforward model.
+
 3. Model Design
 
 
