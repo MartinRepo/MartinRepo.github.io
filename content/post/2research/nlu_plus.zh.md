@@ -499,6 +499,12 @@ Double Descent 现象表明，在“过拟合区域”之后，继续增加模�
       - For RNN models, the key to reducing the number of parameters is to reduce vocabulary size. This can be done with subword modeling. Notice that this is inappropriate for the n-gram model, since it would be conditioning on less information! Note that the feedforward model has a similar limitation, though it is easier to increase the order $n$ of the feedforward model.
 
 3. Model Design
+  - Design a feedforward neural network to model $P(y_i\mid x)$. . Identify any independence assumptions you make. Draw a diagram that illustrates how the model computes probabilities for the tag of the word “with”: What is the input, and how is the output distribution computed from the input? Write out the basic equations of the model, and explain the choice.
+    - An effective design for the feedforward network is to model $P(y_i \mid x_{i-k}, ..., x_{i+k})$ for some fixed window size 2k+1. For example, use something like: $P(y_i \mid x_{i-k}, ..., x_{i+k}) = \text{softmax}(Wh+b_2)$, where $h = \text{tanh}(Vx+b_1)$, and $x$ is onehot encoded like $x = \text{onehot}(x_{i-k});...;\text{onehot}(x_{i+k})$. The choice of non-linearity is not important for this question, but since it asks for a feedforward network, you should have a hidden layer. This is about the simplest possible model.
+  - Design a RNN to model $P(y_i\mid x)$. . Identify any independence assumptions you make. Draw a diagram that illustrates how the model computes probabilities for the tag of the word “with”: What is the input, and how is the output distribution computed from the input? Write out the basic equations of the model, and explain your choices.
+    -  One design for the RNN is to model $P(y_i\mid x_1, ..., x_i)$. That is, the RNN reads $x_1$ through $x_i$ one step at a time, and at the ith step produces a distribution for possible tags $y_i$. For simplicity, let’s use RNN to denote a unit that receives an input and a previous hidden state, and produces a new hidden state; it can easily be replaced with an LSTM or other recurrent unit of your choice: $P(y_i\mid x_1, ..., x_i) = \text{softmax}(Wh_i+b)$, where $h_i = \text{RNN}(\text{onehot}(x_i), h_{i-1})$. 
+
+
 
 
 # References
