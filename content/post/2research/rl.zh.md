@@ -163,9 +163,9 @@ def UCB(Q, N, t, c=1.0):
 
 # 马尔可夫决策过程(MDPs)
 ## 理论框架
-马尔可夫决策过程包括状态空间$\mathcal{S}$，动作空间$\mathcal{A}$，奖励空间$\mathcal{R}$。MDP is finite if $\mathcal{S}$, $\mathcal{A}$, $\mathcal{R}$ is finite
+马尔可夫决策过程包括状态空间$\mathcal{S}$，动作空间$\mathcal{A}$，奖励空间$\mathcal{R}$。MDP是有限集，如果$\mathcal{S}$, $\mathcal{A}$, $\mathcal{R}$都是有限集
 
-Markov property: Future state and reward are independent of past states and actions, given the current state and action:
+马尔可夫性质：简单说就是未来的状态只与当前一个状态有关，独立于过去的所有状态（Future state and reward are independent of past states and actions, given the current state and action）
 
 $Pr${$S_{t+1},R_{t+1} | S_t,A_t,S_{t−1},A_{t−1},...,S_0,A_0$}$ = Pr${$S_{t+1},R_{t+1} | S_t,A_t$}
 
@@ -198,18 +198,18 @@ $Pr${$S_{t+1},R_{t+1} | S_t,A_t,S_{t−1},A_{t−1},...,S_0,A_0$}$ = Pr${$S_{t+1
 ### Policy
 马尔可夫决策过程由policy控制。
 
-$\pi(a\mid s) = $ prob. of selecting action $a$ when in state $s$
+$\pi(a\mid s) = $ 在状态$s$的情况下选择动作$a$的概率
 | $\pi(a\mid s)$  | search  | wait | recharge |
 | ---- |  ----  | ---- | ---- |
 |high  |0.9  | 0.1  | 0       |
 |low   |0.2  | 0.3  | 0.5     |
 
-> Agent’s goal is to learn a policy that maximises cumulative reward
+> Agent的目标就是学一个能最大化累积奖励的策略
 
-### Returns
+### Returns（回报）
 **Total Return**
 
-Formally, policy should maximise expected return:
+策略应该最大化预期回报（$G_t$）
 $$
 G_t = R_{t+1} + R_{t+2} + ... + R_{T} = R_{t+1} + G_{t+1}
 $$
@@ -219,7 +219,7 @@ Assumes terminating episodes: 适用于存在明确终止条件的任务。例�
 
 **Discounted Return**
 
-For non-terminating (infinite) episodes, can use discount rate $\gamma \in [0, 1)$
+对于不能终止的（无限的）场景，可以使用折扣率 $\gamma \in [0, 1)$
 $$
 G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = R_{t+1} + \gamma G_{t+1}
 $$
@@ -227,23 +227,26 @@ $\gamma$是折扣因子，用于降低远期奖励的价值。
 
 这适用于无限回合任务，例如股票交易策略，智能体持续进行交易，没有固定结束时间。
 ### Value Functions
+这张图给一个overview
+![main quantities](/img/rl-note/value_function.png)
 **Bellman Equation**
 在强化学习和马尔可夫决策过程中，贝尔曼方程用于描述状态值函数和动作值函数的递归关系。这两是强化学习中求解最优策略的重要数学工具。
 
 **State Value Function and the Bellman Equation**
 
-根据Markov property (过去的状态和动作对未来的影响完全由当前状态决定)，可以把状态价值函数写成Bellman Equation的递归形式。
+根据Markov property，可以把状态价值函数写成Bellman Equation的递归形式。
 $$
 v_\pi(s) = \mathbb{E}_\pi[G_t \mid S_t = s]
 $$
+这个公式的意思就是给定当前状态的情况下，策略$\pi$可以获得的回报期望值
 
-将$G_{t+1}$继续展开，得到：
+将公式展开，得到：
 
 $$
 v_\pi(s) = \sum_a \pi(a \mid s)r(s, a) + \gamma\sum_{s' \in S} p(s'\mid s, a)\cdot v_\pi(s')
 $$
 
-其中$\sum_a \pi(a \mid s)r(s, a)$表示即时奖励，$\gamma$是折扣因子，$\sum_{s' \in S} p(s'\mid s, a)\cdot v_\pi(s')$表示expected future value
+其中$\sum_a \pi(a \mid s)r(s, a)$表示即时奖励（选择动作$a$的概率$\times$这样做带来的奖励值），$\gamma$是折扣因子，$\sum_{s' \in S} p(s'\mid s, a)\cdot v_\pi(s')$表示expected future value (当前状态$s$, 采取动作$a$之后，有多大概率转到每个可能的$s'$,每个$s'$会带来多大价值，全部加权求和后就是未来的预期价值)
 
 直觉理解：眼前收益+未来收益（带有折扣率来降低影响）
 
