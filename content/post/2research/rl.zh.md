@@ -250,7 +250,7 @@ $$
 
 直觉理解：眼前收益+未来收益（带有折扣率来降低影响）
 
-**Action Value Function and the Bellman Equation**
+**Action Value Function的bellman形式**
 $$
 q_\pi(s, a) = r(s, a) + \gamma \sum_{s' \in S} p(s' \mid s, a)\cdot v_\pi(s')
 $$
@@ -259,23 +259,37 @@ $$
 q_\pi(s, a) = r(s, a) + \gamma \mathbb{E} _ {s'}[ v _ \pi(s') ]
 $$
 
-## GridWorld Example
-GridWorld是强化学习中常见的环境之一。它是一个简单的离散状态空间环境，智能体在其中移动，试图最大化其累积奖励。
+State value和action value有什么关系？
+- state value是在某个状态下，按照策略$\pi$走下去，未来的期望总奖励
+- action value是在某个状态下，执行动作$a$，再按照策略$\pi$走下去，未来的期望总奖励。
 
-## Summary (Main idea)
-- Markov Decision Process: the canonical way to model RL problems
-- Policy: $\pi$ is a strategy for assigning actions to states.
-- Value: $v_\pi(s)$ captures expected cumulative discounted reward (Long term view of the quality of a policy)
-- Goal: Find a policy that maximises value.
+> 策略和动作的区别：策略不是动作的集合，而是一个“从状态到动作概率分布”的映射函数。
+
+如果
+$$
+v _ \pi(s) = v_*(s) = \max_{\pi'}v_{\pi'}(s)
+$$
+
+并且
+
+$$
+q_{\pi}(s, a) = q_*(s, a) = \max_{\pi'}q_{\pi'}(s, a)
+$$
+那么策略$\pi$就是最优的。
+
+如何计算并找到这个最优策略？涉及到动态规划中的policy iteration和value iteration：
 
 # 动态规划
-动态规划核心思想：use Bellman Equations to organise search for good policies:
+动态规划核心思想：use Bellman Equations to organise search for good policies
 ## DP Algo1: Policy Iteration 
 这个算法包含两个阶段:
-- Policy evaluation: compute $v_\pi$ for $\pi$
-- Policy improvement: make policy $\pi$ greedy with respect to $v_\pi$
+- 策略评估：给定策略$\pi$, 计算对应的state value function $v_\pi(s)$； 解决Bellman方程，可迭代逼近
+- 策略提升：用当前的$v_\pi(s)$来更新策略，如果新策略 = 旧策略，说明最优，停止。
+$$
+\pi_{\text{new}}(s) = \arg \max_a \sum_{s'}p(s'\mid s, a)[r(s, a) + \gamma v_\pi(s')]
+$$
 
-具体表示如下（这个过程会收敛到最优策略）
+具体表示如下（这个过程会很快收敛到最优策略）
 $$
 \pi_0 \xrightarrow{E} v_{\pi_0} \xrightarrow{I} \pi_1 \xrightarrow{E} v_{\pi_1} \xrightarrow{I} ... \xrightarrow{I} \pi_* \xrightarrow{E} v_*
 $$
@@ -325,8 +339,33 @@ Value iteration的伪代码如下
 - 加速收敛：减少不必要的计算，特别适用于大规模问题，如机器人控制、路径规划、强化学习等。
 
 # 蒙特卡洛方法
+Monte Carlo策略评估 - 在没有模型的情况下进行策略价值评估
 
-# Temporal DIfference Learning
+MC不需要知道环境的模型$p(s', r \mid s, a)$，只需要sampled episodes。你只需要能跟环境玩、玩完整场游戏，然后记录每个状态出现后最终赚了多少钱，
+把这个“赚的钱”在所有访问过这个状态的 episode 里平均一下，这就是它的值$v_\pi(s)$。公式可以表示为
+$$
+v_\pi(s) = \mathbb{E} _ \pi[G_i \mid s_i = s] = \frac{1}{N(s)}\sum^{N(s)}_{i=1}G_i
+$$
+其中$N(s)$就是状态s被访问的次数，$G_i$是第i次访问s后的实际return。
+
+s可能被多次访问，因此蒙特卡洛方法分为first-visit MC和every-visit MC。两者的区别在于更新时是否校验$S_t$已经在当前episode中出现过。First-visit只更新该状态第一次出现的位置，Every-visit则是该状态出现几次就更新几次。
+
+如果无法得到环境的模型，那么计算动作的价值（“状态-动作”二元组的价值）比计算状态的价值更加有用。只需将对状态的访问改为对“状态-动作”二元组的访问，蒙特卡洛算法就可以几乎和之前完全相同的方式解决该问题，唯一复杂之处在于一些“状态-动作”二元组可能永远不会被访问到。为了实现基于动作价值函数的策略评估，我们必须保证持续的试探。一种方式是将指定的“状态-动作”二元组作为起点开始一幕采样，同时保证所有“状态-动作”二元组都有非零的概率可以被选为起点。这样就保证了在采样的幕个数趋于无穷时，每一个“状态-动作”二元组都会被访问到无数次。我们把这种假设称为**MC control with exploring starts**。
+
+策略改进的方法是在当前价值函数上贪心地选择动作。由于我们有动作价值函数，所以在贪心的时候完全不需要使用任何的模型信息。
+
+Exploring starts的一个重要假设是环境必须支持任意(s,a)起点，这在实际中几乎不成立。
+
+但是现实中，我们很难满足试探性出发的假设，一般性的解法是智能体能够持续不断地选择所有可能的动作，有两种方法可以保证这一点，同轨策略（soft on-policy）和离轨策略（off-policy）。在同轨策略中，用于生成采样数据序列的策略和用于实际决策的待评估和改进的策略是相同的；而在离轨策略中，用于评估或改进的策略与生成采样数据的策略是不同的，即生成的数据“离开”了待优化的策略所决定的决策序列轨迹。
+
+
+# Temporal Difference Learning
+## TD policy evaluation
+
+## TD control
+### Sarsa
+### Q-learning
+## n-steps TD methods
 
 # Planning and Learning
 
@@ -335,3 +374,5 @@ Value iteration的伪代码如下
 # Policy Gradient Methods
 
 
+# Reference
+[1] https://leovan.me/cn/2020/07/model-free-policy-prediction-and-control-monte-carlo-learning/#fn:1

@@ -459,6 +459,172 @@ Double Descent 现象表明，在“过拟合区域”之后，继续增加模�
 ## LLMs as Formal Machines
 
 # LLM微调
+GPT发展历史:
+- GPT: 117M parameters, decoder-only model with 12 layers, trained on 4.6GB data
+- GPT-2: 1.5B parameters, decoder-only model with 48 layers, trained on 40GB data
+- GPT-3: 175B parameters, unkown model structure, trained on 600GB data
+
+介绍下In-context learning, 是指LLM在不进行参数更新的情况下，仅通过输入示例来完成新任务。就是让模型“看例子学套路”而不是“调参数学规则”。但是这会让模型对提示词高度敏感，而且适用范围也受限
+## 指令微调
+1. Collect examples of instruction-output pairs across several tasks and fine-tune a model, then evaluate on unseen tasks.
+
+![instruction-ft](/img/nluplus/instruct_ft.png)
+如图所示，可以说明：
+- Model generation performance is positively correlated with observed tasks and model size.
+- Number of examples does not have a big influence.
+
+## RLHF
+Logic behind learning from human feedback
+
+- Say we had human “rewards” – a score that tells how much a human prefers a completion. Say there is such function called $r(x, y)$ that maps prompt and completion to a reward
+- We would want to find an LLM with parameters $\theta$ such that
+
+$$
+\theta = \arg \max_{\theta} \mathbb{E} _ {p _ {\theta}(x,y)}[r(x,y)]
+$$
+- This is the model that maximises the expected reward according to humans.
+
+问题来了，怎么更新参数？（怎么计算梯度？），因为reward函数是外部评估器，没办法直接对其求梯度。
+
+首先定义$z = (x, y)$是一个完整的生成序列，那么要求：
+$$
+\nabla_\theta \mathbb{E} _ {p_\theta(z)}[r(z)]
+= \nabla_\theta \sum_z p _ \theta(z) r(z)
+$$
+梯度更新$\theta$，$r(z)$与其无关，所以放进去：
+$$
+= \sum_z r(z) \nabla_\theta p _ \theta(z)
+$$
+然后用log-derivative trick变换:
+$$
+\nabla_\theta p_\theta(z) = p_\theta(z)\nabla_\theta \log p_\theta(z)
+$$
+所以替换过后就变成了
+$$
+\sum_z r(z) p_\theta(z)\nabla_\theta \log p_\theta(z)
+$$
+然后变成期望形式
+$$
+\mathbb{E} _ {p_\theta(z)}[r(z)\nabla_\theta\log p_\theta(z)]
+$$
+
+用模型生成一些$(x_i, y_i)$，然后用打分函数得到$r(x_i, y_i)$，再去近似估计上面的期望
+$$
+   \nabla_\theta \mathbb{E}[r(x,y)] \approx \frac{1}{n} \sum_{i=1}^n r(x_i, y_i) \nabla_\theta \log p_\theta(x_i, y_i)
+$$
+再用这个梯度来更新参数
+$$
+\theta_t \leftarrow \theta_{t-1} + \frac{\alpha}{n} \sum_{i=1}^n r(x_i, y_i) \nabla_\theta \log p_{\theta_{t-1}}(x_i, y_i)
+$$
+$\alpha$是学习率，梯度更新本质上是用reward加权的log-likelihood梯度来更新。这样做之后，虽然我们不能对reward直接求导，但是可以让reward控制梯度的大小。
+
+RLHF的问题是什么？是人类，人类标注不仅高成本，而且标注结果噪声不小。
+
+## Summarising Text
+Types of summarisation models:
+- Multi-document versus single document
+- Extractive versus abstractive
+- Generic (unconditioned) versus query-focused (conditioned) or controllable
+- Supervised versus unsupervised
+- Multi-modal versus single modality
+
+Multi-document summarisation vs Single-document summarisation
+- Single document summarisation use a single source, for example, a news article
+- Multi document summarisation uses multiple sources or documents for the summary (all sources are related to a theme or topic)
+
+Query-focused summarisation vs Controllable summarisation
+- Query-focused: summarise a document based on a specific query
+- Controllable: Control parameters such as length, aspect, sentiment
+
+Extractive summarisation vs Abstractive summarisation
+- Extractive: use a subset of the sentences from the document as the candidate summary
+- Abstractive: synthesise a summary which is not tied to the exact wording in the article
+
+Extractive总结很简单：对于一个有n句话的文档$d=(s_1, s_2, ..., s_n)$, 然后做分类，如果这个句子应该放在summarisation中，就是$y_i=1$，否则$y_i=0$。非常简单，但是是许多summarizer的基础模型。
+
+对于二分标签总结，有两个问题
+- 从哪里获得训练模型的标签？
+- 训练目标是什么？朝什么方向优化？
+
+对于标签，给定一篇文章（含多句子）和它的“参考摘要”。然后计算每句话和参考摘要之间的 ROUGE 分数（ROUGE 测的是和摘要重合的词/短语数量）。选出 得分最高的几个句子，作为模型的正样本（打上 1 标签），其他句子为0。
+
+对于训练目标，现在每个句子都有一个标签（是否该被选进摘要），用 logistic 回归或者其他分类器，目标是最大化这堆标注的 log-likelihood。这就是标准的 binary cross-entropy：
+$$
+\mathcal{L} = -\sum_i \left[ y_i \log p_i + (1 - y_i)\log(1 - p_i) \right]
+$$
+
+Abstractive总结：这个问题应该被视为文本生成问题，而不是之前的选择问题。使用的是pointer-generator network。
+- Base model是一个seq2seq架构（输入文章由encoder编码，输出摘要由decoder逐词生成）。
+- 这个base model的问题是标准的seq2seq模型很难生成词表外的词，而且容易错过原文中的关键词
+- 解决办法就是pointer-generator network，引入指针机制，这样每一步生成单词$w$的概率就变成了一个混合模型
+$$
+P(w) = p_{\text{gen}} P_{\text{vocab}}(w) + (1 - p_{\text{gen}}) \sum_{i: w_i = w} a^t_i
+$$
+- 这个公式表示模型可以选择 “从词表中生成” 或 “从原文中复制”，通过$p_{\text{gen}}$来动态切换。
+- 还有一个问题是这个模型通常生成重复内容，因此引入coverage vector $c^t = \sum^{t-1}_{t'=0}a^{t'}$
+- 这个向量记录了过去decoder在source上的attention积累量，新一轮decoder中把这个vector输入进来可以防止过度关注同一个片段，从而减少重复。
+
+ROUGE分数是什么？如何计算？
+- ROUGE是Recall-Oriented Understudy for Gisting Evaluation，值越高越好。
+$$
+\text{ROUGE-N} = \frac{\sum_{S\in ref}\sum_{\text{gram} _ n\in S}\text{countmatch}(\text{gram} _ n)}{\sum_{S\in ref}\sum_{\text{gram}_n\in S}\text{count}(\text{gram}_n)}
+$$
+- 为什么计算的是召回率而不是精确率？Recall is more important to decide whether the information in the candidate summary captures the information in the reference summary.
+
+还有一种分数不依赖n-grams，用BERT来softly score similarity. 它计算的是语义相似度
+- 使用BERT提取每个词的向量表示，再用余弦相似度比较候选摘要和参考摘要之间的每个词是否“语义接近”。
+- 给定$C$是candidate sentence，$R$是reference sentence
+- 用BERT把C和R中的每个词编码成向量。$C=[c_1, ..., c_n], R=[r_1, ..., r_m]$
+- 每个词对之间都计算余弦相似度，得到一个 n×m 的相似度矩阵
+- 每个词从对方句子中找最相似的词作为匹配,得到precision（每个生成词去参考里找最相似的词）和recall（每个参考词去生成中找最相似的词）两个方向的得分。最终的F1 score就是
+$$
+\text{BERT Score} = \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+$$
+
+## PEFT
+- 假设有一个神经网络函数$ f: X \to Y $，可以表示为多个子函数的组合：  
+  $$
+  f_{\theta_1} \circ \dots \circ f_{\theta_n}
+  $$
+  每个子函数$ f_{\theta_i} $有自己的参数$\theta_i$。
+
+- 我们希望通过一个只含有少量参数的模块$ \phi $来对这个网络进行微调（即 PEFT 的目标），而不是更新整个模型的参数$ \theta $。
+
+PEFT分为三类
+1. **Parameter composition**：
+   $$
+   g_i(x) = f_{\theta_i \oplus \phi}(x)
+   $$
+   - 用一个组合操作$ \oplus $将原始参数$ \theta_i $与微调模块参数$ \phi $融合。
+   - 举例：LoRA就是这种方式，它在原始权重上添加了一个低秩矩阵。
+
+2. **Input composition**：
+   $$
+   g_i(x) = f_{\theta_i}([x, \phi])
+   $$
+   - 把 $ \phi $ 拼接在输入$ x $上作为新的输入。
+   - 举例：Prefix Tuning就是这种方式，它把微调参数作为“前缀”输入到 Transformer 中。
+
+3. **Function composition**：
+   $$
+   g_i(x) = f_{\theta_i} \circ f_{\phi}(x)
+   $$
+   - 把$ f_\phi $作为前置函数处理输入，再送入原始函数$ f_{\theta_i} $。
+   - 举例：Adapter 模块可以看作在主模型中插入了一个前置的小网络。
+
+首先介绍三种常见的parameter composition实现方式
+1. Sparse network
+  - 让$\phi$具有稀疏结构，即只有一小部分参数是非零的。目标是减少计算和内存开销，同时保留表达能力。
+2. Structured composition
+  - 在原始参数$\theta_i$上施加结构化限制，例如只更新某些预定义结构中的参数（比如只调 Transformer 中的 FFN 或某层的 attention）。
+3. Low rank composition
+  - 把参数表示成低秩矩阵，比如将全连接层的权重调整部分限制为两个小矩阵相乘（低秩近似）。
+
+|     | Parameter Efficiency | Training Efficiency | Inference Efficiency | Performance |
+|-----|-----|-----|-----|-----|
+|Parameter Composition|methods require <3% of params|pruning requires re-training iterations|does not increase model size|LoRA achieves strong performance|
+|Input Composition|only add a small number of params|extend the context's window|extend the context's window|require large models to perform well|
+|Function Composition|adapters depend on hidden size|does not require gradients of frozen params|new functions increase # of operations|mactch or outperform standard fine-tuning|
 
 # Evaluating Generation and Machine Translation
 
@@ -504,6 +670,19 @@ Double Descent 现象表明，在“过拟合区域”之后，继续增加模�
   - Design a RNN to model $P(y_i\mid x)$. . Identify any independence assumptions you make. Draw a diagram that illustrates how the model computes probabilities for the tag of the word “with”: What is the input, and how is the output distribution computed from the input? Write out the basic equations of the model, and explain your choices.
     -  One design for the RNN is to model $P(y_i\mid x_1, ..., x_i)$. That is, the RNN reads $x_1$ through $x_i$ one step at a time, and at the ith step produces a distribution for possible tags $y_i$. For simplicity, let’s use RNN to denote a unit that receives an input and a previous hidden state, and produces a new hidden state; it can easily be replaced with an LSTM or other recurrent unit of your choice: $P(y_i\mid x_1, ..., x_i) = \text{softmax}(Wh_i+b)$, where $h_i = \text{RNN}(\text{onehot}(x_i), h_{i-1})$. 
 
+## Transformers
+1. Transformer's Efficiency
+  ![attention-table1](/img/nluplus/attention_table1.png)
+  - Inspect Table 1 in Attention is all you Need with a focus on the “Complexity per Layer” column wherein n is the sequence length and d is the representation dimension, the same parameter as the self-attention projection size from Q1.
+    - Consider the complexity bounds and your own knowledge of how NLP tasks are constructed – describe when a self-attention network has a lower complexity than other networks.
+      - As a case study, we can set `d=1024` and compare between these models. For most NLP tasks here we can approximate that `n << d` and therefore the Transformer has lower complexity than the RNN. It might be helpful to name and discuss a few tasks where this is true. Conversely, there might be some cases where the inverse is true (document translation?). In terms of increasing `n`, the additional complexity in a Transformer makes sense as we need an additional self attention computation against all prior sequence elements. For the RNN, we only need to compute the RNN cell with the new state and cumulative history.
+    - Other than complexity – describe other constraining factors to be considered when planning experiments using neural networks for NLP. There is no right answer here.
+      - we now want to add in the practical other constraints that exist when running experiments. You could discuss that really this complexity is only a part of choosing models as well as performance and constraints such as GPU Memory, data availability, tunable hyperparameters etc. A typical Transformer is much larger than an RNN and space/speed constraints might arise before complexity can even be considered.
+  - Consider an encoder-decoder RNN model, following up on the question before. Can the computation of the encoder be easily parallelised with respect to the number of tokens (meaning, can you break the input and the computation into chunks such that they run in parallel)? Explain why or why not.
+    - a
+  - Consider the Transformer encoder layer. Explain why its computation can be paralleised over tokens per layer. Can computation be easily parallelised across layers?
+    - a
+2. Considering Permutations
 
 
 
