@@ -457,6 +457,120 @@ Double Descent 现象表明，在“过拟合区域”之后，继续增加模�
 因此，传统统计学习理论预测过拟合会导致泛化能力下降，但Double Descent说明在超大模型下，泛化能力反而会回升。
 
 ## LLMs as Formal Machines
+一个自回归语言模型定义$p(y)$
+$$
+p(y) = p(\text{EOS}\mid y)\prod_{t=1}^n p(y_t \mid y_{<t})
+$$
+
+模型不是直接在文本上建模，而是先把上下文变成一个向量（representation），再在这个向量上建立条件概率分布，预测下一个词。
+$$
+p(y_t\mid y_1, ..., y_{t-1}) = \text{Softmax}(Eh(y_1, ..., y{t-1}))_{y_t}
+$$
+
+$h(y_1, ..., y{t-1})$是历史上下文经过模型（比如 Transformer）编码后的隐状态（hidden state）。是词表 embedding 矩阵，通常大小是$V\times d$，$V$是词表大小，$d$是embedding维度。这里是output projection，也就是把隐状态投影回词表空间，生成每个词的得分。最后Softmax函数把所有词的得分归一化成概率分布（每个词一个概率）。
+
+LLM如何通过formal language theory角度来理解？
+- FSM → PDA → TM → LLM
+- LLM本质上在定义一种语言，也就是定义“哪些字符串是合法的”。
+- Formal Language Theory把LLMs看成一类接受语言的机器，研究它们能接受（或生成）多复杂的语言，从而理解它们的计算能力和局限。
+
+机器 | 本质上在做什么？ | 能接受什么样的语言？
+FSM（有限状态机） | 有有限个状态，读入符号，跳转状态，最后看是不是到达接受状态。 | 正则语言（比如模式识别：找有没有特定的词）
+PDA（下推自动机） | 有状态+一个栈，可以压栈/出栈，增加了“记忆”能力。 | 上下文无关语言（比如括号匹配：{(())()}\{ (())() \}{(())()}）
+TM（图灵机） | 有无限长的带子，可以读写，前后移动，状态转移，可以做任意复杂的操作。 | 递归可枚举语言（基本上 = 可计算的问题）
+
+什么是可计算的语言？
+- 有某种机械的方法（算法/程序）可以判定一个字符串是否属于这个语言。
+
+## Safety & Security with LLMs
+1. LLMs（大型语言模型）带来的安全和隐私风险
+- **神经表征信息提取**：攻击者可以尝试从模型隐向量中恢复敏感信息。
+- **成员关系攻击（membership attacks）**：判断某个样本是否出现在训练集中。
+- **模型蒸馏/盗窃（model theft）**：通过访问接口，训练出性能接近的大模型（例如Vicuna从ChatGPT）。
+- **越界输出**：诱导模型输出非法或敏感内容。
+- **滥用模型**：比如利用模型生成虚假信息、代写论文等。
+2. 水印（Watermarking）技术
+- **原理**：通过在模型生成过程中对词表分组（绿牌词、红牌词），让模型偏好生成绿牌词，从而在输出文本中嵌入人类不可察觉但可机器检测的“隐形签名”。
+- **检测方法**：检验文本中出现红牌词的数量，进行统计检验（若文本自然生成，红牌词出现概率应为50%；若有水印，红牌词出现次数极少）。
+- **局限性**：
+  - 低熵情形下（可选词很少）难以有效植入水印。
+  - 经第三方**改写模型（paraphrasing）**处理后，水印可能被破坏。
+3. 越狱攻击（Jailbreaking）和对抗性提示（Adversarial Suffix）
+- Zou et al. (2023)提出的方法：
+  - 通过给提示词后面添加一个特定后缀，可以让模型忽视原有的安全限制，输出被禁止的信息。
+  - 他们用**梯度指导的离散优化**搜索这种对抗性后缀（对token的one-hot向量求梯度，选择影响最大的新词替换）。
+- **通用后缀（Universal Prompt）**：
+  - 研究发现，找到的一些后缀不仅能攻击开源模型（如Vicuna），还可以迁移攻击闭源模型（如GPT系列）。
+- 局限：不需要完全的模型访问（黑盒攻击可能有效）。
+4. 公平性问题：保护敏感属性（比如性别、种族）
+- 故事背景：Amazon曾因招聘系统偏见问题，希望模型在决策时不使用敏感属性。
+- SVD信息擦除方法（Shao et al., 2023）：
+  - 建立输入（X）与敏感属性（Z）的协方差矩阵。
+  - 对其做奇异值分解（SVD），然后将X投影到与Z正交的子空间，从而去除敏感属性的信息。
+- 挑战：
+  - 在样本与敏感属性未一一对应（unaligned）时，如何做擦除？
+  - 可以通过推测潜在对应关系（latent alignment）部分实现。
+5. 总结
+- LLMs存在多种安全隐患：信息泄露、不当使用、输出违法内容、不公平决策等。
+- 水印、对抗攻击研究、信息擦除（保护隐私与公平）是当前重要的安全与伦理研究方向。
+
+什么叫奇异值分解？将X投影到与Z正交的子空间为什么就可以去除铭感属性的信息？
+
+奇异值分解（Singular Value Decomposition，简称 **SVD**）是线性代数里一个非常重要的矩阵分解方法。  
+它的基本形式是：
+
+$$
+M = U \Sigma V^\top
+$$
+
+其中：
+- $ M $ 是一个 $ m \times n $ 的矩阵（可以是非方阵）。
+- $ U $ 是一个 $ m \times m $ 的正交矩阵（列向量是正交单位向量）。
+- $ V $ 是一个 $ n \times n $ 的正交矩阵（列向量也是正交单位向量）。
+- $ \Sigma $ 是一个 $ m \times n $ 的对角矩阵（对角线上的元素是奇异值，非负，且通常按降序排列）。
+
+简单理解就是：  
+SVD把任意矩阵拆成了旋转 + 拉伸 + 再旋转三步过程的组合。
+
+- $ X $：是用户的输入表示，比如文本、图像特征。
+- $ Z $：是不希望模型依赖的敏感属性，比如性别、种族、年龄等等。
+
+目标是：  
+希望模型在保留对 $Y$（正常任务）的预测能力的同时，尽量删除X中关于Z的信息。
+
+为什么可以用SVD来去除敏感属性？我们可以这样操作：
+1. 计算协方差矩阵：  
+   先计算$ X $和$ Z $之间的交叉协方差矩阵：
+
+   $$
+   \Omega = E[X Z^\top]
+   $$
+
+   这个矩阵描述了$ X $中每一维与$ Z $中每一维之间的线性关系。
+2. 对 $ \Omega $ 做SVD：
+
+   $$
+   \Omega = U \Sigma V^\top
+   $$
+
+   其中：
+   - $ U $ 的列向量告诉我们：在$ X $空间中，哪些方向（组合）与$ Z $的变化最相关。
+   - 奇异值$ \Sigma $的大小表示这种相关性的强弱。
+3. 去除高相关方向：
+  - 将$ X $投影到**与最相关方向正交的子空间**。
+  - 就是：去掉$ U $中对应最大奇异值方向的分量，只保留剩下的。
+  - 具体地，新的$ X $（记作 $ X_{\text{erased}} $）是：
+
+   $$
+   X_{\text{erased}} = UU^\top X
+   $$
+
+   其中$ U $是那些最小奇异值对应的正交基向量（跟敏感信息最不相关的方向）。
+4. 为什么这种投影能去掉敏感属性的信息？
+
+- $ \Omega $告诉我们哪里有“泄漏”，也就是$ X $哪些方向最容易揭示$ Z $。
+- 投影到正交空间，本质上是**抹掉了与敏感属性相关的变化方向**。
+- 直觉上理解：如果性别主要影响了特征的第一个方向，那我们就从表示里去掉这一方向的信息，剩下的内容就跟性别的相关性大大降低了。所以，去除这些方向以后，模型就难以再通过X推测出Z了，从而提升公平性。
 
 # LLM微调
 GPT发展历史:
@@ -626,14 +740,156 @@ PEFT分为三类
 |Input Composition|only add a small number of params|extend the context's window|extend the context's window|require large models to perform well|
 |Function Composition|adapters depend on hidden size|does not require gradients of frozen params|new functions increase # of operations|mactch or outperform standard fine-tuning|
 
-# Evaluating Generation and Machine Translation
+# Evaluating Generation & Machine Translation
+## Evaluation Translation & Generation
+
+1. 为什么评估重要但困难
+- 测试是工程中的核心部分。比如给你一个机器翻译系统，怎么判断它“对”呢？评估就是回答这个问题。
+- 评估不仅要比较不同系统，还要监控系统迭代（新方法有没有改善）和判断系统是否适用于特定应用场景（比如翻译菜单 vs 翻译和平协议）。
+2. 人工评估
+- **关键两个维度**：  
+  - **Adequacy（充分性）**：翻译有没有完整传达原文意思？
+  - **Fluency（流畅性）**：语言是否自然、符合语法？
+- 人评的方式：给分（比如1-5分），但评审间经常存在分歧。
+- 介绍了直接评估（Direct Assessment）的方法，比如用滑动条细致打分，提高一致性。
+3. 基于字符串重叠的自动评估
+- 自动评估是为了快速检测系统变化，比如Google Translate更新时不能每次都靠人评。
+- 最简单的方法是**匹配单词**，计算**Precision/Recall/F1**，但这样的问题是**忽略了词序**。
+- 更先进的方法是**BLEU分数**：
+  - 统计n-gram（n个连续词）的匹配情况。
+  - 引入惩罚机制（比如翻译太短会扣分）。
+  - 缺点：对词形变化敏感，对内容的重要性不区分，难以跨数据集解释，且对人类翻译的得分也可能偏低。
+4. 使用Embedding的评估
+- 传统指标很表面，无法处理同义表达、重要单词位置变化的问题。
+- **BERTScore**：
+  - 用BERT等预训练模型的**上下文嵌入**来表示句子。
+  - 计算每个token之间的**余弦相似度**，进行贪婪匹配。
+  - 可以选择加入IDF（逆文档频率）加权，强调稀有重要词。
+5. 用训练出来的模型评估
+- 通过收集16年WMT比赛的人类评估数据，训练模型来自动打分。
+- 代表性方法是**COMET**：
+  - 用跨语言预训练模型编码源句、参考翻译和系统输出。
+  - 输入特征包括向量间的乘积和差值。
+  - 用回归模型（如MSE）来预测翻译质量分数。
+  - 比BLEU和BERTScore和人类判断的相关性更高。
+6. 总结
+- 好的NLG/MT评估非常重要也非常难。
+- 需要同时关注**充分性（adequacy）**和**流畅性（fluency）**。
+- BLEU等传统指标有用，但局限明显。
+- 训练出的新一代指标（如COMET）表现更好，但也要小心夸大其效果。
+- 评估时应该使用**多种指标**、**大且多样化的测试集**和**合理的人工评估者**。
+
+## Machine Translation & Multilingual data
+1. 低资源机器翻译（Low-Resource MT）
+- **什么是低资源？**  
+  指数据稀缺的语言，无法像英语、法语那样有大量双语或单语数据支撑NLP模型训练。
+- **语言分类（根据资源多少）**：
+  - Class 0：完全被忽视的语言（如Dahalo）
+  - Class 1：有少量未标注数据（如Bhojpuri）
+  - Class 2：有极少量标注数据（如Zulu）
+  - Class 3-5：资源逐步丰富，如英文、德文等是Class 5“赢家”。
+- **现实问题**：
+  - 大量语言在数字世界中几乎没有存在感。
+  - 资源稀缺问题反映了社会性系统不公。
+2. 如何提升低资源语言MT
+- **回译（Back Translation）**：
+  - 先训练一个反向翻译器（如英语→祖鲁语），再生成伪数据反向训练祖鲁语→英语。
+  - **迭代回译**（Iterated Back Translation）可以进一步增强效果。
+
+- **迁移学习（Transfer Learning）**：
+  - 使用资源丰富语言的平行语料来初始化低资源语言的系统。
+  - 父母语言不需要同源，比如用英语帮辅导斯瓦希里语。
+
+- **mBART模型**（Multilingual BART）：
+  - **预训练**：在25种语言的大规模单语数据上做降噪自编码训练。
+  - **微调**：在小规模双语数据上进行具体翻译任务的微调。
+  - **效果**：在低/中资源语言对上显著提升BLEU分数，但对高资源语言提升有限，甚至可能轻微下降。
+
+- **mBART50**：
+  - 扩展到50种语言。
+  - 支持多对多（many-to-many）翻译，不仅限于英↔X。
+3. 多语言翻译模型（Multilingual Models）
+- **思路**：
+  - 用一个模型支持多个语言对（比如103种语言互译），而不是为每一对单独训练。
+- 好处：低资源语言受益于高资源语言（Transfer）。
+- 问题：不同任务之间互相干扰（Interference），尤其是高资源语言性能可能受损。
+
+- 解决方法：
+  - 平衡采样：通过调整训练样本分布（如温度采样），降低高资源语言对低资源语言的压制。
+  - 注入Adapter模块：在Transformer中插入小型adapter层，让不同语言任务可以独立调整，减少干扰。
+4. 低资源MT的评估问题
+- 自动评估（如BLEU）对低资源语言来说更不可靠：
+  - 原因一：这些指标本身是为高资源系统设计的。
+  - 原因二：系统质量较差时，指标波动性大。
+  - 原因三：缺乏好的测试集和人类标注数据训练指标。
+- 最佳实践：
+  - 尽量进行人类评估。
+  - 鼓励研究者直接联系语言社区，进行参与式研究。
+5. 总结
+- 低资源MT已经取得明显进步，但世界上大多数语言依然未被很好支持。
+- 研究重心逐步从传统encoder-decoder转向以LLM为基础的方案。
+- 未来挑战依然很多，尤其是在知识注入、控制生成、多语言泛化等方面。
+## Translation & LLMs
 
 # Ethics
+## Ethics in NLP
+1. NLP的社会影响
+**Benefits**
+- Efficiency for individuals and institutions trying to understand and summarize information in many languages.
+- Personalization for users, e.g. through digital assistants, tutoring agents, and other services.
+- Human understanding of the language faculty and its social use—e.g. through use in computational psycholinguistics and computational sociolinguistics.
+2. Types of Risks
+- Discrimination, Exclusion and Toxicity
+- Information Hazards
+- Misinformation Harms
+- Malicious Uses
 
-# Evaluation of LLM and Alignment
+3. 构建NLP系统时需要考虑的事情
+- Advanced grammar analysis can improve search and educational NLP but also reinforce prescriptive linguistic norms and discrimination.
+- Stylometric analysis can help discover provenance of historical documents but also unmask anonymous political dissenters.
+- Text classification and IR can help identify information of interest but also aid censors.
+- Machine translation can be used to break language barriers but also monitor marginalized populations.
+## Bias in word embeddings
+1. Bias in representations
 
-# QA and RAG
+词表示（Word Representations）中的偏见
+人类有社会偏见，这些偏见也能通过隐性联想测试（IAT）测出来。类比地，**词向量（如GloVe、word2vec）**中也能检测到类似的偏见。比如：
+- 男性名字更容易和“事业（career）”类词联系在一起。
+- 女性名字更容易和“家庭（family）”类词联系在一起。
+- 这种检测方法叫做 WEAT（Word Embedding Association Test）。
 
+
+2. Bias in NLP systems
+
+偏见不仅存在于向量中，还影响了实际NLP应用。例如，在情感分析系统中（200多个模型参与测试）：
+- 黑人名字更容易被识别为“愤怒、恐惧、悲伤”。
+- 白人名字更容易被识别为“快乐”。
+
+性别上：
+- 女性名字更容易和“愤怒、快乐”关联。
+- 男性名字更容易和“恐惧”关联。
+- 即使只改变人名，情感分类的输出也发生了显著变化，说明系统有人口统计偏见（demographic bias）。
+
+3. What can you do?
+- 硬去偏（Hard Debiasing）
+  - 找到性别子空间（gender subspace），通过种子词对（如 he-she, man-woman）确定。把所有中性词（如doctor、teacher）沿这个子空间方向上的分量清除掉。
+
+  - 问题：这种方法只是简单地清除了某个方向的信息，但实际上偏见可能分散在很多维度上。研究发现，即使做了去偏处理，模型仍然能学到隐含的性别、种族等信息（Gonen and Goldberg, 2019）。
+
+- 调整训练数据（Dataset Debiasing）
+  - 例如，在毒性检测任务中，如果某些词（如"gay"）在有毒评论中出现频率很高，那么可以通过增加无毒例子来平衡。这种方法对监督学习任务有效，但对文本生成（如LLMs）来说挑战更大。
+
+- 价值对齐（Values Alignment）
+  - 使用针对社会价值观制作的数据集（比如PALMS项目），训练模型符合特定的道德立场（比如尊重多样性，反对性别刻板印象）。
+
+- 解码时控制（DEXPERTS）
+  - 训练小模型作为“专家”和“反专家”，在大模型推理时组合控制输出。不需要重新训练大模型，非常高效。
+
+## In context learning
+
+# Question Answering
+
+# RAG
 
 # Tutorials
 ## Language Models

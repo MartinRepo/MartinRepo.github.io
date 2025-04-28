@@ -364,7 +364,9 @@ Exploring starts的一个重要假设是环境必须支持任意(s,a)起点，�
 
 ## TD control
 ### Sarsa
+同轨策略下的TD
 ### Q-learning
+离轨策略下的TD
 ## n-steps TD methods
 
 # Planning and Learning
@@ -375,4 +377,5 @@ Exploring starts的一个重要假设是环境必须支持任意(s,a)起点，�
 
 
 # Reference
-[1] https://leovan.me/cn/2020/07/model-free-policy-prediction-and-control-monte-carlo-learning/#fn:1
+[1] https://leovan.me/cn/2020/07/model-free-policy-prediction-and-control-monte-carlo-learning/
+[2] https://leovan.me/cn/2020/07/model-free-policy-prediction-and-control-temporal-difference-learning/
