@@ -358,24 +358,63 @@ Exploring starts的一个重要假设是环境必须支持任意(s,a)起点，�
 
 但是现实中，我们很难满足试探性出发的假设，一般性的解法是智能体能够持续不断地选择所有可能的动作，有两种方法可以保证这一点，同轨策略（soft on-policy）和离轨策略（off-policy）。在同轨策略中，用于生成采样数据序列的策略和用于实际决策的待评估和改进的策略是相同的；而在离轨策略中，用于评估或改进的策略与生成采样数据的策略是不同的，即生成的数据“离开”了待优化的策略所决定的决策序列轨迹。
 
+**同轨策略**
 
+策略一般是软的，会逐渐逼近一个确定性的策略
+
+**离轨策略**
+所有的学习控制方法都面临一个困境：它们希望学到的动作可以使随后的智能体行为是最优的，但是为了搜索所有的动作（以保证找到最优动作），它们需要采取非最优的行动。离轨策略采用一种妥协的方法，它并不学习最优策略的动作值，而是学习一个接近最优而且仍能进行试探的策略的动作值。一个更加直接的方法是采用两个策略，一个用来学习并成为最优策略，另一个更加有试探性，用来产生智能体的行动样本。用来学习的策略被称为目标策略，用于生成行动样本的策略被称为行动策略。在这种情况下，我们认为学习所用的数据“离开”了待学习的目标策略，因此整个过程称为离轨策略学习。
 # Temporal Difference Learning
 ## TD policy evaluation
-
+利用时序差分方法解决控制问题，我们依然采用广义Policy Iteration，只是在评估和预测部分采用时序差分方法。同蒙特卡洛方法一样，我们需要在试探和开发之间做出权衡，因此方法又划分为同轨策略和离轨策略。
 ## TD control
 ### Sarsa
-同轨策略下的TD
+> 同轨策略下的TD。
+
+On-policy中，我们需要对所有状态$s$以及动作$a$估计出在当前策略下所有对应的$q_\pi(s,a)$。确保state value在TD(0)下收敛的定理同样适用于在对应的action-value的算法上。
+$$
+Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha[R_{t+1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t)]
+$$
+每当从非终止状态的$S_t$出现一次转移之后，就进行上述的一次更新，如果$S_{t+1}$是终止状态，那么$Q(S_{t+1}, A_{t+1})$则定义为0。这个更新规则用到了$(S_t, A_t, R_{t+1}, S_{t+1}, A_{t+1})$，这也是为什么这个算法叫做Sarsa。
 ### Q-learning
-离轨策略下的TD
+> 离轨策略下的TD
+
+$$
+Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha[R_{t+1} + \gamma \max_a Q(S_{t+1}, a) - Q(S_t, A_t)]
+$$
+在这里，待学习的action value函数$Q$采用了对最优动作价值函数$q_*$的直接近似作为学习目标，而与用于生成智能体决策序列轨迹的action policy是什么无关。
+
+所以，Sarsa和Q-learning不仅在评估，而且还在改进策略。
+
+### Cliff Walking
+用经典的悬崖行走问题来对比Sarsa和Q-Learning在策略学习上的差异。
+![cliff walking](/img/rl-note/cliff_walking.png)
+场景是这样，起点是S，终点是G，中间灰色是悬崖区域，一旦掉进去就-100然后重回起点，其他区域每一步奖励-1，每一步都用$\epsilon$-greedy来选择action。
+
+在训练过程中，Sarsa更新的是自己实际经历的轨迹上的$Q(s, a)$, 因为它是On-policy，所以它避免靠近悬崖边，以防止$\epsilon$探索时不小心掉进去。结果是学到一个更保守但更稳定的路径（图中蓝色轨迹），牺牲了一点效率，但回报更高更稳定。
+
+Q-learning更新的是理想中的最优策略(用最大的Q更新，哪怕当前没执行这个策略)。它学出来的策略更激进，会选择贴着悬崖走（图中红线），因为理论上这是最短路径、能最快到达终点、减少累计-1奖励。但现实中它使用$\epsilon$-greedy探索，一不小心探索出错就掉悬崖，得-100。所以虽然路径理论最优，但训练中平均回报更差、更不稳定。
 ## n-steps TD methods
+之前的TD(0)指的是只用一步未来信息(1 step return)的TD方法，问题是更新信息短浅，可能误差较大。但是如果考虑全部步数，就是一整个episode，就变成MC了。所以折中，这里介绍n-steps TD。
 
+$$
+V(S_t) \leftarrow V(S_t) + \alpha (G_{t:t+n} - V(S_t))
+$$
+其中
+$$
+G_{t:t+n} = R_{t+1} + \gamma R_{t+2} + ... + \gamma ^{n-1}R_{t+n} + \gamma^n V(S_{t+n})
+$$
+- 前n步使用的是真实奖励
+- 第n+1步使用估计值
 # Planning and Learning
-
+Dynamic Q-Learning
 # Value function approximation
 
 # Policy Gradient Methods
 
 
 # Reference
+---
 [1] https://leovan.me/cn/2020/07/model-free-policy-prediction-and-control-monte-carlo-learning/
+
 [2] https://leovan.me/cn/2020/07/model-free-policy-prediction-and-control-temporal-difference-learning/

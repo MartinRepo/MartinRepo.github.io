@@ -93,7 +93,7 @@ $
 显而易见，BPTT存在两个致命问题：
 - 第一个是梯度消失或爆炸：当权重矩阵的范数$||W_{hh}||$小于1时，随着时间步的增加，梯度指数级衰减，导致早期时间步的梯度几乎为 0，无法有效训练；
     - 可能的解决方案：使用梯度裁剪（Gradient Clipping） 来限制梯度大小；使用长短时记忆网络（LSTM）或 门控循环单元（GRU） 代替 RNN。
-- 第二个问题在于计算开销：BPTT 需要存储所有时间步的隐藏状态，因此当序列很长是，训练效率低。
+- 第二个问题在于计算开销：BPTT 需要存储所有时间步的隐藏状态，因此当序列很长时，训练效率低。
     - 可能的解决方案：Truncated BPTT，仅在固定窗口大小内进行梯度传播，而不回溯整个序列。
 ## BPTT Variation
 ### Truncted BPTT
@@ -363,17 +363,18 @@ a ) (N telescope ) ) ) ) )`
 可能发生的问题（比例很小，无需担心）：比如我们如何确定opening and closing brackets match? 如何对应输入和输出？如何确保模型输出的是整个序列的最优parsing而不是仅仅预测每个time step上的best symbol?
 
 **Parsing with Transformers**
+
 Kitaev等人用transformers进行parsing。
 - Use a transformer to encode the input
 - This results in a “context aware summary vector” (embedding) for each input word.
-- The embedding encodes word, PoS tag, and position information.
+- The embedding encodes word, POS tag, and position information.
 - The embedding layers are combined to obtain **span scores**
 - But they also try **factored attention heads**, which separate position and content information.
 
 什么是span scores? 在NLP中，尤其是命名实体识别（NER）、句法解析（Parsing） 和 信息抽取（IE） 等任务中用于评估模型性能的指标。
 Span scores 通常基于 Precision（精确率）、Recall（召回率） 和 F1-score（F1 分数） 来评估模型在 span-level 的表现：
 
-Span scores在Transformer解析任务中的计算方法：计算span相关的向量差值，经过线性变换、归一化（LayerNorm）、非线性激活（ReLU）和再次变换，得到 span scores。最终，这些得分用于 解码（decode the output），即找到最优的解析树。
+Span scores在Transformer解析任务中的计算方法：计算span相关的向量差值，经过线性变换、归一化（LayerNorm）、非线性激活（ReLU）和再次变换，得到 span scores。最终，这些得分用于解码（decode the output），即找到最优的解析树。
 
 ## Unsupervised Parsing
 Unsupervised Parsing[^7]主要是从未标记的文本中归纳出语法结构。
@@ -696,6 +697,8 @@ $$
 $$
 
 ## PEFT
+> 先夹带私货，欢迎关注我在[LoRA as a Service (LaaS)](https://serverlessllm.github.io/docs/stable/community/meetups)方面的工作
+
 - 假设有一个神经网络函数$ f: X \to Y $，可以表示为多个子函数的组合：  
   $$
   f_{\theta_1} \circ \dots \circ f_{\theta_n}
@@ -754,14 +757,14 @@ PEFT分为三类
 - 介绍了直接评估（Direct Assessment）的方法，比如用滑动条细致打分，提高一致性。
 3. 基于字符串重叠的自动评估
 - 自动评估是为了快速检测系统变化，比如Google Translate更新时不能每次都靠人评。
-- 最简单的方法是**匹配单词**，计算**Precision/Recall/F1**，但这样的问题是**忽略了词序**。
-- 更先进的方法是**BLEU分数**：
+- 最简单的方法是匹配单词，计算**Precision/Recall/F1**，但这样的问题是忽略了词序。
+- 更先进的方法是BLEU(Bilingual Evaluation Understudy)分数：
   - 统计n-gram（n个连续词）的匹配情况。
   - 引入惩罚机制（比如翻译太短会扣分）。
   - 缺点：对词形变化敏感，对内容的重要性不区分，难以跨数据集解释，且对人类翻译的得分也可能偏低。
 4. 使用Embedding的评估
 - 传统指标很表面，无法处理同义表达、重要单词位置变化的问题。
-- **BERTScore**：
+- BERTScore：
   - 用BERT等预训练模型的**上下文嵌入**来表示句子。
   - 计算每个token之间的**余弦相似度**，进行贪婪匹配。
   - 可以选择加入IDF（逆文档频率）加权，强调稀有重要词。
@@ -888,8 +891,127 @@ PEFT分为三类
 ## In context learning
 
 # Question Answering
-
+1. 什么是问答系统？
+- 构建能够用自然语言自动回答人类提问的系统。
+- 任务形式：给定一个问题（Q），输出答案（A）。
+2. 问答系统的分类（Taxonomy）
+- **信息来源**：
+  - 单段落、网页文档集合、知识库、图像等。
+- **问题类型**：
+  - Factoid（事实型）vs. Non-Factoid（非事实型）；
+  - 开放域 vs. 封闭域；
+  - 简单 vs. 组合型；
+  - 自然语言 vs. Cloze-style（填空题）等。
+- **答案类型**：
+  - 简短文本、段落、列表、是/否等。
+3. 问答系统的应用场景
+- 阅读理解（Reading Comprehension）：(P, Q) → A。
+  - 示例：问Beyonce什么时候成名？→ "in the late 1990s"
+- QA是评估模型语言理解能力的良好测试平台。
+- 许多NLP任务可视为QA的子问题：机器翻译、信息抽取、词性标注、数学题解答、语言建模等。
+4. 数据集案例：SQuAD（Stanford Question Answering Dataset）
+- 包含10万多个三元组（段落、问题、答案）。
+- 答案为段落中明确可抽取的文本片段。
+- 使用Exact Match (EM) 和 F1 分数评估。
+- 已被视为“基本解决”的任务，模型性能超越人类。
+5. 神经QA模型：训练方法
+- 输入：段落C和问题Q（token序列）。
+- 输出：答案在段落中的起止位置（start, end）。
+- 目标：最大化正确答案的start和end索引的概率。
+6. 代表模型：BiDAF（Bi-Directional Attention Flow）
+- BiDAF整体不需要预训练，因为它是段落内"span-level回答"的模型。不依赖通用的语言建模能力，也不需要建模open-domain的知识，只需要对齐question和context并从中预测start-end index。它的输入通常是一对序列（一段文字和一条问题），输出是两个预测的标量，起始位置和结束位置。
+- 引入双向注意力机制（Context-to-Query 和 Query-to-Context Attention）。
+- 使用GloVe词向量 + 字符级嵌入，结合BiLSTM生成上下文表示。
+- 模型结构包含：
+  - 字/词嵌入层；
+  - 上下文编码器；
+  - 注意力流层；
+  - 建模层（BiLSTM）；
+  - 输出层（预测start和end）。
+- Ablation分析表明各模块对性能影响显著。
+7. 现代模型：基于BERT的QA系统
+- 输入：问题 + [SEP] + 段落。
+- 输出：预测答案的start和end token。
+- 性能接近人类，不需要复杂的结构设计。
+8. 开放域问答（Open-Domain QA）
+- 给定问题，不提供相关段落，需要从大规模文档中找答案。
+- 更具挑战性，但也更实际。
 # RAG
+1. 背景：开放领域问答（ODQA）
+- 任务：输入一个自然语言问题，但没有提供相关段落。
+- 系统必须从大型文档库（如Wikipedia）中检索信息，然后生成或提取答案。
+- 更实用、更具挑战性。
+
+2. 为什么不能单靠LLM？
+
+虽然 LLM 很强大，但存在几个限制：
+- 参数难以更新；
+- 黑箱属性，缺乏可解释性；
+- 规模大、成本高；
+- 可以做 few-shot QA，但缺少知识溯源。
+
+3. Retriever-Reader 框架（以 DrQA 为例）
+
+早期经典架构（Chen et al., 2017）：
+- **Retriever**：如 TF-IDF，从文档库中选出 k 个相关段落；
+- **Reader**：阅读这些段落并提取答案，通常训练于 SQuAD。
+
+形式化流程：
+
+$$
+\text{Retriever}(\mathcal{D}, Q) \rightarrow \{P_1, ..., P_k\} \\
+\text{Reader}(Q, \{P_1, ..., P_k\}) \rightarrow A
+$$
+
+4. 稀疏 vs 密集检索器（Sparse vs Dense Retrievers）
+
+| 类型 | 原理 | 特点 |
+|------|------|------|
+| 稀疏检索（Sparse） | TF-IDF，BM25 等传统IR方法 | 快速、可解释、低资源 |
+| 密集检索（Dense） | 训练BERT encoder，将问句/文档嵌入成向量 → 相似度计算 | 精度高，可端到端训练（如 DPR） |
+
+5. Dense Passage Retrieval (DPR) [^10]
+- 用 BERT 对问题和段落分别编码；
+- 训练目标：问题和正确段落之间的内积要最大；
+- 相比传统 TF-IDF 提升显著；
+- 可用 FAISS / SCaNN 等向量搜索库实现高效检索。
+6. Retrieval-Augmented Generation (RAG) [^11]
+
+将生成模型（如BART/T5）与retriever结合：
+- 检索多个相关段落；
+- 对每个段落用生成器生成答案；
+- 将生成概率进行边缘化（marginalization）：
+  
+$$
+P(y | x) = \sum_{z \in \text{retrieved}} P(y | x, z) \cdot P(z | x)
+$$
+
+优点：
+- 可用端到端训练；
+- 生成器可以融合多个文档的信息，而不仅仅提取一个span。
+7. 其他RAG变体和进展
+- **FiD（Fusion-in-Decoder）**：多段落信息在生成器内部融合（decoder处理全部段落）；
+- **ATLAS（Izacard et al., 2022）**：统一预训练与RAG架构，支持多任务（问答、fact checking等）；
+- **REALM**：预训练时也用retriever监督优化语言建模。
+
+8. 与 LLM 的比较
+| 维度         | LLM                  | RAG                               |
+|--------------|----------------------|------------------------------------|
+| 可更新性     | ❌ 固定参数            | ✅ 更易更新知识库                   |
+| 可解释性     | ❌ 黑箱                | ✅ 可追踪信息来源                   |
+| 推理精度     | ✅ 已见实体强          | ✅ 新知识/新实体更强泛化能力       |
+| 成本         | ❌ 参数多，推理贵      | ✅ 检索+小模型组合更节省           |
+
+9. 常见数据集与评估
+
+KILT Benchmark 包括：
+- ODQA（Natural Questions, TriviaQA, HotPotQA, ELI5）；
+- Fact Checking（FEVER）；
+- Slot Filling（T-REx）；
+- 对话、实体链接任务等。
+
+总结一句话：
+> RAG 是一种强大的方式，它通过将**可控的检索系统**与**强大的生成模型**结合，提升了模型的**准确性、可解释性、可更新性**，并广泛用于开放领域问答和知识密集型任务。
 
 # Tutorials
 ## Language Models
@@ -952,3 +1074,5 @@ PEFT分为三类
 [^7]: Cao, Steven, Nikita Kitaev, and Dan Klein. "Unsupervised parsing via constituency tests." arXiv preprint arXiv:2010.03146 (2020).
 [^8]: Kaplan, Jared, et al. "Scaling laws for neural language models." arXiv preprint arXiv:2001.08361 (2020).
 [^9]: Hoffmann, Jordan, et al. "Training compute-optimal large language models." arXiv preprint arXiv:2203.15556 (2022).
+[^10]: Karpukhin, Vladimir, et al. "Dense Passage Retrieval for Open-Domain Question Answering." EMNLP (1). 2020.
+[^11]: Lewis, Patrick, et al. "Retrieval-augmented generation for knowledge-intensive nlp tasks." Advances in neural information processing systems 33 (2020): 9459-9474.
