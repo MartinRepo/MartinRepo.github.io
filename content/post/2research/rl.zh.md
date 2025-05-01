@@ -103,7 +103,7 @@ $$
 Q_{n+1} = Q_n + \alpha[R_n - Q_n]
 $$
 ### Stochastic Approximation Convergence Conditions
-**随机逼近（Stochastic Approximation, SA）** 是一种用于在噪声环境中迭代逼近最优解的方法。这种方法常用于机器学习、强化学习（如 Q-learning）、优化算法（如随机梯度下降）等。
+**随机逼近（Stochastic Approximation, SA）** 是一种用于在噪声环境中迭代逼近最优解的方法。它适用于我们无法直接求解目标函数的期望，只能通过带噪声的样本进行估计的情形。
 
 在强化学习中，**值函数更新** 采用随机逼近的方式，例如：
 $$
@@ -146,7 +146,7 @@ $$
 
 **解释：**
 - $ Q_t(a) $ 代表 **利用**（Exploitation）：倾向于选择历史上表现最好的动作。
-- $ \sqrt{\frac{\ln t}{N_t(a)}} $ 代表 **探索**（Exploration）：当某个动作选择次数 \( N_t(a) \) 很小时，该项较大，鼓励探索。
+- $ \sqrt{\frac{\ln t}{N_t(a)}} $ 代表 **探索**（Exploration）：当某个动作选择次数$N_t(a)$很小时，该项较大，鼓励探索。
 
 ```python
 import numpy as np

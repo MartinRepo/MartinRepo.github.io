@@ -633,8 +633,64 @@ $$
 $$
 $\alpha$是学习率，梯度更新本质上是用reward加权的log-likelihood梯度来更新。这样做之后，虽然我们不能对reward直接求导，但是可以让reward控制梯度的大小。
 
-RLHF的问题是什么？是人类，人类标注不仅高成本，而且标注结果噪声不小。
+RLHF的问题是什么？是人类，人类标注不仅高成本，而且标注结果噪声不小。Bradley-Terry Model可以用来减少这个噪声
+> Bradley-Terry 模型是一种用于建模“成对比较”胜负概率的概率模型。当你有一堆对象（比如选手、商品、翻译结果），你观察到一堆"谁胜过谁"的比较对，这个模型可以帮你计算每个对象的强度分数。
 
+我们希望通过人类偏好（human preferences）来训练一个奖励函数 $ r $，然后用这个奖励函数优化语言模型的行为。
+
+设定：偏好数据集
+
+> Let $ (x_i, y_{1,i}, y_{2,i}) $ be the set of preferences
+
+意思是：
+
+- 每条数据包含：
+  - 一个输入 prompt $ x_i $
+  - 两个回复 $ y_{1,i} $ 和 $ y_{2,i} $
+- 人类偏好告诉我们："在这个输入下，**更喜欢 $ y_{1,i} $ 胜于 $ y_{2,i} $"。  
+  这构成了一个**成对比较**，就像 Bradley-Terry 模型那样。
+
+第一步：训练奖励函数 $ r $
+
+> Let $ R $ be a set of reward functions...  
+
+$$
+r^* = \arg\max_{r \in R} \sum_i \log \sigma(r(x, y_{1,i}) - r(x, y_{2,i}))
+$$
+
+这是在用人类偏好来训练 reward model，意思是：
+
+- 用 sigmoid 函数 $ \sigma(\cdot) $ 估计偏好概率。
+- 如果 $ r(x, y_1) $ 比 $ r(x, y_2) $ 高，就表示模型认为 y₁ 更好，和人类偏好一致。
+- 目标是最大化所有数据上这个 log-likelihood 的和（类似 Bradley-Terry）。
+
+最终得到一个最优奖励函数 $ r^* $，它可以打分“一个回复有多好”。
+
+第二步：优化语言模型
+
+> Let $ P $ be the space of LLMs, then optimize:
+
+$$
+\max_{p \in P} \frac{1}{n} \sum_i \mathbb{E}_{p}[r^*(x_i, y)] - \frac{\beta}{n} \sum_i D_{\mathrm{KL}}(p(\cdot\mid x_i) \| p_0(\cdot\mid x_i))
+$$
+
+这是一个训练目标：  
+用奖励函数 $ r^* $ 指导 LLM $ p $ 的更新，但同时限制它不能偏离原始模型 $ p_0 $ 太远。
+
+解释：
+
+- 第一项：希望新的模型 $ p $ 在每个输入 $ x_i $ 下，输出的 $ y $ 具有高 reward。
+- 第二项：用 KL 散度惩罚项，确保新模型和原始模型 $ p_0 $ 不差太远。
+- $ \beta $ 是一个超参数，控制两者权衡。
+
+这就形成了一个**reward-regularized objective**，类似于 RLHF 中的 PPO 或 DPO 框架。
+
+- 训练一个新的 LLM（叫 $ p $），它能更符合人类偏好（因为用了奖励函数 $ r^* $）。
+- 但又不会和原来的 LLM $ p_0 $ 差太多，保证安全性、稳定性和保持原始能力。
+
+但是我们真的需要reward吗？reward本质上等价于新旧模型概率差，直接用这个差值就能表达偏好。这就是DPO的核心思想
+
+DPO将RLHF转换为基于偏好数据的微调问题
 ## Summarising Text
 Types of summarisation models:
 - Multi-document versus single document
@@ -889,6 +945,70 @@ PEFT分为三类
   - 训练小模型作为“专家”和“反专家”，在大模型推理时组合控制输出。不需要重新训练大模型，非常高效。
 
 ## In context learning
+1. 什么是 In-Context Learning（ICL）？
+- **定义**：通过在输入中提供任务示例（(x, y)对），让模型学习任务规则；
+- **不更新参数**，纯靠 prompt；
+- **举例**：
+  ```text
+  text: Worst film ever
+  target: negative
+  ```
+- **Few-shot / Zero-shot Learning** 是 ICL 的应用形式。
+
+2. ICL 的局限性
+
+- **对 prompt 很敏感**：格式不佳、顺序不佳都能显著降低性能；
+- **模板不易泛化**：一个任务有效的模板可能在新任务中无效；
+- **在复杂推理任务上效果差**：
+  - 算术推理（AR）
+  - 常识推理（CR）
+  - 符号推理（SR）
+
+3. Chain-of-Thought Prompting（CoT）
+
+- **定义**：让模型通过“自然语言的逐步推理过程”来得到答案。
+- 类似逻辑编程中的“反向链推理（backward chaining）”。
+- **目的**：
+  - 将复杂问题拆解成多个简单子步骤；
+  - 提供推理解释，增强透明度；
+  - 无需训练，只需写 prompt！
+
+4. CoT 的例子
+
+普通 zero-shot（失败）：
+```text
+Q: 16个球，一半是高尔夫球，一半的高尔夫球是蓝色的。问多少个蓝色高尔夫球？
+A: 8  ❌
+```
+
+CoT zero-shot：
+```text
+A: Let's think step by step.
+→ 一共16球 → 一半是高尔夫 = 8 → 一半的高尔夫球是蓝色 = 4  ✅
+```
+
+CoT 中的关键词是：
+> “Let’s think step by step.”
+
+5. CoT 的实验结果（Few-shot & Zero-shot）
+
+| 模型规模 | CoT 效果 |  
+|-----------|-----------|
+| <10B      | 无明显提升 |
+| >100B     | 效果显著提升 |
+
+- Few-shot CoT > Zero-shot CoT；
+- 在 GSM8K、AQuA、SVAMP 等数据集上显著提高算术问题解决能力。
+
+6. Symbolic Reasoning 测试
+
+测试模型处理“规则推理任务”的能力，如：
+- 字符拼接（Last Letter Concatenation）；
+- 抛硬币推理（Coin Flip）；
+- 分析：CoT 在 OOD（更长步骤）测试上更稳健。
+
+总结一句话：
+> **ICL 是用“上下文中的例子”教模型做任务；而 CoT 则是教模型“按步骤思考”。尤其对于大模型，CoT 能显著提升复杂推理任务的表现。**
 
 # Question Answering
 1. 什么是问答系统？
