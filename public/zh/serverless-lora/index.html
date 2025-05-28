@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>LoRA 微调 × Serverless 推理 | Martin&#39;s space</title>
+<title>LoRA 微调的云上漂流 | Martin&#39;s space</title>
 <meta name="keywords" content="机器学习系统, 推理服务, LoRA微调">
-<meta name="description" content="写在前面：Serverless &#43; 大模型推理，有什么难的 在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions">
+<meta name="description" content="这篇文章是我们在 ServerlessLLM 框架中，把 LoRA 微调和推理服务化的思考记录。这是一场漂流，也是一场构建。">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/serverless-lora/">
 
@@ -85,16 +85,18 @@ if (!doNotTrack) {
 	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="LoRA 微调 × Serverless 推理" />
-<meta property="og:description" content="写在前面：Serverless &#43; 大模型推理，有什么难的 在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions" />
+<meta property="og:title" content="LoRA 微调的云上漂流" />
+<meta property="og:description" content="这篇文章是我们在 ServerlessLLM 框架中，把 LoRA 微调和推理服务化的思考记录。这是一场漂流，也是一场构建。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://martinspace.top/zh/serverless-lora/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://martinspace.top/zh/serverless-lora/" />
+<meta property="og:image" content="https://martinspace.top/zh/serverless-lora/img/mlsys-ft/serverlessllm.png" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2025-05-26T10:39:49+00:00" />
 <meta property="article:modified_time" content="2025-05-26T10:39:49+00:00" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="LoRA 微调 × Serverless 推理"/>
-<meta name="twitter:description" content="写在前面：Serverless &#43; 大模型推理，有什么难的 在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions"/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://martinspace.top/zh/serverless-lora/img/mlsys-ft/serverlessllm.png" />
+<meta name="twitter:title" content="LoRA 微调的云上漂流"/>
+<meta name="twitter:description" content="这篇文章是我们在 ServerlessLLM 框架中，把 LoRA 微调和推理服务化的思考记录。这是一场漂流，也是一场构建。"/>
 
 
 <script type="application/ld+json">
@@ -117,7 +119,7 @@ if (!doNotTrack) {
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "LoRA 微调 × Serverless 推理",
+      "name": "LoRA 微调的云上漂流",
       "item": "https://martinspace.top/zh/serverless-lora/"
     }
   ]
@@ -127,16 +129,16 @@ if (!doNotTrack) {
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "LoRA 微调 × Serverless 推理",
-  "name": "LoRA 微调 × Serverless 推理",
-  "description": "写在前面：Serverless + 大模型推理，有什么难的 在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions",
+  "headline": "LoRA 微调的云上漂流",
+  "name": "LoRA 微调的云上漂流",
+  "description": "这篇文章是我们在 ServerlessLLM 框架中，把 LoRA 微调和推理服务化的思考记录。这是一场漂流，也是一场构建。",
   "keywords": [
     "机器学习系统", "推理服务", "LoRA微调"
   ],
-  "articleBody": "写在前面：Serverless + 大模型推理，有什么难的 在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions），系统设计的核心诉求是：\n快速启动、短暂执行、高并发调度，主要针对 CPU-bound 轻量计算任务。 比如调用一个图像压缩函数、一个用户注册校验、一个数据库查询包装器等，这类请求大多数只需几百毫秒甚至几十毫秒，CPU 足够胜任。 但当我们把同样的「serverless」理念搬到大模型推理场景时，立刻面临三重冲击：\n启动代价远大于传统函数 传统 serverless 函数的启动时间可忽略（几十 ms），但大模型需要加载几十GB的模型权重，冷启动时间常常达到几十秒甚至几分钟。这意味着传统 serverless 模式中的「按需调度」和「弹性启动」如果直接套用在大模型场景，会导致极高的冷启动延迟，严重影响响应时间。 请求处理是重计算密集型 大模型推理本质是深度神经网络逐token的推理，哪怕一个简单的chat/completions请求也可能涉及几千次 GEMM（矩阵乘法）计算，单个推理请求可持续几百毫秒到数秒，需要 GPU 支持高吞吐。而传统serverless更偏向 I/O + 轻计算任务，不需要为每个函数分配专用加速卡。 请求上下文深且难以迁移 大模型推理过程中还涉及 KV Cache、prompt执行状态等上下文，导致请求一旦启动就必须持续绑定 GPU 内存。而传统 serverless 函数天然是无状态的，可以任意横向扩缩或迁移执行实例；这在大模型场景中则成为限制迁移、影响弹性调度的一大障碍。 ServerlessLLM简介 ServerlessLLM 是一个专为大语言模型设计的开源Serverless框架，通过整合多级存储、推理过程实时迁移（live migration）、启动时间感知调度以及创新的模型加载格式，有效解决了大模型冷启动慢、资源复用难的问题。它将模型加载格式重新设计为更高效的 chunk 结构，支持快速定位和并行加载，从而将冷启动时间从分钟级缩短至秒级，并大幅减少I/O带宽需求。借助这一机制，ServerlessLLM显著提升资源利用率和服务弹性。\n不同于通用 Serverless 架构仅适用于轻量 CPU 任务，ServerlessLLM 针对大模型推理过程中的高算力需求与复杂上下文管理进行了全栈优化，全面支持 HuggingFace、vLLM 等推理引擎。无论是研究者构建实验集群，还是企业部署多租户 LLM 服务，它都提供了一种低延迟、高性能、低成本的全新推理范式。ServerlessLLM 的设计不仅重塑了大模型推理的部署方式，也为后续大模型系统的可扩展性与可维护性提供了强有力的系统支撑。\n感兴趣的朋友可以查阅ServerlessLLM 论文 / 博客\n为什么要做LoRA的Serverless微调与推理服务 2024年夏天，在利物浦大学计算生物小组的实习经历让我深刻体会到了算力鸿沟的现实。当时我的工作是评测各类开源大模型在生物医学文献理解任务中的表现，并对候选模型进行LoRA微调。由于算力限制，我们不得不先对模型进行压缩量化，甚至对文章内容进行压缩（summarization），然后再评测、微调。记得当Llama-3.1-405B这样的千亿参数模型发布时，面对其庞大的计算需求，我们“省了又省”的方法被彻底击碎，即使是把它压缩到int6也难以运行。——直到导师申请到两块NVIDIA GH200，我才第一次感受到\"充足算力\"带来的震撼。这段经历让我意识到：在日益膨胀的大模型生态中，像我们这样缺乏计算资源的模型开发者，需要的从来不是独占顶级硬件，而是一个能快速验证想法的工具平台。\n2024年秋天，当ServerlessLLM开源社区的招募邮件出现在我的收件箱时，这个项目的设计哲学像是一颗来自夏天的子弹，瞬间击中眉心，它正是我理想中的解决方案。通过参与社区贡献，我逐渐理解了机器学习系统与Serverless架构的深层协同，而其中最令人兴奋的发现是：LoRA微调与Serverless简直是天作之合：\n计算效率的突破：LoRA通过冻结原始参数、仅训练低秩矩阵（通常参数量只有原模型的2-4%），将微调所需的GPU显存降低70%以上。这意味着单块消费级显卡甚至可完成7B模型的微调，而且微调任务时长从小时级缩短到分钟级（实测bloomz-560m仅需1-2分钟） 与Serverless特性的完美契合： 弹性计费：短时微调任务按秒级资源占用付费，成本仅为常驻实例的1/10 冷启动优势：MB级的LoRA适配器加载速度远超完整模型检查点 动态部署：PEFT库已实现适配器热插拔，支持同一基础模型快速切换多个领域适配器 得益于ServerlessLLM非常具有创新性的模型格式设计（一种比safetensor格式快5-10倍的模型加载格式），推理时LoRA adapter权重的加载和注入也变的得心应手。 目前实现了如下features：\n✅ 支持在 Transformers 后端进行 LoRA 微调（fine-tuning），并将 LoRA adapter 保存为高效加载的格式 ✅ 支持从Huggingface Hub 拉取 LoRA adapter，并保存为高效加载的格式 ✅ 支持加载、卸载、切换多个 LoRA adapters，无需重启模型服务即可实现 adapter 热插拔（不影响基础模型服务） ✅ 优化了文档与示例使用流程，提升了用户使用 LoRA adapter 的可操作性与可维护性 在社区成员们的全力帮助下，ServerlessLLM现在已经支持基本的LoRA微调与推理服务，不过还有一些需要优化和继续开发的地方：\n微调任务的独立后端（已经在做了） 多个adapter的加权融合注入 支持全量参数微调 让创新回归本质：把这套方案送给2024年夏天的自己\n在ServerlessLLM上实现这套方案后，我们不难想象它未来将如何改变开发者的工作范式：\n评测者不再需要为GPU发愁，通过API即可对比不同适配器在基准测试中的表现 研究者可以像调用函数一样启动分布式微调实验，专注算法而非基础设施 参数高效微调不是在妥协，而是在重新定义可能性。而Serverless架构，正是让这种可能性普惠化的关键催化剂。\n欢迎朋友们查看开源代码和相关社区文档了解更多细节。期待听到大家的意见！\n",
-  "wordCount" : "2448",
+  "articleBody": "写在前面 Serverless + 大模型推理，有什么难的？\n在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions），系统设计的核心诉求是：\n快速启动、短暂执行、高并发调度，主要针对 CPU-bound 轻量计算任务。 比如调用一个图像压缩函数、一个用户注册校验、一个数据库查询包装器等，这类请求大多数只需几百毫秒甚至几十毫秒，CPU 足够胜任。 但当我们把同样的「serverless」理念搬到大模型推理场景时，立刻面临三重冲击：\n启动代价远大于传统函数 传统 serverless 函数的启动时间可忽略（几十 ms），但大模型需要加载几十GB的模型权重，冷启动时间常常达到几十秒甚至几分钟。这意味着传统 serverless 模式中的「按需调度」和「弹性启动」如果直接套用在大模型场景，会导致极高的冷启动延迟，严重影响响应时间。 推理请求处理是计算密集型任务 大模型推理本质是深度神经网络逐token的推理，哪怕一个简单的chat/completions请求也可能涉及几千次 GEMM（矩阵乘法）计算，单个推理请求可持续几百毫秒到数秒，需要 GPU 支持高吞吐。而传统serverless更偏向 I/O + 轻计算任务，不需要为每个函数分配专用加速卡。 请求上下文深且难以迁移 大模型推理过程中还涉及 KV Cache、prompt执行状态等上下文，导致请求一旦启动就必须持续绑定 GPU 内存。而传统 serverless 函数天然是无状态的，可以任意横向扩缩或迁移执行实例；这在大模型场景中则成为限制迁移、影响弹性调度的一大障碍。 ServerlessLLM简介 ServerlessLLM 是一个专为大语言模型设计的开源Serverless框架，通过整合多级存储、推理过程实时迁移（live migration）、启动时间感知调度以及创新的模型加载格式，有效解决了大模型冷启动慢、资源复用难的问题。它将模型加载格式重新设计为更高效的 chunk 结构，支持快速定位和并行加载，从而将冷启动时间从分钟级缩短至秒级，并大幅减少I/O带宽需求。借助这一机制，ServerlessLLM显著提升资源利用率和服务弹性。\n不同于通用 Serverless 架构仅适用于轻量 CPU 任务，ServerlessLLM 针对大模型推理过程中的高算力需求与复杂上下文管理进行了全栈优化，全面支持 HuggingFace、vLLM 等推理引擎。无论是研究者构建实验集群，还是企业部署多租户 LLM 服务，它都提供了一种低延迟、高性能、低成本的全新推理范式。ServerlessLLM 的设计不仅重塑了大模型推理的部署方式，也为后续大模型系统的可扩展性与可维护性提供了强有力的系统支撑。\n感兴趣的朋友可以查阅ServerlessLLM 论文 / 博客\n我的故事 为什么要做LoRA的Serverless微调与推理服务?\n2024年夏天，在利物浦大学计算生物小组的实习经历让我深刻体会到了算力鸿沟的现实。当时我的工作是评测各类开源大模型在生物医学文献理解任务中的表现，并对候选模型进行LoRA微调。由于算力限制，我们不得不先对模型进行压缩量化，甚至对文章内容进行压缩（summarization），然后再评测、微调。记得当Llama-3.1-405B这样的千亿参数模型发布时，面对其庞大的计算需求，我们“省了又省”的方法被彻底击碎，即使是把它压缩到int6也难以运行。直到导师申请到两块NVIDIA GH200，我才第一次感受到\"充足算力\"带来的震撼。这段经历让我意识到：在日益膨胀的大模型生态中，像我们这样缺乏计算资源的模型开发者，需要的从来不是独占顶级硬件，而是一个能快速验证想法的工具平台。\n2024年秋天，当ServerlessLLM开源社区的招募邮件出现在我的收件箱时，这个项目的设计哲学像是一颗来自夏天的子弹，瞬间击中眉心，它正是我理想中的解决方案。随着参与社区讲座、撰写文档的深入，我逐步建立起对机器学习系统和 Serverless 架构的系统性理解。而其中令人兴奋的发现是，LoRA微调似乎很适合做成Serverless：\n计算效率的突破：LoRA通过冻结原始参数、仅训练低秩矩阵（通常参数量只有原模型的2-4%），将微调所需的GPU显存降低70%以上。这意味着单块消费级显卡甚至可完成7B模型的微调，而且微调任务时长从小时级缩短到分钟级。 与Serverless特性的完美契合： 弹性计费：短时微调任务按秒级资源占用付费，成本低于常驻实例的1/10 冷启动优势：MB级的LoRA适配器加载速度远超完整模型检查点 动态部署：PEFT库已实现LoRA adapter热插拔，支持同一基础模型快速切换多个领域适配器 得益于ServerlessLLM非常具有创新性的模型格式设计（一种比safetensor格式快5-10倍的模型加载格式），推理时LoRA adapter权重的加载和注入也变的得心应手。 应用场景明确，未来可期：在当前阶段，ServerlessLLM 平台可以为模型开发者提供一站式的微调与评测能力，降低实验门槛，加速模型迭代。但更重要的是，随着大模型逐步走向终端与个人（如 Apple Intelligence 等系统级集成），对“每个人都拥有自己模型偏好”的需求将持续扩大。从企业定制到用户级个性化，LoRA 提供了一个既轻量又易于切换的解法，而 Serverless 架构则让这种能力可被广泛获取、快速部署，真正实现「人人可调、按需即用」的智能服务体系。 当前工作\u0026未来计划 目前实现了如下features：\n✅ 支持在 Transformers 后端进行 LoRA 微调，并将 LoRA adapter 保存为高效加载的格式 ✅ 支持从Huggingface Hub 拉取 LoRA adapters，并保存为高效加载的格式 ✅ 支持加载、卸载、切换多个 LoRA adapters，无需重启模型服务即可实现 LoRA adapter 热插拔（不影响基础模型服务） 感谢社区成员们的帮助，让这个feature得以顺利实现。ServerlessLLM现在已经支持基本的LoRA微调与推理服务，不过还有一些需要优化和继续开发的地方：\n微调任务的独立后端（已经在做了） 为 vLLM 后端实现推理阶段的 LoRA adapter 动态注入功能。 支持全量参数微调 写在最后 让创新回归本质：把这套方案送给2024年夏天的自己\n在ServerlessLLM上实现这套方案后，我们不难想象它未来将如何改变开发者的工作范式：\n评测者不再需要为GPU发愁，通过API即可对比不同适配器在基准测试中的表现 研究者可以像调用函数一样启动分布式微调实验，专注算法而非基础设施 参数高效微调不是在妥协，而是在重新定义可能性。而Serverless架构，正是让这种可能性普惠化的关键催化剂。\n欢迎朋友们查看开源代码和相关文档了解更多细节。期待听到大家的意见！\n相关工作\u0026参考工作 [1] ServerlessLLM\n[2] Huggingface PEFT LoRA\n[3] TogetherAI\n[4] vLLM LoRA\n[5] dLoRA\n[6] S-LoRA\n[7] Punica\n",
+  "wordCount" : "2656",
   "inLanguage": "zh",
-  "datePublished": "2025-05-26T10:39:49Z",
+  "image":"https://martinspace.top/zh/serverless-lora/img/mlsys-ft/serverlessllm.png","datePublished": "2025-05-26T10:39:49Z",
   "dateModified": "2025-05-26T10:39:49Z",
   "author":[{
     "@type": "Person",
@@ -245,8 +247,11 @@ if (!doNotTrack) {
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://martinspace.top/zh/">主页</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/">📒 文章</a>&nbsp;»&nbsp;<a href="https://martinspace.top/zh/post/2research/">🔬 研究记录</a></div>
     <h1 class="post-title">
-      LoRA 微调 × Serverless 推理
+      LoRA 微调的云上漂流
     </h1>
+    <div class="post-description">
+      这篇文章是我们在 ServerlessLLM 框架中，把 LoRA 微调和推理服务化的思考记录。这是一场漂流，也是一场构建。
+    </div>
     <div class="post-meta">
 
 
@@ -258,7 +263,7 @@ if (!doNotTrack) {
 
 
 
-创建: 2025-05-26 | 更新: 2025-05-26 | 字数: 2448字 | 阅读时长: 5分钟 | 
+创建: 2025-05-26 | 更新: 2025-05-26 | 字数: 2656字 | 阅读时长: 6分钟 | 
 作者:Martin&nbsp;|&nbsp;标签: &nbsp;
     <ul class="post-tags-meta">
         <a href="https://martinspace.top/zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F/">机器学习系统</a>
@@ -269,7 +274,10 @@ if (!doNotTrack) {
 
     
     </div>
-  </header> <aside id="toc-container" class="toc-container wide">
+  </header> 
+<figure class="entry-cover1"><img loading="lazy" src="https://martinspace.top/img/mlsys-ft/serverlessllm.png" alt="">
+        
+</figure><aside id="toc-container" class="toc-container wide">
     <div class="toc">
         <details  open>
             <summary accesskey="c" title="(Alt + C)">
@@ -278,11 +286,17 @@ if (!doNotTrack) {
 
             <div class="inner"><ul>
                     <li>
-                        <a href="#%e5%86%99%e5%9c%a8%e5%89%8d%e9%9d%a2serverless--%e5%a4%a7%e6%a8%a1%e5%9e%8b%e6%8e%a8%e7%90%86%e6%9c%89%e4%bb%80%e4%b9%88%e9%9a%be%e7%9a%84" aria-label="写在前面：Serverless &#43; 大模型推理，有什么难的">写在前面：Serverless + 大模型推理，有什么难的</a></li>
+                        <a href="#%e5%86%99%e5%9c%a8%e5%89%8d%e9%9d%a2" aria-label="写在前面">写在前面</a></li>
                     <li>
                         <a href="#serverlessllm%e7%ae%80%e4%bb%8b" aria-label="ServerlessLLM简介">ServerlessLLM简介</a></li>
                     <li>
-                        <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%81%9alora%e7%9a%84serverless%e5%be%ae%e8%b0%83%e4%b8%8e%e6%8e%a8%e7%90%86%e6%9c%8d%e5%8a%a1" aria-label="为什么要做LoRA的Serverless微调与推理服务">为什么要做LoRA的Serverless微调与推理服务</a>
+                        <a href="#%e6%88%91%e7%9a%84%e6%95%85%e4%ba%8b" aria-label="我的故事">我的故事</a></li>
+                    <li>
+                        <a href="#%e5%bd%93%e5%89%8d%e5%b7%a5%e4%bd%9c%e6%9c%aa%e6%9d%a5%e8%ae%a1%e5%88%92" aria-label="当前工作&amp;amp;未来计划">当前工作&amp;未来计划</a></li>
+                    <li>
+                        <a href="#%e5%86%99%e5%9c%a8%e6%9c%80%e5%90%8e" aria-label="写在最后">写在最后</a></li>
+                    <li>
+                        <a href="#%e7%9b%b8%e5%85%b3%e5%b7%a5%e4%bd%9c%e5%8f%82%e8%80%83%e5%b7%a5%e4%bd%9c" aria-label="相关工作&amp;amp;参考工作">相关工作&amp;参考工作</a>
                     </li>
                 </ul>
             </div>
@@ -348,7 +362,10 @@ if (!doNotTrack) {
         return rect.top + win.pageYOffset;   
     }
 </script>
-  <div class="post-content"><h1 id="写在前面serverless--大模型推理有什么难的">写在前面：Serverless + 大模型推理，有什么难的<a hidden class="anchor" aria-hidden="true" href="#写在前面serverless--大模型推理有什么难的">#</a></h1>
+  <div class="post-content"><h1 id="写在前面">写在前面<a hidden class="anchor" aria-hidden="true" href="#写在前面">#</a></h1>
+<blockquote>
+<p>Serverless + 大模型推理，有什么难的？</p>
+</blockquote>
 <p>在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions），系统设计的核心诉求是：</p>
 <ul>
 <li>快速启动、短暂执行、高并发调度，主要针对 CPU-bound 轻量计算任务。</li>
@@ -358,7 +375,7 @@ if (!doNotTrack) {
 <ol>
 <li>启动代价远大于传统函数
 传统 serverless 函数的启动时间可忽略（几十 ms），但大模型需要加载几十GB的模型权重，冷启动时间常常达到几十秒甚至几分钟。这意味着传统 serverless 模式中的「按需调度」和「弹性启动」如果直接套用在大模型场景，会导致极高的冷启动延迟，严重影响响应时间。</li>
-<li>请求处理是重计算密集型
+<li>推理请求处理是计算密集型任务
 大模型推理本质是深度神经网络逐token的推理，哪怕一个简单的chat/completions请求也可能涉及几千次 GEMM（矩阵乘法）计算，单个推理请求可持续几百毫秒到数秒，需要 GPU 支持高吞吐。而传统serverless更偏向 I/O + 轻计算任务，不需要为每个函数分配专用加速卡。</li>
 <li>请求上下文深且难以迁移
 大模型推理过程中还涉及 KV Cache、prompt执行状态等上下文，导致请求一旦启动就必须持续绑定 GPU 内存。而传统 serverless 函数天然是无状态的，可以任意横向扩缩或迁移执行实例；这在大模型场景中则成为限制迁移、影响弹性调度的一大障碍。</li>
@@ -367,33 +384,38 @@ if (!doNotTrack) {
 <p>ServerlessLLM 是一个专为大语言模型设计的开源Serverless框架，通过整合多级存储、推理过程实时迁移（live migration）、启动时间感知调度以及创新的模型加载格式，有效解决了大模型冷启动慢、资源复用难的问题。它将模型加载格式重新设计为更高效的 chunk 结构，支持快速定位和并行加载，从而将冷启动时间从分钟级缩短至秒级，并大幅减少I/O带宽需求。借助这一机制，ServerlessLLM显著提升资源利用率和服务弹性。</p>
 <p>不同于通用 Serverless 架构仅适用于轻量 CPU 任务，ServerlessLLM 针对大模型推理过程中的高算力需求与复杂上下文管理进行了全栈优化，全面支持 HuggingFace、vLLM 等推理引擎。无论是研究者构建实验集群，还是企业部署多租户 LLM 服务，它都提供了一种低延迟、高性能、低成本的全新推理范式。ServerlessLLM 的设计不仅重塑了大模型推理的部署方式，也为后续大模型系统的可扩展性与可维护性提供了强有力的系统支撑。</p>
 <p>感兴趣的朋友可以查阅ServerlessLLM <a href="https://www.usenix.org/system/files/osdi24-fu.pdf">论文</a> / <a href="https://github.com/ServerlessLLM/ServerlessLLM/blob/main/blogs/serverless-llm-architecture/README.md">博客</a></p>
-<h1 id="为什么要做lora的serverless微调与推理服务">为什么要做LoRA的Serverless微调与推理服务<a hidden class="anchor" aria-hidden="true" href="#为什么要做lora的serverless微调与推理服务">#</a></h1>
-<p>2024年夏天，在利物浦大学计算生物小组的实习经历让我深刻体会到了算力鸿沟的现实。当时我的工作是评测各类开源大模型在生物医学文献理解任务中的表现，并对候选模型进行LoRA微调。由于算力限制，我们不得不先对模型进行压缩量化，甚至对文章内容进行压缩（summarization），然后再评测、微调。记得当Llama-3.1-405B这样的千亿参数模型发布时，面对其庞大的计算需求，我们“省了又省”的方法被彻底击碎，即使是把它压缩到int6也难以运行。——直到导师申请到两块NVIDIA GH200，我才第一次感受到&quot;充足算力&quot;带来的震撼。这段经历让我意识到：在日益膨胀的大模型生态中，像我们这样缺乏计算资源的模型开发者，需要的从来不是独占顶级硬件，而是一个能快速验证想法的工具平台。</p>
-<p>2024年秋天，当ServerlessLLM开源社区的招募邮件出现在我的收件箱时，这个项目的设计哲学像是一颗来自夏天的子弹，瞬间击中眉心，它正是我理想中的解决方案。通过参与社区贡献，我逐渐理解了机器学习系统与Serverless架构的深层协同，而其中最令人兴奋的发现是：LoRA微调与Serverless简直是天作之合：</p>
+<h1 id="我的故事">我的故事<a hidden class="anchor" aria-hidden="true" href="#我的故事">#</a></h1>
+<blockquote>
+<p>为什么要做LoRA的Serverless微调与推理服务?</p>
+</blockquote>
+<p>2024年夏天，在利物浦大学计算生物小组的实习经历让我深刻体会到了算力鸿沟的现实。当时我的工作是评测各类开源大模型在生物医学文献理解任务中的表现，并对候选模型进行LoRA微调。由于算力限制，我们不得不先对模型进行压缩量化，甚至对文章内容进行压缩（summarization），然后再评测、微调。记得当<code>Llama-3.1-405B</code>这样的千亿参数模型发布时，面对其庞大的计算需求，我们“省了又省”的方法被彻底击碎，即使是把它压缩到int6也难以运行。直到导师申请到两块NVIDIA GH200，我才第一次感受到&quot;充足算力&quot;带来的震撼。这段经历让我意识到：在日益膨胀的大模型生态中，像我们这样缺乏计算资源的模型开发者，需要的从来不是独占顶级硬件，而是一个能快速验证想法的工具平台。</p>
+<p>2024年秋天，当ServerlessLLM开源社区的招募邮件出现在我的收件箱时，这个项目的设计哲学像是一颗来自夏天的子弹，瞬间击中眉心，它正是我理想中的解决方案。随着参与社区讲座、撰写文档的深入，我逐步建立起对机器学习系统和 Serverless 架构的系统性理解。而其中令人兴奋的发现是，LoRA微调似乎很适合做成Serverless：</p>
 <ul>
-<li>计算效率的突破：LoRA通过冻结原始参数、仅训练低秩矩阵（通常参数量只有原模型的2-4%），将微调所需的GPU显存降低70%以上。这意味着单块消费级显卡甚至可完成7B模型的微调，而且微调任务时长从小时级缩短到分钟级（实测bloomz-560m仅需1-2分钟）</li>
+<li>计算效率的突破：LoRA通过冻结原始参数、仅训练低秩矩阵（通常参数量只有原模型的2-4%），将微调所需的GPU显存降低70%以上。这意味着单块消费级显卡甚至可完成7B模型的微调，而且微调任务时长从小时级缩短到分钟级。</li>
 <li>与Serverless特性的完美契合：
 <ul>
-<li>弹性计费：短时微调任务按秒级资源占用付费，成本仅为常驻实例的1/10</li>
+<li>弹性计费：短时微调任务按秒级资源占用付费，成本低于常驻实例的1/10</li>
 <li>冷启动优势：MB级的LoRA适配器加载速度远超完整模型检查点</li>
-<li>动态部署：PEFT库已实现适配器热插拔，支持同一基础模型快速切换多个领域适配器</li>
+<li>动态部署：PEFT库已实现LoRA adapter热插拔，支持同一基础模型快速切换多个领域适配器</li>
 </ul>
 </li>
 <li>得益于ServerlessLLM非常具有创新性的模型格式设计（一种比safetensor格式快5-10倍的模型加载格式），推理时LoRA adapter权重的加载和注入也变的得心应手。</li>
+<li>应用场景明确，未来可期：在当前阶段，ServerlessLLM 平台可以为模型开发者提供一站式的微调与评测能力，降低实验门槛，加速模型迭代。但更重要的是，随着大模型逐步走向终端与个人（如 Apple Intelligence 等系统级集成），对“每个人都拥有自己模型偏好”的需求将持续扩大。从企业定制到用户级个性化，LoRA 提供了一个既轻量又易于切换的解法，而 Serverless 架构则让这种能力可被广泛获取、快速部署，真正实现「人人可调、按需即用」的智能服务体系。</li>
 </ul>
+<h1 id="当前工作未来计划">当前工作&amp;未来计划<a hidden class="anchor" aria-hidden="true" href="#当前工作未来计划">#</a></h1>
 <p>目前实现了如下features：</p>
 <ul>
-<li>✅ 支持在 Transformers 后端进行 LoRA 微调（fine-tuning），并将 LoRA adapter 保存为高效加载的格式</li>
-<li>✅ 支持从Huggingface Hub 拉取 LoRA adapter，并保存为高效加载的格式</li>
-<li>✅ 支持加载、卸载、切换多个 LoRA adapters，无需重启模型服务即可实现 adapter 热插拔（不影响基础模型服务）</li>
-<li>✅ 优化了文档与示例使用流程，提升了用户使用 LoRA adapter 的可操作性与可维护性</li>
+<li>✅ 支持在 Transformers 后端进行 LoRA 微调，并将 LoRA adapter 保存为高效加载的格式</li>
+<li>✅ 支持从Huggingface Hub 拉取 LoRA adapters，并保存为高效加载的格式</li>
+<li>✅ 支持加载、卸载、切换多个 LoRA adapters，无需重启模型服务即可实现 LoRA adapter 热插拔（不影响基础模型服务）</li>
 </ul>
-<p>在社区成员们的全力帮助下，ServerlessLLM现在已经支持基本的LoRA微调与推理服务，不过还有一些需要优化和继续开发的地方：</p>
+<p>感谢社区成员们的帮助，让这个feature得以顺利实现。ServerlessLLM现在已经支持基本的LoRA微调与推理服务，不过还有一些需要优化和继续开发的地方：</p>
 <ul>
 <li>微调任务的独立后端（已经在做了）</li>
-<li>多个adapter的加权融合注入</li>
+<li>为 vLLM 后端实现推理阶段的 LoRA adapter 动态注入功能。</li>
 <li>支持全量参数微调</li>
 </ul>
+<h1 id="写在最后">写在最后<a hidden class="anchor" aria-hidden="true" href="#写在最后">#</a></h1>
 <blockquote>
 <p>让创新回归本质：把这套方案送给2024年夏天的自己</p>
 </blockquote>
@@ -405,7 +427,15 @@ if (!doNotTrack) {
 <blockquote>
 <p>参数高效微调不是在妥协，而是在重新定义可能性。而Serverless架构，正是让这种可能性普惠化的关键催化剂。</p>
 </blockquote>
-<p>欢迎朋友们查看<a href="https://github.com/ServerlessLLM/ServerlessLLM">开源代码</a>和<a href="https://serverlessllm.github.io/docs/stable/intro">相关社区文档</a>了解更多细节。期待听到大家的意见！</p>
+<p>欢迎朋友们查看<a href="https://github.com/ServerlessLLM/ServerlessLLM">开源代码</a>和<a href="https://serverlessllm.github.io/docs/stable/intro">相关文档</a>了解更多细节。期待听到大家的意见！</p>
+<h1 id="相关工作参考工作">相关工作&amp;参考工作<a hidden class="anchor" aria-hidden="true" href="#相关工作参考工作">#</a></h1>
+<p>[1] <a href="https://www.usenix.org/conference/osdi24/presentation/fu">ServerlessLLM</a></p>
+<p>[2] <a href="https://huggingface.co/docs/peft/main/en/developer_guides/lora">Huggingface PEFT LoRA</a></p>
+<p>[3] <a href="https://docs.together.ai/docs/fine-tuning-quickstart">TogetherAI</a></p>
+<p>[4] <a href="https://docs.vllm.ai/en/stable/features/lora.html">vLLM LoRA</a></p>
+<p>[5] <a href="https://www.usenix.org/conference/osdi24/presentation/wu-bingyang">dLoRA</a></p>
+<p>[6] <a href="https://arxiv.org/abs/2311.03285">S-LoRA</a></p>
+<p>[7] <a href="https://proceedings.mlsys.org/paper_files/paper/2024/file/054de805fcceb78a201f5e9d53c85908-Paper-Conference.pdf">Punica</a></p>
 
 
   </div>
