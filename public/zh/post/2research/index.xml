@@ -6,7 +6,16 @@
     <description>Recent content in 🔬 研究记录 on Martin&#39;s space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 09 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/post/2research/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 May 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/post/2research/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Serverless微调与推理服务</title>
+      <link>https://martinspace.top/zh/serverless-lora/</link>
+      <pubDate>Mon, 26 May 2025 10:39:49 +0000</pubDate>
+      
+      <guid>https://martinspace.top/zh/serverless-lora/</guid>
+      <description>写在前面：Serverless + 大模型推理，有什么难的 在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions</description>
+    </item>
+    
     <item>
       <title>Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing</title>
       <link>https://martinspace.top/zh/dmrl-survey/</link>
@@ -26,15 +35,6 @@
     </item>
     
     <item>
-      <title>共形预测理论研究</title>
-      <link>https://martinspace.top/zh/uq-cp/</link>
-      <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
-      
-      <guid>https://martinspace.top/zh/uq-cp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>强化学习</title>
       <link>https://martinspace.top/zh/rl-note/</link>
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
@@ -50,15 +50,6 @@
       
       <guid>https://martinspace.top/zh/data-analysis/</guid>
       <description>记录一些基础方法 时间序列 可视化三种时间序列 Brownian motion (stochastic process) Lorenz attractor (chaotic system) Lotka-Volterra system (deterministic system of differential equations) 随机过程是一种非确定性的过程，即其未来状态依赖于概率分布，无法通过确</description>
-    </item>
-    
-    <item>
-      <title>微调加速研究</title>
-      <link>https://martinspace.top/zh/mlsys-ft/</link>
-      <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
-      
-      <guid>https://martinspace.top/zh/mlsys-ft/</guid>
-      <description>做了一些初步的调研，脑袋里稍有想法。微调加速可以从两个方面入手，一个是加速训练过程，一个是加速推理过程。看起来加速推理过程要比加速训练受欢迎</description>
     </item>
     
   </channel>

@@ -6,14 +6,14 @@
     <description>Recent content in 大模型 on Martin&#39;s space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 01 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 May 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>微调加速研究</title>
-      <link>https://martinspace.top/zh/mlsys-ft/</link>
-      <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
+      <title>Serverless微调与推理服务</title>
+      <link>https://martinspace.top/zh/serverless-lora/</link>
+      <pubDate>Mon, 26 May 2025 10:39:49 +0000</pubDate>
       
-      <guid>https://martinspace.top/zh/mlsys-ft/</guid>
-      <description>做了一些初步的调研，脑袋里稍有想法。微调加速可以从两个方面入手，一个是加速训练过程，一个是加速推理过程。看起来加速推理过程要比加速训练受欢迎</description>
+      <guid>https://martinspace.top/zh/serverless-lora/</guid>
+      <description>写在前面：Serverless + 大模型推理，有什么难的 在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions</description>
     </item>
     
     <item>
