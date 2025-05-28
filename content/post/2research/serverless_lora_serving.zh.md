@@ -1,13 +1,12 @@
 ---
-title: "Serverless微调与推理服务"
+title: "LoRA 微调 × Serverless 推理"
 date: 2025-05-26T10:39:49Z
 draft: false
 author: ["Martin"]
 tags: 
 - 机器学习系统
-- LoRA推理服务
-- 微调服务
-- 大模型
+- 推理服务
+- LoRA微调
 description: ""
 weight: 
 slug: "serverless-lora"
@@ -45,7 +44,7 @@ ServerlessLLM 是一个专为大语言模型设计的开源Serverless框架，�
 感兴趣的朋友可以查阅ServerlessLLM [论文](https://www.usenix.org/system/files/osdi24-fu.pdf) / [博客](https://github.com/ServerlessLLM/ServerlessLLM/blob/main/blogs/serverless-llm-architecture/README.md)
 
 # 为什么要做LoRA的Serverless微调与推理服务
-2024年夏天，在利物浦大学计算生物小组的实习经历让我深刻体会到了算力鸿沟的现实。当时我的工作是评测各类开源大模型在生物医学文献理解任务中的表现，并对候选模型进行LoRA微调（由于算力限制，我们不得不先对模型惊醒压缩量化，甚至对文章内容进行压缩（summarization），然后再评测、微调）。记得当Llama-3.1-405B这样的千亿参数模型发布时，面对其庞大的计算需求，我们“省了又省”的方法被彻底击碎，即使是把它压缩到int6也难以运行。——直到导师申请到两块NVIDIA GH200，我才第一次感受到"充足算力"带来的震撼。这段经历让我意识到：在日益膨胀的大模型生态中，像我们这样缺乏计算资源的模型开发者，需要的从来不是独占顶级硬件，而是一个能快速验证想法的工具平台。
+2024年夏天，在利物浦大学计算生物小组的实习经历让我深刻体会到了算力鸿沟的现实。当时我的工作是评测各类开源大模型在生物医学文献理解任务中的表现，并对候选模型进行LoRA微调。由于算力限制，我们不得不先对模型进行压缩量化，甚至对文章内容进行压缩（summarization），然后再评测、微调。记得当Llama-3.1-405B这样的千亿参数模型发布时，面对其庞大的计算需求，我们“省了又省”的方法被彻底击碎，即使是把它压缩到int6也难以运行。——直到导师申请到两块NVIDIA GH200，我才第一次感受到"充足算力"带来的震撼。这段经历让我意识到：在日益膨胀的大模型生态中，像我们这样缺乏计算资源的模型开发者，需要的从来不是独占顶级硬件，而是一个能快速验证想法的工具平台。
 
 2024年秋天，当ServerlessLLM开源社区的招募邮件出现在我的收件箱时，这个项目的设计哲学像是一颗来自夏天的子弹，瞬间击中眉心，它正是我理想中的解决方案。通过参与社区贡献，我逐渐理解了机器学习系统与Serverless架构的深层协同，而其中最令人兴奋的发现是：LoRA微调与Serverless简直是天作之合：
 - 计算效率的突破：LoRA通过冻结原始参数、仅训练低秩矩阵（通常参数量只有原模型的2-4%），将微调所需的GPU显存降低70%以上。这意味着单块消费级显卡甚至可完成7B模型的微调，而且微调任务时长从小时级缩短到分钟级（实测bloomz-560m仅需1-2分钟）
@@ -55,12 +54,16 @@ ServerlessLLM 是一个专为大语言模型设计的开源Serverless框架，�
     - 动态部署：PEFT库已实现适配器热插拔，支持同一基础模型快速切换多个领域适配器
 - 得益于ServerlessLLM非常具有创新性的模型格式设计（一种比safetensor格式快5-10倍的模型加载格式），推理时LoRA adapter权重的加载和注入也变的得心应手。
 
-在社区成员的全力帮助下，ServerlessLLM现在已经支持基本的LoRA微调与推理服务，不过还有一些需要继续开发和优化的地方：
-- 微调任务的独立后端（已经在做了）
-- 多个adapter融合注入
-- 支持全量参数微调
+目前实现了如下features：
+- ✅ 支持在 Transformers 后端进行 LoRA 微调（fine-tuning），并将 LoRA adapter 保存为高效加载的格式
+- ✅ 支持从Huggingface Hub 拉取 LoRA adapter，并保存为高效加载的格式
+- ✅ 支持加载、卸载、切换多个 LoRA adapters，无需重启模型服务即可实现 adapter 热插拔（不影响基础模型服务）
+- ✅ 优化了文档与示例使用流程，提升了用户使用 LoRA adapter 的可操作性与可维护性
 
-欢迎朋友们查看[源代码](https://github.com/ServerlessLLM/ServerlessLLM)和[相关社区文档](https://serverlessllm.github.io/docs/stable/intro)。期待听到大家的意见！
+在社区成员们的全力帮助下，ServerlessLLM现在已经支持基本的LoRA微调与推理服务，不过还有一些需要优化和继续开发的地方：
+- 微调任务的独立后端（已经在做了）
+- 多个adapter的加权融合注入
+- 支持全量参数微调
 
 > 让创新回归本质：把这套方案送给2024年夏天的自己
 
@@ -69,3 +72,5 @@ ServerlessLLM 是一个专为大语言模型设计的开源Serverless框架，�
 - 研究者可以像调用函数一样启动分布式微调实验，专注算法而非基础设施
 
 > 参数高效微调不是在妥协，而是在重新定义可能性。而Serverless架构，正是让这种可能性普惠化的关键催化剂。
+
+欢迎朋友们查看[开源代码](https://github.com/ServerlessLLM/ServerlessLLM)和[相关社区文档](https://serverlessllm.github.io/docs/stable/intro)了解更多细节。期待听到大家的意见！
