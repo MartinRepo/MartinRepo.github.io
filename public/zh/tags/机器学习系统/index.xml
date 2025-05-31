@@ -8,12 +8,12 @@
     <language>zh</language>
     <lastBuildDate>Mon, 26 May 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>LoRA 微调 × Serverless 推理</title>
+      <title>LoRA 微调的云上漂流</title>
       <link>https://martinspace.top/zh/serverless-lora/</link>
       <pubDate>Mon, 26 May 2025 10:39:49 +0000</pubDate>
       
       <guid>https://martinspace.top/zh/serverless-lora/</guid>
-      <description>写在前面：Serverless + 大模型推理，有什么难的 在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions</description>
+      <description>这篇文章是我们在 ServerlessLLM 框架中，把 LoRA 微调和推理服务化的思考记录。这是一场漂流，也是一场构建。</description>
     </item>
     
   </channel>
