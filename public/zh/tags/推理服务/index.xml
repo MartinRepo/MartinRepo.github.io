@@ -6,11 +6,11 @@
     <description>Recent content in 推理服务 on Martin&#39;s space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 26 May 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E6%8E%A8%E7%90%86%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 May 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E6%8E%A8%E7%90%86%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LoRA 微调的云上漂流</title>
       <link>https://martinspace.top/zh/serverless-lora/</link>
-      <pubDate>Mon, 26 May 2025 10:39:49 +0000</pubDate>
+      <pubDate>Sun, 25 May 2025 10:39:49 +0000</pubDate>
       
       <guid>https://martinspace.top/zh/serverless-lora/</guid>
       <description>这篇文章是我们在 ServerlessLLM 框架中，把 LoRA 微调和推理服务化的思考记录。这是一场漂流，也是一场构建。</description>
