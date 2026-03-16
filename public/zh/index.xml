@@ -4,298 +4,1337 @@
     <title>Martin&#39;s space</title>
     <link>https://martinspace.top/zh/</link>
     <description>Recent content on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 25 May 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 May 2025 10:39:49 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LoRA 微调的云上漂流</title>
       <link>https://martinspace.top/zh/serverless-lora/</link>
       <pubDate>Sun, 25 May 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/serverless-lora/</guid>
       <description>这篇文章是我们在 ServerlessLLM 框架中，把 LoRA 微调和推理服务化的思考记录。这是一场漂流，也是一场构建。</description>
     </item>
-    
     <item>
       <title>Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing</title>
       <link>https://martinspace.top/zh/dmrl-survey/</link>
       <pubDate>Sun, 09 Feb 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/dmrl-survey/</guid>
-      <description>欢迎引用 🎉</description>
+      <description>&lt;p&gt;欢迎引用 🎉&lt;/p&gt;
+&lt;embed src=&#34;https://martinspace.top/pdfs/RL_diffusion_model_survey.pdf&#34; type=&#34;application/pdf&#34; width=&#34;100%&#34; height=&#34;800px&#34; /&gt;</description>
     </item>
-    
     <item>
       <title>从RNN到Transformers</title>
       <link>https://martinspace.top/zh/nluplus/</link>
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/nluplus/</guid>
-      <description>递归神经网络 简单的神经网络由三部分组成：输入，隐藏层，输出 深度神经网络（DNN）一般是增加隐藏层的数量。 递归神经网络（RNN）更加关注的是隐</description>
+      <description>&lt;h1 id=&#34;递归神经网络&#34;&gt;递归神经网络&lt;/h1&gt;
+&lt;p&gt;简单的神经网络由三部分组成：输入，隐藏层，输出&lt;/p&gt;
+&lt;p&gt;深度神经网络（DNN）一般是增加隐藏层的数量。&lt;/p&gt;
+&lt;p&gt;递归神经网络（RNN）更加关注的是隐藏层中每个神经元在时间上的成长与进步。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>强化学习</title>
       <link>https://martinspace.top/zh/rl-note/</link>
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/rl-note/</guid>
-      <description>多臂老虎机问题(MAB) 符号&amp;amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，</description>
+      <description>&lt;h1 id=&#34;多臂老虎机问题mab&#34;&gt;多臂老虎机问题(MAB)&lt;/h1&gt;
+&lt;h2 id=&#34;符号问题定义&#34;&gt;符号&amp;amp;问题定义&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;大写斜体表示随机变量，例如$A, R, A_t, R_t$&lt;/li&gt;
+&lt;li&gt;小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$}&lt;/li&gt;
+&lt;li&gt;花体，区间等表示集合，例如$\mathcal{A}, [0, 1], \mathbb{N}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Given: a set of k actions, $\mathcal{A}$, number of rounds T.
+Repeat for t in T rounds:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>时序分析/预测</title>
       <link>https://martinspace.top/zh/data-analysis/</link>
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/data-analysis/</guid>
-      <description>记录一些基础方法 时间序列 可视化三种时间序列 Brownian motion (stochastic process) Lorenz attractor (chaotic system) Lotka-Volterra system (deterministic system of differential equations) 随机过程是一种非确定性的过程，即其未来状态依赖于概率分布，无法通过确</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;记录一些基础方法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;时间序列&#34;&gt;时间序列&lt;/h1&gt;
+&lt;h2 id=&#34;可视化三种时间序列&#34;&gt;可视化三种时间序列&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Brownian motion (stochastic process)&lt;/li&gt;
+&lt;li&gt;Lorenz attractor (chaotic system)&lt;/li&gt;
+&lt;li&gt;Lotka-Volterra system (deterministic system of differential equations)
+&lt;img alt=&#34;three types of time series&#34; loading=&#34;lazy&#34; src=&#34;https://martinspace.top/img/ddbi/3types_time_series.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;随机过程是一种非确定性的过程，即其未来状态依赖于概率分布，无法通过确定的数学公式精确预测。布朗运动（Brownian Motion）是一种典型的随机过程，常见于金融市场、分子扩散等领域。&lt;/li&gt;
+&lt;li&gt;混沌系统是一类确定性但不可预测的系统，即尽管系统是由确定性的方程描述的，但对初始条件极其敏感，导致长期行为难以预测。洛伦兹系统（Lorenz System）是一个经典的混沌系统，最早由 Edward Lorenz 研究气象现象时提出。其特征包括：
+&lt;ul&gt;
+&lt;li&gt;由确定性方程控制（如微分方程）。&lt;/li&gt;
+&lt;li&gt;对初始条件极其敏感（“蝴蝶效应”）。&lt;/li&gt;
+&lt;li&gt;具有某种结构（如吸引子），但长期行为是不可预测的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;确定性系统是完全由数学规则或方程所控制的系统，即 如果初始条件相同，每次运行都会得到相同的结果。洛特卡-沃尔泰拉（Lotka-Volterra）方程描述了捕食者（如狼）和被捕食者（如兔子）种群的动态变化。这类系统的特征包括：
+&lt;ul&gt;
+&lt;li&gt;未来状态由当前状态唯一决定。&lt;/li&gt;
+&lt;li&gt;没有随机性，系统演化完全可预测。&lt;/li&gt;
+&lt;li&gt;在生物学、物理学、化学等领域有广泛应用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;数据填充技术&#34;&gt;数据填充技术&lt;/h2&gt;
+&lt;p&gt;这主要用于处理时间序列上的缺失值，主要有三种方法&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Llama.cpp本地CPU部署大模型</title>
       <link>https://martinspace.top/zh/llamacpp-tutorial/</link>
       <pubDate>Sat, 15 Jun 2024 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/llamacpp-tutorial/</guid>
-      <description>机器是2021年M1的MacBook Pro，斗胆一试。 引言 master分支的commit记录：2075a66 分别部署了Llama-2-7B-</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;机器是2021年M1的MacBook Pro，斗胆一试。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;引言&#34;&gt;引言&lt;/h1&gt;
+&lt;p&gt;master分支的commit记录：&lt;code&gt;2075a66&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;分别部署了&lt;code&gt;Llama-2-7B-Chat&lt;/code&gt;，&lt;code&gt;Llama-2-13B-Chat&lt;/code&gt;, &lt;code&gt;Llama-2-70B-Chat&lt;/code&gt;三款大模型，部署方式完全一致，我拿7B模型举例。&lt;/p&gt;</description>
     </item>
-    
-    <item>
-      <title>法国</title>
-      <link>https://martinspace.top/zh/france/</link>
-      <pubDate>Tue, 07 May 2024 22:34:10 +0000</pubDate>
-      
-      <guid>https://martinspace.top/zh/france/</guid>
-      <description>Nice &lt;!DOCTYPE html&gt; London Paris &lt;!DOCTYPE html&gt; London</description>
-    </item>
-    
     <item>
       <title>多智能体系统(COMP310)</title>
       <link>https://martinspace.top/zh/comp310/</link>
       <pubDate>Sun, 05 May 2024 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/comp310/</guid>
-      <description>Intelligent Agents Agents are objects with attitude, which are autonomous, smart, active. Properties in Environment (环境性质描述) Fully observable / partially observable Deterministic / non-deterministic Static / dynamic Discrete / continuous Episodic / non-episodic Real time Social ability (社交能力) The ability to interact with other agents via cooperation, coordination, and negotiation. Abstract Architectures for Agents (代理的</description>
+      <description>&lt;h1 id=&#34;intelligent-agents&#34;&gt;Intelligent Agents&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Agents are objects with attitude, which are autonomous, smart, active.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;properties-in-environment-环境性质描述&#34;&gt;Properties in Environment (环境性质描述)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fully observable / partially observable&lt;/li&gt;
+&lt;li&gt;Deterministic / non-deterministic&lt;/li&gt;
+&lt;li&gt;Static / dynamic&lt;/li&gt;
+&lt;li&gt;Discrete / continuous&lt;/li&gt;
+&lt;li&gt;Episodic / non-episodic&lt;/li&gt;
+&lt;li&gt;Real time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;social-ability-社交能力&#34;&gt;Social ability (社交能力)&lt;/h2&gt;
+&lt;p&gt;The ability to interact with other agents via cooperation, coordination, and negotiation.&lt;/p&gt;
+&lt;h2 id=&#34;abstract-architectures-for-agents-代理的抽象架构&#34;&gt;Abstract Architectures for Agents (代理的抽象架构)&lt;/h2&gt;
+&lt;p&gt;表示方法&lt;/p&gt;</description>
     </item>
-    
     <item>
-      <title>埃及</title>
-      <link>https://martinspace.top/zh/egypt/</link>
+      <title>Love with YOYO</title>
+      <link>https://martinspace.top/zh/love_with_yoyo/</link>
       <pubDate>Sun, 31 Mar 2024 22:34:10 +0000</pubDate>
-      
-      <guid>https://martinspace.top/zh/egypt/</guid>
-      <description>Hurghada &lt;!DOCTYPE html&gt; London Cairo &lt;!DOCTYPE html&gt; London</description>
+      <guid>https://martinspace.top/zh/love_with_yoyo/</guid>
+      <description>&lt;h1 id=&#34;daily-in-edinburgh&#34;&gt;Daily in Edinburgh&lt;/h1&gt;
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+	
+		&lt;script src=&#34;https://martinspace.top/shortcode-gallery/jquery-3.7.1.min.js&#34;&gt;&lt;/script&gt;
+	
+
+	
+		&lt;script src=&#34;https://martinspace.top/shortcode-gallery/lazy/jquery.lazy.min.js&#34;&gt;&lt;/script&gt;
+	
+
+	&lt;script src=&#34;https://martinspace.top/shortcode-gallery/swipebox/js/jquery.swipebox.min.js&#34;&gt;&lt;/script&gt;
+	&lt;link rel=&#34;stylesheet&#34; href=&#34;https://martinspace.top/shortcode-gallery/swipebox/css/swipebox.min.css&#34;&gt;
+
+	&lt;script src=&#34;https://martinspace.top/shortcode-gallery/justified_gallery/jquery.justifiedGallery.min.js&#34;&gt;&lt;/script&gt;
+	&lt;link rel=&#34;stylesheet&#34; href=&#34;https://martinspace.top/shortcode-gallery/justified_gallery/justifiedGallery.min.css&#34;/&gt;
+
+
+&lt;style&gt;
+	
+
+	
+&lt;/style&gt;
+
+
+
+
+
+&lt;div id=&#34;gallery-b768d1a92e8faf2e1f08325290c6cad2-0-wrapper&#34; class=&#34;gallery-wrapper&#34;&gt;
+&lt;div id=&#34;gallery-b768d1a92e8faf2e1f08325290c6cad2-0&#34; class=&#34;justified-gallery&#34;&gt;
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/IMG_3121.JPG&#34;
+					class=&#34;galleryImg&#34;
+					
+						
+
+						
+							data-description=&#34;&lt;br/&gt; &#34;
+						
+
+						
+					
+					&gt;
+					&lt;img
+						width=&#34;600&#34; height=&#34;400&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIABUAIAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/AOfufGFizEQ3k0gJPLRtWdLr9tNKfNEkmBnhMcVg6RZvqFw8QYhUBdscnGccfia3ptK/seSOC&amp;#43;kzDqQCR3QztjXIz198VzWSdjoV5K7KktuNZjf7MPs6IC29xtV8dRu9axhdTR2/kKF4P3&amp;#43;pxUiMbPU0iu13xwzFXU8qQDhhUV7B9jv7i2znyZGQH1AOK0SaM29C/wCEJ5LfxTYvG2CX2njOQQa7/wCIkv2nwmN6jMUysp9Oo/rXnnhb/kZrD/rr/Q13/jz/AJFST/rov/oVTL40OPws8xuJXZxuYkMASM9&amp;#43;/wDKrt0Y9RSe9CGJ1ALDdu3HIH4daz5vvR/7gq9a/wDIMu/90f8Aoa1o&amp;#43;hK6n//Z&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/IMG_3121_hu_e01c92b971266166.JPG&#34;
+						
+
+						
+							
+								
+							
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/IMG_3120.JPG&#34;
+					class=&#34;galleryImg&#34;
+					
+						
+
+						
+							data-description=&#34;&lt;br/&gt; &#34;
+						
+
+						
+					
+					&gt;
+					&lt;img
+						width=&#34;600&#34; height=&#34;400&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIABUAIAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/AOdUWSgsssCKBn944rC1S6a/D2tgjTBMtI0aEjA6/h71iZHoK7TTdEvdL099ZtP3scUW&amp;#43;QMPldSMnvkHoenasHLlNYLnfkcmdOv4URmtpVEn3PlILH29ajjdhJufLfU11&amp;#43;qPcvpCXnnRKJ7USwxYJJwAJOT0xknHcH2rio5CXOTyeapNtahJRT0G5zXr11dtZ&amp;#43;AmtolAX7Aoz9V5ryAda9Y1X/kTW/68k/8AQame6FDZnB3V1NJ4WtGLnNvIYl5/hYNkVgp97NbE/wDyKqf9fI/k1Y6fe/CtVsyWf//Z&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/IMG_3120_hu_bd82420dfdfe5100.JPG&#34;
+						
+
+						
+							
+								
+							
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/IMG_3118.JPG&#34;
+					class=&#34;galleryImg&#34;
+					
+						
+
+						
+							data-description=&#34;&lt;br/&gt; &#34;
+						
+
+						
+					
+					&gt;
+					&lt;img
+						width=&#34;600&#34; height=&#34;400&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIABUAIAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/AKnhf4sSaZbmK6tDcE8b92P6UusaxrWvpcanpk0cdur82w5kI&amp;#43;vXvXmETMzrGG&amp;#43;8ccnivQ9Ps20fR3ubW5PICzRyxk5I4yNvIB/Hg1yzSjsdNJc7dzkLvWJ5TuZGKkkHcT1/CtHVIbu50CPWIBCLcABzuJYHO3bg9Pf8K3NI0r/hJPD1/bLFFDOt45aRlyQSOB&amp;#43;dU9M/e/DnUrZwA0Ukmc&amp;#43;q7Wq9NyHdXVzkdBRZtesUcAqbhMgjg817PqumQavp8tvIPKdEDrKvXOMjI7j2rxrw5/yMVh/13X&amp;#43;de4J92f8A64j/ANBNOe5MNjgfB&amp;#43;oS2M&amp;#43;q2iAFSiS56YI//WPyrEF5JBp/iG3Q4Tzif&amp;#43;&amp;#43;mIP6CtHw5/wAhbU/&amp;#43;vZf6Vjyf6jxD/wBdl/8AQzT6h0P/2Q==&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/IMG_3118_hu_af29e2c38363ba1e.JPG&#34;
+						
+
+						
+							
+								
+							
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/IMG_2169.jpeg&#34;
+					class=&#34;galleryImg&#34;
+					
+						
+
+						
+							data-description=&#34;iPhone 13 Pro + iPhone 13 Pro back triple camera 5.7mm f/1.5&lt;br/&gt;57/10mm f/1.5 1/20sec  ISO 800&#34;
+						
+
+						
+					
+					&gt;
+					&lt;img
+						width=&#34;450&#34; height=&#34;600&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIACAAGAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/ALOmeLYkso1vQpYINxgO5c47d6ZF470mbUZLNnkjAOFlYZU/4V5nqM0trOskEf2eJ2&amp;#43;5G7EEY755rYuvDbvEl3peZoJV3sM8j/EVzK3U6bN7HpscisMo6NnoN9O3P/cT868/0fXIRbrY3U3lSoCELnAIHY56H/Cr/wBug/5&amp;#43;of8Av4v&amp;#43;NUZmNpVvELaNHjjLSyMwdlVmCrjgE9&amp;#43;av32o3WmaYbi0jLCNWHlOegBwSQPTOfSsi51LT9Ptobdo5RKCX/dN8yH1yScZqe7njl0bfbzNKXwzSO3VQOntWXK&amp;#43;ZX2Oz2kVTaS1ONluXuJzIx5PrRv&amp;#43;lOs4Ibi9jimnW3jduZGGdore/sDQv&amp;#43;hjT/v0P/iq69Eefqz/2Q==&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/IMG_2169_hu_908572d03d212e8b.jpeg&#34;
+						
+
+						
+							
+								
+							
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/IMG_2007.jpeg&#34;
+					class=&#34;galleryImg&#34;
+					
+						
+
+						
+							data-description=&#34;iPhone 13 Pro + iPhone 13 Pro back triple camera 5.7mm f/1.5&lt;br/&gt;57/10mm f/1.5 1/25sec  ISO 640&#34;
+						
+
+						
+					
+					&gt;
+					&lt;img
+						width=&#34;450&#34; height=&#34;600&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIACAAGAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/ALFsTpNrpkN1Cv2u8mEcsaAfKduSfwJFdBc2KoAdtRRvZWttdas0BLPm5ZXYNtKpj5T24FZ2heIptYt45b2SFVmyVCLtKH&amp;#43;7yef0riXc6rE8sQ6AY96h8oep/KtB4mWX5COB94jim4l/vxfpWqRnc8rbxpqEmnzWzMqRNmGRWycgjnB7VgwzS8SxTSRqZNwVGPykYw1bmo&amp;#43;DzY3MMcmpRLbXLkhypyCMZ4zz19azLTSZvNngZ1VoTlD/AHueuPTpVKzXuju1L3i5ZeKtUsVKi9lYswYGU7&amp;#43;n17Gr3/Ceax/z2i/75/8Ar1zHlsXMbDJU9&amp;#43;1O&amp;#43;yn&amp;#43;6PzFK6RUqkVurn//2Q==&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/IMG_2007_hu_d3614c26290edc43.jpeg&#34;
+						
+
+						
+							
+								
+							
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/be8d771d9ee042c1bda88dc15485aa97.JPG&#34;
+					class=&#34;galleryImg&#34;
+					
+						
+
+						
+							data-description=&#34;&lt;br/&gt; &#34;
+						
+
+						
+					
+					&gt;
+					&lt;img
+						width=&#34;600&#34; height=&#34;410&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIABYAIAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/APIjgjPQ&amp;#43;lIQO3egg4z2ro/Cvh2TUtUso7yF4ba6JKySAqsqry2049scVIWuc13pa1vEmmxab4lvrGFg0UUpCkH7oPOD7jOD71mOhTqaAJrGyN7MIw4QZAJIzXvkEsVpo9jYpGDHbQtGuR/CMD&amp;#43;VeHaD/wAff/Al/nXtcv8AqY/9yX&amp;#43;YppXJk2tjyjx8y3WuQamiBBqFrHOUx0YjmsGS3aO1Sd9pWUHbg8jBxW34w&amp;#43;7ov/YOj/lWbdf8gez/AN2T/wBDFJDZ/9k=&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/be8d771d9ee042c1bda88dc15485aa97_hu_b9216cc41dc2e648.JPG&#34;
+						
+
+						
+							
+								
+							
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/a.jpeg&#34;
+					class=&#34;galleryImg&#34;
+					
+						
+
+						
+							data-description=&#34;iPhone 13 Pro + iPhone 13 Pro back triple camera 5.7mm f/1.5&lt;br/&gt;57/10mm f/1.5 1/15sec  ISO 6400&#34;
+						
+
+						
+					
+					&gt;
+					&lt;img
+						width=&#34;450&#34; height=&#34;600&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIACAAGAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/APJpYjbz&amp;#43;U&amp;#43;Mjrg5xXX6J4Nj1aOCYXhEEzY37AMY68E9q5K0Q3l6qu4XzH&amp;#43;Zj7mux0rxHo3h95Idk9xsI2NGgx0GTncO&amp;#43;aVrpq&amp;#43;pVtLlpfAljBJP9rvsqinb5eMZ9Tn/ADxVb/hFdG/6CX6L/jT5/HelvHcKkN4omUo37pCcMMHB3ccE1if2x4f/AOeWofp/8VXOlU6sfunNJIV9wetbPh9baNpby4thc&amp;#43;WMJETgZ65&amp;#43;vQD6msLpUkVxLASYnKE8HFdDV0SnZj728kvrp55AAWPCqMBR6AdqgrqNB02a80/zorWKchsfeUN1wMjNa39gaj/0Bz/30v8AjU86WgWZ/9k=&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/a_hu_ec6c4019bb80e5df.jpeg&#34;
+						
+
+						
+							
+								
+							
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/636be19ae2d74c24782f9d08ddce00e9.JPG&#34;
+					class=&#34;galleryImg&#34;
+					
+						
+
+						
+							data-description=&#34;&lt;br/&gt; &#34;
+						
+
+						
+					
+					&gt;
+					&lt;img
+						width=&#34;600&#34; height=&#34;410&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIABYAIAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/AO10wrFboAmSzEDn2zTrzXJbCNpG0qWVUBJMcqdB9SKi05wYY/aU/wDoJrH8eas2k6OsiMqiWTy2ZhnAKseB7kAfjWknrqRHbQ6PSNQi8T6JJPFHLaCVZYsMRvXjGRjjvUvh6zW30RIvmJWRw245O4Eg/qKyPhrOlx4USRCCGlkwfwFdDpZBspPlK/6TNwT/ANNGqR7nDabqjeXF8vSY/wDoBrG&amp;#43;IjPqGiI6nY8MoIOexypH61a07/Vx/wDXU/8AoJqr4w/5AUn&amp;#43;&amp;#43;n/oQrWolqZQb0NrwCZtH8IzWcgRpIjO5ZCSP9WGHX610Hh7WXvdKlmdSCLuVfyYisLQf&amp;#43;QTe/7k3/olateEf&amp;#43;QDP/1/T/8AoZrNJGtz/9k=&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/636be19ae2d74c24782f9d08ddce00e9_hu_4b5a77c0c4ccfd9.JPG&#34;
+						
+
+						
+							
+								
+							
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/570bdc152abee87f5884e478cc46894b.JPG&#34;
+					class=&#34;galleryImg&#34;
+					
+					&gt;
+					&lt;img
+						width=&#34;450&#34; height=&#34;600&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIACAAGAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/ANaDWrF0CyTpEwOMP8vNcZ4k8aaj9oKWLGG2zhHCcye/PauWGo3EVx9m89o4SCRuGWHPTNdbqulte6Bbz20aymNNy7MfdArl2ep1KPMnYveDvEF1qkE1re5eWMblYAAsvQ5/HH510WB/cavMPDeoSQ6kzhihMbKuOMng4/Sum/ti&amp;#43;/vy/wDfTf41ozKxk2un20ywGW2V5jD5jGTDEgnAAzx19v50avLc6Vo/&amp;#43;h3HlRyE&amp;#43;bH82YwTjjOMZP168GkkvLK0aOG4vmWePmJ0XDBSehxx/KpNUa3TRpgzNcySBcs3ZRzjoB&amp;#43;FYJPmVzrc4&amp;#43;zaS1OJNwxm3IxAHTHFS/bJ/wDntJ/32ateG4NPm1qNtScJax5kZT/EBzj6evtXd/avAP8Azysv&amp;#43;&amp;#43;DXZZHA2z//2Q==&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/570bdc152abee87f5884e478cc46894b_hu_b0168bbfde2a73e7.JPG&#34;
+						
+
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/4fb86a741e8ed4ef40e0f358bee17a5f.JPG&#34;
+					class=&#34;galleryImg&#34;
+					
+					&gt;
+					&lt;img
+						width=&#34;600&#34; height=&#34;400&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIABUAIAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/APNoLUSDp2pJ4YrcZbJOcYBpllqUUTHzlcjtsxn9a6jwwmh3ljd3F&amp;#43;sa3sDiZPMb7ygZ24PBB/OsOVp3ZupJ6I5e7SJ5N8EMkUZxgOc84Gef89azpFwa7vxB4p0rWbGVI9NZbjy1WMso2xnPJGD6Af5FcLN1xWiT3aIdtkyNDg59KuOpREfdneAfpVNehq/N/qYP9wVZAwyFF46mqkjEsSasSfcFVn61UhI//9k=&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/4fb86a741e8ed4ef40e0f358bee17a5f_hu_665e07793d7ef285.JPG&#34;
+						
+
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+		
+
+			
+			
+
+			
+			
+				
+			
+
+			
+				
+			
+
+			
+			
+				
+					
+				
+			
+
+
+			
+			
+
+			&lt;div&gt;
+				
+				
+					
+					
+				
+
+				
+				
+					
+					
+				
+
+				&lt;a href=&#34;https://martinspace.top/zh/love_with_yoyo/images/05f63b9e9f34016295fe3a0230a87c42.JPG&#34;
+					class=&#34;galleryImg&#34;
+					
+					&gt;
+					&lt;img
+						width=&#34;338&#34; height=&#34;600&#34;
+
+						
+							
+							style=&#34;filter: blur(25px);&#34;
+							
+								src=&#34;data:image/jpeg;base64,/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4&amp;#43;JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIACAAEgMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5&amp;#43;gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4&amp;#43;Tl5ufo6ery8/T19vf4&amp;#43;fr/2gAMAwEAAhEDEQA/AODtLrU5Y1uJW22xYbp2iUqo/Lvjiqksk8r3NncoWuUViS5&amp;#43;7t5OMewNbKa3bwaSdF05Irr7Spi3TR4Kgn&amp;#43;8cdD0&amp;#43;lZFxpupaeftVyqEqpBBbOBjbg49qxW&amp;#43;pturozPtD&amp;#43;o/IUnnv6j8hSeWvp&amp;#43;tL5a&amp;#43;n61dzOx2XhnR7G182bUpIb6N1G2KzzLIODnIxwMVkajdQ3tjb2MeGuSSHkcnJO87ef8AdbBHqBVrwqhid783DJ5Q4IGVBxyCO/WpLqK01TQb67CRRXUFwZMgcuCF49u5&amp;#43;tZpNSNWvcWpz50TV1YqLG4ODjIhfB/Sk/sXV/8Anwuv&amp;#43;/D/AOFeqx&amp;#43;IbV4kYlcsoPWn/wBv2nqv50c77E8q7n//2Q==&#34;
+							
+							class=&#34;lazy&#34;
+							data-src=&#34;https://martinspace.top/zh/love_with_yoyo/images/05f63b9e9f34016295fe3a0230a87c42_hu_f1eab9aeff1bf5e8.JPG&#34;
+						
+
+						
+					&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		
+	
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+	if (!(&#34;HSCGjQuery&#34; in window)) {
+		if (!window.jQuery) {
+			throw new Error(&#34;jQuery is not loaded, hugo-shortcode-gallery wont work without it!&#34;);
+		}
+		window.HSCGjQuery = window.jQuery.noConflict(true);
+	}
+
+	
+	
+	
+	
+	
+	;(function($) {
+
+		$( document ).ready(() =&gt; {
+			const gallery = $(&#34;#gallery-b768d1a92e8faf2e1f08325290c6cad2-0&#34;);
+			
+
+			
+			let swipeboxInstance = null;
+
+			
+			
+			gallery.on(&#39;jg.complete&#39;, () =&gt; {
+				
+					
+					
+					$(() =&gt; {
+						$(&#39;.lazy&#39;).Lazy({
+							visibleOnly: true,
+							afterLoad: element =&gt; element.css({filter: &#34;none&#34;, transition: &#34;filter 1.0s ease-in-out&#34;})
+						});
+					});
+				
+
+				swipeboxInstance = $(&#39;.galleryImg&#39;).swipebox(
+					$.extend({},
+						{  }
+					)
+				);
+			});
+
+			
+			gallery.justifiedGallery($.extend(
+				{
+					rowHeight : &#34;150&#34;,
+					margins : &#34;5&#34;,
+					border : 0,
+					randomize :  false ,
+					waitThumbnailsLoad : false,
+					lastRow : &#34;justify&#34;,
+					captions : false,
+					
+					
+				},
+				{  }
+			));
+
+			
+			
+		});
+
+	
+	
+	
+	})(window.HSCGjQuery)
+&lt;/script&gt;</description>
     </item>
-    
     <item>
       <title>云计算(COMP315)</title>
       <link>https://martinspace.top/zh/comp315/</link>
       <pubDate>Mon, 26 Feb 2024 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/comp315/</guid>
-      <description>虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&amp;ldquo;Hypervisor&amp;rdquo; （虚拟机监控</description>
+      <description>&lt;h1 id=&#34;虚拟机&#34;&gt;虚拟机&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&amp;ldquo;Hypervisor&amp;rdquo; （虚拟机监控程序）的软件可直接连接到硬件，从而将一个系统划分为不同的、单独安全环境，即虚拟机（VM）。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>高性能计算(COMP328)</title>
       <link>https://martinspace.top/zh/comp328/</link>
       <pubDate>Sat, 03 Feb 2024 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/comp328/</guid>
-      <description>Week1 高性能计算的目标 对于有限的数据集，最小化解决时间 对于无限的数据集，最大化吞吐量(throughput) 有能力解决一些对于可用的内存来说太大</description>
+      <description>&lt;h1 id=&#34;week1&#34;&gt;Week1&lt;/h1&gt;
+&lt;p&gt;高性能计算的目标&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于有限的数据集，最小化解决时间&lt;/li&gt;
+&lt;li&gt;对于无限的数据集，最大化吞吐量(throughput)&lt;/li&gt;
+&lt;li&gt;有能力解决一些对于可用的内存来说太大的问题&lt;/li&gt;
+&lt;li&gt;最大化资源利用 - CPU/内存/网络/加速器(GPU)/电力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一些常用术语&#34;&gt;一些常用术语&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Parallelism vs Concurrency
+&lt;ul&gt;
+&lt;li&gt;Parallelism: 多个进程同时且独立执行&lt;/li&gt;
+&lt;li&gt;Concurrency: 多个进程同时执行且共享至少一种资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Processor, Die &amp;amp; Socket
+&lt;ul&gt;
+&lt;li&gt;Processor: 执行程序指令的电路。计算机系统中可能有许多处理器，例如图形处理器、视频处理器。在没有限定的情况下，通常指中央处理器&lt;/li&gt;
+&lt;li&gt;CPU: 计算机系统中主要的通用处理器（之一），而非特定用途（如视频解压缩）。&lt;/li&gt;
+&lt;li&gt;Die: 指硅晶片，包含处理器（通常是中央处理器）以及接口所需的其他组件（如内存控制器）。&lt;/li&gt;
+&lt;li&gt;Socket: 处理器和计算机主板之间的物理接口，它定义了处理器与主板连接的方式。不同的处理器和主板可能需要不同类型的Socket。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Core &amp;amp; Thread
+&lt;ul&gt;
+&lt;li&gt;Core: 核心是CPU内部的一个物理处理单元，能够独立执行计算任务。每个核心可以独立处理指令和执行计算操作。&lt;/li&gt;
+&lt;li&gt;Thread: 线程是操作系统能够进行计算调度的最小单位。它是程序执行流的一个单一顺序，可以被操作系统调度（启动、停止、挂起等）。&lt;/li&gt;
+&lt;li&gt;核心和线程共同定义了处理器的处理能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Node
+&lt;ul&gt;
+&lt;li&gt;指一个服务器节点（一台计算机）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Cluster/Supercomputer
+&lt;ul&gt;
+&lt;li&gt;成百上千个节点组成集群&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Single precision floating-point
+&lt;ul&gt;
+&lt;li&gt;通常占用32位（4字节）的存储空间，C语言中的float32类型，1符号位，8指数位，23有效数字位&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Double precision floating-point
+&lt;ul&gt;
+&lt;li&gt;通常占用64位（8字节）的存储空间，C语言中的float64类型，1符号位，11指数位，52有效数字位&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Flop
+&lt;ul&gt;
+&lt;li&gt;Floating-point operations per second&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;如何量化评估性能&#34;&gt;如何量化/评估性能&lt;/h2&gt;
+&lt;p&gt;公式如下👇&lt;/p&gt;</description>
     </item>
-    
-    <item>
-      <title>澳大利亚</title>
-      <link>https://martinspace.top/zh/australia/</link>
-      <pubDate>Tue, 08 Aug 2023 22:34:10 +0000</pubDate>
-      
-      <guid>https://martinspace.top/zh/australia/</guid>
-      <description>SYDNEY &lt;!DOCTYPE html&gt; City walk Bondi beach With baby😍 Sydney opera house GOLD COAST &lt;!DOCTYPE html&gt; Francis Favourite😆 surfers paradise With baby😍 Parasail 😍 MELBOURNE &lt;!DOCTYPE html&gt; With Baby 😍</description>
-    </item>
-    
     <item>
       <title>前端刷题笔记</title>
       <link>https://martinspace.top/zh/front-end/</link>
       <pubDate>Sun, 07 May 2023 08:42:27 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/front-end/</guid>
       <description>记录刷前端时遇到的知识点</description>
     </item>
-    
-    <item>
-      <title>西班牙</title>
-      <link>https://martinspace.top/zh/spain/</link>
-      <pubDate>Sat, 01 Apr 2023 22:34:10 +0000</pubDate>
-      
-      <guid>https://martinspace.top/zh/spain/</guid>
-      <description>Barcelona &lt;!DOCTYPE html&gt; London Tenerife &lt;!DOCTYPE html&gt; London</description>
-    </item>
-    
     <item>
       <title>基础数据结构</title>
       <link>https://martinspace.top/zh/basic-data-structures/</link>
       <pubDate>Fri, 17 Mar 2023 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/basic-data-structures/</guid>
-      <description>上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。 所以从基础数据结构</description>
+      <description>&lt;p&gt;上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。&lt;/p&gt;
+&lt;p&gt;所以从基础数据结构开始，重新系统学习算法，在这里记录学习的过程。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Canonical coins system</title>
       <link>https://martinspace.top/zh/canonical-coins/</link>
       <pubDate>Thu, 09 Mar 2023 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/canonical-coins/</guid>
-      <description>今天上算法课的tutorial，主要是讲贪婪算法。老师在课上提到了canonical coins system，但并没有深入讲解。回来看了一篇论文，整个</description>
+      <description>&lt;p&gt;今天上算法课的tutorial，主要是讲贪婪算法。老师在课上提到了canonical coins system，但并没有深入讲解。回来看了一篇论文，整个问题很有意思，写下来记录一下。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>金融市场交易(COMP226)</title>
       <link>https://martinspace.top/zh/comp226/</link>
       <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/comp226/</guid>
-      <description>R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor &amp;gt; gender &amp;lt;- fa</description>
+      <description>&lt;h1 id=&#34;r语言基础w1&#34;&gt;R语言基础（W1）&lt;/h1&gt;
+&lt;h2 id=&#34;基本数据类型&#34;&gt;基本数据类型&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;character(string)&lt;/li&gt;
+&lt;li&gt;logical(boolean)&lt;/li&gt;
+&lt;li&gt;numeric(number)&lt;/li&gt;
+&lt;li&gt;factors(categories)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;factors表示分类，将分类数据存储为整数向量。下面用代码解释&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-R&#34; data-lang=&#34;R&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007f7f&#34;&gt;# 创建一个性别的factor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; gender &amp;lt;- factor(c(&lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;男&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;女&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;女&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;男&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;男&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007f7f&#34;&gt;# 显示gender对象的水平(分类)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; levels(gender)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[1] &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;女&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;男&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007f7f&#34;&gt;# 显示gender对象的摘要信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; summary(gender)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;女 男 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#ff0;font-weight:bold&#34;&gt;2&lt;/span&gt;  &lt;span style=&#34;color:#ff0;font-weight:bold&#34;&gt;3&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007f7f&#34;&gt;# 显示gender对象中每个水平的计数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; table(gender)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gender
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;女 男 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff0;font-weight:bold&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#ff0;font-weight:bold&#34;&gt;3&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;is和as的区别&#34;&gt;is和as的区别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;is.***()&lt;/code&gt;函数用于判断一个对象是否属于某个特定的类别，返回一个逻辑值。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;as.***()&lt;/code&gt;函数则用于将一个对象转换为指定的类别，返回一个转换后的对象。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;vector和list的区别&#34;&gt;vector和list的区别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;类型：
+&lt;ul&gt;
+&lt;li&gt;vector是一种简单的数据结构，其中所有元素必须是相同的类型。&lt;/li&gt;
+&lt;li&gt;list是一种复杂的数据结构，其中每个元素可以是任意类型的对象。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;长度：
+&lt;ul&gt;
+&lt;li&gt;vector必须是一个固定长度，一旦创建就不能更改。&lt;/li&gt;
+&lt;li&gt;list的长度是可变的，可以随时添加或删除元素。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;索引：
+&lt;ul&gt;
+&lt;li&gt;vector中的元素可以使用整数索引来访问，例如&lt;code&gt;x[1]&lt;/code&gt;表示访问&lt;code&gt;x&lt;/code&gt;中的第一个元素。&lt;/li&gt;
+&lt;li&gt;list中的元素可以使用名称或位置索引来访问，例如&lt;code&gt;x[[1]]&lt;/code&gt;表示访问&lt;code&gt;x&lt;/code&gt;中的第一个元素，&lt;code&gt;x[[&amp;quot;name&amp;quot;]]&lt;/code&gt;表示访问&lt;code&gt;x&lt;/code&gt;中名称为&lt;code&gt;&amp;quot;name&amp;quot;&lt;/code&gt;的元素。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;函数&#34;&gt;函数&lt;/h2&gt;
+&lt;p&gt;给一个函数，写法如下。显然，该函数是计算输入的平均值。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>算法(COMP202)</title>
       <link>https://martinspace.top/zh/comp202/</link>
       <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/comp202/</guid>
       <description>COMP202 笔记</description>
     </item>
-    
     <item>
       <title>High-level Petri Net(COMP201)</title>
       <link>https://martinspace.top/zh/petri-net/</link>
       <pubDate>Wed, 11 Jan 2023 20:47:53 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/petri-net/</guid>
-      <description>复（预）习过程中遇到Petri net，记录一下 Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通</description>
+      <description>&lt;p&gt;复（预）习过程中遇到Petri net，记录一下&lt;/p&gt;
+&lt;p&gt;Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通常被用于建立离散分布式系统。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Leetcode每日一题</title>
       <link>https://martinspace.top/zh/leetcode-note/</link>
       <pubDate>Sat, 07 Jan 2023 09:36:47 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/leetcode-note/</guid>
       <description>总结每天学到的知识点和有价值的题型</description>
     </item>
-    
     <item>
       <title>数据库复习笔记(COMP207)</title>
       <link>https://martinspace.top/zh/comp207/</link>
       <pubDate>Tue, 03 Jan 2023 20:28:22 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/comp207/</guid>
-      <description>Weekly Assessment 错题知识点复习 Week 1 insert语句语法 insert into table_name VALUES (value1, value2) 创建外键语法 CONSTRAINT fk_name FOREIGN KEY (从表的属性名) REFERENCES 主表(主表的属性名) 有两个表A(a), B(b)。</description>
+      <description>&lt;h1 id=&#34;weekly-assessment-错题知识点复习&#34;&gt;Weekly Assessment 错题知识点复习&lt;/h1&gt;
+&lt;h2 id=&#34;week-1&#34;&gt;Week 1&lt;/h2&gt;
+&lt;p&gt;insert语句语法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;insert&lt;/span&gt; &lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;into&lt;/span&gt; table_name &lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;VALUES&lt;/span&gt; (value1, value2)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建外键语法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;CONSTRAINT&lt;/span&gt; fk_name &lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;FOREIGN&lt;/span&gt; &lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;KEY&lt;/span&gt; (&lt;span style=&#34;color:#f00&#34;&gt;从表的属性名&lt;/span&gt;) &lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;REFERENCES&lt;/span&gt; &lt;span style=&#34;color:#f00&#34;&gt;主表&lt;/span&gt;(&lt;span style=&#34;color:#f00&#34;&gt;主表的属性名&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;有两个表A(a), B(b)。a是主键，b通过外键连向a，即B表索引自A表。此时，只有对B表进行删除操作是肯定可行的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>详解java中的几种hash</title>
       <link>https://martinspace.top/zh/hash-in-java/</link>
       <pubDate>Sun, 01 Jan 2023 15:37:32 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/hash-in-java/</guid>
-      <description>刷leetcode总能看见哈希表，对哈希表有大致的了解，但是一直不知道HashTable，HashMap和HashSet在Java中的区别。</description>
+      <description>&lt;p&gt;刷leetcode总能看见哈希表，对哈希表有大致的了解，但是一直不知道HashTable，HashMap和HashSet在Java中的区别。今天看到一个博主的文章再结合官方文档的学习，受益良多，记录一下。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>低开高走的一年</title>
       <link>https://martinspace.top/zh/22summary/</link>
       <pubDate>Sat, 31 Dec 2022 10:56:24 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/22summary/</guid>
       <description>2022，低开高走并且创出新高的一年。</description>
     </item>
-    
     <item>
       <title>git版本控制</title>
       <link>https://martinspace.top/zh/git-tag/</link>
       <pubDate>Fri, 30 Dec 2022 22:51:29 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/git-tag/</guid>
       <description>贴标签命令实现版本控制</description>
     </item>
-    
     <item>
       <title>Zotero快速上手</title>
       <link>https://martinspace.top/zh/zotero/</link>
       <pubDate>Fri, 30 Dec 2022 14:58:23 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/zotero/</guid>
       <description>生成Reference的神器</description>
     </item>
-    
     <item>
       <title>荒诞与真理</title>
       <link>https://martinspace.top/zh/letranger/</link>
       <pubDate>Fri, 16 Dec 2022 17:24:27 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/letranger/</guid>
-      <description>大家都是幸运者，世界上只有幸运者。有朝一日，所有的其他人无一例外，都会被判死刑，他自己也会被判死刑，幸免不了。 这两天在赶due，总会心烦意乱</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;大家都是幸运者，世界上只有幸运者。有朝一日，所有的其他人无一例外，都会被判死刑，他自己也会被判死刑，幸免不了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这两天在赶due，总会心烦意乱，于是找到了《局外人》这本书，花了两天的空闲时间读完了这个哲学（？）著作。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>代码上传至github</title>
       <link>https://martinspace.top/zh/git/</link>
       <pubDate>Fri, 16 Dec 2022 16:04:33 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/git/</guid>
-      <description>先在github建立一个远程仓库，可以全部是默认设置 全局声明git的用户认证信息 git config --global user.name &amp;#34;name&amp;#34; git config --global user.email &amp;#34;email@gmail.com&amp;#34; 其中name写自己的名字，email@g</description>
+      <description>&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;先在github建立一个远程仓库，可以全部是默认设置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;全局声明git的用户认证信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.name &amp;#34;name&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.email &amp;#34;email@gmail.com&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中name写自己的名字，email@gmail.com写自己的email&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>CYK(COMP218)</title>
       <link>https://martinspace.top/zh/cyk-algo/</link>
       <pubDate>Fri, 09 Dec 2022 14:41:23 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/cyk-algo/</guid>
       <description>CYK——非常高效的解析算法</description>
     </item>
-    
     <item>
       <title>💭 关于</title>
       <link>https://martinspace.top/zh/about/</link>
       <pubDate>Wed, 07 Dec 2022 12:22:28 +0800</pubDate>
-      
       <guid>https://martinspace.top/zh/about/</guid>
-      <description>🧑🏻‍💻 可以叫我Martin / Martingale 🌊 专注于底层逻辑思考的学习者 🎓 本科毕业于英国利物浦大学，计算机科学，荣誉一等学位 📚 目前就读于英国爱丁堡大学，</description>
+      <description>&lt;ul&gt;
+&lt;li&gt;🧑🏻‍💻 可以叫我&lt;strong&gt;Martin / Martingale&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;🌊 专注于底层逻辑思考的学习者&lt;/li&gt;
+&lt;li&gt;🎓 本科毕业于&lt;a href=&#34;https://twitter.com/LivUni&#34;&gt;英国利物浦大学&lt;/a&gt;，计算机科学，荣誉一等学位&lt;/li&gt;
+&lt;li&gt;📚 目前就读于&lt;a href=&#34;https://informatics.ed.ac.uk/&#34;&gt;英国爱丁堡大学&lt;/a&gt;，人工智能硕士&lt;/li&gt;
+&lt;li&gt;💭 热爱开源，学习无止境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;我最近在干什么&#34;&gt;我最近在干什么？&lt;/h1&gt;
+&lt;p&gt;🪜 现在正在研究&amp;hellip;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>重置服务器系统后，ssh连接失败</title>
       <link>https://martinspace.top/zh/ssh-bug-fix/</link>
       <pubDate>Tue, 06 Dec 2022 22:34:10 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/ssh-bug-fix/</guid>
-      <description>重置服务器系统后。当使用远程ssh连接后，会显示连接失败。 这里直接给出解决办法(仅以macOS为例): 打开终端 输入 vim ~/.ssh/known_hosts vim会打开该文件，向</description>
+      <description>&lt;p&gt;重置服务器系统后。当使用远程ssh连接后，会显示连接失败。
+&lt;/br&gt;这里直接给出解决办法(仅以macOS为例):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开终端&lt;/li&gt;
+&lt;li&gt;输入&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vim ~/.ssh/known_hosts
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;vim会打开该文件，向下翻，找到服务器对应的IP&lt;/li&gt;
+&lt;li&gt;按下&lt;code&gt;v&lt;/code&gt;进入&lt;code&gt;visual&lt;/code&gt;模式，使用方向键选择要删掉的内容（服务器IP对应的内容都要删掉）, 按下&lt;code&gt;d&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;或者，按下&lt;code&gt;i&lt;/code&gt;进入&lt;code&gt;insert&lt;/code&gt;模式，一个一个删除&lt;/li&gt;
+&lt;li&gt;按下&lt;code&gt;esc&lt;/code&gt;键，输入:&lt;code&gt;wq&lt;/code&gt;+回车，任务完成
+切记：一定要在英文输入法情况下按&lt;code&gt;esc&lt;/code&gt;切换状态，中文输入模式下按&lt;code&gt;esc&lt;/code&gt;不管用的！！！&lt;/li&gt;
+&lt;/ol&gt;</description>
     </item>
-    
-    <item>
-      <title>英国</title>
-      <link>https://martinspace.top/zh/united-kingdom/</link>
-      <pubDate>Wed, 02 Nov 2022 21:16:51 +0000</pubDate>
-      
-      <guid>https://martinspace.top/zh/united-kingdom/</guid>
-      <description>图片太大了，很占服务器的资源，想看的去朋友圈自取吧 The images are so big that take up a lot of resources on the server, so if you&amp;rsquo;d like to see them, go to ins and get them yourself. Liverpool &lt;!DOCTYPE html&gt; London London &lt;!DOCTYPE html&gt; London Edinburgh &lt;!DOCTYPE html&gt; London Lake District &lt;!DOCTYPE html&gt;</description>
-    </item>
-    
     <item>
       <title>对汇编语言中DF标志，CLD，STD，REP等指令的理解</title>
       <link>https://martinspace.top/zh/assemble/</link>
       <pubDate>Tue, 16 Nov 2021 20:30:41 +0100</pubDate>
-      
       <guid>https://martinspace.top/zh/assemble/</guid>
-      <description>看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！ 首先，DF作为标志寄存</description>
+      <description>&lt;p&gt;看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！&lt;/p&gt;
+&lt;p&gt;首先，DF作为标志寄存器的一个位，其值只能是0或1。&lt;/p&gt;</description>
     </item>
-    
-    
-    
   </channel>
 </rss>

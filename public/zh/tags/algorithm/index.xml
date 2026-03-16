@@ -4,35 +4,31 @@
     <title>Algorithm on Martin&#39;s space</title>
     <link>https://martinspace.top/zh/tags/algorithm/</link>
     <description>Recent content in Algorithm on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 17 Mar 2023 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 May 2023 16:23:32 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基础数据结构</title>
       <link>https://martinspace.top/zh/basic-data-structures/</link>
       <pubDate>Fri, 17 Mar 2023 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/basic-data-structures/</guid>
-      <description>上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。 所以从基础数据结构</description>
+      <description>&lt;p&gt;上星期被算法课考试狠狠拷打，痛思悔过一小时。发现自己学习算法缺乏实际操作，只知理论，操作甚少，导致对理论的理解也十分浅显。&lt;/p&gt;
+&lt;p&gt;所以从基础数据结构开始，重新系统学习算法，在这里记录学习的过程。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Canonical coins system</title>
       <link>https://martinspace.top/zh/canonical-coins/</link>
       <pubDate>Thu, 09 Mar 2023 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/canonical-coins/</guid>
-      <description>今天上算法课的tutorial，主要是讲贪婪算法。老师在课上提到了canonical coins system，但并没有深入讲解。回来看了一篇论文，整个</description>
+      <description>&lt;p&gt;今天上算法课的tutorial，主要是讲贪婪算法。老师在课上提到了canonical coins system，但并没有深入讲解。回来看了一篇论文，整个问题很有意思，写下来记录一下。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>算法(COMP202)</title>
       <link>https://martinspace.top/zh/comp202/</link>
       <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/comp202/</guid>
       <description>COMP202 笔记</description>
     </item>
-    
   </channel>
 </rss>

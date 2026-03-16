@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +10,7 @@
 <meta name="description" content="archives">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/archives/">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.33446ce70373ca1f19994ac816c97a1b65ae46bd7944d026cdb4b723d0bc5887.css" integrity="sha256-M0Rs5wNzyh8ZmUrIFsl6G2WuRr15RNAmzbS3I9C8WIc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/icebear.jpg">
@@ -39,60 +36,64 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+</noscript>
 <script>
-        MathJax = {
-          tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-          },
-          svg: {
-            fontCache: 'global'
-          }
-        };
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
 </script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="📁 归档" />
-<meta property="og:description" content="archives" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://martinspace.top/zh/archives/" /><meta property="article:section" content="" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-J8TFFL1ZS7');
+        }
+      </script><meta property="og:url" content="https://martinspace.top/zh/archives/">
+  <meta property="og:site_name" content="Martin&#39;s space">
+  <meta property="og:title" content="📁 归档">
+  <meta property="og:description" content="archives">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
 
-
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="📁 归档"/>
-<meta name="twitter:description" content="archives"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📁 归档">
+  <meta name="twitter:description" content="archives">
 
 
 <script type="application/ld+json">
@@ -143,29 +144,15 @@ if (!doNotTrack) {
 }
 </script>
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
                 <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
                     height="35">Martin&#39;s space</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -185,12 +172,12 @@ if (!doNotTrack) {
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://martinspace.top/en/" title="English"
-                            aria-label="English">English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://martinspace.top/en/" title="English"
+                                aria-label="English">English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
@@ -236,8 +223,7 @@ if (!doNotTrack) {
       <div class="archive-entry">
         <h3 class="archive-entry-title">LoRA 微调的云上漂流
         </h3>
-        <div class="archive-meta">创建: 2025-05-25 | 更新: 2025-05-25 | 字数: 2771字 | 阅读时长: 6分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2025-05-25 · Updated: 2025-05-25 · 6 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to LoRA 微调的云上漂流" href="https://martinspace.top/zh/serverless-lora/"></a>
       </div>
     </div>
@@ -248,36 +234,32 @@ if (!doNotTrack) {
       <div class="archive-entry">
         <h3 class="archive-entry-title">Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing
         </h3>
-        <div class="archive-meta">创建: 2025-02-09 | 更新: 2025-02-09 | 字数: 5字 | 阅读时长: 1分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2025-02-09 · Updated: 2025-02-09 · 1 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing" href="https://martinspace.top/zh/dmrl-survey/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">从RNN到Transformers
         </h3>
-        <div class="archive-meta">创建: 2025-02-01 | 更新: 2025-05-01 | 字数: 21981字 | 阅读时长: 44分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2025-02-01 · Updated: 2025-05-01 · 44 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 从RNN到Transformers" href="https://martinspace.top/zh/nluplus/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">强化学习
         </h3>
-        <div class="archive-meta">创建: 2025-02-01 | 更新: 2025-05-01 | 字数: 6572字 | 阅读时长: 14分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2025-02-01 · Updated: 2025-05-01 · 14 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 强化学习" href="https://martinspace.top/zh/rl-note/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">时序分析/预测
         </h3>
-        <div class="archive-meta">创建: 2025-02-01 | 更新: 2025-02-01 | 字数: 2029字 | 阅读时长: 5分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2025-02-01 · Updated: 2025-02-01 · 5 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 时序分析/预测" href="https://martinspace.top/zh/data-analysis/"></a>
       </div>
     </div>
   </div>
 </div>
 <div class="archive-year">
-  <h2 class="archive-year-header">2024年<sup class="archive-count">&nbsp;&nbsp;6</sup>
+  <h2 class="archive-year-header">2024年<sup class="archive-count">&nbsp;&nbsp;5</sup>
   </h2>
   <div class="archive-month">
     <h3 class="archive-month-header">6月<sup class="archive-count">&nbsp;&nbsp;1</sup></h3> 
@@ -285,27 +267,18 @@ if (!doNotTrack) {
       <div class="archive-entry">
         <h3 class="archive-entry-title">Llama.cpp本地CPU部署大模型
         </h3>
-        <div class="archive-meta">创建: 2024-06-15 | 更新: 2024-06-15 | 字数: 603字 | 阅读时长: 2分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2024-06-15 · Updated: 2024-06-15 · 2 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to Llama.cpp本地CPU部署大模型" href="https://martinspace.top/zh/llamacpp-tutorial/"></a>
       </div>
     </div>
   </div>
   <div class="archive-month">
-    <h3 class="archive-month-header">5月<sup class="archive-count">&nbsp;&nbsp;2</sup></h3> 
+    <h3 class="archive-month-header">5月<sup class="archive-count">&nbsp;&nbsp;1</sup></h3> 
     <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">法国
-        </h3>
-        <div class="archive-meta">创建: 2024-05-07 | 更新: 2024-05-07 | 字数: 8字 | 阅读时长: 1分钟 | 
-作者:Martin</div>
-        <a class="entry-link" aria-label="post link to 法国" href="https://martinspace.top/zh/france/"></a>
-      </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">多智能体系统(COMP310)
         </h3>
-        <div class="archive-meta">创建: 2024-05-05 | 更新: 2024-05-05 | 字数: 628字 | 阅读时长: 2分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2024-05-05 · Updated: 2024-05-05 · 2 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 多智能体系统(COMP310)" href="https://martinspace.top/zh/comp310/"></a>
       </div>
     </div>
@@ -314,11 +287,10 @@ if (!doNotTrack) {
     <h3 class="archive-month-header">3月<sup class="archive-count">&nbsp;&nbsp;1</sup></h3> 
     <div class="archive-posts">
       <div class="archive-entry">
-        <h3 class="archive-entry-title">埃及
+        <h3 class="archive-entry-title">Love with YOYO
         </h3>
-        <div class="archive-meta">创建: 2024-03-31 | 更新: 2024-03-31 | 字数: 8字 | 阅读时长: 1分钟 | 
-作者:Martin</div>
-        <a class="entry-link" aria-label="post link to 埃及" href="https://martinspace.top/zh/egypt/"></a>
+        <div class="archive-meta">Created: 2024-03-31 · Updated: 2024-03-31 · 1 分钟 · Martin</div>
+        <a class="entry-link" aria-label="post link to Love with YOYO" href="https://martinspace.top/zh/love_with_yoyo/"></a>
       </div>
     </div>
   </div>
@@ -328,56 +300,29 @@ if (!doNotTrack) {
       <div class="archive-entry">
         <h3 class="archive-entry-title">云计算(COMP315)
         </h3>
-        <div class="archive-meta">创建: 2024-02-26 | 更新: 2024-02-26 | 字数: 12570字 | 阅读时长: 26分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2024-02-26 · Updated: 2024-02-26 · 26 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 云计算(COMP315)" href="https://martinspace.top/zh/comp315/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">高性能计算(COMP328)
         </h3>
-        <div class="archive-meta">创建: 2024-02-03 | 更新: 2024-02-03 | 字数: 10328字 | 阅读时长: 21分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2024-02-03 · Updated: 2024-02-03 · 21 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 高性能计算(COMP328)" href="https://martinspace.top/zh/comp328/"></a>
       </div>
     </div>
   </div>
 </div>
 <div class="archive-year">
-  <h2 class="archive-year-header">2023年<sup class="archive-count">&nbsp;&nbsp;11</sup>
+  <h2 class="archive-year-header">2023年<sup class="archive-count">&nbsp;&nbsp;9</sup>
   </h2>
-  <div class="archive-month">
-    <h3 class="archive-month-header">8月<sup class="archive-count">&nbsp;&nbsp;1</sup></h3> 
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">澳大利亚
-        </h3>
-        <div class="archive-meta">创建: 2023-08-08 | 更新: 2023-08-08 | 字数: 47字 | 阅读时长: 1分钟 | 
-作者:Martin</div>
-        <a class="entry-link" aria-label="post link to 澳大利亚" href="https://martinspace.top/zh/australia/"></a>
-      </div>
-    </div>
-  </div>
   <div class="archive-month">
     <h3 class="archive-month-header">5月<sup class="archive-count">&nbsp;&nbsp;1</sup></h3> 
     <div class="archive-posts">
       <div class="archive-entry">
         <h3 class="archive-entry-title">前端刷题笔记
         </h3>
-        <div class="archive-meta">创建: 2023-05-07 | 更新: 2023-05-07 | 字数: 1871字 | 阅读时长: 4分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2023-05-07 · Updated: 2023-05-07 · 4 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 前端刷题笔记" href="https://martinspace.top/zh/front-end/"></a>
-      </div>
-    </div>
-  </div>
-  <div class="archive-month">
-    <h3 class="archive-month-header">4月<sup class="archive-count">&nbsp;&nbsp;1</sup></h3> 
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">西班牙
-        </h3>
-        <div class="archive-meta">创建: 2023-04-01 | 更新: 2023-04-01 | 字数: 8字 | 阅读时长: 1分钟 | 
-作者:Martin</div>
-        <a class="entry-link" aria-label="post link to 西班牙" href="https://martinspace.top/zh/spain/"></a>
       </div>
     </div>
   </div>
@@ -387,15 +332,13 @@ if (!doNotTrack) {
       <div class="archive-entry">
         <h3 class="archive-entry-title">基础数据结构
         </h3>
-        <div class="archive-meta">创建: 2023-03-17 | 更新: 2023-03-17 | 字数: 1482字 | 阅读时长: 3分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2023-03-17 · Updated: 2023-03-17 · 3 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 基础数据结构" href="https://martinspace.top/zh/basic-data-structures/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">Canonical coins system
         </h3>
-        <div class="archive-meta">创建: 2023-03-09 | 更新: 2023-03-09 | 字数: 1101字 | 阅读时长: 3分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2023-03-09 · Updated: 2023-03-09 · 3 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to Canonical coins system" href="https://martinspace.top/zh/canonical-coins/"></a>
       </div>
     </div>
@@ -406,15 +349,13 @@ if (!doNotTrack) {
       <div class="archive-entry">
         <h3 class="archive-entry-title">金融市场交易(COMP226)
         </h3>
-        <div class="archive-meta">创建: 2023-02-05 | 更新: 2023-02-05 | 字数: 13041字 | 阅读时长: 27分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2023-02-05 · Updated: 2023-02-05 · 27 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 金融市场交易(COMP226)" href="https://martinspace.top/zh/comp226/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">算法(COMP202)
         </h3>
-        <div class="archive-meta">创建: 2023-02-05 | 更新: 2023-05-13 | 字数: 16488字 | 阅读时长: 33分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2023-02-05 · Updated: 2023-05-13 · 33 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 算法(COMP202)" href="https://martinspace.top/zh/comp202/"></a>
       </div>
     </div>
@@ -425,36 +366,32 @@ if (!doNotTrack) {
       <div class="archive-entry">
         <h3 class="archive-entry-title">High-level Petri Net(COMP201)
         </h3>
-        <div class="archive-meta">创建: 2023-01-11 | 更新: 2023-01-11 | 字数: 360字 | 阅读时长: 1分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2023-01-11 · Updated: 2023-01-11 · 1 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to High-level Petri Net(COMP201)" href="https://martinspace.top/zh/petri-net/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">Leetcode每日一题
         </h3>
-        <div class="archive-meta">创建: 2023-01-07 | 更新: 2024-03-02 | 字数: 3535字 | 阅读时长: 8分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2023-01-07 · Updated: 2024-03-02 · 8 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to Leetcode每日一题" href="https://martinspace.top/zh/leetcode-note/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">数据库复习笔记(COMP207)
         </h3>
-        <div class="archive-meta">创建: 2023-01-03 | 更新: 2023-01-18 | 字数: 4789字 | 阅读时长: 10分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2023-01-03 · Updated: 2023-01-18 · 10 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 数据库复习笔记(COMP207)" href="https://martinspace.top/zh/comp207/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">详解java中的几种hash
         </h3>
-        <div class="archive-meta">创建: 2023-01-01 | 更新: 2023-01-10 | 字数: 1520字 | 阅读时长: 4分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2023-01-01 · Updated: 2023-01-10 · 4 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 详解java中的几种hash" href="https://martinspace.top/zh/hash-in-java/"></a>
       </div>
     </div>
   </div>
 </div>
 <div class="archive-year">
-  <h2 class="archive-year-header">2022年<sup class="archive-count">&nbsp;&nbsp;8</sup>
+  <h2 class="archive-year-header">2022年<sup class="archive-count">&nbsp;&nbsp;7</sup>
   </h2>
   <div class="archive-month">
     <h3 class="archive-month-header">12月<sup class="archive-count">&nbsp;&nbsp;7</sup></h3> 
@@ -462,63 +399,44 @@ if (!doNotTrack) {
       <div class="archive-entry">
         <h3 class="archive-entry-title">低开高走的一年
         </h3>
-        <div class="archive-meta">创建: 2022-12-31 | 更新: 2022-12-31 | 字数: 1370字 | 阅读时长: 3分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2022-12-31 · Updated: 2022-12-31 · 3 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 低开高走的一年" href="https://martinspace.top/zh/22summary/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">git版本控制
         </h3>
-        <div class="archive-meta">创建: 2022-12-30 | 更新: 2022-12-30 | 字数: 715字 | 阅读时长: 2分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2022-12-30 · Updated: 2022-12-30 · 2 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to git版本控制" href="https://martinspace.top/zh/git-tag/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">Zotero快速上手
         </h3>
-        <div class="archive-meta">创建: 2022-12-30 | 更新: 2022-12-30 | 字数: 556字 | 阅读时长: 2分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2022-12-30 · Updated: 2022-12-30 · 2 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to Zotero快速上手" href="https://martinspace.top/zh/zotero/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">荒诞与真理
         </h3>
-        <div class="archive-meta">创建: 2022-12-16 | 更新: 2022-12-16 | 字数: 930字 | 阅读时长: 2分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2022-12-16 · Updated: 2022-12-16 · 2 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 荒诞与真理" href="https://martinspace.top/zh/letranger/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">代码上传至github
         </h3>
-        <div class="archive-meta">创建: 2022-12-16 | 更新: 2022-12-16 | 字数: 407字 | 阅读时长: 1分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2022-12-16 · Updated: 2022-12-16 · 1 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 代码上传至github" href="https://martinspace.top/zh/git/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">CYK(COMP218)
         </h3>
-        <div class="archive-meta">创建: 2022-12-09 | 更新: 2022-12-09 | 字数: 723字 | 阅读时长: 2分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2022-12-09 · Updated: 2022-12-09 · 2 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to CYK(COMP218)" href="https://martinspace.top/zh/cyk-algo/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">重置服务器系统后，ssh连接失败
         </h3>
-        <div class="archive-meta">创建: 2022-12-06 | 更新: 2022-12-06 | 字数: 215字 | 阅读时长: 1分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2022-12-06 · Updated: 2022-12-06 · 1 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 重置服务器系统后，ssh连接失败" href="https://martinspace.top/zh/ssh-bug-fix/"></a>
-      </div>
-    </div>
-  </div>
-  <div class="archive-month">
-    <h3 class="archive-month-header">11月<sup class="archive-count">&nbsp;&nbsp;1</sup></h3> 
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">英国
-        </h3>
-        <div class="archive-meta">创建: 2022-11-02 | 更新: 2022-11-02 | 字数: 76字 | 阅读时长: 1分钟 | 
-作者:Martin</div>
-        <a class="entry-link" aria-label="post link to 英国" href="https://martinspace.top/zh/united-kingdom/"></a>
       </div>
     </div>
   </div>
@@ -532,8 +450,7 @@ if (!doNotTrack) {
       <div class="archive-entry">
         <h3 class="archive-entry-title">对汇编语言中DF标志，CLD，STD，REP等指令的理解
         </h3>
-        <div class="archive-meta">创建: 2021-11-16 | 更新: 2021-11-16 | 字数: 757字 | 阅读时长: 2分钟 | 
-作者:Martin</div>
+        <div class="archive-meta">Created: 2021-11-16 · Updated: 2021-11-16 · 2 分钟 · Martin</div>
         <a class="entry-link" aria-label="post link to 对汇编语言中DF标志，CLD，STD，REP等指令的理解" href="https://martinspace.top/zh/assemble/"></a>
       </div>
     </div>
@@ -542,24 +459,13 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+        <span>&copy; 2026 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        <br> 
-        
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
     </span>
-    
-    <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv">
-        被访问了<span id="busuanzi_value_site_pv"></span>次
-    </span>
-    <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人
-    </span>
-    </div>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -568,9 +474,14 @@ if (!doNotTrack) {
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -611,15 +522,17 @@ if (!doNotTrack) {
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
 
-</script></body>
+</script>
+</body>
 
 </html>

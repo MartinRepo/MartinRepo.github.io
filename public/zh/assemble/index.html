@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +7,11 @@
 <meta name="robots" content="index, follow">
 <title>对汇编语言中DF标志，CLD，STD，REP等指令的理解 | Martin&#39;s space</title>
 <meta name="keywords" content="汇编语言">
-<meta name="description" content="看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！ 首先，DF作为标志寄存">
+<meta name="description" content="看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！
+首先，DF作为标志寄存器的一个位，其值只能是0或1。">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/assemble/">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.33446ce70373ca1f19994ac816c97a1b65ae46bd7944d026cdb4b723d0bc5887.css" integrity="sha256-M0Rs5wNzyh8ZmUrIFsl6G2WuRr15RNAmzbS3I9C8WIc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/icebear.jpg">
@@ -41,60 +37,70 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+</noscript>
 <script>
-        MathJax = {
-          tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-          },
-          svg: {
-            fontCache: 'global'
-          }
-        };
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="对汇编语言中DF标志，CLD，STD，REP等指令的理解" />
-<meta property="og:description" content="看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！ 首先，DF作为标志寄存" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://martinspace.top/zh/assemble/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-11-16T20:30:41+01:00" />
-<meta property="article:modified_time" content="2021-11-16T20:30:41+01:00" />
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="对汇编语言中DF标志，CLD，STD，REP等指令的理解"/>
-<meta name="twitter:description" content="看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！ 首先，DF作为标志寄存"/>
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-J8TFFL1ZS7');
+        }
+      </script><meta property="og:url" content="https://martinspace.top/zh/assemble/">
+  <meta property="og:site_name" content="Martin&#39;s space">
+  <meta property="og:title" content="对汇编语言中DF标志，CLD，STD，REP等指令的理解">
+  <meta property="og:description" content="看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！
+首先，DF作为标志寄存器的一个位，其值只能是0或1。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-11-16T20:30:41+01:00">
+    <meta property="article:modified_time" content="2021-11-16T20:30:41+01:00">
+    <meta property="article:tag" content="汇编语言">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="对汇编语言中DF标志，CLD，STD，REP等指令的理解">
+  <meta name="twitter:description" content="看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！
+首先，DF作为标志寄存器的一个位，其值只能是0或1。">
 
 
 <script type="application/ld+json">
@@ -129,7 +135,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "对汇编语言中DF标志，CLD，STD，REP等指令的理解",
   "name": "对汇编语言中DF标志，CLD，STD，REP等指令的理解",
-  "description": "看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！ 首先，DF作为标志寄存",
+  "description": "看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！\n首先，DF作为标志寄存器的一个位，其值只能是0或1。\n",
   "keywords": [
     "汇编语言"
   ],
@@ -157,32 +163,15 @@ if (!doNotTrack) {
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-
-
-<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
                 <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
                     height="35">Martin&#39;s space</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -202,12 +191,12 @@ if (!doNotTrack) {
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://martinspace.top/en/" title="English"
-                            aria-label="English">English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://martinspace.top/en/" title="English"
+                                aria-label="English">English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
@@ -268,6 +257,7 @@ if (!doNotTrack) {
     
     </div>
   </header> 
+
   <div class="post-content"><p>看了几篇博客，感觉博主们把问题描述的好专业，导致本菜看不太懂qwq，这里写下我的个人理解，还望各位大佬多多指正，谢谢！</p>
 <p>首先，DF作为标志寄存器的一个位，其值只能是0或1。</p>
 <p>若DF = 0  每次操作后si, di递增</p>
@@ -276,7 +266,7 @@ if (!doNotTrack) {
 <p>si, di作为变址寄存器，其值递增或递减的本质就是要逐个取得ds:si/ds:di地址上的数据。</p>
 <p>于是我们很难不联想到对于各种串传送的操作，因为串传送就要一个一个地将数据传送到想要的位置，接下来我介绍两个串传送指令：movsb和movsw。</p>
 <p>我以movsb为例（movsw同理 只不过其单位是字word）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>;movsb指令相当于做如下操作：
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>;movsb指令相当于做如下操作：
 </span></span><span style="display:flex;"><span> 
 </span></span><span style="display:flex;"><span>((es)*16 + (di)) = ((ds)*16 + (di))  ;将ds:di指向的数据传送到es:si指向的地址
 </span></span><span style="display:flex;"><span> 
@@ -303,21 +293,12 @@ if (!doNotTrack) {
       <li><a href="https://martinspace.top/zh/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://martinspace.top/zh/united-kingdom/">
+  <a class="prev" href="https://martinspace.top/zh/ssh-bug-fix/">
     <span class="title">« 上一页</span>
     <br>
-    <span>英国</span>
+    <span>重置服务器系统后，ssh连接失败</span>
   </a>
 </nav>
-<script src="https://utteranc.es/client.js"
-        repo="oudushu/utterances"
-        issue-term="title"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
 
   </footer><script src="https://utteranc.es/client.js"
     repo="MartinRepo/utterancesInblog"
@@ -331,24 +312,13 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+        <span>&copy; 2026 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        <br> 
-        
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
     </span>
-    
-    <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv">
-        被访问了<span id="busuanzi_value_site_pv"></span>次
-    </span>
-    <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人
-    </span>
-    </div>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -357,9 +327,14 @@ if (!doNotTrack) {
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -400,11 +375,12 @@ if (!doNotTrack) {
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
@@ -456,6 +432,7 @@ if (!doNotTrack) {
             codeblock.parentNode.appendChild(copybutton);
         }
     });
-</script></body>
+</script>
+</body>
 
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +10,7 @@
 <meta name="description" content="Martin的个人博客">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.33446ce70373ca1f19994ac816c97a1b65ae46bd7944d026cdb4b723d0bc5887.css" integrity="sha256-M0Rs5wNzyh8ZmUrIFsl6G2WuRr15RNAmzbS3I9C8WIc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/icebear.jpg">
@@ -21,7 +18,7 @@
 <link rel="mask-icon" href="https://martinspace.top/icebear.jpg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://martinspace.top/zh/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://martinspace.top/zh/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/index.xml" title="rss">
 <link rel="alternate" hreflang="zh" href="https://martinspace.top/zh/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/">
 <noscript>
     <style>
@@ -40,83 +37,75 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
-<script>
-        MathJax = {
-          tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-          },
-          svg: {
-            fontCache: 'global'
-          }
-        };
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="高性能计算" />
-<meta property="og:description" content="Martin的个人博客" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://martinspace.top/zh/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="高性能计算"/>
-<meta name="twitter:description" content="Martin的个人博客"/>
-
-</head>
-
-<body class="list" id="top">
+</noscript>
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
     } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
+       document.querySelector("html").dataset.theme = 'light';
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
     }
 
 </script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-J8TFFL1ZS7');
+        }
+      </script><meta property="og:url" content="https://martinspace.top/zh/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/">
+  <meta property="og:site_name" content="Martin&#39;s space">
+  <meta property="og:title" content="高性能计算">
+  <meta property="og:description" content="Martin的个人博客">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="website">
 
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="高性能计算">
+  <meta name="twitter:description" content="Martin的个人博客">
 
-
-<header class="header">
+</head>
+<body class="list" id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
                 <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
                     height="35">Martin&#39;s space</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -136,12 +125,12 @@ if (!doNotTrack) {
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://martinspace.top/en/" title="English"
-                            aria-label="English">English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://martinspace.top/en/" title="English"
+                                aria-label="English">English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
@@ -180,44 +169,29 @@ if (!doNotTrack) {
   </h1>
 </header>
 
-
-
-<article class="post-entry tag-entry">
-  
-  <div class="post-info">
+<article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>高性能计算(COMP328)
+    <h2 class="entry-hint-parent">高性能计算(COMP328)
     </h2>
   </header>
   <div class="entry-content">
-    <p>Week1 高性能计算的目标 对于有限的数据集，最小化解决时间 对于无限的数据集，最大化吞吐量(throughput) 有能力解决一些对于可用的内存来说太大...</p>
+    <p>Week1 高性能计算的目标
+对于有限的数据集，最小化解决时间 对于无限的数据集，最大化吞吐量(throughput) 有能力解决一些对于可用的内存来说太大的问题 最大化资源利用 - CPU/内存/网络/加速器(GPU)/电力 一些常用术语 Parallelism vs Concurrency Parallelism: 多个进程同时且独立执行 Concurrency: 多个进程同时执行且共享至少一种资源 Processor, Die &amp; Socket Processor: 执行程序指令的电路。计算机系统中可能有许多处理器，例如图形处理器、视频处理器。在没有限定的情况下，通常指中央处理器 CPU: 计算机系统中主要的通用处理器（之一），而非特定用途（如视频解压缩）。 Die: 指硅晶片，包含处理器（通常是中央处理器）以及接口所需的其他组件（如内存控制器）。 Socket: 处理器和计算机主板之间的物理接口，它定义了处理器与主板连接的方式。不同的处理器和主板可能需要不同类型的Socket。 Core &amp; Thread Core: 核心是CPU内部的一个物理处理单元，能够独立执行计算任务。每个核心可以独立处理指令和执行计算操作。 Thread: 线程是操作系统能够进行计算调度的最小单位。它是程序执行流的一个单一顺序，可以被操作系统调度（启动、停止、挂起等）。 核心和线程共同定义了处理器的处理能力 Node 指一个服务器节点（一台计算机） Cluster/Supercomputer 成百上千个节点组成集群 Single precision floating-point 通常占用32位（4字节）的存储空间，C语言中的float32类型，1符号位，8指数位，23有效数字位 Double precision floating-point 通常占用64位（8字节）的存储空间，C语言中的float64类型，1符号位，11指数位，52有效数字位 Flop Floating-point operations per second 如何量化/评估性能 公式如下👇
+...</p>
   </div>
-  <footer class="entry-footer">创建: 2024-02-03 | 更新: 2024-02-03 | 字数: 10328字 | 阅读时长: 21分钟 | 
-作者:Martin</footer>
-</div>
-  <a class="entry-link" aria-label="post link to 高性能计算(COMP328)" href="https://martinspace.top/zh/comp328/"></a> 
+  <footer class="entry-footer">Created: 2024-02-03 · Updated: 2024-02-03 · 21 分钟 · Martin</footer>
+  <a class="entry-link" aria-label="post link to 高性能计算(COMP328)" href="https://martinspace.top/zh/comp328/"></a>
 </article>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+        <span>&copy; 2026 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        <br> 
-        
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
     </span>
-    
-    <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv">
-        被访问了<span id="busuanzi_value_site_pv"></span>次
-    </span>
-    <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人
-    </span>
-    </div>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -226,9 +200,14 @@ if (!doNotTrack) {
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -269,15 +248,17 @@ if (!doNotTrack) {
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
 
-</script></body>
+</script>
+</body>
 
 </html>

@@ -4,89 +4,87 @@
     <title>分类1 on Martin&#39;s space</title>
     <link>https://martinspace.top/zh/categories/%E5%88%86%E7%B1%BB1/</link>
     <description>Recent content in 分类1 on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 11 Jan 2023 20:47:53 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/categories/%E5%88%86%E7%B1%BB1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Mar 2024 20:27:51 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/categories/%E5%88%86%E7%B1%BB1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>High-level Petri Net(COMP201)</title>
       <link>https://martinspace.top/zh/petri-net/</link>
       <pubDate>Wed, 11 Jan 2023 20:47:53 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/petri-net/</guid>
-      <description>复（预）习过程中遇到Petri net，记录一下 Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通</description>
+      <description>&lt;p&gt;复（预）习过程中遇到Petri net，记录一下&lt;/p&gt;
+&lt;p&gt;Petri Net是一种系统模型。因为不确定哪个transition会先fire，所以它是非确定性的，通常被用于建立离散分布式系统。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Leetcode每日一题</title>
       <link>https://martinspace.top/zh/leetcode-note/</link>
       <pubDate>Sat, 07 Jan 2023 09:36:47 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/leetcode-note/</guid>
       <description>总结每天学到的知识点和有价值的题型</description>
     </item>
-    
     <item>
       <title>详解java中的几种hash</title>
       <link>https://martinspace.top/zh/hash-in-java/</link>
       <pubDate>Sun, 01 Jan 2023 15:37:32 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/hash-in-java/</guid>
-      <description>刷leetcode总能看见哈希表，对哈希表有大致的了解，但是一直不知道HashTable，HashMap和HashSet在Java中的区别。</description>
+      <description>&lt;p&gt;刷leetcode总能看见哈希表，对哈希表有大致的了解，但是一直不知道HashTable，HashMap和HashSet在Java中的区别。今天看到一个博主的文章再结合官方文档的学习，受益良多，记录一下。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>低开高走的一年</title>
       <link>https://martinspace.top/zh/22summary/</link>
       <pubDate>Sat, 31 Dec 2022 10:56:24 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/22summary/</guid>
       <description>2022，低开高走并且创出新高的一年。</description>
     </item>
-    
     <item>
       <title>git版本控制</title>
       <link>https://martinspace.top/zh/git-tag/</link>
       <pubDate>Fri, 30 Dec 2022 22:51:29 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/git-tag/</guid>
       <description>贴标签命令实现版本控制</description>
     </item>
-    
     <item>
       <title>Zotero快速上手</title>
       <link>https://martinspace.top/zh/zotero/</link>
       <pubDate>Fri, 30 Dec 2022 14:58:23 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/zotero/</guid>
       <description>生成Reference的神器</description>
     </item>
-    
     <item>
       <title>荒诞与真理</title>
       <link>https://martinspace.top/zh/letranger/</link>
       <pubDate>Fri, 16 Dec 2022 17:24:27 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/letranger/</guid>
-      <description>大家都是幸运者，世界上只有幸运者。有朝一日，所有的其他人无一例外，都会被判死刑，他自己也会被判死刑，幸免不了。 这两天在赶due，总会心烦意乱</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;大家都是幸运者，世界上只有幸运者。有朝一日，所有的其他人无一例外，都会被判死刑，他自己也会被判死刑，幸免不了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这两天在赶due，总会心烦意乱，于是找到了《局外人》这本书，花了两天的空闲时间读完了这个哲学（？）著作。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>代码上传至github</title>
       <link>https://martinspace.top/zh/git/</link>
       <pubDate>Fri, 16 Dec 2022 16:04:33 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/git/</guid>
-      <description>先在github建立一个远程仓库，可以全部是默认设置 全局声明git的用户认证信息 git config --global user.name &amp;#34;name&amp;#34; git config --global user.email &amp;#34;email@gmail.com&amp;#34; 其中name写自己的名字，email@g</description>
+      <description>&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;先在github建立一个远程仓库，可以全部是默认设置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;全局声明git的用户认证信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.name &amp;#34;name&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.email &amp;#34;email@gmail.com&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中name写自己的名字，email@gmail.com写自己的email&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>CYK(COMP218)</title>
       <link>https://martinspace.top/zh/cyk-algo/</link>
       <pubDate>Fri, 09 Dec 2022 14:41:23 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/cyk-algo/</guid>
       <description>CYK——非常高效的解析算法</description>
     </item>
-    
   </channel>
 </rss>

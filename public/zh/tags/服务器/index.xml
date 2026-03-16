@@ -4,17 +4,29 @@
     <title>服务器 on Martin&#39;s space</title>
     <link>https://martinspace.top/zh/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
     <description>Recent content in 服务器 on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 06 Dec 2022 22:34:10 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Dec 2022 22:34:10 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>重置服务器系统后，ssh连接失败</title>
       <link>https://martinspace.top/zh/ssh-bug-fix/</link>
       <pubDate>Tue, 06 Dec 2022 22:34:10 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/ssh-bug-fix/</guid>
-      <description>重置服务器系统后。当使用远程ssh连接后，会显示连接失败。 这里直接给出解决办法(仅以macOS为例): 打开终端 输入 vim ~/.ssh/known_hosts vim会打开该文件，向</description>
+      <description>&lt;p&gt;重置服务器系统后。当使用远程ssh连接后，会显示连接失败。
+&lt;/br&gt;这里直接给出解决办法(仅以macOS为例):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开终端&lt;/li&gt;
+&lt;li&gt;输入&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vim ~/.ssh/known_hosts
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;vim会打开该文件，向下翻，找到服务器对应的IP&lt;/li&gt;
+&lt;li&gt;按下&lt;code&gt;v&lt;/code&gt;进入&lt;code&gt;visual&lt;/code&gt;模式，使用方向键选择要删掉的内容（服务器IP对应的内容都要删掉）, 按下&lt;code&gt;d&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;或者，按下&lt;code&gt;i&lt;/code&gt;进入&lt;code&gt;insert&lt;/code&gt;模式，一个一个删除&lt;/li&gt;
+&lt;li&gt;按下&lt;code&gt;esc&lt;/code&gt;键，输入:&lt;code&gt;wq&lt;/code&gt;+回车，任务完成
+切记：一定要在英文输入法情况下按&lt;code&gt;esc&lt;/code&gt;切换状态，中文输入模式下按&lt;code&gt;esc&lt;/code&gt;不管用的！！！&lt;/li&gt;
+&lt;/ol&gt;</description>
     </item>
-    
   </channel>
 </rss>

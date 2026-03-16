@@ -1,6 +1,12 @@
 baseURL: https://martinspace.top/
 title: Martin's space
-theme: hugo-PaperMod
+theme:
+  - hugo-PaperMod
+  - hugo-shortcode-gallery
+
+social:
+  x: Mars30920866
+  github: MartinRepo
 
 enableInlineShortcodes: true
 enableEmoji: true
@@ -32,24 +38,6 @@ languages:
     zh:
       languageName: "简体中文"
       # contentDir: content/english
-      weight: 1
-      profileMode:
-        enabled: true
-        title: 小修在深山，大修在世间
-        subtitle: "</br>👋 你好，欢迎光临Martin的空间～</br></br>👏 仅以此博客系统记录技术和我的生活。</br></br>愿自己摆脱冷气，只是向上走。</br></br>联系方式 👇 </br>"
-        imageUrl: "icebear.jpg"
-        imageTitle: chi
-        imageWidth: 150
-        imageHeight: 150
-        buttons:
-          - name: 🎓 本科生涯
-            url: post/1liverpool
-          - name: 🔬 研究记录
-            url: post/2research
-          - name: 📖 分享&杂记
-            url: post/3share
-          - name: 🎒 旅行画廊
-            url: post/4travel
       menu:
         main:
           - identifier: search
@@ -95,7 +83,7 @@ languages:
                   name: 📒 Posts
                   url: post_en
                   weight: 2
-                - identifier: search·
+                - identifier: search
                   name: 🔍 Search
                   url: search_en
                   weight: 20
@@ -111,6 +99,23 @@ outputs:
         - JSON
 
 params:
+    profileMode:
+        enabled: true
+        title: 小修在深山，大修在世间
+        subtitle: "</br>👋 你好，欢迎光临Martin的空间～</br></br>👏 仅以此博客系统记录技术和我的生活。</br></br>愿自己摆脱冷气，只是向上走。</br></br>联系方式 👇 </br>"
+        imageUrl: "icebear.jpg"
+        imageTitle: chi
+        imageWidth: 150
+        imageHeight: 150
+        buttons:
+          - name: 🎓 本科生涯
+            url: post/1liverpool
+          - name: 🔬 研究记录
+            url: post/2research
+          - name: 📖 分享&杂记
+            url: post/3share
+          - name: 👧 YOYO
+            url: post/4lover
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Martin的个人博客"
     author: Martin
@@ -208,8 +213,6 @@ markup:
         # style: monokai
         style: darcula
         # hl_Lines: true
-        codeFences: true
-        guessSyntax: true
 
 privacy:
     googlescholar:
@@ -220,7 +223,7 @@ privacy:
         disabled: false
         simple: true
 
-    twitter:
+    x:
         disabled: false
         enableDNT: true
         simple: true
@@ -238,7 +241,7 @@ services:
         disableInlineCSS: true
     instagram:
         disableInlineCSS: true
-    twitter:
+    x:
         disableInlineCSS: true
 
 markup.highlight:

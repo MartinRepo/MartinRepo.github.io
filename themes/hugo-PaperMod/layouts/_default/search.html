@@ -1,8 +1,7 @@
 {{- define "main" }}
 
 <header class="page-header">
-    <h1> 搜索
-        <!-- {{- (printf "%s&nbsp;" .Title ) | htmlUnescape -}} -->
+    <h1>{{- (printf "%s&nbsp;" .Title ) | htmlUnescape -}}
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
@@ -22,11 +21,9 @@
 </header>
 
 <div id="searchbox">
-    <input id="searchInput" autofocus 
-    placeholder="推荐搜索：不知道推荐啥，你看着搜吧"
-        aria-label="search" type="search" autocomplete="off">
+    <input id="searchInput" autofocus placeholder="{{ .Params.placeholder | default (printf "%s ↵" .Title) }}"
+        aria-label="search" type="search" autocomplete="off" maxlength="64">
     <ul id="searchResults" aria-label="search results"></ul>
 </div>
 
-<!-- placeholder="{{ .Params.placeholder | default (printf "%s ↵" .Title) }}" -->
 {{- end }}{{/* end main */}}

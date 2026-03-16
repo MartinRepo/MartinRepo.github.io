@@ -4,17 +4,19 @@
     <title>Haskell on Martin&#39;s space</title>
     <link>https://martinspace.top/en/tags/haskell/</link>
     <description>Recent content in Haskell on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Jan 2023 18:42:52 +0000</lastBuildDate><atom:link href="https://martinspace.top/en/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Jan 2023 08:34:35 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/en/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Haskell</title>
       <link>https://martinspace.top/en/post_en/tech_en/haskell/</link>
       <pubDate>Fri, 20 Jan 2023 18:42:52 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/post_en/tech_en/haskell/</guid>
-      <description>Stack A modern, cross-platform build tool for Haskell code.</description>
+      <description>&lt;h1 id=&#34;stack&#34;&gt;Stack&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A modern, cross-platform build tool for Haskell code.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
-    
   </channel>
 </rss>

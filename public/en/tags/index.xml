@@ -4,71 +4,58 @@
     <title>🏷️ Tags on Martin&#39;s space</title>
     <link>https://martinspace.top/en/tags/</link>
     <description>Recent content in 🏷️ Tags on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 09 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Feb 2025 10:39:49 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Diffusion Models</title>
       <link>https://martinspace.top/en/tags/diffusion-models/</link>
       <pubDate>Sun, 09 Feb 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/tags/diffusion-models/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Preference Alignment</title>
       <link>https://martinspace.top/en/tags/preference-alignment/</link>
       <pubDate>Sun, 09 Feb 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/tags/preference-alignment/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Reinforcement Learning</title>
       <link>https://martinspace.top/en/tags/reinforcement-learning/</link>
       <pubDate>Sun, 09 Feb 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/tags/reinforcement-learning/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Algorithm</title>
       <link>https://martinspace.top/en/tags/algorithm/</link>
       <pubDate>Sun, 05 Nov 2023 22:31:02 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/tags/algorithm/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Java</title>
       <link>https://martinspace.top/en/tags/java/</link>
       <pubDate>Sat, 04 Feb 2023 22:31:02 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/tags/java/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Haskell</title>
       <link>https://martinspace.top/en/tags/haskell/</link>
       <pubDate>Fri, 20 Jan 2023 18:42:52 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/tags/haskell/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Apache</title>
       <link>https://martinspace.top/en/tags/apache/</link>
       <pubDate>Thu, 19 Jan 2023 00:15:03 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/tags/apache/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

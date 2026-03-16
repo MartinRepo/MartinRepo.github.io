@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +7,63 @@
 <meta name="robots" content="index, follow">
 <title>金融市场交易(COMP226) | Martin&#39;s space</title>
 <meta name="keywords" content="Finance">
-<meta name="description" content="R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor &gt; gender &lt;- fa">
+<meta name="description" content="R语言基础（W1）
+基本数据类型
+
+character(string)
+logical(boolean)
+numeric(number)
+factors(categories)
+
+factors表示分类，将分类数据存储为整数向量。下面用代码解释
+# 创建一个性别的factor
+&gt; gender &lt;- factor(c(&#34;男&#34;, &#34;女&#34;, &#34;女&#34;, &#34;男&#34;, &#34;男&#34;))
+
+# 显示gender对象的水平(分类)
+&gt; levels(gender)
+[1] &#34;女&#34; &#34;男&#34;
+
+# 显示gender对象的摘要信息
+&gt; summary(gender)
+女 男 
+ 2  3 
+
+# 显示gender对象中每个水平的计数
+&gt; table(gender)
+gender
+女 男 
+2 3 
+is和as的区别
+
+is.***()函数用于判断一个对象是否属于某个特定的类别，返回一个逻辑值。
+as.***()函数则用于将一个对象转换为指定的类别，返回一个转换后的对象。
+
+vector和list的区别
+
+类型：
+
+vector是一种简单的数据结构，其中所有元素必须是相同的类型。
+list是一种复杂的数据结构，其中每个元素可以是任意类型的对象。
+
+
+长度：
+
+vector必须是一个固定长度，一旦创建就不能更改。
+list的长度是可变的，可以随时添加或删除元素。
+
+
+索引：
+
+vector中的元素可以使用整数索引来访问，例如x[1]表示访问x中的第一个元素。
+list中的元素可以使用名称或位置索引来访问，例如x[[1]]表示访问x中的第一个元素，x[[&quot;name&quot;]]表示访问x中名称为&quot;name&quot;的元素。
+
+
+
+函数
+给一个函数，写法如下。显然，该函数是计算输入的平均值。">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/comp226/">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.33446ce70373ca1f19994ac816c97a1b65ae46bd7944d026cdb4b723d0bc5887.css" integrity="sha256-M0Rs5wNzyh8ZmUrIFsl6G2WuRr15RNAmzbS3I9C8WIc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/icebear.jpg">
@@ -41,60 +89,70 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+</noscript>
 <script>
-        MathJax = {
-          tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-          },
-          svg: {
-            fontCache: 'global'
-          }
-        };
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="金融市场交易(COMP226)" />
-<meta property="og:description" content="R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor &gt; gender &lt;- fa" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://martinspace.top/zh/comp226/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2023-02-05T08:42:27+00:00" />
-<meta property="article:modified_time" content="2023-02-05T08:42:27+00:00" />
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="金融市场交易(COMP226)"/>
-<meta name="twitter:description" content="R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor &gt; gender &lt;- fa"/>
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-J8TFFL1ZS7');
+        }
+      </script><meta property="og:url" content="https://martinspace.top/zh/comp226/">
+  <meta property="og:site_name" content="Martin&#39;s space">
+  <meta property="og:title" content="金融市场交易(COMP226)">
+  <meta property="og:description" content="R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释
+# 创建一个性别的factor &gt; gender &lt;- factor(c(&#34;男&#34;, &#34;女&#34;, &#34;女&#34;, &#34;男&#34;, &#34;男&#34;)) # 显示gender对象的水平(分类) &gt; levels(gender) [1] &#34;女&#34; &#34;男&#34; # 显示gender对象的摘要信息 &gt; summary(gender) 女 男 2 3 # 显示gender对象中每个水平的计数 &gt; table(gender) gender 女 男 2 3 is和as的区别 is.***()函数用于判断一个对象是否属于某个特定的类别，返回一个逻辑值。 as.***()函数则用于将一个对象转换为指定的类别，返回一个转换后的对象。 vector和list的区别 类型： vector是一种简单的数据结构，其中所有元素必须是相同的类型。 list是一种复杂的数据结构，其中每个元素可以是任意类型的对象。 长度： vector必须是一个固定长度，一旦创建就不能更改。 list的长度是可变的，可以随时添加或删除元素。 索引： vector中的元素可以使用整数索引来访问，例如x[1]表示访问x中的第一个元素。 list中的元素可以使用名称或位置索引来访问，例如x[[1]]表示访问x中的第一个元素，x[[&#34;name&#34;]]表示访问x中名称为&#34;name&#34;的元素。 函数 给一个函数，写法如下。显然，该函数是计算输入的平均值。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-02-05T08:42:27+00:00">
+    <meta property="article:modified_time" content="2023-02-05T08:42:27+00:00">
+    <meta property="article:tag" content="Finance">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="金融市场交易(COMP226)">
+  <meta name="twitter:description" content="R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释
+# 创建一个性别的factor &gt; gender &lt;- factor(c(&#34;男&#34;, &#34;女&#34;, &#34;女&#34;, &#34;男&#34;, &#34;男&#34;)) # 显示gender对象的水平(分类) &gt; levels(gender) [1] &#34;女&#34; &#34;男&#34; # 显示gender对象的摘要信息 &gt; summary(gender) 女 男 2 3 # 显示gender对象中每个水平的计数 &gt; table(gender) gender 女 男 2 3 is和as的区别 is.***()函数用于判断一个对象是否属于某个特定的类别，返回一个逻辑值。 as.***()函数则用于将一个对象转换为指定的类别，返回一个转换后的对象。 vector和list的区别 类型： vector是一种简单的数据结构，其中所有元素必须是相同的类型。 list是一种复杂的数据结构，其中每个元素可以是任意类型的对象。 长度： vector必须是一个固定长度，一旦创建就不能更改。 list的长度是可变的，可以随时添加或删除元素。 索引： vector中的元素可以使用整数索引来访问，例如x[1]表示访问x中的第一个元素。 list中的元素可以使用名称或位置索引来访问，例如x[[1]]表示访问x中的第一个元素，x[[&#34;name&#34;]]表示访问x中名称为&#34;name&#34;的元素。 函数 给一个函数，写法如下。显然，该函数是计算输入的平均值。">
 
 
 <script type="application/ld+json">
@@ -129,7 +187,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "金融市场交易(COMP226)",
   "name": "金融市场交易(COMP226)",
-  "description": "R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor \u0026gt; gender \u0026lt;- fa",
+  "description": "R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释\n# 创建一个性别的factor \u0026gt; gender \u0026lt;- factor(c(\u0026#34;男\u0026#34;, \u0026#34;女\u0026#34;, \u0026#34;女\u0026#34;, \u0026#34;男\u0026#34;, \u0026#34;男\u0026#34;)) # 显示gender对象的水平(分类) \u0026gt; levels(gender) [1] \u0026#34;女\u0026#34; \u0026#34;男\u0026#34; # 显示gender对象的摘要信息 \u0026gt; summary(gender) 女 男 2 3 # 显示gender对象中每个水平的计数 \u0026gt; table(gender) gender 女 男 2 3 is和as的区别 is.***()函数用于判断一个对象是否属于某个特定的类别，返回一个逻辑值。 as.***()函数则用于将一个对象转换为指定的类别，返回一个转换后的对象。 vector和list的区别 类型： vector是一种简单的数据结构，其中所有元素必须是相同的类型。 list是一种复杂的数据结构，其中每个元素可以是任意类型的对象。 长度： vector必须是一个固定长度，一旦创建就不能更改。 list的长度是可变的，可以随时添加或删除元素。 索引： vector中的元素可以使用整数索引来访问，例如x[1]表示访问x中的第一个元素。 list中的元素可以使用名称或位置索引来访问，例如x[[1]]表示访问x中的第一个元素，x[[\u0026quot;name\u0026quot;]]表示访问x中名称为\u0026quot;name\u0026quot;的元素。 函数 给一个函数，写法如下。显然，该函数是计算输入的平均值。\n",
   "keywords": [
     "Finance"
   ],
@@ -157,32 +215,15 @@ if (!doNotTrack) {
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-
-
-<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
                 <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
                     height="35">Martin&#39;s space</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -202,12 +243,12 @@ if (!doNotTrack) {
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://martinspace.top/en/" title="English"
-                            aria-label="English">English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://martinspace.top/en/" title="English"
+                                aria-label="English">English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
@@ -267,175 +308,115 @@ if (!doNotTrack) {
 
     
     </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#r%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80w1" aria-label="R语言基础（W1）">R语言基础（W1）</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%9f%ba%e6%9c%ac%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b" aria-label="基本数据类型">基本数据类型</a></li>
-                    <li>
-                        <a href="#is%e5%92%8cas%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="is和as的区别">is和as的区别</a></li>
-                    <li>
-                        <a href="#vector%e5%92%8clist%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="vector和list的区别">vector和list的区别</a></li>
-                    <li>
-                        <a href="#%e5%87%bd%e6%95%b0" aria-label="函数">函数</a></li>
-                    <li>
-                        <a href="#matrices%e5%92%8cdataframes%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="Matrices和Data.frames的区别">Matrices和Data.frames的区别</a></li>
-                    <li>
-                        <a href="#recycing" aria-label="Recycing">Recycing</a></li>
-                    <li>
-                        <a href="#apply-family" aria-label="APPLY family">APPLY family</a></li>
-                    <li>
-                        <a href="#finanacial-time-series-and-quantmod" aria-label="Finanacial time series and quantmod">Finanacial time series and quantmod</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%b8%82%e5%9c%ba%e5%be%ae%e8%a7%82%e7%bb%93%e6%9e%84w2-w3" aria-label="市场微观结构（W2-W3）">市场微观结构（W2-W3）</a><ul>
-                            
-                    <li>
-                        <a href="#%e9%87%91%e8%9e%8d%e5%b8%82%e5%9c%ba%e5%92%8c%e8%87%aa%e5%8a%a8%e4%ba%a4%e6%98%93" aria-label="金融市场和自动交易">金融市场和自动交易</a></li>
-                    <li>
-                        <a href="#%e8%82%a1%e7%a5%a8%e5%b8%82%e5%9c%ba" aria-label="股票市场">股票市场</a></li>
-                    <li>
-                        <a href="#%e8%b0%83%e6%95%b4%e6%96%b9%e5%bc%8fadjustment" aria-label="调整方式（Adjustment）">调整方式（Adjustment）</a></li>
-                    <li>
-                        <a href="#%e6%9c%9f%e8%b4%a7futures" aria-label="期货（Futures）">期货（Futures）</a></li>
-                    <li>
-                        <a href="#etfexchange-traded-funds" aria-label="ETF（Exchange-traded funds）">ETF（Exchange-traded funds）</a></li>
-                    <li>
-                        <a href="#limit-order-book-market" aria-label="Limit order book market">Limit order book market</a></li>
-                    <li>
-                        <a href="#market-makers" aria-label="Market Makers">Market Makers</a></li>
-                    <li>
-                        <a href="#front-running--dark-pool" aria-label="Front running &amp;amp; Dark pool">Front running &amp; Dark pool</a></li>
-                    <li>
-                        <a href="#%e6%89%a7%e8%a1%8c%e7%ae%97%e6%b3%95" aria-label="执行算法">执行算法</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e8%a1%a1%e9%87%8f%e4%ba%a4%e6%98%93%e7%ad%96%e7%95%a5%e7%9a%84%e8%a1%a8%e7%8e%b0w4-w5" aria-label="衡量交易策略的表现（W4-W5）">衡量交易策略的表现（W4-W5）</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%94%b6%e7%9b%8areturns" aria-label="收益（Returns）">收益（Returns）</a><ul>
-                            
-                    <li>
-                        <a href="#simple-returns--logarithmic-returns" aria-label="simple returns &amp;amp; logarithmic returns">simple returns &amp; logarithmic returns</a></li>
-                    <li>
-                        <a href="#roc%e5%87%bd%e6%95%b0" aria-label="ROC函数">ROC函数</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#equity-curves" aria-label="Equity Curves">Equity Curves</a></li>
-                    <li>
-                        <a href="#perfect-returns" aria-label="Perfect Returns">Perfect Returns</a></li>
-                    <li>
-                        <a href="#copycat-strategy" aria-label="Copycat strategy">Copycat strategy</a></li>
-                    <li>
-                        <a href="#risk-reward-measures" aria-label="Risk reward measures">Risk reward measures</a></li>
-                    <li>
-                        <a href="#maximum-drawdown%e6%9c%80%e5%a4%a7%e5%9b%9e%e6%92%a4" aria-label="Maximum drawdown最大回撤">Maximum drawdown最大回撤</a></li>
-                    <li>
-                        <a href="#wealth-index%e8%b4%a2%e5%af%8c%e6%8c%87%e6%95%b0" aria-label="Wealth Index财富指数">Wealth Index财富指数</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e4%ba%a4%e6%98%93%e7%ad%96%e7%95%a5-w6-w7" aria-label="交易策略 (W6-W7)">交易策略 (W6-W7)</a><ul>
-                            
-                    <li>
-                        <a href="#moving-averages" aria-label="Moving averages">Moving averages</a></li>
-                    <li>
-                        <a href="#bollinger-bands%e8%b6%85%e4%b9%b0%e8%b6%85%e5%8d%96%e7%ad%96%e7%95%a5" aria-label="Bollinger Bands超买超卖策略">Bollinger Bands超买超卖策略</a></li>
-                    <li>
-                        <a href="#path-independence--dependence" aria-label="Path independence &amp;amp; dependence">Path independence &amp; dependence</a></li>
-                    <li>
-                        <a href="#slippage" aria-label="Slippage">Slippage</a></li>
-                    <li>
-                        <a href="#%e5%9d%87%e5%80%bc%e5%9b%9e%e5%bd%92%e7%ad%96%e7%95%a5" aria-label="均值回归策略">均值回归策略</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%9b%9e%e6%ba%af%e6%b5%8b%e8%af%95%e4%bc%98%e5%8c%96%e4%bb%a5%e5%8f%8a%e4%ba%a4%e5%8f%89%e9%aa%8c%e8%af%81w7-w9" aria-label="回溯测试，优化以及交叉验证(W7-W9)">回溯测试，优化以及交叉验证(W7-W9)</a><ul>
-                            
-                    <li>
-                        <a href="#%e4%ba%a4%e5%8f%89%e9%aa%8c%e8%af%81" aria-label="交叉验证">交叉验证</a><ul>
-                            
-                    <li>
-                        <a href="#in-sample%e5%92%8cout-sample-test" aria-label="In-sample和out-sample test">In-sample和out-sample test</a></li>
-                    <li>
-                        <a href="#rsi-strategy" aria-label="RSI strategy">RSI strategy</a></li>
-                    <li>
-                        <a href="#bias" aria-label="Bias">Bias</a>
-                    </li>
-                </ul>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#r%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80w1" aria-label="R语言基础（W1）">R语言基础（W1）</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9f%ba%e6%9c%ac%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b" aria-label="基本数据类型">基本数据类型</a></li>
+                <li>
+                    <a href="#is%e5%92%8cas%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="is和as的区别">is和as的区别</a></li>
+                <li>
+                    <a href="#vector%e5%92%8clist%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="vector和list的区别">vector和list的区别</a></li>
+                <li>
+                    <a href="#%e5%87%bd%e6%95%b0" aria-label="函数">函数</a></li>
+                <li>
+                    <a href="#matrices%e5%92%8cdataframes%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="Matrices和Data.frames的区别">Matrices和Data.frames的区别</a></li>
+                <li>
+                    <a href="#recycing" aria-label="Recycing">Recycing</a></li>
+                <li>
+                    <a href="#apply-family" aria-label="APPLY family">APPLY family</a></li>
+                <li>
+                    <a href="#finanacial-time-series-and-quantmod" aria-label="Finanacial time series and quantmod">Finanacial time series and quantmod</a></li></ul>
                 </li>
-                </ul>
+                <li>
+                    <a href="#%e5%b8%82%e5%9c%ba%e5%be%ae%e8%a7%82%e7%bb%93%e6%9e%84w2-w3" aria-label="市场微观结构（W2-W3）">市场微观结构（W2-W3）</a><ul>
+                        
+                <li>
+                    <a href="#%e9%87%91%e8%9e%8d%e5%b8%82%e5%9c%ba%e5%92%8c%e8%87%aa%e5%8a%a8%e4%ba%a4%e6%98%93" aria-label="金融市场和自动交易">金融市场和自动交易</a></li>
+                <li>
+                    <a href="#%e8%82%a1%e7%a5%a8%e5%b8%82%e5%9c%ba" aria-label="股票市场">股票市场</a></li>
+                <li>
+                    <a href="#%e8%b0%83%e6%95%b4%e6%96%b9%e5%bc%8fadjustment" aria-label="调整方式（Adjustment）">调整方式（Adjustment）</a></li>
+                <li>
+                    <a href="#%e6%9c%9f%e8%b4%a7futures" aria-label="期货（Futures）">期货（Futures）</a></li>
+                <li>
+                    <a href="#etfexchange-traded-funds" aria-label="ETF（Exchange-traded funds）">ETF（Exchange-traded funds）</a></li>
+                <li>
+                    <a href="#limit-order-book-market" aria-label="Limit order book market">Limit order book market</a></li>
+                <li>
+                    <a href="#market-makers" aria-label="Market Makers">Market Makers</a></li>
+                <li>
+                    <a href="#front-running--dark-pool" aria-label="Front running &amp; Dark pool">Front running &amp; Dark pool</a></li>
+                <li>
+                    <a href="#%e6%89%a7%e8%a1%8c%e7%ae%97%e6%b3%95" aria-label="执行算法">执行算法</a></li></ul>
                 </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
+                <li>
+                    <a href="#%e8%a1%a1%e9%87%8f%e4%ba%a4%e6%98%93%e7%ad%96%e7%95%a5%e7%9a%84%e8%a1%a8%e7%8e%b0w4-w5" aria-label="衡量交易策略的表现（W4-W5）">衡量交易策略的表现（W4-W5）</a><ul>
+                        
+                <li>
+                    <a href="#%e6%94%b6%e7%9b%8areturns" aria-label="收益（Returns）">收益（Returns）</a><ul>
+                        
+                <li>
+                    <a href="#simple-returns--logarithmic-returns" aria-label="simple returns &amp; logarithmic returns">simple returns &amp; logarithmic returns</a></li>
+                <li>
+                    <a href="#roc%e5%87%bd%e6%95%b0" aria-label="ROC函数">ROC函数</a></li></ul>
+                </li>
+                <li>
+                    <a href="#equity-curves" aria-label="Equity Curves">Equity Curves</a></li>
+                <li>
+                    <a href="#perfect-returns" aria-label="Perfect Returns">Perfect Returns</a></li>
+                <li>
+                    <a href="#copycat-strategy" aria-label="Copycat strategy">Copycat strategy</a></li>
+                <li>
+                    <a href="#risk-reward-measures" aria-label="Risk reward measures">Risk reward measures</a></li>
+                <li>
+                    <a href="#maximum-drawdown%e6%9c%80%e5%a4%a7%e5%9b%9e%e6%92%a4" aria-label="Maximum drawdown最大回撤">Maximum drawdown最大回撤</a></li>
+                <li>
+                    <a href="#wealth-index%e8%b4%a2%e5%af%8c%e6%8c%87%e6%95%b0" aria-label="Wealth Index财富指数">Wealth Index财富指数</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e4%ba%a4%e6%98%93%e7%ad%96%e7%95%a5-w6-w7" aria-label="交易策略 (W6-W7)">交易策略 (W6-W7)</a><ul>
+                        
+                <li>
+                    <a href="#moving-averages" aria-label="Moving averages">Moving averages</a></li>
+                <li>
+                    <a href="#bollinger-bands%e8%b6%85%e4%b9%b0%e8%b6%85%e5%8d%96%e7%ad%96%e7%95%a5" aria-label="Bollinger Bands超买超卖策略">Bollinger Bands超买超卖策略</a></li>
+                <li>
+                    <a href="#path-independence--dependence" aria-label="Path independence &amp; dependence">Path independence &amp; dependence</a></li>
+                <li>
+                    <a href="#slippage" aria-label="Slippage">Slippage</a></li>
+                <li>
+                    <a href="#%e5%9d%87%e5%80%bc%e5%9b%9e%e5%bd%92%e7%ad%96%e7%95%a5" aria-label="均值回归策略">均值回归策略</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%9b%9e%e6%ba%af%e6%b5%8b%e8%af%95%e4%bc%98%e5%8c%96%e4%bb%a5%e5%8f%8a%e4%ba%a4%e5%8f%89%e9%aa%8c%e8%af%81w7-w9" aria-label="回溯测试，优化以及交叉验证(W7-W9)">回溯测试，优化以及交叉验证(W7-W9)</a><ul>
+                        
+                <li>
+                    <a href="#%e4%ba%a4%e5%8f%89%e9%aa%8c%e8%af%81" aria-label="交叉验证">交叉验证</a><ul>
+                        
+                <li>
+                    <a href="#in-sample%e5%92%8cout-sample-test" aria-label="In-sample和out-sample test">In-sample和out-sample test</a></li>
+                <li>
+                    <a href="#rsi-strategy" aria-label="RSI strategy">RSI strategy</a></li>
+                <li>
+                    <a href="#bias" aria-label="Bias">Bias</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
   <div class="post-content"><h1 id="r语言基础w1">R语言基础（W1）<a hidden class="anchor" aria-hidden="true" href="#r语言基础w1">#</a></h1>
 <h2 id="基本数据类型">基本数据类型<a hidden class="anchor" aria-hidden="true" href="#基本数据类型">#</a></h2>
 <ul>
@@ -445,7 +426,7 @@ if (!doNotTrack) {
 <li>factors(categories)</li>
 </ul>
 <p>factors表示分类，将分类数据存储为整数向量。下面用代码解释</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#007f7f"># 创建一个性别的factor</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#007f7f"># 创建一个性别的factor</span>
 </span></span><span style="display:flex;"><span>&gt; gender &lt;- factor(c(<span style="color:#0ff;font-weight:bold">&#34;男&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;女&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;女&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;男&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;男&#34;</span>))
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f"># 显示gender对象的水平(分类)</span>
@@ -490,7 +471,7 @@ if (!doNotTrack) {
 </ul>
 <h2 id="函数">函数<a hidden class="anchor" aria-hidden="true" href="#函数">#</a></h2>
 <p>给一个函数，写法如下。显然，该函数是计算输入的平均值。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>myMean &lt;- <span style="color:#fff;font-weight:bold">function</span>(input=<span style="color:#ff0;font-weight:bold">1</span>:<span style="color:#ff0;font-weight:bold">5</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>myMean &lt;- <span style="color:#fff;font-weight:bold">function</span>(input=<span style="color:#ff0;font-weight:bold">1</span>:<span style="color:#ff0;font-weight:bold">5</span>) {
 </span></span><span style="display:flex;"><span>    sum &lt;- <span style="color:#ff0;font-weight:bold">0</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">for</span> (x <span style="color:#fff;font-weight:bold">in</span> input)
 </span></span><span style="display:flex;"><span>        sum &lt;- sum + x
@@ -499,13 +480,13 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p><strong>关于参数</strong>
 以上面代码为例。我们可以置顶参数，例如这里的<code>input=1:5</code>。当然也可以不指定参数，不指定参数时（例如只输入input），这时会对不兼容的参数类型报错，例如vector。</p>
 <p>如果指定了参数，那么在传入参数时，可以使用默认也可以重写（如下面代码所示）。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>&gt; print(myMean()) <span style="color:#007f7f"># 传入默认的参数</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>&gt; print(myMean()) <span style="color:#007f7f"># 传入默认的参数</span>
 </span></span><span style="display:flex;"><span>[1] <span style="color:#ff0;font-weight:bold">3</span>
 </span></span><span style="display:flex;"><span>&gt; print(myMean(<span style="color:#ff0;font-weight:bold">1</span>:<span style="color:#ff0;font-weight:bold">10</span>)) <span style="color:#007f7f"># 重写默认的参数</span>
 </span></span><span style="display:flex;"><span>[1] <span style="color:#ff0;font-weight:bold">5.5</span>
 </span></span></code></pre></div><p><strong>在函数中没有return语句？</strong>
 直接返回最后一个变量的赋值</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>&gt; test1 &lt;- <span style="color:#fff;font-weight:bold">function</span>(a=<span style="color:#ff0;font-weight:bold">1</span>) <span style="color:#fff;font-weight:bold">return</span>(a)
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>&gt; test1 &lt;- <span style="color:#fff;font-weight:bold">function</span>(a=<span style="color:#ff0;font-weight:bold">1</span>) <span style="color:#fff;font-weight:bold">return</span>(a)
 </span></span><span style="display:flex;"><span>&gt; test3 &lt;- <span style="color:#fff;font-weight:bold">function</span>(a=<span style="color:#ff0;font-weight:bold">1</span>) b &lt;- a
 </span></span><span style="display:flex;"><span>&gt; test2 &lt;- <span style="color:#fff;font-weight:bold">function</span>(a=<span style="color:#ff0;font-weight:bold">1</span>) a
 </span></span><span style="display:flex;"><span>&gt; print(test1()); print(test2()); print(test3())
@@ -539,29 +520,29 @@ if (!doNotTrack) {
 <p>Recycling 是指在进行二元运算时，如果其中一个运算对象长度不足，R 会自动将其进行“重复”直到和另一个对象长度相等。这样可以避免出现因为维度不匹配而导致的错误。</p>
 <p>举例说明
 使用recycling创建一个vector 1 4 3 8 5 12 7 16 9 20</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>a&lt;-c(<span style="color:#ff0;font-weight:bold">1</span>,<span style="color:#ff0;font-weight:bold">2</span>)*<span style="color:#ff0;font-weight:bold">1</span>:<span style="color:#ff0;font-weight:bold">11</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>a&lt;-c(<span style="color:#ff0;font-weight:bold">1</span>,<span style="color:#ff0;font-weight:bold">2</span>)*<span style="color:#ff0;font-weight:bold">1</span>:<span style="color:#ff0;font-weight:bold">11</span>
 </span></span></code></pre></div><p>下面表格说明一下👇</p>
 <table>
-<thead>
-<tr>
-<th>1 2</th>
-<th>3 4</th>
-<th>5 6</th>
-<th>7 8</th>
-<th>9 10</th>
-<th>11</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>(1,2)</td>
-<td>(1,2)</td>
-<td>(1,2)</td>
-<td>(1,2)</td>
-<td>(1,2)</td>
-<td>(1)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>1 2</th>
+          <th>3 4</th>
+          <th>5 6</th>
+          <th>7 8</th>
+          <th>9 10</th>
+          <th>11</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>(1,2)</td>
+          <td>(1,2)</td>
+          <td>(1,2)</td>
+          <td>(1,2)</td>
+          <td>(1,2)</td>
+          <td>(1)</td>
+      </tr>
+  </tbody>
 </table>
 <p>最终结果：1*1, 2*2, 3*1, 4*2 &hellip;&hellip;</p>
 <h2 id="apply-family">APPLY family<a hidden class="anchor" aria-hidden="true" href="#apply-family">#</a></h2>
@@ -572,7 +553,7 @@ if (!doNotTrack) {
 <li>apply (matrices/data.frames)</li>
 <li>mapply (multiple lists/vectors/matrices)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>&gt; lst &lt;- list(c(<span style="color:#ff0;font-weight:bold">1</span>,<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">3</span>), c(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">3</span>,<span style="color:#ff0;font-weight:bold">4</span>), c(<span style="color:#ff0;font-weight:bold">0</span>,<span style="color:#ff0;font-weight:bold">10</span>));
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>&gt; lst &lt;- list(c(<span style="color:#ff0;font-weight:bold">1</span>,<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">3</span>), c(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">3</span>,<span style="color:#ff0;font-weight:bold">4</span>), c(<span style="color:#ff0;font-weight:bold">0</span>,<span style="color:#ff0;font-weight:bold">10</span>));
 </span></span><span style="display:flex;"><span>&gt; lapply(lst, mean)
 </span></span><span style="display:flex;"><span>[[1]]
 </span></span><span style="display:flex;"><span>[1] <span style="color:#ff0;font-weight:bold">2</span>
@@ -629,7 +610,7 @@ if (!doNotTrack) {
 <li>可以拿到每天的金融数据</li>
 <li>绘制financial time series图表</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#007f7f"># quantmod使用方法</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#007f7f"># quantmod使用方法</span>
 </span></span><span style="display:flex;"><span>library(quantmod)
 </span></span><span style="display:flex;"><span>getSymbols(<span style="color:#0ff;font-weight:bold">&#34;AAPL&#34;</span>)
 </span></span><span style="display:flex;"><span>print(head(AAPL)) <span style="color:#007f7f"># first few rows of the data </span>
@@ -813,7 +794,7 @@ if (!doNotTrack) {
 <li>对于简单收益，就是离散的（discerete）</li>
 <li>对于log return，就是连续的（continuous）</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>simple_ret  &lt;- ROC(prices,type=<span style="color:#0ff;font-weight:bold">&#39;discrete&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>simple_ret  &lt;- ROC(prices,type=<span style="color:#0ff;font-weight:bold">&#39;discrete&#39;</span>)
 </span></span><span style="display:flex;"><span>log_ret     &lt;- ROC(prices,type=<span style="color:#0ff;font-weight:bold">&#39;continuous&#39;</span>)
 </span></span></code></pre></div><h2 id="equity-curves">Equity Curves<a hidden class="anchor" aria-hidden="true" href="#equity-curves">#</a></h2>
 <p>交易策略盈利能力的时间序列图。它代表了在特定时间内，投资组合价值的变化。equity curves是由投资组合的每个周期结束时的净值（即资产总值减去负债总值）计算得出的。</p>
@@ -882,7 +863,7 @@ if (!doNotTrack) {
 </ul>
 <p>布林带的宽度会随着价格波动的加大而加大，反之则缩小。布林带的宽度的变化可以用来衡量市场的波动性。当布林带变窄时，表示市场波动较小，可能预示着即将出现的大幅波动（突破）。当布林带变宽时，表示市场波动加大，可能暗示着趋势的持续。</p>
 <p>使用AAPL股票数据，应用布林带技术指标，并选择了2008年。图表的类型被设置为线形图（type=&lsquo;l&rsquo;）。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>&gt; library(quantmod)
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>&gt; library(quantmod)
 </span></span><span style="display:flex;"><span>&gt; getSymbols(<span style="color:#0ff;font-weight:bold">&#39;AAPL&#39;</span>)
 </span></span><span style="display:flex;"><span>&gt; taString &lt;- <span style="color:#0ff;font-weight:bold">&#39;addBBands();addBBands(draw=&#34;p&#34;)&#39;</span>
 </span></span><span style="display:flex;"><span>&gt; chartSeries(AAPL,TA=taString,subset=<span style="color:#0ff;font-weight:bold">&#39;2008&#39;</span>,type=<span style="color:#0ff;font-weight:bold">&#39;l&#39;</span>)
@@ -1027,15 +1008,6 @@ if (!doNotTrack) {
     <span>算法(COMP202)</span>
   </a>
 </nav>
-<script src="https://utteranc.es/client.js"
-        repo="oudushu/utterances"
-        issue-term="title"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
 
   </footer><script src="https://utteranc.es/client.js"
     repo="MartinRepo/utterancesInblog"
@@ -1049,24 +1021,13 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+        <span>&copy; 2026 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        <br> 
-        
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
     </span>
-    
-    <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv">
-        被访问了<span id="busuanzi_value_site_pv"></span>次
-    </span>
-    <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人
-    </span>
-    </div>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -1075,9 +1036,14 @@ if (!doNotTrack) {
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -1118,11 +1084,12 @@ if (!doNotTrack) {
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
@@ -1174,6 +1141,7 @@ if (!doNotTrack) {
             codeblock.parentNode.appendChild(copybutton);
         }
     });
-</script></body>
+</script>
+</body>
 
 </html>

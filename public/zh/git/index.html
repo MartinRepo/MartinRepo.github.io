@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +7,21 @@
 <meta name="robots" content="index, follow">
 <title>代码上传至github | Martin&#39;s space</title>
 <meta name="keywords" content="git">
-<meta name="description" content="先在github建立一个远程仓库，可以全部是默认设置 全局声明git的用户认证信息 git config --global user.name &#34;name&#34; git config --global user.email &#34;email@gmail.com&#34; 其中name写自己的名字，email@g">
+<meta name="description" content="
+
+先在github建立一个远程仓库，可以全部是默认设置
+
+
+全局声明git的用户认证信息
+
+
+git config --global user.name &#34;name&#34;
+
+git config --global user.email &#34;email@gmail.com&#34;
+其中name写自己的名字，email@gmail.com写自己的email">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/git/">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.33446ce70373ca1f19994ac816c97a1b65ae46bd7944d026cdb4b723d0bc5887.css" integrity="sha256-M0Rs5wNzyh8ZmUrIFsl6G2WuRr15RNAmzbS3I9C8WIc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/icebear.jpg">
@@ -41,60 +47,72 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+</noscript>
 <script>
-        MathJax = {
-          tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-          },
-          svg: {
-            fontCache: 'global'
-          }
-        };
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="代码上传至github" />
-<meta property="og:description" content="先在github建立一个远程仓库，可以全部是默认设置 全局声明git的用户认证信息 git config --global user.name &#34;name&#34; git config --global user.email &#34;email@gmail.com&#34; 其中name写自己的名字，email@g" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://martinspace.top/zh/git/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-12-16T16:04:33+00:00" />
-<meta property="article:modified_time" content="2022-12-16T16:04:33+00:00" />
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="代码上传至github"/>
-<meta name="twitter:description" content="先在github建立一个远程仓库，可以全部是默认设置 全局声明git的用户认证信息 git config --global user.name &#34;name&#34; git config --global user.email &#34;email@gmail.com&#34; 其中name写自己的名字，email@g"/>
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-J8TFFL1ZS7');
+        }
+      </script><meta property="og:url" content="https://martinspace.top/zh/git/">
+  <meta property="og:site_name" content="Martin&#39;s space">
+  <meta property="og:title" content="代码上传至github">
+  <meta property="og:description" content="先在github建立一个远程仓库，可以全部是默认设置
+全局声明git的用户认证信息
+git config --global user.name &#34;name&#34; git config --global user.email &#34;email@gmail.com&#34; 其中name写自己的名字，email@gmail.com写自己的email">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-12-16T16:04:33+00:00">
+    <meta property="article:modified_time" content="2022-12-16T16:04:33+00:00">
+    <meta property="article:tag" content="Git">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="代码上传至github">
+  <meta name="twitter:description" content="先在github建立一个远程仓库，可以全部是默认设置
+全局声明git的用户认证信息
+git config --global user.name &#34;name&#34; git config --global user.email &#34;email@gmail.com&#34; 其中name写自己的名字，email@gmail.com写自己的email">
 
 
 <script type="application/ld+json">
@@ -129,7 +147,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "代码上传至github",
   "name": "代码上传至github",
-  "description": "先在github建立一个远程仓库，可以全部是默认设置 全局声明git的用户认证信息 git config --global user.name \u0026#34;name\u0026#34; git config --global user.email \u0026#34;email@gmail.com\u0026#34; 其中name写自己的名字，email@g",
+  "description": " 先在github建立一个远程仓库，可以全部是默认设置\n全局声明git的用户认证信息\ngit config --global user.name \u0026#34;name\u0026#34; git config --global user.email \u0026#34;email@gmail.com\u0026#34; 其中name写自己的名字，email@gmail.com写自己的email\n",
   "keywords": [
     "git"
   ],
@@ -157,29 +175,15 @@ if (!doNotTrack) {
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
                 <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
                     height="35">Martin&#39;s space</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -199,12 +203,12 @@ if (!doNotTrack) {
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://martinspace.top/en/" title="English"
-                            aria-label="English">English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://martinspace.top/en/" title="English"
+                                aria-label="English">English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
@@ -258,13 +262,14 @@ if (!doNotTrack) {
 创建: 2022-12-16 | 更新: 2022-12-16 | 字数: 407字 | 阅读时长: 1分钟 | 
 作者:Martin&nbsp;|&nbsp;标签: &nbsp;
     <ul class="post-tags-meta">
-        <a href="https://martinspace.top/zh/tags/git/">git</a>
+        <a href="https://martinspace.top/zh/tags/git/">Git</a>
     </ul>
 
 
     
     </div>
   </header> 
+
   <div class="post-content"><ol>
 <li>
 <p>先在github建立一个远程仓库，可以全部是默认设置</p>
@@ -273,30 +278,30 @@ if (!doNotTrack) {
 <p>全局声明git的用户认证信息</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git config --global user.name &#34;name&#34;
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git config --global user.name &#34;name&#34;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>git config --global user.email &#34;email@gmail.com&#34;
 </span></span></code></pre></div><p>其中name写自己的名字，email@gmail.com写自己的email</p>
 <ol start="3">
 <li>初始化本地git仓库</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd 本地项目根目录
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd 本地项目根目录
 </span></span><span style="display:flex;"><span>git init
 </span></span></code></pre></div><ol start="4">
 <li>将项目文件添加到git仓库中</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git add .
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git add .
 </span></span></code></pre></div><p>.意思是将当前文件夹下的文件全部添加到仓库中，如果想添加某一个问价，将 .替换成对应的文件名就可以了
 5. 将文件commit到仓库</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git commit -m &#34;提交的消息内容&#34;
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git commit -m &#34;提交的消息内容&#34;
 </span></span></code></pre></div><ol start="6">
 <li>将本地仓库关联到github</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git remote add origin 自己仓库的url地址
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git remote add origin 自己仓库的url地址
 </span></span></code></pre></div><ol start="7">
 <li>上传本地仓库代码至github远程仓库</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git push -u origin +main
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git push -u origin +main
 </span></span><span style="display:flex;"><span>git pull
 </span></span><span style="display:flex;"><span>git push origin main
 </span></span></code></pre></div><p>由于新项目github的默认分支从master变成了main，所以之前的博客中提到的master对于新项目来说都会报错，用上述指令就可以成功上传啦（记得敲完一行执行一行）</p>
@@ -308,7 +313,7 @@ if (!doNotTrack) {
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://martinspace.top/zh/tags/git/">git</a></li>
+      <li><a href="https://martinspace.top/zh/tags/git/">Git</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://martinspace.top/zh/letranger/">
@@ -322,15 +327,6 @@ if (!doNotTrack) {
     <span>CYK(COMP218)</span>
   </a>
 </nav>
-<script src="https://utteranc.es/client.js"
-        repo="oudushu/utterances"
-        issue-term="title"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
 
   </footer><script src="https://utteranc.es/client.js"
     repo="MartinRepo/utterancesInblog"
@@ -344,24 +340,13 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+        <span>&copy; 2026 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        <br> 
-        
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
     </span>
-    
-    <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv">
-        被访问了<span id="busuanzi_value_site_pv"></span>次
-    </span>
-    <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人
-    </span>
-    </div>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -370,9 +355,14 @@ if (!doNotTrack) {
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -413,11 +403,12 @@ if (!doNotTrack) {
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
@@ -469,6 +460,7 @@ if (!doNotTrack) {
             codeblock.parentNode.appendChild(copybutton);
         }
     });
-</script></body>
+</script>
+</body>
 
 </html>

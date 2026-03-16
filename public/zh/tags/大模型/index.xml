@@ -4,17 +4,21 @@
     <title>大模型 on Martin&#39;s space</title>
     <link>https://martinspace.top/zh/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
     <description>Recent content in 大模型 on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 15 Jun 2024 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jun 2024 17:39:49 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Llama.cpp本地CPU部署大模型</title>
       <link>https://martinspace.top/zh/llamacpp-tutorial/</link>
       <pubDate>Sat, 15 Jun 2024 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/llamacpp-tutorial/</guid>
-      <description>机器是2021年M1的MacBook Pro，斗胆一试。 引言 master分支的commit记录：2075a66 分别部署了Llama-2-7B-</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;机器是2021年M1的MacBook Pro，斗胆一试。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;引言&#34;&gt;引言&lt;/h1&gt;
+&lt;p&gt;master分支的commit记录：&lt;code&gt;2075a66&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;分别部署了&lt;code&gt;Llama-2-7B-Chat&lt;/code&gt;，&lt;code&gt;Llama-2-13B-Chat&lt;/code&gt;, &lt;code&gt;Llama-2-70B-Chat&lt;/code&gt;三款大模型，部署方式完全一致，我拿7B模型举例。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

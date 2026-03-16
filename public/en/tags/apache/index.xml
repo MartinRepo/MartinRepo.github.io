@@ -4,17 +4,27 @@
     <title>Apache on Martin&#39;s space</title>
     <link>https://martinspace.top/en/tags/apache/</link>
     <description>Recent content in Apache on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Jan 2023 00:15:03 +0000</lastBuildDate><atom:link href="https://martinspace.top/en/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Jan 2023 08:34:35 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/en/tags/apache/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Download APache Maven on MacOS</title>
       <link>https://martinspace.top/en/post_en/tech_en/maven/</link>
       <pubDate>Thu, 19 Jan 2023 00:15:03 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/post_en/tech_en/maven/</guid>
-      <description>I finally got maven installed, and the steps were generally easy, but I stepped in a few holes, I&amp;rsquo;ll record them. Download APache Maven Website📡: Apache-Maven Choose Binary zip archive and download it. Unzip the zip archive I unzip it into /Libaray on my computer. Configuration vi .bash_profile Add 2 lines into this profile export M2_HOME=/Library/apache-maven-3.8.7 // Or you can choose your</description>
+      <description>&lt;p&gt;I finally got maven installed, and the steps were generally easy, but I stepped in a few holes, I&amp;rsquo;ll record them.&lt;/p&gt;
+&lt;h1 id=&#34;download-apache-maven&#34;&gt;Download APache Maven&lt;/h1&gt;
+&lt;p&gt;Website📡: &lt;a href=&#34;https://maven.apache.org/download.cgi&#34;&gt;Apache-Maven&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Choose Binary zip archive and download it.&lt;/p&gt;
+&lt;h1 id=&#34;unzip-the-zip-archive&#34;&gt;Unzip the zip archive&lt;/h1&gt;
+&lt;p&gt;I unzip it into /Libaray on my computer.&lt;/p&gt;
+&lt;h1 id=&#34;configuration&#34;&gt;Configuration&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vi .bash_profile
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Add 2 lines into this profile&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;export&lt;/span&gt; M2_HOME=/Library/apache-maven-3.8.7 // Or you can choose your own path and folder
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;export&lt;/span&gt; PATH=$PATH:$M2_HOME/bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then, type &lt;code&gt;:wq&lt;/code&gt;, save and quit vim.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

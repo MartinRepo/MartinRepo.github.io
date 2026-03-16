@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,12 +10,7 @@
 <meta name="description" content="COMP202 笔记">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/comp202/">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.33446ce70373ca1f19994ac816c97a1b65ae46bd7944d026cdb4b723d0bc5887.css" integrity="sha256-M0Rs5wNzyh8ZmUrIFsl6G2WuRr15RNAmzbS3I9C8WIc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/icebear.jpg">
@@ -41,60 +36,68 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+</noscript>
 <script>
-        MathJax = {
-          tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-          },
-          svg: {
-            fontCache: 'global'
-          }
-        };
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="算法(COMP202)" />
-<meta property="og:description" content="COMP202 笔记" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://martinspace.top/zh/comp202/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2023-02-05T08:42:27+00:00" />
-<meta property="article:modified_time" content="2023-05-13T16:23:32+00:00" />
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="算法(COMP202)"/>
-<meta name="twitter:description" content="COMP202 笔记"/>
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-J8TFFL1ZS7');
+        }
+      </script><meta property="og:url" content="https://martinspace.top/zh/comp202/">
+  <meta property="og:site_name" content="Martin&#39;s space">
+  <meta property="og:title" content="算法(COMP202)">
+  <meta property="og:description" content="COMP202 笔记">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-02-05T08:42:27+00:00">
+    <meta property="article:modified_time" content="2023-05-13T16:23:32+00:00">
+    <meta property="article:tag" content="Algorithm">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="算法(COMP202)">
+  <meta name="twitter:description" content="COMP202 笔记">
 
 
 <script type="application/ld+json">
@@ -157,32 +160,15 @@ if (!doNotTrack) {
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-
-
-<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
                 <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
                     height="35">Martin&#39;s space</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -202,12 +188,12 @@ if (!doNotTrack) {
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://martinspace.top/en/" title="English"
-                            aria-label="English">English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://martinspace.top/en/" title="English"
+                                aria-label="English">English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
@@ -270,228 +256,168 @@ if (!doNotTrack) {
 
     
     </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#%e6%97%b6%e9%97%b4%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%92%8conline-algorithm-w1" aria-label="时间复杂度和online algorithm (W1)">时间复杂度和online algorithm (W1)</a></li>
-                    <li>
-                        <a href="#bst%e5%92%8c%e5%85%b6%e4%bb%96%e6%90%9c%e7%b4%a2%e6%a0%91-w2" aria-label="BST和其他搜索树 (W2)">BST和其他搜索树 (W2)</a><ul>
-                            
-                    <li>
-                        <a href="#%e9%93%be%e8%a1%a8" aria-label="链表">链表</a></li>
-                    <li>
-                        <a href="#%e4%ba%8c%e5%88%86%e6%9f%a5%e6%89%bebst" aria-label="二分查找（BST)">二分查找（BST)</a></li>
-                    <li>
-                        <a href="#avl%e6%a0%91" aria-label="AVL树">AVL树</a></li>
-                    <li>
-                        <a href="#24%e6%a0%91" aria-label="(2,4)树">(2,4)树</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%8e%92%e5%ba%8f-sortingw3" aria-label="排序-Sorting（W3）">排序-Sorting（W3）</a><ul>
-                            
-                    <li>
-                        <a href="#priority-queues" aria-label="Priority Queues">Priority Queues</a></li>
-                    <li>
-                        <a href="#%e5%a0%86" aria-label="堆">堆</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%a0%86%e6%8f%92%e5%85%a5" aria-label="堆插入">堆插入</a></li>
-                    <li>
-                        <a href="#%e5%a0%86%e5%88%a0%e9%99%a4" aria-label="堆删除">堆删除</a></li>
-                    <li>
-                        <a href="#%e5%a0%86%e6%8e%92%e5%ba%8f" aria-label="堆排序">堆排序</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%88%86%e6%b2%bbdivide-and-conquer" aria-label="分治（Divide and Conquer）">分治（Divide and Conquer）</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%bd%92%e5%b9%b6%e6%8e%92%e5%ba%8fmergesort" aria-label="归并排序（MergeSort）">归并排序（MergeSort）</a></li>
-                    <li>
-                        <a href="#counting-inversions" aria-label="Counting inversions">Counting inversions</a></li>
-                    <li>
-                        <a href="#%e5%bf%ab%e6%8e%92quicksort" aria-label="快排（QuickSort）">快排（QuickSort）</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e7%ba%bf%e6%80%a7%e6%97%b6%e9%97%b4%e6%8e%92%e5%ba%8fbucket-sorting" aria-label="线性时间排序（Bucket Sorting)">线性时间排序（Bucket Sorting)</a></li>
-                    <li>
-                        <a href="#%e5%9f%ba%e6%95%b0%e6%8e%92%e5%ba%8fradix-sorting" aria-label="基数排序（Radix Sorting）">基数排序（Radix Sorting）</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%97%b6%e9%97%b4%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90" aria-label="时间复杂度分析">时间复杂度分析</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e7%bb%86%e8%af%b4%e5%88%86%e6%b2%bbw4" aria-label="细说分治（W4）">细说分治（W4）</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%88%86%e6%b2%bb%e7%9a%84%e9%80%92%e5%bd%92%e8%a1%a8%e8%be%be%e5%bc%8f" aria-label="分治的递归表达式">分治的递归表达式</a></li>
-                    <li>
-                        <a href="#%e4%b8%bb%e5%ae%9a%e7%90%86master-method" aria-label="主定理（Master Method）">主定理（Master Method）</a></li>
-                    <li>
-                        <a href="#%e6%95%b4%e6%95%b0%e5%bf%ab%e9%80%9f%e4%b9%98%e6%b3%95fast-multiplication-of-integers" aria-label="整数快速乘法（Fast multiplication of integers）">整数快速乘法（Fast multiplication of integers）</a><ul>
-                            
-                    <li>
-                        <a href="#karatsuba-algorithm" aria-label="Karatsuba Algorithm">Karatsuba Algorithm</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e7%9f%a9%e9%98%b5%e4%b9%98%e6%b3%95matrix-multiplication" aria-label="矩阵乘法（Matrix Multiplication）">矩阵乘法（Matrix Multiplication）</a><ul>
-                            
-                    <li>
-                        <a href="#strassens-algorithm" aria-label="Strassen’s Algorithm">Strassen’s Algorithm</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%b5%85%e8%af%b4%e8%b4%aa%e5%bf%83w5" aria-label="浅说贪心（W5）">浅说贪心（W5）</a><ul>
-                            
-                    <li>
-                        <a href="#fkp" aria-label="FKP">FKP</a></li>
-                    <li>
-                        <a href="#interval-scheduling" aria-label="Interval Scheduling">Interval Scheduling</a></li>
-                    <li>
-                        <a href="#task-scheduling" aria-label="Task Scheduling">Task Scheduling</a></li>
-                    <li>
-                        <a href="#clustering" aria-label="Clustering">Clustering</a><ul>
-                            
-                    <li>
-                        <a href="#maximum-spacing-clustering" aria-label="Maximum Spacing Clustering">Maximum Spacing Clustering</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e8%81%8a%e8%81%8a%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92-w6" aria-label="聊聊动态规划 （W6）">聊聊动态规划 （W6）</a><ul>
-                            
-                    <li>
-                        <a href="#memoization" aria-label="memoization">memoization</a></li>
-                    <li>
-                        <a href="#0-1%e8%83%8c%e5%8c%85%e9%97%ae%e9%a2%98" aria-label="0-1背包问题">0-1背包问题</a></li>
-                    <li>
-                        <a href="#weighted-interval-scheduling" aria-label="Weighted Interval Scheduling">Weighted Interval Scheduling</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%8e%a2%e7%a7%98%e5%9b%be-%e6%9c%80%e7%9f%ad%e8%b7%af%e5%be%84w7" aria-label="探秘图-最短路径（W7）">探秘图-最短路径（W7）</a><ul>
-                            
-                    <li>
-                        <a href="#connectivity-information" aria-label="Connectivity information">Connectivity information</a></li>
-                    <li>
-                        <a href="#graph" aria-label="Graph">Graph</a></li>
-                    <li>
-                        <a href="#adjacency-list-and-matrix" aria-label="Adjacency list and matrix">Adjacency list and matrix</a></li>
-                    <li>
-                        <a href="#diagraph-%e6%9c%89%e5%90%91%e5%9b%be" aria-label="Diagraph 有向图">Diagraph 有向图</a></li>
-                    <li>
-                        <a href="#dfs--bfs" aria-label="DFS &amp;amp; BFS">DFS &amp; BFS</a></li>
-                    <li>
-                        <a href="#%e5%8d%95%e6%ba%90%e6%9c%80%e7%9f%ad%e8%b7%af%e5%be%84--dijkstras-algorithm" aria-label="单源最短路径 &amp;amp; Dijkstra’s algorithm">单源最短路径 &amp; Dijkstra’s algorithm</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%9c%80%e5%a4%a7%e6%b5%81%e9%97%ae%e9%a2%98%e5%92%8c%e4%ba%8c%e5%88%86%e5%9b%be%e5%8c%b9%e9%85%8d" aria-label="最大流问题和二分图匹配">最大流问题和二分图匹配</a><ul>
-                            
-                    <li>
-                        <a href="#ford-fulkerson-algorithm" aria-label="Ford-Fulkerson algorithm">Ford-Fulkerson algorithm</a></li>
-                    <li>
-                        <a href="#bipartite-graphs--max-matching" aria-label="Bipartite graphs &amp;amp; Max matching">Bipartite graphs &amp; Max matching</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%8a%a0%e5%af%86%e4%b8%8e%e6%95%b0%e8%ae%ba" aria-label="加密与数论">加密与数论</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%95%b0%e8%ae%ba" aria-label="数论">数论</a></li>
-                    <li>
-                        <a href="#%e5%8a%a0%e5%af%86%e9%80%9a%e4%bf%a1" aria-label="加密通信">加密通信</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86" aria-label="对称加密">对称加密</a></li>
-                    <li>
-                        <a href="#%e9%9d%9e%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86" aria-label="非对称加密">非对称加密</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#np-complete" aria-label="NP Complete">NP Complete</a><ul>
-                            
-                    <li>
-                        <a href="#hard-computational-problems" aria-label="Hard computational problems">Hard computational problems</a></li>
-                    <li>
-                        <a href="#hamiltonian-graph" aria-label="Hamiltonian Graph">Hamiltonian Graph</a></li>
-                    <li>
-                        <a href="#%e5%86%b3%e7%ad%96%e4%bc%98%e5%8c%96%e9%97%ae%e9%a2%98" aria-label="决策/优化问题">决策/优化问题</a></li>
-                    <li>
-                        <a href="#complexity-class-p" aria-label="Complexity Class P">Complexity Class P</a></li>
-                    <li>
-                        <a href="#efficient-certification" aria-label="Efficient Certification">Efficient Certification</a></li>
-                    <li>
-                        <a href="#complexity-class-np" aria-label="Complexity class NP">Complexity class NP</a>
-                    </li>
-                </ul>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e6%97%b6%e9%97%b4%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%92%8conline-algorithm-w1" aria-label="时间复杂度和online algorithm (W1)">时间复杂度和online algorithm (W1)</a></li>
+                <li>
+                    <a href="#bst%e5%92%8c%e5%85%b6%e4%bb%96%e6%90%9c%e7%b4%a2%e6%a0%91-w2" aria-label="BST和其他搜索树 (W2)">BST和其他搜索树 (W2)</a><ul>
+                        
+                <li>
+                    <a href="#%e9%93%be%e8%a1%a8" aria-label="链表">链表</a></li>
+                <li>
+                    <a href="#%e4%ba%8c%e5%88%86%e6%9f%a5%e6%89%bebst" aria-label="二分查找（BST)">二分查找（BST)</a></li>
+                <li>
+                    <a href="#avl%e6%a0%91" aria-label="AVL树">AVL树</a></li>
+                <li>
+                    <a href="#24%e6%a0%91" aria-label="(2,4)树">(2,4)树</a></li></ul>
                 </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
+                <li>
+                    <a href="#%e6%8e%92%e5%ba%8f-sortingw3" aria-label="排序-Sorting（W3）">排序-Sorting（W3）</a><ul>
+                        
+                <li>
+                    <a href="#priority-queues" aria-label="Priority Queues">Priority Queues</a></li>
+                <li>
+                    <a href="#%e5%a0%86" aria-label="堆">堆</a><ul>
+                        
+                <li>
+                    <a href="#%e5%a0%86%e6%8f%92%e5%85%a5" aria-label="堆插入">堆插入</a></li>
+                <li>
+                    <a href="#%e5%a0%86%e5%88%a0%e9%99%a4" aria-label="堆删除">堆删除</a></li>
+                <li>
+                    <a href="#%e5%a0%86%e6%8e%92%e5%ba%8f" aria-label="堆排序">堆排序</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%88%86%e6%b2%bbdivide-and-conquer" aria-label="分治（Divide and Conquer）">分治（Divide and Conquer）</a><ul>
+                        
+                <li>
+                    <a href="#%e5%bd%92%e5%b9%b6%e6%8e%92%e5%ba%8fmergesort" aria-label="归并排序（MergeSort）">归并排序（MergeSort）</a></li>
+                <li>
+                    <a href="#counting-inversions" aria-label="Counting inversions">Counting inversions</a></li>
+                <li>
+                    <a href="#%e5%bf%ab%e6%8e%92quicksort" aria-label="快排（QuickSort）">快排（QuickSort）</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e7%ba%bf%e6%80%a7%e6%97%b6%e9%97%b4%e6%8e%92%e5%ba%8fbucket-sorting" aria-label="线性时间排序（Bucket Sorting)">线性时间排序（Bucket Sorting)</a></li>
+                <li>
+                    <a href="#%e5%9f%ba%e6%95%b0%e6%8e%92%e5%ba%8fradix-sorting" aria-label="基数排序（Radix Sorting）">基数排序（Radix Sorting）</a><ul>
+                        
+                <li>
+                    <a href="#%e6%97%b6%e9%97%b4%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90" aria-label="时间复杂度分析">时间复杂度分析</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e7%bb%86%e8%af%b4%e5%88%86%e6%b2%bbw4" aria-label="细说分治（W4）">细说分治（W4）</a><ul>
+                        
+                <li>
+                    <a href="#%e5%88%86%e6%b2%bb%e7%9a%84%e9%80%92%e5%bd%92%e8%a1%a8%e8%be%be%e5%bc%8f" aria-label="分治的递归表达式">分治的递归表达式</a></li>
+                <li>
+                    <a href="#%e4%b8%bb%e5%ae%9a%e7%90%86master-method" aria-label="主定理（Master Method）">主定理（Master Method）</a></li>
+                <li>
+                    <a href="#%e6%95%b4%e6%95%b0%e5%bf%ab%e9%80%9f%e4%b9%98%e6%b3%95fast-multiplication-of-integers" aria-label="整数快速乘法（Fast multiplication of integers）">整数快速乘法（Fast multiplication of integers）</a><ul>
+                        
+                <li>
+                    <a href="#karatsuba-algorithm" aria-label="Karatsuba Algorithm">Karatsuba Algorithm</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e7%9f%a9%e9%98%b5%e4%b9%98%e6%b3%95matrix-multiplication" aria-label="矩阵乘法（Matrix Multiplication）">矩阵乘法（Matrix Multiplication）</a><ul>
+                        
+                <li>
+                    <a href="#strassens-algorithm" aria-label="Strassen’s Algorithm">Strassen’s Algorithm</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%b5%85%e8%af%b4%e8%b4%aa%e5%bf%83w5" aria-label="浅说贪心（W5）">浅说贪心（W5）</a><ul>
+                        
+                <li>
+                    <a href="#fkp" aria-label="FKP">FKP</a></li>
+                <li>
+                    <a href="#interval-scheduling" aria-label="Interval Scheduling">Interval Scheduling</a></li>
+                <li>
+                    <a href="#task-scheduling" aria-label="Task Scheduling">Task Scheduling</a></li>
+                <li>
+                    <a href="#clustering" aria-label="Clustering">Clustering</a><ul>
+                        
+                <li>
+                    <a href="#maximum-spacing-clustering" aria-label="Maximum Spacing Clustering">Maximum Spacing Clustering</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%81%8a%e8%81%8a%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92-w6" aria-label="聊聊动态规划 （W6）">聊聊动态规划 （W6）</a><ul>
+                        
+                <li>
+                    <a href="#memoization" aria-label="memoization">memoization</a></li>
+                <li>
+                    <a href="#0-1%e8%83%8c%e5%8c%85%e9%97%ae%e9%a2%98" aria-label="0-1背包问题">0-1背包问题</a></li>
+                <li>
+                    <a href="#weighted-interval-scheduling" aria-label="Weighted Interval Scheduling">Weighted Interval Scheduling</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%8e%a2%e7%a7%98%e5%9b%be-%e6%9c%80%e7%9f%ad%e8%b7%af%e5%be%84w7" aria-label="探秘图-最短路径（W7）">探秘图-最短路径（W7）</a><ul>
+                        
+                <li>
+                    <a href="#connectivity-information" aria-label="Connectivity information">Connectivity information</a></li>
+                <li>
+                    <a href="#graph" aria-label="Graph">Graph</a></li>
+                <li>
+                    <a href="#adjacency-list-and-matrix" aria-label="Adjacency list and matrix">Adjacency list and matrix</a></li>
+                <li>
+                    <a href="#diagraph-%e6%9c%89%e5%90%91%e5%9b%be" aria-label="Diagraph 有向图">Diagraph 有向图</a></li>
+                <li>
+                    <a href="#dfs--bfs" aria-label="DFS &amp; BFS">DFS &amp; BFS</a></li>
+                <li>
+                    <a href="#%e5%8d%95%e6%ba%90%e6%9c%80%e7%9f%ad%e8%b7%af%e5%be%84--dijkstras-algorithm" aria-label="单源最短路径 &amp; Dijkstra’s algorithm">单源最短路径 &amp; Dijkstra’s algorithm</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%9c%80%e5%a4%a7%e6%b5%81%e9%97%ae%e9%a2%98%e5%92%8c%e4%ba%8c%e5%88%86%e5%9b%be%e5%8c%b9%e9%85%8d" aria-label="最大流问题和二分图匹配">最大流问题和二分图匹配</a><ul>
+                        
+                <li>
+                    <a href="#ford-fulkerson-algorithm" aria-label="Ford-Fulkerson algorithm">Ford-Fulkerson algorithm</a></li>
+                <li>
+                    <a href="#bipartite-graphs--max-matching" aria-label="Bipartite graphs &amp; Max matching">Bipartite graphs &amp; Max matching</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8a%a0%e5%af%86%e4%b8%8e%e6%95%b0%e8%ae%ba" aria-label="加密与数论">加密与数论</a><ul>
+                        
+                <li>
+                    <a href="#%e6%95%b0%e8%ae%ba" aria-label="数论">数论</a></li>
+                <li>
+                    <a href="#%e5%8a%a0%e5%af%86%e9%80%9a%e4%bf%a1" aria-label="加密通信">加密通信</a><ul>
+                        
+                <li>
+                    <a href="#%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86" aria-label="对称加密">对称加密</a></li>
+                <li>
+                    <a href="#%e9%9d%9e%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86" aria-label="非对称加密">非对称加密</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#np-complete" aria-label="NP Complete">NP Complete</a><ul>
+                        
+                <li>
+                    <a href="#hard-computational-problems" aria-label="Hard computational problems">Hard computational problems</a></li>
+                <li>
+                    <a href="#hamiltonian-graph" aria-label="Hamiltonian Graph">Hamiltonian Graph</a></li>
+                <li>
+                    <a href="#%e5%86%b3%e7%ad%96%e4%bc%98%e5%8c%96%e9%97%ae%e9%a2%98" aria-label="决策/优化问题">决策/优化问题</a></li>
+                <li>
+                    <a href="#complexity-class-p" aria-label="Complexity Class P">Complexity Class P</a></li>
+                <li>
+                    <a href="#efficient-certification" aria-label="Efficient Certification">Efficient Certification</a></li>
+                <li>
+                    <a href="#complexity-class-np" aria-label="Complexity class NP">Complexity class NP</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
   <div class="post-content"><h1 id="时间复杂度和online-algorithm-w1">时间复杂度和online algorithm (W1)<a hidden class="anchor" aria-hidden="true" href="#时间复杂度和online-algorithm-w1">#</a></h1>
 <p>算法分析中我们常用到三个符号：O，Ω(Omega) 和 Θ(Theta)</p>
 <ul>
@@ -505,10 +431,9 @@ if (!doNotTrack) {
 <h1 id="bst和其他搜索树-w2">BST和其他搜索树 (W2)<a hidden class="anchor" aria-hidden="true" href="#bst和其他搜索树-w2">#</a></h1>
 <h2 id="链表">链表<a hidden class="anchor" aria-hidden="true" href="#链表">#</a></h2>
 <p>双向链表，如下图所示，每个节点都有一个前继(prev)和一个后驱(next)。
-<img loading="lazy" src="/img/comp202/linkedlist.jpg" alt="linkedlist"  />
-</p>
+<img alt="linkedlist" loading="lazy" src="/img/comp202/linkedlist.jpg"></p>
 <p>双向链表的几个常用方法</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>replaceElement(p,e) <span style="color:#007f7f">// p - position, e - element.</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>replaceElement(p,e) <span style="color:#007f7f">// p - position, e - element.</span>
 </span></span><span style="display:flex;"><span>swapElements(p,q) <span style="color:#007f7f">// p,q - positions.</span>
 </span></span><span style="display:flex;"><span>insertFirst(e) <span style="color:#007f7f">// e - element.</span>
 </span></span><span style="display:flex;"><span>insertLast(e) <span style="color:#007f7f">// e - element.</span>
@@ -517,7 +442,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>remove(p) <span style="color:#007f7f">// p - position.</span>
 </span></span></code></pre></div><p>介绍其中一个方法：insertBefore()</p>
 <p>技巧：要确保每个节点的前后两个指针都有连接，如上图所示。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    s.<span style="color:#007f7f">prev</span> = p;          <span style="color:#007f7f">/* 把 p 赋值给 s 的前驱 */</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    s.<span style="color:#007f7f">prev</span> = p;          <span style="color:#007f7f">/* 把 p 赋值给 s 的前驱 */</span>
 </span></span><span style="display:flex;"><span>    s.<span style="color:#007f7f">next</span> = p.<span style="color:#007f7f">next</span>;     <span style="color:#007f7f">/* 把 p-&gt;next 赋值给 s 的后继 */</span>
 </span></span><span style="display:flex;"><span>    (p.<span style="color:#007f7f">next</span>).<span style="color:#007f7f">prev</span> = s;    <span style="color:#007f7f">/* 把 s 赋值给 p-&gt;next 的前驱 */</span>
 </span></span><span style="display:flex;"><span>    p.<span style="color:#007f7f">next</span> = s;           <span style="color:#007f7f">/* 把 s 赋值给 p 的后继 */</span>
@@ -532,7 +457,7 @@ if (!doNotTrack) {
 <li>输入一个有序数组</li>
 <li>输出要查找的值及其对应的key</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>BINARYSEARCH(S,k ,low ,high)
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>BINARYSEARCH(S,k ,low ,high)
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">if</span> low&gt;high
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">return</span> no_such_key
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">else</span> 
@@ -549,35 +474,35 @@ if (!doNotTrack) {
 </ul>
 <p>lookup table 和 linked list比较</p>
 <table>
-<thead>
-<tr>
-<th>Method</th>
-<th>LinkedList</th>
-<th>lookup table</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>查找元素</td>
-<td>O(n)</td>
-<td>O(logn)</td>
-</tr>
-<tr>
-<td>插入元素(已知位置)</td>
-<td>O(1)</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>移除元素</td>
-<td>O(n)</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>ClosestKeyBefore</td>
-<td>O(n)</td>
-<td>O(logn)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>LinkedList</th>
+          <th>lookup table</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>查找元素</td>
+          <td>O(n)</td>
+          <td>O(logn)</td>
+      </tr>
+      <tr>
+          <td>插入元素(已知位置)</td>
+          <td>O(1)</td>
+          <td>O(n)</td>
+      </tr>
+      <tr>
+          <td>移除元素</td>
+          <td>O(n)</td>
+          <td>O(n)</td>
+      </tr>
+      <tr>
+          <td>ClosestKeyBefore</td>
+          <td>O(n)</td>
+          <td>O(logn)</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p>有没有一种数据结构可以既保证查找的效率又保证插入的效率？（综合lookup和linkedlist的优点）
@@ -609,7 +534,7 @@ if (!doNotTrack) {
 <p>宗旨：自下而上地找最小的一颗不平衡子树，如果向上找的节点太多，就选择离根节点最近的三个节点（包括根节点），将三个节点拿出来树状排序，插入原来的位置。剩下的元素根据二叉树的规则重新插入。</p>
 <p>在下面这个AVL树中插入90
 <div class="mermaid">
-    
+
 flowchart TD
 id1(50)-->id2(26)-->id3(21)
 id2-->id4(30)
@@ -617,10 +542,15 @@ id1-->id5(66)-->id6(60)
 id5-->id7(68)-->id8(67)
 id7-->id9(70)
 
-  </div></p>
+</div>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true });
+</script></p>
 <p>插入后效果如下
 <div class="mermaid">
-    
+
 flowchart TD
 id1(50)-->id2(26)-->id3(21)
 id2-->id4(30)
@@ -628,19 +558,29 @@ id1-->id5(66)-->id6(60)
 id5-->id7(68)-->id8(67)
 id7-->id9(70)-->id10(90)
 
-  </div>
+</div>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true });
+</script>
 很明显，这不是一颗平衡的AVL树。因此，从底部开始向上寻找最小的不平衡子树的根节点，发现是66。路径是90&ndash;&gt;66，找到这条路径上距离66最近的三个节点（包括66本身），找到了66，68，70三个数。
 对这三个数进行重新排列，如下图所示
 <div class="mermaid">
-    
+
 flowchart TD
 id1(68)-->id2(66)
 id1-->id3(70)
 
-  </div>
+</div>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true });
+</script>
 排列后插入原来的位置，剩下的元素根据二叉树的规则重新插入，结果如下
 <div class="mermaid">
-    
+
 flowchart TD
 id1(50)-->id2(26)-->id3(21)
 id2-->id4(30)
@@ -649,7 +589,12 @@ id5-->id7(70)-->id8(90)
 id6-->id9(60)
 id6-->id10(67)
 
-  </div>
+</div>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true });
+</script>
 整套操作行云流水，十分清爽，爱了。删除也是同样的操作，删除后不平衡，找到最小不平衡树，然后重新排列。在AVL树中，所有的操作都可以在O(logn)内解决</p>
 <h2 id="24树">(2,4)树<a hidden class="anchor" aria-hidden="true" href="#24树">#</a></h2>
 <p>(2,4)树的定义是这棵树的子节点，最少有两个，最多有四个。每个内部节点都包含1-3个键，这些键定义了存储在子树中的键的范围。这样的键要保证，比它最左边的子树中最大的键大，比最右边的子树中最小的键小。</p>
@@ -695,30 +640,30 @@ id6-->id10(67)
 <li>对新的堆顶元素进行下滤操作。下滤的过程类似于插入操作，将新的堆顶元素与它的子节点比较，如果子节点中有比它更小的，则交换位置，直到找不到比它小的为止。</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>Operation</th>
-<th>time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>size,isEmpty</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>minElement,minKey</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>insertItem</td>
-<td>O(logn)</td>
-</tr>
-<tr>
-<td>removeMin</td>
-<td>O(logn)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Operation</th>
+          <th>time</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>size,isEmpty</td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td>minElement,minKey</td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td>insertItem</td>
+          <td>O(logn)</td>
+      </tr>
+      <tr>
+          <td>removeMin</td>
+          <td>O(logn)</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="堆排序">堆排序<a hidden class="anchor" aria-hidden="true" href="#堆排序">#</a></h3>
 <ul>
@@ -731,7 +676,7 @@ id6-->id10(67)
 <p>分治的经典例子，mergesort</p>
 <p>对mergesort的divide部分，很好理解，但是到了merge部分就有些懵懂，因为有些课程省略了步骤，现在记录一下详细步骤。</p>
 <p>假设到了合并这一步，现在有两个数组arr1和arr2</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>arr1 = [2, 5, 7, 8]
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>arr1 = [2, 5, 7, 8]
 </span></span><span style="display:flex;"><span>arr2 = [1, 3, 6, 9]
 </span></span></code></pre></div><p>我们要将它们合并成一个有序数组。首先，我们需要开辟一个长度为<code>len(arr1) + len(arr2)</code>的临时数组<code>temp</code></p>
 <p>接下来，需要设置两个指针<code>i</code>和<code>j</code>，分别指向两个数组的第一个元素，用于比较两个数组中的元素。还需要一个指针<code>k</code>，指向临时数组的第一个位置，用于存储排序后的元素。</p>
@@ -809,8 +754,7 @@ id6-->id10(67)
 <p>表达式中，a表示每次递归需要解决的子问题的数量，b表示子问题的规模，f(n)表示非递归部分的时间复杂度。</p>
 <p>举个例子$T(n) = 3T(n/2) + n^2$ 。这个递归式的意思是将一个规模为 n 的问题分成 3 个规模为 n/2 的子问题来解决，然后再用 O($n^2$) 的时间将这些子问题的解合并起来得到原问题的解。</p>
 <h2 id="主定理master-method">主定理（Master Method）<a hidden class="anchor" aria-hidden="true" href="#主定理master-method">#</a></h2>
-<p><img loading="lazy" src="/img/comp202/divide.jpg" alt="mastermethod"  />
-</p>
+<p><img alt="mastermethod" loading="lazy" src="/img/comp202/divide.jpg"></p>
 <ul>
 <li>第一种情况，表示子问题的时间复杂度是主要因素，即时间复杂度主要是子问题说了算。</li>
 <li>第二种情况，表示子问题规模与原问题规模相等，如果我们可以将原问题分成几个大小相等的子问题，并且解决每个子问题的复杂度相同。例如mergesort。</li>
@@ -833,35 +777,34 @@ id6-->id10(67)
 </ul>
 <p>由此，我们可以得出递归表达式为T(n) = 3T(n/2)+cn，即进行了3次乘法计算和6次加减法计算。根据主定理，$cn&lt;log3$，因此这种算法的时间复杂度为$n^{log3}&lt;n^2$，此处log以2为底。</p>
 <h2 id="矩阵乘法matrix-multiplication">矩阵乘法（Matrix Multiplication）<a hidden class="anchor" aria-hidden="true" href="#矩阵乘法matrix-multiplication">#</a></h2>
-<p><img loading="lazy" src="/img/comp202/matrix.jpg" alt="mastermethod"  />
-
+<p><img alt="mastermethod" loading="lazy" src="/img/comp202/matrix.jpg">
 根据图中的递归表达式，我们可以得出时间复杂度为O($n^3$)，很费钱。</p>
 <h3 id="strassens-algorithm">Strassen’s Algorithm<a hidden class="anchor" aria-hidden="true" href="#strassens-algorithm">#</a></h3>
 <p>理解了上面图中的东西，这个算法就很好理解了。这个人找到了一种方法，用更少的步骤就可以解决矩阵乘法。
 首先找到7个矩阵乘积</p>
 <table>
-<thead>
-<tr>
-<th>$S_1$</th>
-<th>$S_2$</th>
-<th>$S_3$</th>
-<th>$S_4$</th>
-<th>$S_5$</th>
-<th>$S_6$</th>
-<th>$S_7$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>a(f-h)</td>
-<td>(a+b)h</td>
-<td>(c+d)e</td>
-<td>d(g-e)</td>
-<td>(a+d)(e+h)</td>
-<td>(b-d)(g+h)</td>
-<td>(c-a)(e+f)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>$S_1$</th>
+          <th>$S_2$</th>
+          <th>$S_3$</th>
+          <th>$S_4$</th>
+          <th>$S_5$</th>
+          <th>$S_6$</th>
+          <th>$S_7$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>a(f-h)</td>
+          <td>(a+b)h</td>
+          <td>(c+d)e</td>
+          <td>d(g-e)</td>
+          <td>(a+d)(e+h)</td>
+          <td>(b-d)(g+h)</td>
+          <td>(c-a)(e+f)</td>
+      </tr>
+  </tbody>
 </table>
 <p>之后，结果可以用如下式子表示</p>
 <ul>
@@ -956,8 +899,8 @@ $$\sum_{i\in S} b_i(x_i/w_i)$$
 <p>🌰 举个例子，有三个物品123，W=5, w={1,4,3}, v={2,4,7}</p>
 <p>当我们考虑物品 2 时，假设我们选择了它。这将导致背包剩余承重为 5-4=1，我们无法再选择物品 3，因为它的重量超过了剩余承重。这种情况下，我们应该选择1，现在背包中物品的总价值为 v1 + v2 = 6。
 但是，如果我们不选择物品 2，这将保留足够的空间来容纳物品 3。在这种情况下，背包中物品的总价值为 v1 + v3 = 9，这比选择物品 2 的情况要高。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#007f7f">// i=1 (物品1)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">0</span>] = max(dp[<span style="color:#ff0;font-weight:bold">0</span>][<span style="color:#ff0;font-weight:bold">0</span>], dp[<span style="color:#ff0;font-weight:bold">0</span>][-<span style="color:#ff0;font-weight:bold">1</span>]) = <span style="color:#ff0;font-weight:bold">0</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#007f7f">// i=1 (物品1)
+</span></span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">0</span>] = max(dp[<span style="color:#ff0;font-weight:bold">0</span>][<span style="color:#ff0;font-weight:bold">0</span>], dp[<span style="color:#ff0;font-weight:bold">0</span>][-<span style="color:#ff0;font-weight:bold">1</span>]) = <span style="color:#ff0;font-weight:bold">0</span>
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">1</span>] = max(dp[<span style="color:#ff0;font-weight:bold">0</span>][<span style="color:#ff0;font-weight:bold">1</span>], dp[<span style="color:#ff0;font-weight:bold">0</span>][<span style="color:#ff0;font-weight:bold">0</span>] + <span style="color:#ff0;font-weight:bold">2</span>) = <span style="color:#ff0;font-weight:bold">2</span>
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">2</span>] = max(dp[<span style="color:#ff0;font-weight:bold">0</span>][<span style="color:#ff0;font-weight:bold">2</span>], dp[<span style="color:#ff0;font-weight:bold">0</span>][<span style="color:#ff0;font-weight:bold">1</span>] + <span style="color:#ff0;font-weight:bold">2</span>) = <span style="color:#ff0;font-weight:bold">2</span>
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">3</span>] = max(dp[<span style="color:#ff0;font-weight:bold">0</span>][<span style="color:#ff0;font-weight:bold">3</span>], dp[<span style="color:#ff0;font-weight:bold">0</span>][<span style="color:#ff0;font-weight:bold">2</span>] + <span style="color:#ff0;font-weight:bold">2</span>) = <span style="color:#ff0;font-weight:bold">2</span>
@@ -965,7 +908,7 @@ $$\sum_{i\in S} b_i(x_i/w_i)$$
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">5</span>] = max(dp[<span style="color:#ff0;font-weight:bold">0</span>][<span style="color:#ff0;font-weight:bold">5</span>], dp[<span style="color:#ff0;font-weight:bold">0</span>][<span style="color:#ff0;font-weight:bold">4</span>] + <span style="color:#ff0;font-weight:bold">2</span>) = <span style="color:#ff0;font-weight:bold">2</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// i=2 (物品2)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">0</span>] = max(dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">0</span>], dp[<span style="color:#ff0;font-weight:bold">1</span>][-<span style="color:#ff0;font-weight:bold">4</span>]) = <span style="color:#ff0;font-weight:bold">0</span>
+</span></span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">0</span>] = max(dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">0</span>], dp[<span style="color:#ff0;font-weight:bold">1</span>][-<span style="color:#ff0;font-weight:bold">4</span>]) = <span style="color:#ff0;font-weight:bold">0</span>
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">1</span>] = max(dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">1</span>], dp[<span style="color:#ff0;font-weight:bold">1</span>][-<span style="color:#ff0;font-weight:bold">3</span>]) = <span style="color:#ff0;font-weight:bold">2</span>
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">2</span>] = max(dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">2</span>], dp[<span style="color:#ff0;font-weight:bold">1</span>][-<span style="color:#ff0;font-weight:bold">2</span>]) = <span style="color:#ff0;font-weight:bold">2</span>
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">3</span>] = max(dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">3</span>], dp[<span style="color:#ff0;font-weight:bold">1</span>][-<span style="color:#ff0;font-weight:bold">1</span>]) = <span style="color:#ff0;font-weight:bold">2</span>
@@ -973,7 +916,7 @@ $$\sum_{i\in S} b_i(x_i/w_i)$$
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">5</span>] = max(dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">5</span>], dp[<span style="color:#ff0;font-weight:bold">1</span>][<span style="color:#ff0;font-weight:bold">1</span>] + <span style="color:#ff0;font-weight:bold">4</span>) = <span style="color:#ff0;font-weight:bold">6</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// i=3 (物品3)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>dp[<span style="color:#ff0;font-weight:bold">3</span>][<span style="color:#ff0;font-weight:bold">0</span>] = max(dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">0</span>], dp[<span style="color:#ff0;font-weight:bold">2</span>][-<span style="color:#ff0;font-weight:bold">3</span>]) = <span style="color:#ff0;font-weight:bold">0</span>
+</span></span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">3</span>][<span style="color:#ff0;font-weight:bold">0</span>] = max(dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">0</span>], dp[<span style="color:#ff0;font-weight:bold">2</span>][-<span style="color:#ff0;font-weight:bold">3</span>]) = <span style="color:#ff0;font-weight:bold">0</span>
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">3</span>][<span style="color:#ff0;font-weight:bold">1</span>] = max(dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">1</span>], dp[<span style="color:#ff0;font-weight:bold">2</span>][-<span style="color:#ff0;font-weight:bold">2</span>]) = <span style="color:#ff0;font-weight:bold">2</span>
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">3</span>][<span style="color:#ff0;font-weight:bold">2</span>] = max(dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">2</span>], dp[<span style="color:#ff0;font-weight:bold">2</span>][-<span style="color:#ff0;font-weight:bold">1</span>]) = <span style="color:#ff0;font-weight:bold">2</span>
 </span></span><span style="display:flex;"><span>dp[<span style="color:#ff0;font-weight:bold">3</span>][<span style="color:#ff0;font-weight:bold">3</span>] = max(dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">3</span>], dp[<span style="color:#ff0;font-weight:bold">2</span>][<span style="color:#ff0;font-weight:bold">0</span>] + <span style="color:#ff0;font-weight:bold">7</span>) = <span style="color:#ff0;font-weight:bold">7</span>
@@ -1090,20 +1033,25 @@ $$\sum_{i\in S} b_i(x_i/w_i)$$
 <p>如果一个有向图上任意两个点u, v都满足u reaches v，v reaches u，那么这个图是强连接</p>
 <p>有向图的cycle示例
 <div class="mermaid">
-    
+
 flowchart LR
 id1(A)-->id2(B)-->id3(C)
 id3-->id4(D)
 id4-->id6(E)-->id7(F)
 id7-->id1
 
-  </div></p>
+</div>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true });
+</script></p>
 <p>如果一个有向图没有cycle，这个有向图是acyclic。</p>
 <h2 id="dfs--bfs">DFS &amp; BFS<a hidden class="anchor" aria-hidden="true" href="#dfs--bfs">#</a></h2>
 <p>深度优先搜索和广度优先搜索的时间复杂度都是O(n+m），n表示图中节点的数量，m表示图中边的数量。因为在搜索过程中，每个节点都需要被访问，每条边也会被检查，因为需要通过边来找到节点的邻居。</p>
 <p>DFS使用栈实现，BFS使用队列实现。</p>
 <p>DFS实现</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">void</span> DFS(<span style="color:#fff;font-weight:bold">int</span> vertex, <span style="color:#fff;font-weight:bold">boolean</span> visited[]) {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">void</span> DFS(<span style="color:#fff;font-weight:bold">int</span> vertex, <span style="color:#fff;font-weight:bold">boolean</span> visited[]) {
 </span></span><span style="display:flex;"><span>    visited[vertex] = <span style="color:#fff;font-weight:bold">true</span>;
 </span></span><span style="display:flex;"><span>    System.<span style="color:#007f7f">out</span>.<span style="color:#007f7f">print</span>(vertex + <span style="color:#0ff;font-weight:bold">&#34; &#34;</span>);
 </span></span><span style="display:flex;"><span>
@@ -1119,7 +1067,7 @@ id7-->id1
 </span></span><span style="display:flex;"><span>    DFS(vertex, visited);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>BFS实现</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">void</span> BFS(<span style="color:#fff;font-weight:bold">int</span> vertex) {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">void</span> BFS(<span style="color:#fff;font-weight:bold">int</span> vertex) {
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">boolean</span> visited[] = <span style="color:#fff;font-weight:bold">new</span> <span style="color:#fff;font-weight:bold">boolean</span>[numVertices];
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        LinkedList&lt;Integer&gt; queue = <span style="color:#fff;font-weight:bold">new</span> LinkedList&lt;&gt;();
@@ -1160,7 +1108,7 @@ id7-->id1
 </blockquote>
 <p>最大流问题：有一个有向图，其中每条边都有一定的容量。还有两个特殊的节点：源节点（source）和汇点（sink）。目标是找到一种方式，使得从源节点到汇点的流量最大，同时遵守每条边的容量限制。下面是最大流问题的图。
 <div class="mermaid">
-    
+
 flowchart LR
 id1(s)--3/7-->id2(v1)--2/2-->id3(v4)--6/6-->id4(t)
 id2--1/1-->id5--4/5-->id3
@@ -1168,7 +1116,12 @@ id1--5/5-->id5(v3)--2/3-->id4
 id1--6/6-->id6(v2)--6/9-->id7(v5)--6/8-->id4
 id6--0/3-->id5
 
-  </div>
+</div>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true });
+</script>
 数字的含义：3/7，该条边承担的最大流量为7，现在通过已经这条边的流量为3。</p>
 <p>Ford-Fulkerson algorithm的重要思想</p>
 <ul>
@@ -1235,7 +1188,7 @@ Max-Flow的值等于Min-cut的容量</p>
 <li>一种找最大公约数的算法</li>
 <li>如果$a\ge b &gt; 0$，gcd(a, b) = gcd(b, a mod b)</li>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>  <span style="color:#fff;font-weight:bold">while</span> b!=0 do
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>  <span style="color:#fff;font-weight:bold">while</span> b!=0 do
 </span></span><span style="display:flex;"><span>  (a,b)&lt;-(b,a mod b)
 </span></span><span style="display:flex;"><span>  <span style="color:#fff;font-weight:bold">return</span> a
 </span></span></code></pre></div></li>
@@ -1311,7 +1264,7 @@ Max-Flow的值等于Min-cut的容量</p>
 <p>RSA解密</p>
 <ul>
 <li>$M = C^d$ mod $n$</li>
-<li><a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Proofs_of_correctness">证明过程在这里</a></li>
+<li><a href="https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Proofs_of_correctness">证明过程在这里</a></li>
 </ul>
 <h1 id="np-complete">NP Complete<a hidden class="anchor" aria-hidden="true" href="#np-complete">#</a></h1>
 <h2 id="hard-computational-problems">Hard computational problems<a hidden class="anchor" aria-hidden="true" href="#hard-computational-problems">#</a></h2>
@@ -1387,15 +1340,6 @@ Max-Flow的值等于Min-cut的容量</p>
     <span>High-level Petri Net(COMP201)</span>
   </a>
 </nav>
-<script src="https://utteranc.es/client.js"
-        repo="oudushu/utterances"
-        issue-term="title"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
 
   </footer><script src="https://utteranc.es/client.js"
     repo="MartinRepo/utterancesInblog"
@@ -1409,24 +1353,13 @@ Max-Flow的值等于Min-cut的容量</p>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+        <span>&copy; 2026 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        <br> 
-        
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
     </span>
-    
-    <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv">
-        被访问了<span id="busuanzi_value_site_pv"></span>次
-    </span>
-    <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人
-    </span>
-    </div>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -1435,9 +1368,14 @@ Max-Flow的值等于Min-cut的容量</p>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -1478,11 +1416,12 @@ Max-Flow的值等于Min-cut的容量</p>
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
@@ -1534,6 +1473,7 @@ Max-Flow的值等于Min-cut的容量</p>
             codeblock.parentNode.appendChild(copybutton);
         }
     });
-</script></body>
+</script>
+</body>
 
 </html>

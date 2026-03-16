@@ -4,17 +4,43 @@
     <title>时序预测 on Martin&#39;s space</title>
     <link>https://martinspace.top/zh/tags/%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B/</link>
     <description>Recent content in 时序预测 on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 01 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Feb 2025 10:39:49 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/tags/%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>时序分析/预测</title>
       <link>https://martinspace.top/zh/data-analysis/</link>
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/data-analysis/</guid>
-      <description>记录一些基础方法 时间序列 可视化三种时间序列 Brownian motion (stochastic process) Lorenz attractor (chaotic system) Lotka-Volterra system (deterministic system of differential equations) 随机过程是一种非确定性的过程，即其未来状态依赖于概率分布，无法通过确</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;记录一些基础方法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;时间序列&#34;&gt;时间序列&lt;/h1&gt;
+&lt;h2 id=&#34;可视化三种时间序列&#34;&gt;可视化三种时间序列&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Brownian motion (stochastic process)&lt;/li&gt;
+&lt;li&gt;Lorenz attractor (chaotic system)&lt;/li&gt;
+&lt;li&gt;Lotka-Volterra system (deterministic system of differential equations)
+&lt;img alt=&#34;three types of time series&#34; loading=&#34;lazy&#34; src=&#34;https://martinspace.top/img/ddbi/3types_time_series.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;随机过程是一种非确定性的过程，即其未来状态依赖于概率分布，无法通过确定的数学公式精确预测。布朗运动（Brownian Motion）是一种典型的随机过程，常见于金融市场、分子扩散等领域。&lt;/li&gt;
+&lt;li&gt;混沌系统是一类确定性但不可预测的系统，即尽管系统是由确定性的方程描述的，但对初始条件极其敏感，导致长期行为难以预测。洛伦兹系统（Lorenz System）是一个经典的混沌系统，最早由 Edward Lorenz 研究气象现象时提出。其特征包括：
+&lt;ul&gt;
+&lt;li&gt;由确定性方程控制（如微分方程）。&lt;/li&gt;
+&lt;li&gt;对初始条件极其敏感（“蝴蝶效应”）。&lt;/li&gt;
+&lt;li&gt;具有某种结构（如吸引子），但长期行为是不可预测的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;确定性系统是完全由数学规则或方程所控制的系统，即 如果初始条件相同，每次运行都会得到相同的结果。洛特卡-沃尔泰拉（Lotka-Volterra）方程描述了捕食者（如狼）和被捕食者（如兔子）种群的动态变化。这类系统的特征包括：
+&lt;ul&gt;
+&lt;li&gt;未来状态由当前状态唯一决定。&lt;/li&gt;
+&lt;li&gt;没有随机性，系统演化完全可预测。&lt;/li&gt;
+&lt;li&gt;在生物学、物理学、化学等领域有广泛应用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;数据填充技术&#34;&gt;数据填充技术&lt;/h2&gt;
+&lt;p&gt;这主要用于处理时间序列上的缺失值，主要有三种方法&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

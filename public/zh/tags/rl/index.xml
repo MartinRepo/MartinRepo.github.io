@@ -4,17 +4,24 @@
     <title>RL on Martin&#39;s space</title>
     <link>https://martinspace.top/zh/tags/rl/</link>
     <description>Recent content in RL on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 01 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/rl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 May 2025 23:22:23 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/tags/rl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>强化学习</title>
       <link>https://martinspace.top/zh/rl-note/</link>
       <pubDate>Sat, 01 Feb 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/rl-note/</guid>
-      <description>多臂老虎机问题(MAB) 符号&amp;amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，</description>
+      <description>&lt;h1 id=&#34;多臂老虎机问题mab&#34;&gt;多臂老虎机问题(MAB)&lt;/h1&gt;
+&lt;h2 id=&#34;符号问题定义&#34;&gt;符号&amp;amp;问题定义&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;大写斜体表示随机变量，例如$A, R, A_t, R_t$&lt;/li&gt;
+&lt;li&gt;小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$}&lt;/li&gt;
+&lt;li&gt;花体，区间等表示集合，例如$\mathcal{A}, [0, 1], \mathbb{N}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Given: a set of k actions, $\mathcal{A}$, number of rounds T.
+Repeat for t in T rounds:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

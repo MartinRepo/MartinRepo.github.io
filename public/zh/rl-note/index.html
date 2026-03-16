@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +7,18 @@
 <meta name="robots" content="index, follow">
 <title>强化学习 | Martin&#39;s space</title>
 <meta name="keywords" content="RL">
-<meta name="description" content="多臂老虎机问题(MAB) 符号&amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，">
+<meta name="description" content="多臂老虎机问题(MAB)
+符号&amp;问题定义
+
+大写斜体表示随机变量，例如$A, R, A_t, R_t$
+小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$}
+花体，区间等表示集合，例如$\mathcal{A}, [0, 1], \mathbb{N}$
+
+Given: a set of k actions, $\mathcal{A}$, number of rounds T.
+Repeat for t in T rounds:">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/rl-note/">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.33446ce70373ca1f19994ac816c97a1b65ae46bd7944d026cdb4b723d0bc5887.css" integrity="sha256-M0Rs5wNzyh8ZmUrIFsl6G2WuRr15RNAmzbS3I9C8WIc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/icebear.jpg">
@@ -41,62 +44,69 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+</noscript>
 <script>
-        MathJax = {
-          tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-          },
-          svg: {
-            fontCache: 'global'
-          }
-        };
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="强化学习" />
-<meta property="og:description" content="多臂老虎机问题(MAB) 符号&amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://martinspace.top/zh/rl-note/" />
-<meta property="og:image" content="https://martinspace.top/zh/rl-note/img/rl-note/whatisrl.png" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2025-02-01T10:39:49+00:00" />
-<meta property="article:modified_time" content="2025-05-01T23:22:23+00:00" />
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://martinspace.top/zh/rl-note/img/rl-note/whatisrl.png" />
-<meta name="twitter:title" content="强化学习"/>
-<meta name="twitter:description" content="多臂老虎机问题(MAB) 符号&amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，"/>
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-J8TFFL1ZS7');
+        }
+      </script><meta property="og:url" content="https://martinspace.top/zh/rl-note/">
+  <meta property="og:site_name" content="Martin&#39;s space">
+  <meta property="og:title" content="强化学习">
+  <meta property="og:description" content="多臂老虎机问题(MAB) 符号&amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，区间等表示集合，例如$\mathcal{A}, [0, 1], \mathbb{N}$ Given: a set of k actions, $\mathcal{A}$, number of rounds T. Repeat for t in T rounds:">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-02-01T10:39:49+00:00">
+    <meta property="article:modified_time" content="2025-05-01T23:22:23+00:00">
+    <meta property="article:tag" content="RL">
+    <meta property="og:image" content="https://martinspace.top/zh/rl-note/img/rl-note/whatisrl.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://martinspace.top/zh/rl-note/img/rl-note/whatisrl.png">
+  <meta name="twitter:title" content="强化学习">
+  <meta name="twitter:description" content="多臂老虎机问题(MAB) 符号&amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，区间等表示集合，例如$\mathcal{A}, [0, 1], \mathbb{N}$ Given: a set of k actions, $\mathcal{A}$, number of rounds T. Repeat for t in T rounds:">
 
 
 <script type="application/ld+json">
@@ -131,7 +141,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "强化学习",
   "name": "强化学习",
-  "description": "多臂老虎机问题(MAB) 符号\u0026amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，",
+  "description": "多臂老虎机问题(MAB) 符号\u0026amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，区间等表示集合，例如$\\mathcal{A}, [0, 1], \\mathbb{N}$ Given: a set of k actions, $\\mathcal{A}$, number of rounds T. Repeat for t in T rounds:\n",
   "keywords": [
     "RL"
   ],
@@ -159,32 +169,15 @@ if (!doNotTrack) {
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-
-
-<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
                 <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
                     height="35">Martin&#39;s space</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -204,12 +197,12 @@ if (!doNotTrack) {
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://martinspace.top/en/" title="English"
-                            aria-label="English">English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://martinspace.top/en/" title="English"
+                                aria-label="English">English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
@@ -272,161 +265,101 @@ if (!doNotTrack) {
   </header> 
 <figure class="entry-cover1"><img loading="lazy" src="https://martinspace.top/img/rl-note/whatisrl.png" alt="what-is-rl">
         
-</figure><aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details  open>
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+</figure><div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#%e5%a4%9a%e8%87%82%e8%80%81%e8%99%8e%e6%9c%ba%e9%97%ae%e9%a2%98mab" aria-label="多臂老虎机问题(MAB)">多臂老虎机问题(MAB)</a><ul>
-                            
-                    <li>
-                        <a href="#%e7%ac%a6%e5%8f%b7%e9%97%ae%e9%a2%98%e5%ae%9a%e4%b9%89" aria-label="符号&amp;amp;问题定义">符号&amp;问题定义</a></li>
-                    <li>
-                        <a href="#%e9%97%ae%e9%a2%98%e6%a0%b8%e5%bf%83explore-exploit-dilemma" aria-label="问题核心(Explore-exploit dilemma)">问题核心(Explore-exploit dilemma)</a></li>
-                    <li>
-                        <a href="#%e9%97%ae%e9%a2%98%e7%ae%97%e6%b3%95" aria-label="问题算法">问题算法</a><ul>
-                            
-                    <li>
-                        <a href="#action-value-methods" aria-label="Action-Value Methods">Action-Value Methods</a></li>
-                    <li>
-                        <a href="#epsilon--greedy-action-selection" aria-label="$\epsilon$- Greedy Action Selection">$\epsilon$- Greedy Action Selection</a></li>
-                    <li>
-                        <a href="#non-stationary-problem" aria-label="Non-Stationary Problem">Non-Stationary Problem</a></li>
-                    <li>
-                        <a href="#stochastic-approximation-convergence-conditions" aria-label="Stochastic Approximation Convergence Conditions">Stochastic Approximation Convergence Conditions</a></li>
-                    <li>
-                        <a href="#upper-confidence-bound-ucb" aria-label="Upper Confidence Bound (UCB)">Upper Confidence Bound (UCB)</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e5%86%b3%e7%ad%96%e8%bf%87%e7%a8%8bmdps" aria-label="马尔可夫决策过程(MDPs)">马尔可夫决策过程(MDPs)</a><ul>
-                            
-                    <li>
-                        <a href="#%e7%90%86%e8%ae%ba%e6%a1%86%e6%9e%b6" aria-label="理论框架">理论框架</a></li>
-                    <li>
-                        <a href="#%e6%a0%b8%e5%bf%83%e6%95%b0%e5%ad%a6%e6%a6%82%e5%bf%b5%e5%87%bd%e6%95%b0" aria-label="核心数学概念&amp;amp;函数">核心数学概念&amp;函数</a><ul>
-                            
-                    <li>
-                        <a href="#policy" aria-label="Policy">Policy</a></li>
-                    <li>
-                        <a href="#returns%e5%9b%9e%e6%8a%a5" aria-label="Returns（回报）">Returns（回报）</a></li>
-                    <li>
-                        <a href="#value-functions" aria-label="Value Functions">Value Functions</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92" aria-label="动态规划">动态规划</a><ul>
-                            
-                    <li>
-                        <a href="#dp-algo1-policy-iteration" aria-label="DP Algo1: Policy Iteration">DP Algo1: Policy Iteration</a><ul>
-                            
-                    <li>
-                        <a href="#iterative-policy-evaluation" aria-label="Iterative policy evaluation">Iterative policy evaluation</a></li>
-                    <li>
-                        <a href="#policy-improvement" aria-label="Policy Improvement">Policy Improvement</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#dp-algo2-value-iteration" aria-label="DP Algo2: Value Iteration">DP Algo2: Value Iteration</a></li>
-                    <li>
-                        <a href="#asynchronous-and-generalised-dp" aria-label="Asynchronous and generalised DP">Asynchronous and generalised DP</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e8%92%99%e7%89%b9%e5%8d%a1%e6%b4%9b%e6%96%b9%e6%b3%95" aria-label="蒙特卡洛方法">蒙特卡洛方法</a></li>
-                    <li>
-                        <a href="#temporal-difference-learning" aria-label="Temporal Difference Learning">Temporal Difference Learning</a><ul>
-                            
-                    <li>
-                        <a href="#td-policy-evaluation" aria-label="TD policy evaluation">TD policy evaluation</a></li>
-                    <li>
-                        <a href="#td-control" aria-label="TD control">TD control</a><ul>
-                            
-                    <li>
-                        <a href="#sarsa" aria-label="Sarsa">Sarsa</a></li>
-                    <li>
-                        <a href="#q-learning" aria-label="Q-learning">Q-learning</a></li>
-                    <li>
-                        <a href="#cliff-walking" aria-label="Cliff Walking">Cliff Walking</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#n-steps-td-methods" aria-label="n-steps TD methods">n-steps TD methods</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#planning-and-learning" aria-label="Planning and Learning">Planning and Learning</a></li>
-                    <li>
-                        <a href="#value-function-approximation" aria-label="Value function approximation">Value function approximation</a></li>
-                    <li>
-                        <a href="#policy-gradient-methods" aria-label="Policy Gradient Methods">Policy Gradient Methods</a></li>
-                    <li>
-                        <a href="#reference" aria-label="Reference">Reference</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e5%a4%9a%e8%87%82%e8%80%81%e8%99%8e%e6%9c%ba%e9%97%ae%e9%a2%98mab" aria-label="多臂老虎机问题(MAB)">多臂老虎机问题(MAB)</a><ul>
+                        
+                <li>
+                    <a href="#%e7%ac%a6%e5%8f%b7%e9%97%ae%e9%a2%98%e5%ae%9a%e4%b9%89" aria-label="符号&amp;问题定义">符号&amp;问题定义</a></li>
+                <li>
+                    <a href="#%e9%97%ae%e9%a2%98%e6%a0%b8%e5%bf%83explore-exploit-dilemma" aria-label="问题核心(Explore-exploit dilemma)">问题核心(Explore-exploit dilemma)</a></li>
+                <li>
+                    <a href="#%e9%97%ae%e9%a2%98%e7%ae%97%e6%b3%95" aria-label="问题算法">问题算法</a><ul>
+                        
+                <li>
+                    <a href="#action-value-methods" aria-label="Action-Value Methods">Action-Value Methods</a></li>
+                <li>
+                    <a href="#epsilon--greedy-action-selection" aria-label="$\epsilon$- Greedy Action Selection">$\epsilon$- Greedy Action Selection</a></li>
+                <li>
+                    <a href="#non-stationary-problem" aria-label="Non-Stationary Problem">Non-Stationary Problem</a></li>
+                <li>
+                    <a href="#stochastic-approximation-convergence-conditions" aria-label="Stochastic Approximation Convergence Conditions">Stochastic Approximation Convergence Conditions</a></li>
+                <li>
+                    <a href="#upper-confidence-bound-ucb" aria-label="Upper Confidence Bound (UCB)">Upper Confidence Bound (UCB)</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e5%86%b3%e7%ad%96%e8%bf%87%e7%a8%8bmdps" aria-label="马尔可夫决策过程(MDPs)">马尔可夫决策过程(MDPs)</a><ul>
+                        
+                <li>
+                    <a href="#%e7%90%86%e8%ae%ba%e6%a1%86%e6%9e%b6" aria-label="理论框架">理论框架</a></li>
+                <li>
+                    <a href="#%e6%a0%b8%e5%bf%83%e6%95%b0%e5%ad%a6%e6%a6%82%e5%bf%b5%e5%87%bd%e6%95%b0" aria-label="核心数学概念&amp;函数">核心数学概念&amp;函数</a><ul>
+                        
+                <li>
+                    <a href="#policy" aria-label="Policy">Policy</a></li>
+                <li>
+                    <a href="#returns%e5%9b%9e%e6%8a%a5" aria-label="Returns（回报）">Returns（回报）</a></li>
+                <li>
+                    <a href="#value-functions" aria-label="Value Functions">Value Functions</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92" aria-label="动态规划">动态规划</a><ul>
+                        
+                <li>
+                    <a href="#dp-algo1-policy-iteration" aria-label="DP Algo1: Policy Iteration">DP Algo1: Policy Iteration</a><ul>
+                        
+                <li>
+                    <a href="#iterative-policy-evaluation" aria-label="Iterative policy evaluation">Iterative policy evaluation</a></li>
+                <li>
+                    <a href="#policy-improvement" aria-label="Policy Improvement">Policy Improvement</a></li></ul>
+                </li>
+                <li>
+                    <a href="#dp-algo2-value-iteration" aria-label="DP Algo2: Value Iteration">DP Algo2: Value Iteration</a></li>
+                <li>
+                    <a href="#asynchronous-and-generalised-dp" aria-label="Asynchronous and generalised DP">Asynchronous and generalised DP</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%92%99%e7%89%b9%e5%8d%a1%e6%b4%9b%e6%96%b9%e6%b3%95" aria-label="蒙特卡洛方法">蒙特卡洛方法</a></li>
+                <li>
+                    <a href="#temporal-difference-learning" aria-label="Temporal Difference Learning">Temporal Difference Learning</a><ul>
+                        
+                <li>
+                    <a href="#td-policy-evaluation" aria-label="TD policy evaluation">TD policy evaluation</a></li>
+                <li>
+                    <a href="#td-control" aria-label="TD control">TD control</a><ul>
+                        
+                <li>
+                    <a href="#sarsa" aria-label="Sarsa">Sarsa</a></li>
+                <li>
+                    <a href="#q-learning" aria-label="Q-learning">Q-learning</a></li>
+                <li>
+                    <a href="#cliff-walking" aria-label="Cliff Walking">Cliff Walking</a></li></ul>
+                </li>
+                <li>
+                    <a href="#n-steps-td-methods" aria-label="n-steps TD methods">n-steps TD methods</a></li></ul>
+                </li>
+                <li>
+                    <a href="#planning-and-learning" aria-label="Planning and Learning">Planning and Learning</a></li>
+                <li>
+                    <a href="#value-function-approximation" aria-label="Value function approximation">Value function approximation</a></li>
+                <li>
+                    <a href="#policy-gradient-methods" aria-label="Policy Gradient Methods">Policy Gradient Methods</a></li>
+                <li>
+                    <a href="#reference" aria-label="Reference">Reference</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
   <div class="post-content"><h1 id="多臂老虎机问题mab">多臂老虎机问题(MAB)<a hidden class="anchor" aria-hidden="true" href="#多臂老虎机问题mab">#</a></h1>
 <h2 id="符号问题定义">符号&amp;问题定义<a hidden class="anchor" aria-hidden="true" href="#符号问题定义">#</a></h2>
 <ul>
@@ -482,17 +415,17 @@ exploration(随机选择action)表示为
 $$
 A_t\sim\text{Unif}(\mathcal{A})
 $$</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">def</span> epsilon_greedy(Q, epsilon, actions):
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">def</span> epsilon_greedy(Q, epsilon, actions):
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">if</span> np.random.rand() &lt; epsilon:
 </span></span><span style="display:flex;"><span>        <span style="color:#007f7f"># 以概率 epsilon 进行探索</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> np.random.choice(actions)
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">else</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#007f7f"># 以概率 (1 - epsilon) 选择当前最优动作</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> np.argmax(Q)
-</span></span><span style="display:flex;"><span>    self.execute(A_t)
-</span></span><span style="display:flex;"><span>    self.observe(R_t)
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">self</span>.execute(A_t)
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">self</span>.observe(R_t)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    self.update(N_t_a, Q_t_a)
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">self</span>.update(N_t_a, Q_t_a)
 </span></span></code></pre></div><p>如何在递增的同时避免重复计算？
 $$
 Q_n = \frac{R_1 + &hellip; + R_{n-1}}{n-1}
@@ -554,7 +487,7 @@ $$
 <li>$ Q_t(a) $ 代表 <strong>利用</strong>（Exploitation）：倾向于选择历史上表现最好的动作。</li>
 <li>$ \sqrt{\frac{\ln t}{N_t(a)}} $ 代表 <strong>探索</strong>（Exploration）：当某个动作选择次数$N_t(a)$很小时，该项较大，鼓励探索。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">import</span> numpy <span style="color:#fff;font-weight:bold">as</span> np
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">import</span> numpy <span style="color:#fff;font-weight:bold">as</span> np
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">def</span> UCB(Q, N, t, c=<span style="color:#ff0;font-weight:bold">1.0</span>):
 </span></span><span style="display:flex;"><span>    ucb_values = Q + c * np.sqrt(np.log(t) / (N + <span style="color:#ff0;font-weight:bold">1e-5</span>))  <span style="color:#007f7f"># 避免除零错误</span>
@@ -590,115 +523,115 @@ $$
 <li>Rewards: number of cans collected</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>$s$</th>
-<th>$a$</th>
-<th>$s'$</th>
-<th>$p(s&rsquo;\mid s, a)$</th>
-<th>$r(s, a, s&rsquo;)$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>high</td>
-<td>search</td>
-<td>high</td>
-<td>$\alpha$</td>
-<td>$r_{\text{research}}$</td>
-</tr>
-<tr>
-<td>high</td>
-<td>search</td>
-<td>low</td>
-<td>$1 - \alpha$</td>
-<td>$r_{\text{research}}$</td>
-</tr>
-<tr>
-<td>low</td>
-<td>search</td>
-<td>high</td>
-<td>$1 - \beta$</td>
-<td>-3</td>
-</tr>
-<tr>
-<td>low</td>
-<td>search</td>
-<td>low</td>
-<td>$\beta$</td>
-<td>$r_{\text{research}}$</td>
-</tr>
-<tr>
-<td>high</td>
-<td>wait</td>
-<td>high</td>
-<td>1</td>
-<td>$r_{\text{wait}}$</td>
-</tr>
-<tr>
-<td>high</td>
-<td>wait</td>
-<td>low</td>
-<td>0</td>
-<td>-</td>
-</tr>
-<tr>
-<td>low</td>
-<td>wait</td>
-<td>high</td>
-<td>0</td>
-<td>-</td>
-</tr>
-<tr>
-<td>low</td>
-<td>wait</td>
-<td>low</td>
-<td>1</td>
-<td>$r_{\text{wait}}$</td>
-</tr>
-<tr>
-<td>high</td>
-<td>recharge</td>
-<td>high</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>high</td>
-<td>recharge</td>
-<td>low</td>
-<td>0</td>
-<td>-</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>$s$</th>
+          <th>$a$</th>
+          <th>$s'$</th>
+          <th>$p(s&rsquo;\mid s, a)$</th>
+          <th>$r(s, a, s&rsquo;)$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>high</td>
+          <td>search</td>
+          <td>high</td>
+          <td>$\alpha$</td>
+          <td>$r_{\text{research}}$</td>
+      </tr>
+      <tr>
+          <td>high</td>
+          <td>search</td>
+          <td>low</td>
+          <td>$1 - \alpha$</td>
+          <td>$r_{\text{research}}$</td>
+      </tr>
+      <tr>
+          <td>low</td>
+          <td>search</td>
+          <td>high</td>
+          <td>$1 - \beta$</td>
+          <td>-3</td>
+      </tr>
+      <tr>
+          <td>low</td>
+          <td>search</td>
+          <td>low</td>
+          <td>$\beta$</td>
+          <td>$r_{\text{research}}$</td>
+      </tr>
+      <tr>
+          <td>high</td>
+          <td>wait</td>
+          <td>high</td>
+          <td>1</td>
+          <td>$r_{\text{wait}}$</td>
+      </tr>
+      <tr>
+          <td>high</td>
+          <td>wait</td>
+          <td>low</td>
+          <td>0</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>low</td>
+          <td>wait</td>
+          <td>high</td>
+          <td>0</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>low</td>
+          <td>wait</td>
+          <td>low</td>
+          <td>1</td>
+          <td>$r_{\text{wait}}$</td>
+      </tr>
+      <tr>
+          <td>high</td>
+          <td>recharge</td>
+          <td>high</td>
+          <td>1</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>high</td>
+          <td>recharge</td>
+          <td>low</td>
+          <td>0</td>
+          <td>-</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="核心数学概念函数">核心数学概念&amp;函数<a hidden class="anchor" aria-hidden="true" href="#核心数学概念函数">#</a></h2>
 <h3 id="policy">Policy<a hidden class="anchor" aria-hidden="true" href="#policy">#</a></h3>
 <p>马尔可夫决策过程由policy控制。</p>
 <p>$\pi(a\mid s) = $ 在状态$s$的情况下选择动作$a$的概率</p>
 <table>
-<thead>
-<tr>
-<th>$\pi(a\mid s)$</th>
-<th>search</th>
-<th>wait</th>
-<th>recharge</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>high</td>
-<td>0.9</td>
-<td>0.1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>low</td>
-<td>0.2</td>
-<td>0.3</td>
-<td>0.5</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>$\pi(a\mid s)$</th>
+          <th>search</th>
+          <th>wait</th>
+          <th>recharge</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>high</td>
+          <td>0.9</td>
+          <td>0.1</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>low</td>
+          <td>0.2</td>
+          <td>0.3</td>
+          <td>0.5</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p>Agent的目标就是学一个能最大化累积奖励的策略</p>
@@ -720,8 +653,7 @@ $\gamma$是折扣因子，用于降低远期奖励的价值。</p>
 <p>这适用于无限回合任务，例如股票交易策略，智能体持续进行交易，没有固定结束时间。</p>
 <h3 id="value-functions">Value Functions<a hidden class="anchor" aria-hidden="true" href="#value-functions">#</a></h3>
 <p>这张图给一个overview
-<img loading="lazy" src="/img/rl-note/value_function.png" alt="main quantities"  />
-
+<img alt="main quantities" loading="lazy" src="/img/rl-note/value_function.png">
 <strong>Bellman Equation</strong>
 在强化学习和马尔可夫决策过程中，贝尔曼方程用于描述状态值函数和动作值函数的递归关系。这两是强化学习中求解最优策略的重要数学工具。</p>
 <p><strong>State Value Function and the Bellman Equation</strong></p>
@@ -779,7 +711,7 @@ $$
 $$</p>
 <h3 id="iterative-policy-evaluation">Iterative policy evaluation<a hidden class="anchor" aria-hidden="true" href="#iterative-policy-evaluation">#</a></h3>
 <p>伪代码如下</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>Input: pi, the policy to be evaluated
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>Input: pi, the policy to be evaluated
 </span></span><span style="display:flex;"><span>Initialize an array V(s) = 0, for all s
 </span></span><span style="display:flex;"><span>Repeat
 </span></span><span style="display:flex;"><span>    delta &lt;- 0
@@ -804,8 +736,7 @@ v_{k+1}(s) = \max_a \sum_{s&rsquo;, r}p(s&rsquo;, r\mid s, a) [r+\gamma v_k(s&rs
 $$
 其中$s\in S$</p>
 <p>Value iteration的伪代码如下
-<img loading="lazy" src="/img/rl-note/value_iteration.png" alt="value iteration"  />
-</p>
+<img alt="value iteration" loading="lazy" src="/img/rl-note/value_iteration.png"></p>
 <h2 id="asynchronous-and-generalised-dp">Asynchronous and generalised DP<a hidden class="anchor" aria-hidden="true" href="#asynchronous-and-generalised-dp">#</a></h2>
 <p>目前为止，动态规划方法执行的是穷举。如果状态空间很大，policy evaluation and improvement就不可计算了。</p>
 <p>异步动态规划方法避免了标准动态规划中必须同时更新所有状态的限制，而是选择性地更新某些状态，以提高计算效率和收敛速度。</p>
@@ -856,8 +787,7 @@ $$
 <p>所以，Sarsa和Q-learning不仅在评估，而且还在改进策略。</p>
 <h3 id="cliff-walking">Cliff Walking<a hidden class="anchor" aria-hidden="true" href="#cliff-walking">#</a></h3>
 <p>用经典的悬崖行走问题来对比Sarsa和Q-Learning在策略学习上的差异。
-<img loading="lazy" src="/img/rl-note/cliff_walking.png" alt="cliff walking"  />
-
+<img alt="cliff walking" loading="lazy" src="/img/rl-note/cliff_walking.png">
 场景是这样，起点是S，终点是G，中间灰色是悬崖区域，一旦掉进去就-100然后重回起点，其他区域每一步奖励-1，每一步都用$\epsilon$-greedy来选择action。</p>
 <p>在训练过程中，Sarsa更新的是自己实际经历的轨迹上的$Q(s, a)$, 因为它是On-policy，所以它避免靠近悬崖边，以防止$\epsilon$探索时不小心掉进去。结果是学到一个更保守但更稳定的路径（图中蓝色轨迹），牺牲了一点效率，但回报更高更稳定。</p>
 <p>Q-learning更新的是理想中的最优策略(用最大的Q更新，哪怕当前没执行这个策略)。它学出来的策略更激进，会选择贴着悬崖走（图中红线），因为理论上这是最短路径、能最快到达终点、减少累计-1奖励。但现实中它使用$\epsilon$-greedy探索，一不小心探索出错就掉悬崖，得-100。所以虽然路径理论最优，但训练中平均回报更差、更不稳定。</p>
@@ -902,15 +832,6 @@ $$</p>
     <span>时序分析/预测</span>
   </a>
 </nav>
-<script src="https://utteranc.es/client.js"
-        repo="oudushu/utterances"
-        issue-term="title"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
 
   </footer><script src="https://utteranc.es/client.js"
     repo="MartinRepo/utterancesInblog"
@@ -924,24 +845,13 @@ $$</p>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+        <span>&copy; 2026 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        <br> 
-        
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
     </span>
-    
-    <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv">
-        被访问了<span id="busuanzi_value_site_pv"></span>次
-    </span>
-    <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人
-    </span>
-    </div>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -950,9 +860,14 @@ $$</p>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -993,11 +908,12 @@ $$</p>
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
@@ -1049,6 +965,7 @@ $$</p>
             codeblock.parentNode.appendChild(copybutton);
         }
     });
-</script></body>
+</script>
+</body>
 
 </html>

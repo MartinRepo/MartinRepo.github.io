@@ -4,17 +4,69 @@
     <title>Finance on Martin&#39;s space</title>
     <link>https://martinspace.top/zh/tags/finance/</link>
     <description>Recent content in Finance on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 05 Feb 2023 08:42:27 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/finance/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Feb 2023 08:42:27 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/tags/finance/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>金融市场交易(COMP226)</title>
       <link>https://martinspace.top/zh/comp226/</link>
       <pubDate>Sun, 05 Feb 2023 08:42:27 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/comp226/</guid>
-      <description>R语言基础（W1） 基本数据类型 character(string) logical(boolean) numeric(number) factors(categories) factors表示分类，将分类数据存储为整数向量。下面用代码解释 # 创建一个性别的factor &amp;gt; gender &amp;lt;- fa</description>
+      <description>&lt;h1 id=&#34;r语言基础w1&#34;&gt;R语言基础（W1）&lt;/h1&gt;
+&lt;h2 id=&#34;基本数据类型&#34;&gt;基本数据类型&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;character(string)&lt;/li&gt;
+&lt;li&gt;logical(boolean)&lt;/li&gt;
+&lt;li&gt;numeric(number)&lt;/li&gt;
+&lt;li&gt;factors(categories)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;factors表示分类，将分类数据存储为整数向量。下面用代码解释&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-R&#34; data-lang=&#34;R&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007f7f&#34;&gt;# 创建一个性别的factor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; gender &amp;lt;- factor(c(&lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;男&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;女&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;女&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;男&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;男&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007f7f&#34;&gt;# 显示gender对象的水平(分类)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; levels(gender)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[1] &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;女&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#0ff;font-weight:bold&#34;&gt;&amp;#34;男&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007f7f&#34;&gt;# 显示gender对象的摘要信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; summary(gender)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;女 男 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#ff0;font-weight:bold&#34;&gt;2&lt;/span&gt;  &lt;span style=&#34;color:#ff0;font-weight:bold&#34;&gt;3&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007f7f&#34;&gt;# 显示gender对象中每个水平的计数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; table(gender)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gender
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;女 男 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff0;font-weight:bold&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#ff0;font-weight:bold&#34;&gt;3&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;is和as的区别&#34;&gt;is和as的区别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;is.***()&lt;/code&gt;函数用于判断一个对象是否属于某个特定的类别，返回一个逻辑值。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;as.***()&lt;/code&gt;函数则用于将一个对象转换为指定的类别，返回一个转换后的对象。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;vector和list的区别&#34;&gt;vector和list的区别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;类型：
+&lt;ul&gt;
+&lt;li&gt;vector是一种简单的数据结构，其中所有元素必须是相同的类型。&lt;/li&gt;
+&lt;li&gt;list是一种复杂的数据结构，其中每个元素可以是任意类型的对象。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;长度：
+&lt;ul&gt;
+&lt;li&gt;vector必须是一个固定长度，一旦创建就不能更改。&lt;/li&gt;
+&lt;li&gt;list的长度是可变的，可以随时添加或删除元素。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;索引：
+&lt;ul&gt;
+&lt;li&gt;vector中的元素可以使用整数索引来访问，例如&lt;code&gt;x[1]&lt;/code&gt;表示访问&lt;code&gt;x&lt;/code&gt;中的第一个元素。&lt;/li&gt;
+&lt;li&gt;list中的元素可以使用名称或位置索引来访问，例如&lt;code&gt;x[[1]]&lt;/code&gt;表示访问&lt;code&gt;x&lt;/code&gt;中的第一个元素，&lt;code&gt;x[[&amp;quot;name&amp;quot;]]&lt;/code&gt;表示访问&lt;code&gt;x&lt;/code&gt;中名称为&lt;code&gt;&amp;quot;name&amp;quot;&lt;/code&gt;的元素。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;函数&#34;&gt;函数&lt;/h2&gt;
+&lt;p&gt;给一个函数，写法如下。显然，该函数是计算输入的平均值。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

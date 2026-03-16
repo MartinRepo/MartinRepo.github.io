@@ -4,17 +4,32 @@
     <title>多智能体系统 on Martin&#39;s space</title>
     <link>https://martinspace.top/zh/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F/</link>
     <description>Recent content in 多智能体系统 on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 05 May 2024 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 May 2024 17:39:49 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>多智能体系统(COMP310)</title>
       <link>https://martinspace.top/zh/comp310/</link>
       <pubDate>Sun, 05 May 2024 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/comp310/</guid>
-      <description>Intelligent Agents Agents are objects with attitude, which are autonomous, smart, active. Properties in Environment (环境性质描述) Fully observable / partially observable Deterministic / non-deterministic Static / dynamic Discrete / continuous Episodic / non-episodic Real time Social ability (社交能力) The ability to interact with other agents via cooperation, coordination, and negotiation. Abstract Architectures for Agents (代理的</description>
+      <description>&lt;h1 id=&#34;intelligent-agents&#34;&gt;Intelligent Agents&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Agents are objects with attitude, which are autonomous, smart, active.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;properties-in-environment-环境性质描述&#34;&gt;Properties in Environment (环境性质描述)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fully observable / partially observable&lt;/li&gt;
+&lt;li&gt;Deterministic / non-deterministic&lt;/li&gt;
+&lt;li&gt;Static / dynamic&lt;/li&gt;
+&lt;li&gt;Discrete / continuous&lt;/li&gt;
+&lt;li&gt;Episodic / non-episodic&lt;/li&gt;
+&lt;li&gt;Real time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;social-ability-社交能力&#34;&gt;Social ability (社交能力)&lt;/h2&gt;
+&lt;p&gt;The ability to interact with other agents via cooperation, coordination, and negotiation.&lt;/p&gt;
+&lt;h2 id=&#34;abstract-architectures-for-agents-代理的抽象架构&#34;&gt;Abstract Architectures for Agents (代理的抽象架构)&lt;/h2&gt;
+&lt;p&gt;表示方法&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

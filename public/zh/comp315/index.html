@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +7,12 @@
 <meta name="robots" content="index, follow">
 <title>云计算(COMP315) | Martin&#39;s space</title>
 <meta name="keywords" content="云计算">
-<meta name="description" content="虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&ldquo;Hypervisor&rdquo; （虚拟机监控">
+<meta name="description" content="虚拟机
+
+借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&ldquo;Hypervisor&rdquo; （虚拟机监控程序）的软件可直接连接到硬件，从而将一个系统划分为不同的、单独安全环境，即虚拟机（VM）。">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/comp315/">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.33446ce70373ca1f19994ac816c97a1b65ae46bd7944d026cdb4b723d0bc5887.css" integrity="sha256-M0Rs5wNzyh8ZmUrIFsl6G2WuRr15RNAmzbS3I9C8WIc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/icebear.jpg">
@@ -41,60 +38,68 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+</noscript>
 <script>
-        MathJax = {
-          tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-          },
-          svg: {
-            fontCache: 'global'
-          }
-        };
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="云计算(COMP315)" />
-<meta property="og:description" content="虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&ldquo;Hypervisor&rdquo; （虚拟机监控" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://martinspace.top/zh/comp315/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2024-02-26T17:39:49+00:00" />
-<meta property="article:modified_time" content="2024-02-26T17:39:49+00:00" />
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="云计算(COMP315)"/>
-<meta name="twitter:description" content="虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&ldquo;Hypervisor&rdquo; （虚拟机监控"/>
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-J8TFFL1ZS7');
+        }
+      </script><meta property="og:url" content="https://martinspace.top/zh/comp315/">
+  <meta property="og:site_name" content="Martin&#39;s space">
+  <meta property="og:title" content="云计算(COMP315)">
+  <meta property="og:description" content="虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。“Hypervisor” （虚拟机监控程序）的软件可直接连接到硬件，从而将一个系统划分为不同的、单独安全环境，即虚拟机（VM）。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-02-26T17:39:49+00:00">
+    <meta property="article:modified_time" content="2024-02-26T17:39:49+00:00">
+    <meta property="article:tag" content="云计算">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="云计算(COMP315)">
+  <meta name="twitter:description" content="虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。“Hypervisor” （虚拟机监控程序）的软件可直接连接到硬件，从而将一个系统划分为不同的、单独安全环境，即虚拟机（VM）。">
 
 
 <script type="application/ld+json">
@@ -129,7 +134,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "云计算(COMP315)",
   "name": "云计算(COMP315)",
-  "description": "虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。\u0026ldquo;Hypervisor\u0026rdquo; （虚拟机监控",
+  "description": "虚拟机 借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。\u0026ldquo;Hypervisor\u0026rdquo; （虚拟机监控程序）的软件可直接连接到硬件，从而将一个系统划分为不同的、单独安全环境，即虚拟机（VM）。\n",
   "keywords": [
     "云计算"
   ],
@@ -157,32 +162,15 @@ if (!doNotTrack) {
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-
-
-<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
                 <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
                     height="35">Martin&#39;s space</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -202,12 +190,12 @@ if (!doNotTrack) {
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://martinspace.top/en/" title="English"
-                            aria-label="English">English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://martinspace.top/en/" title="English"
+                                aria-label="English">English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
@@ -267,208 +255,148 @@ if (!doNotTrack) {
 
     
     </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details  open>
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#%e8%99%9a%e6%8b%9f%e6%9c%ba" aria-label="虚拟机">虚拟机</a><ul>
-                            
-                    <li>
-                        <a href="#type-1--type-2-%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%9b%91%e6%8e%a7%e7%a8%8b%e5%ba%8f" aria-label="Type 1 &amp;amp; Type 2 虚拟机监控程序">Type 1 &amp; Type 2 虚拟机监控程序</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#javascript" aria-label="JavaScript">JavaScript</a></li>
-                    <li>
-                        <a href="#%e5%ae%b9%e5%99%a8" aria-label="容器">容器</a><ul>
-                            
-                    <li>
-                        <a href="#docker" aria-label="Docker">Docker</a></li>
-                    <li>
-                        <a href="#docker%e5%92%8clinux-kernel" aria-label="Docker和Linux Kernel">Docker和Linux Kernel</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%ae%89%e5%85%a8" aria-label="安全">安全</a><ul>
-                            
-                    <li>
-                        <a href="#vulnerabilities-and-the-zero-day-problem" aria-label="Vulnerabilities and the Zero-Day Problem">Vulnerabilities and the Zero-Day Problem</a></li>
-                    <li>
-                        <a href="#%e4%b8%bb%e6%9c%ba%e9%98%b2%e5%be%a1" aria-label="主机防御">主机防御</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%9c%80%e5%b0%8f%e6%9d%83%e9%99%90%e5%8e%9f%e5%88%99" aria-label="最小权限原则">最小权限原则</a></li>
-                    <li>
-                        <a href="#%e6%9d%83%e9%99%90%e6%8f%90%e5%8d%87" aria-label="权限提升">权限提升</a></li>
-                    <li>
-                        <a href="#sandboxes" aria-label="Sandboxes">Sandboxes</a></li>
-                    <li>
-                        <a href="#%e8%87%aa%e4%b8%bb%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6" aria-label="自主访问控制">自主访问控制</a></li>
-                    <li>
-                        <a href="#%e5%bc%ba%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6" aria-label="强访问控制">强访问控制</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#selinux" aria-label="SELinux">SELinux</a></li>
-                    <li>
-                        <a href="#tutorial-for-selinux" aria-label="Tutorial for SELinux">Tutorial for SELinux</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#ansible" aria-label="Ansible">Ansible</a><ul>
-                            
-                    <li>
-                        <a href="#inventory-file" aria-label="Inventory file">Inventory file</a></li>
-                    <li>
-                        <a href="#playbook" aria-label="Playbook">Playbook</a></li>
-                    <li>
-                        <a href="#playbook%e7%9a%84%e7%bb%93%e6%9e%84" aria-label="Playbook的结构">Playbook的结构</a></li>
-                    <li>
-                        <a href="#anything-as-a-service" aria-label="Anything as a service">Anything as a service</a></li>
-                    <li>
-                        <a href="#everything-as-code" aria-label="Everything as Code">Everything as Code</a></li>
-                    <li>
-                        <a href="#ansible-variables" aria-label="Ansible Variables">Ansible Variables</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#networking" aria-label="Networking">Networking</a><ul>
-                            
-                    <li>
-                        <a href="#protocol-stacks" aria-label="Protocol Stacks">Protocol Stacks</a><ul>
-                            
-                    <li>
-                        <a href="#osi%e6%a8%a1%e5%9e%8b" aria-label="OSI模型">OSI模型</a></li>
-                    <li>
-                        <a href="#tcpip%e6%a0%88" aria-label="TCP/IP栈">TCP/IP栈</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#protocols" aria-label="Protocols">Protocols</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#hosting" aria-label="Hosting">Hosting</a></li>
-                    <li>
-                        <a href="#storage" aria-label="Storage">Storage</a></li>
-                    <li>
-                        <a href="#typescript" aria-label="Typescript">Typescript</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%9f%ba%e6%9c%ac%e7%b1%bb%e5%9e%8b" aria-label="基本类型">基本类型</a></li>
-                    <li>
-                        <a href="#%e5%af%b9%e8%b1%a1%e7%b1%bb%e5%9e%8b" aria-label="对象类型">对象类型</a></li>
-                    <li>
-                        <a href="#aliases-unions-intersections" aria-label="Aliases, Unions, Intersections">Aliases, Unions, Intersections</a></li>
-                    <li>
-                        <a href="#array" aria-label="Array">Array</a></li>
-                    <li>
-                        <a href="#tuples" aria-label="Tuples">Tuples</a></li>
-                    <li>
-                        <a href="#function" aria-label="Function">Function</a></li>
-                    <li>
-                        <a href="#generic-types%e6%b3%9b%e5%9e%8b" aria-label="Generic Types(泛型)">Generic Types(泛型)</a></li>
-                    <li>
-                        <a href="#classes" aria-label="Classes">Classes</a></li>
-                    <li>
-                        <a href="#interfaces" aria-label="Interfaces">Interfaces</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#kubernetes" aria-label="Kubernetes">Kubernetes</a><ul>
-                            
-                    <li>
-                        <a href="#kubernetes-1" aria-label="Kubernetes">Kubernetes</a><ul>
-                            
-                    <li>
-                        <a href="#cri--oci" aria-label="CRI &amp;amp; OCI">CRI &amp; OCI</a></li>
-                    <li>
-                        <a href="#%e5%be%ae%e6%9c%8d%e5%8a%a1%e5%92%8c%e5%8d%95%e4%bd%93%e6%9e%b6%e6%9e%84microservices--monoliths" aria-label="微服务和单体架构(Microservices &amp;amp; Monoliths)">微服务和单体架构(Microservices &amp; Monoliths)</a></li>
-                    <li>
-                        <a href="#control-plane" aria-label="Control Plane">Control Plane</a></li>
-                    <li>
-                        <a href="#worker-nodes" aria-label="Worker Nodes">Worker Nodes</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#canary-releases" aria-label="Canary releases">Canary releases</a></li>
-                    <li>
-                        <a href="#set-up-kubernetes-cluster" aria-label="Set up Kubernetes Cluster">Set up Kubernetes Cluster</a></li>
-                    <li>
-                        <a href="#%e7%a6%81%e7%94%a8swap%e5%92%8cselinux" aria-label="禁用Swap和SELinux">禁用Swap和SELinux</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#react" aria-label="React">React</a></li>
-                    <li>
-                        <a href="#nextjs" aria-label="Next.js">Next.js</a><ul>
-                            
-                    <li>
-                        <a href="#rendering" aria-label="Rendering">Rendering</a></li>
-                    <li>
-                        <a href="#routing-in-nextjs" aria-label="Routing in Next.js">Routing in Next.js</a>
-                    </li>
-                </ul>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e8%99%9a%e6%8b%9f%e6%9c%ba" aria-label="虚拟机">虚拟机</a><ul>
+                        
+                <li>
+                    <a href="#type-1--type-2-%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%9b%91%e6%8e%a7%e7%a8%8b%e5%ba%8f" aria-label="Type 1 &amp; Type 2 虚拟机监控程序">Type 1 &amp; Type 2 虚拟机监控程序</a></li></ul>
                 </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
+                <li>
+                    <a href="#javascript" aria-label="JavaScript">JavaScript</a></li>
+                <li>
+                    <a href="#%e5%ae%b9%e5%99%a8" aria-label="容器">容器</a><ul>
+                        
+                <li>
+                    <a href="#docker" aria-label="Docker">Docker</a></li>
+                <li>
+                    <a href="#docker%e5%92%8clinux-kernel" aria-label="Docker和Linux Kernel">Docker和Linux Kernel</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%ae%89%e5%85%a8" aria-label="安全">安全</a><ul>
+                        
+                <li>
+                    <a href="#vulnerabilities-and-the-zero-day-problem" aria-label="Vulnerabilities and the Zero-Day Problem">Vulnerabilities and the Zero-Day Problem</a></li>
+                <li>
+                    <a href="#%e4%b8%bb%e6%9c%ba%e9%98%b2%e5%be%a1" aria-label="主机防御">主机防御</a><ul>
+                        
+                <li>
+                    <a href="#%e6%9c%80%e5%b0%8f%e6%9d%83%e9%99%90%e5%8e%9f%e5%88%99" aria-label="最小权限原则">最小权限原则</a></li>
+                <li>
+                    <a href="#%e6%9d%83%e9%99%90%e6%8f%90%e5%8d%87" aria-label="权限提升">权限提升</a></li>
+                <li>
+                    <a href="#sandboxes" aria-label="Sandboxes">Sandboxes</a></li>
+                <li>
+                    <a href="#%e8%87%aa%e4%b8%bb%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6" aria-label="自主访问控制">自主访问控制</a></li>
+                <li>
+                    <a href="#%e5%bc%ba%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6" aria-label="强访问控制">强访问控制</a></li></ul>
+                </li>
+                <li>
+                    <a href="#selinux" aria-label="SELinux">SELinux</a></li>
+                <li>
+                    <a href="#tutorial-for-selinux" aria-label="Tutorial for SELinux">Tutorial for SELinux</a></li></ul>
+                </li>
+                <li>
+                    <a href="#ansible" aria-label="Ansible">Ansible</a><ul>
+                        
+                <li>
+                    <a href="#inventory-file" aria-label="Inventory file">Inventory file</a></li>
+                <li>
+                    <a href="#playbook" aria-label="Playbook">Playbook</a></li>
+                <li>
+                    <a href="#playbook%e7%9a%84%e7%bb%93%e6%9e%84" aria-label="Playbook的结构">Playbook的结构</a></li>
+                <li>
+                    <a href="#anything-as-a-service" aria-label="Anything as a service">Anything as a service</a></li>
+                <li>
+                    <a href="#everything-as-code" aria-label="Everything as Code">Everything as Code</a></li>
+                <li>
+                    <a href="#ansible-variables" aria-label="Ansible Variables">Ansible Variables</a></li></ul>
+                </li>
+                <li>
+                    <a href="#networking" aria-label="Networking">Networking</a><ul>
+                        
+                <li>
+                    <a href="#protocol-stacks" aria-label="Protocol Stacks">Protocol Stacks</a><ul>
+                        
+                <li>
+                    <a href="#osi%e6%a8%a1%e5%9e%8b" aria-label="OSI模型">OSI模型</a></li>
+                <li>
+                    <a href="#tcpip%e6%a0%88" aria-label="TCP/IP栈">TCP/IP栈</a></li></ul>
+                </li>
+                <li>
+                    <a href="#protocols" aria-label="Protocols">Protocols</a></li></ul>
+                </li>
+                <li>
+                    <a href="#hosting" aria-label="Hosting">Hosting</a></li>
+                <li>
+                    <a href="#storage" aria-label="Storage">Storage</a></li>
+                <li>
+                    <a href="#typescript" aria-label="Typescript">Typescript</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9f%ba%e6%9c%ac%e7%b1%bb%e5%9e%8b" aria-label="基本类型">基本类型</a></li>
+                <li>
+                    <a href="#%e5%af%b9%e8%b1%a1%e7%b1%bb%e5%9e%8b" aria-label="对象类型">对象类型</a></li>
+                <li>
+                    <a href="#aliases-unions-intersections" aria-label="Aliases, Unions, Intersections">Aliases, Unions, Intersections</a></li>
+                <li>
+                    <a href="#array" aria-label="Array">Array</a></li>
+                <li>
+                    <a href="#tuples" aria-label="Tuples">Tuples</a></li>
+                <li>
+                    <a href="#function" aria-label="Function">Function</a></li>
+                <li>
+                    <a href="#generic-types%e6%b3%9b%e5%9e%8b" aria-label="Generic Types(泛型)">Generic Types(泛型)</a></li>
+                <li>
+                    <a href="#classes" aria-label="Classes">Classes</a></li>
+                <li>
+                    <a href="#interfaces" aria-label="Interfaces">Interfaces</a></li></ul>
+                </li>
+                <li>
+                    <a href="#kubernetes" aria-label="Kubernetes">Kubernetes</a><ul>
+                        
+                <li>
+                    <a href="#kubernetes-1" aria-label="Kubernetes">Kubernetes</a><ul>
+                        
+                <li>
+                    <a href="#cri--oci" aria-label="CRI &amp; OCI">CRI &amp; OCI</a></li>
+                <li>
+                    <a href="#%e5%be%ae%e6%9c%8d%e5%8a%a1%e5%92%8c%e5%8d%95%e4%bd%93%e6%9e%b6%e6%9e%84microservices--monoliths" aria-label="微服务和单体架构(Microservices &amp; Monoliths)">微服务和单体架构(Microservices &amp; Monoliths)</a></li>
+                <li>
+                    <a href="#control-plane" aria-label="Control Plane">Control Plane</a></li>
+                <li>
+                    <a href="#worker-nodes" aria-label="Worker Nodes">Worker Nodes</a></li></ul>
+                </li>
+                <li>
+                    <a href="#canary-releases" aria-label="Canary releases">Canary releases</a></li>
+                <li>
+                    <a href="#set-up-kubernetes-cluster" aria-label="Set up Kubernetes Cluster">Set up Kubernetes Cluster</a></li>
+                <li>
+                    <a href="#%e7%a6%81%e7%94%a8swap%e5%92%8cselinux" aria-label="禁用Swap和SELinux">禁用Swap和SELinux</a></li></ul>
+                </li>
+                <li>
+                    <a href="#react" aria-label="React">React</a></li>
+                <li>
+                    <a href="#nextjs" aria-label="Next.js">Next.js</a><ul>
+                        
+                <li>
+                    <a href="#rendering" aria-label="Rendering">Rendering</a></li>
+                <li>
+                    <a href="#routing-in-nextjs" aria-label="Routing in Next.js">Routing in Next.js</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
   <div class="post-content"><h1 id="虚拟机">虚拟机<a hidden class="anchor" aria-hidden="true" href="#虚拟机">#</a></h1>
 <blockquote>
 <p>借助虚拟化技术，用户能以单个物理硬件系统为基础创建多个模拟环境或专用资源。&ldquo;Hypervisor&rdquo; （虚拟机监控程序）的软件可直接连接到硬件，从而将一个系统划分为不同的、单独安全环境，即虚拟机（VM）。</p>
@@ -480,8 +408,7 @@ if (!doNotTrack) {
 <li>第 1 类虚拟机监控器或裸机虚拟机监控器直接与底层计算机硬件交互。裸机虚拟机监控器直接安装在主机的物理硬件上，而不是通过操作系统安装。</li>
 <li>第 2 类虚拟机监控器或托管虚拟机管理监控器通过主机的操作系统与底层主机硬件进行交互。第 2 类虚拟机监控器安装在计算机上，在其中作为应用程序运行。</li>
 <li>Hypervisor属于协调层，同时运行多个虚拟机
-<img loading="lazy" src="/img/comp315/hypervisor.png" alt="Hypervisor"  />
-</li>
+<img alt="Hypervisor" loading="lazy" src="/img/comp315/hypervisor.png"></li>
 </ul>
 <h1 id="javascript">JavaScript<a hidden class="anchor" aria-hidden="true" href="#javascript">#</a></h1>
 <blockquote>
@@ -498,7 +425,7 @@ if (!doNotTrack) {
 </li>
 <li>声明变量别用var。变的就用let，不变就用const，舍弃var</li>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">button</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">button</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    bg-green-500 
 </span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    hover:bg-green-700 
 </span></span></span><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">    text-white 
@@ -512,12 +439,12 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>  <span style="color:#007f7f">&lt;!-- py-2 px-4 指x和y方向上的padding大小--&gt;</span>
 </span></span></code></pre></div></li>
 <li>map方法
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">const</span> numbers = [<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">3</span>, <span style="color:#ff0;font-weight:bold">4</span>];
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">const</span> numbers = [<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">3</span>, <span style="color:#ff0;font-weight:bold">4</span>];
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">const</span> doubled = numbers.map(num =&gt; num * <span style="color:#ff0;font-weight:bold">2</span>);
 </span></span><span style="display:flex;"><span>console.log(doubled);
 </span></span></code></pre></div></li>
 <li>reduce方法
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">const</span> numbers = [<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">3</span>, <span style="color:#ff0;font-weight:bold">4</span>];
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">const</span> numbers = [<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">3</span>, <span style="color:#ff0;font-weight:bold">4</span>];
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">const</span> sum = numbers.reduce((acc, curr) =&gt; acc + curr, <span style="color:#ff0;font-weight:bold">0</span>);
 </span></span><span style="display:flex;"><span>console.log(sum);
 </span></span></code></pre></div></li>
@@ -532,28 +459,28 @@ if (!doNotTrack) {
 <p>Docker是最令人熟知的容器化技术。</p>
 </blockquote>
 <p>在Docker中，容器由镜像创建，镜像由Dockerfile编写</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># 拉一个Ubentu镜像</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># 拉一个Ubentu镜像</span>
 </span></span><span style="display:flex;"><span>$ docker pull ubuntu:latest
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f"># 运行这个容器</span>
 </span></span><span style="display:flex;"><span>$ docker run -it ubuntu:latest /bin/bash
 </span></span></code></pre></div><p>写一个Dockerfile，创建docker镜像👇</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#007f7f"># 指定基础镜像</span><span style="color:#f00">
-</span></span></span><span style="display:flex;"><span><span style="color:#f00"></span><span style="color:#fff;font-weight:bold">FROM</span><span style="color:#0ff;font-weight:bold"> ubuntu : latest</span><span style="color:#f00">
-</span></span></span><span style="display:flex;"><span><span style="color:#f00"></span><span style="color:#007f7f"># 创建shell脚本并将“echo Hello, World!”写入脚本</span><span style="color:#f00">
-</span></span></span><span style="display:flex;"><span><span style="color:#f00"></span><span style="color:#fff;font-weight:bold">RUN</span> <span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34; echo Hello , World ! &#34;</span> &gt; / hello - world . sh<span style="color:#f00">
-</span></span></span><span style="display:flex;"><span><span style="color:#f00"></span><span style="color:#007f7f"># 为文件添加执行权限</span><span style="color:#f00">
-</span></span></span><span style="display:flex;"><span><span style="color:#f00"></span><span style="color:#fff;font-weight:bold">RUN</span> chmod + x / hello - world . sh<span style="color:#f00">
-</span></span></span><span style="display:flex;"><span><span style="color:#f00"></span><span style="color:#007f7f"># 指定容器启动时默认执行的命令。</span><span style="color:#f00">
-</span></span></span><span style="display:flex;"><span><span style="color:#f00"></span><span style="color:#fff;font-weight:bold">CMD</span> [ <span style="color:#0ff;font-weight:bold">&#34; / hello - world . sh &#34;</span> ]<span style="color:#f00">
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#007f7f"># 指定基础镜像</span><span style="color:#f00">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">FROM</span> <span style="color:#0ff;font-weight:bold">ubuntu</span> : latest<span style="color:#f00">
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"># 创建shell脚本并将“echo Hello, World!”写入脚本</span><span style="color:#f00">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">RUN</span> <span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34; echo Hello , World ! &#34;</span> &gt; / hello - world . sh<span style="color:#f00">
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"># 为文件添加执行权限</span><span style="color:#f00">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">RUN</span> chmod + x / hello - world . sh<span style="color:#f00">
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"># 指定容器启动时默认执行的命令。</span><span style="color:#f00">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">CMD</span> [ <span style="color:#0ff;font-weight:bold">&#34; / hello - world . sh &#34;</span> ]<span style="color:#f00">
 </span></span></span></code></pre></div><p>运行Docker👇</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># Build the Docker image</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># Build the Docker image</span>
 </span></span><span style="display:flex;"><span>$ docker build -t hello - world .
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f"># Run the Docker container</span>
 </span></span><span style="display:flex;"><span>$ docker run hello - world
 </span></span></code></pre></div><p>常用Docker命令</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># 查看镜像</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># 查看镜像</span>
 </span></span><span style="display:flex;"><span>docker images
 </span></span><span style="display:flex;"><span><span style="color:#007f7f"># 查看正在运行的容器</span>
 </span></span><span style="display:flex;"><span>docker ps
@@ -617,7 +544,7 @@ if (!doNotTrack) {
 <li>用户控制：用户（或用户组）可以直接控制对其拥有的资源的访问，而不是由中央政策或管理员决定。</li>
 </ul>
 <p>一些指令👇</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># 查看文件权限</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># 查看文件权限</span>
 </span></span><span style="display:flex;"><span>$ ls -l filename
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f"># 更改文件权限，把文件改成可读可写可执行</span>
@@ -702,7 +629,7 @@ if (!doNotTrack) {
 </ul>
 </li>
 <li>怎么查看SELinux布尔运算的状态(以httpd_can_network_connect为例)
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ getsebool httpd_can_network_connect
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ getsebool httpd_can_network_connect
 </span></span><span style="display:flex;"><span>$ setsebool httpd_can_network_connect on // 暂时更改，重启后不保持连接
 </span></span><span style="display:flex;"><span>$ setsebool -P httpd_can_network_connect on // P是permanent，重启后依然保持连接
 </span></span></code></pre></div></li>
@@ -744,7 +671,7 @@ if (!doNotTrack) {
 <h1 id="ansible">Ansible<a hidden class="anchor" aria-hidden="true" href="#ansible">#</a></h1>
 <h2 id="inventory-file">Inventory file<a hidden class="anchor" aria-hidden="true" href="#inventory-file">#</a></h2>
 <p>使用Ansible之前，Inventory 文件是一个定义了可被 Ansible 管理的所有主机及其组的关键组件。这些文件可以是静态的或动态的，允许 Ansible 知道它可以连接哪些服务器，以及这些服务器如何组织。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">leafs</span>:
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">leafs</span>:
 </span></span><span style="display:flex;"><span>    <span style="font-weight:bold">hosts</span>:
 </span></span><span style="display:flex;"><span>        <span style="font-weight:bold">leaf01</span>:
 </span></span><span style="display:flex;"><span>            <span style="font-weight:bold">ansible_host</span>: <span style="color:#ff0;font-weight:bold">10.16.10.11</span>
@@ -757,10 +684,10 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>        <span style="font-weight:bold">spine02</span>:
 </span></span><span style="display:flex;"><span>            <span style="font-weight:bold">ansible_host</span>: <span style="color:#ff0;font-weight:bold">10.16.10.14</span>
 </span></span></code></pre></div><p>有了inventory file之后，可以使用ansible命令行工具在主机上运行inventory中的指令，例如使用ping检查inventory中所有主机的连接。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ansible -i hosts.ini <span style="color:#fff;font-weight:bold">local</span> -m ping
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ansible -i hosts.ini <span style="color:#fff;font-weight:bold">local</span> -m ping
 </span></span></code></pre></div><h2 id="playbook">Playbook<a hidden class="anchor" aria-hidden="true" href="#playbook">#</a></h2>
 <p>Playbook能描述比命令行更复杂的配置，例如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>- <span style="font-weight:bold">name</span>: Ping all hosts
 </span></span><span style="display:flex;"><span>  <span style="font-weight:bold">hosts</span>: all
 </span></span><span style="display:flex;"><span>  <span style="font-weight:bold">tasks</span>:
@@ -867,7 +794,7 @@ if (!doNotTrack) {
 <p>在网络架构中，Proxy是一个服务器，它作为客户端和其他服务器之间的中介。根据其配置和用途的不同，代理可以被分类为Forward Proxy和Reverse Proxy。</p>
 <p>简单来讲，Forward Proxy被看作是客户端，代表用户向服务端发送请求；Reverse Proxy被看作是服务端，实际是将请求转发到后端服务器，再把服务器的响应返回给客户端。</p>
 <p>如何生成一个self-signed certificate?</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ openssl req -x509 -nodes -days <span style="color:#ff0;font-weight:bold">365</span> -newkey rsa:2048 -out selfsigned.crt -keyout private.key -subj <span style="color:#0ff;font-weight:bold">&#34;/C=UK/ST=Merseyside/L=Liverpool/O=MyOrg/CN=www.example.com&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ openssl req -x509 -nodes -days <span style="color:#ff0;font-weight:bold">365</span> -newkey rsa:2048 -out selfsigned.crt -keyout private.key -subj <span style="color:#0ff;font-weight:bold">&#34;/C=UK/ST=Merseyside/L=Liverpool/O=MyOrg/CN=www.example.com&#34;</span>
 </span></span></code></pre></div><h1 id="storage">Storage<a hidden class="anchor" aria-hidden="true" href="#storage">#</a></h1>
 <p>storage solutions分为以下三种</p>
 <ol>
@@ -891,46 +818,46 @@ if (!doNotTrack) {
 <h1 id="typescript">Typescript<a hidden class="anchor" aria-hidden="true" href="#typescript">#</a></h1>
 <h2 id="基本类型">基本类型<a hidden class="anchor" aria-hidden="true" href="#基本类型">#</a></h2>
 <p>any类型会绕过系统的类型检查，但是过度使用any可能会造成错误代码难以追踪。unknown是any的更安全版本，因为更严格，unknown类型智能用于==, ===, !=, !==，除此以外都不可以，例如下面代码就会报错</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: <span style="color:#fff;font-weight:bold">unknown</span> = <span style="color:#ff0;font-weight:bold">30</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: <span style="color:#fff;font-weight:bold">unknown</span> = <span style="color:#ff0;font-weight:bold">30</span>;
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> c = a + <span style="color:#ff0;font-weight:bold">10</span>; <span style="color:#007f7f">//这里会报错，因为unknown类型不支持+
 </span></span></span></code></pre></div><p>bool类型的几种声明方式</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> d: <span style="color:#fff;font-weight:bold">boolean</span> = <span style="color:#fff;font-weight:bold">true</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> d: <span style="color:#fff;font-weight:bold">boolean</span> = <span style="color:#fff;font-weight:bold">true</span>
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> e: <span style="color:#fff;font-weight:bold">true</span> = <span style="color:#fff;font-weight:bold">true</span> <span style="color:#007f7f">//这种声明后，以后只能是true，不能修改。
 </span></span></span></code></pre></div><p>number类型的几种声明方式</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: <span style="color:#fff;font-weight:bold">number</span> = <span style="color:#ff0;font-weight:bold">10</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: <span style="color:#fff;font-weight:bold">number</span> = <span style="color:#ff0;font-weight:bold">10</span>;
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> b: <span style="color:#fff;font-weight:bold">26.187</span> = <span style="color:#ff0;font-weight:bold">26.187</span>;
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> c: <span style="color:#fff;font-weight:bold">50</span> = <span style="color:#ff0;font-weight:bold">40</span>; <span style="color:#007f7f">// Error TS2322: Type &#39;50&#39; is not assignable to type &#39;40&#39;
 </span></span></span></code></pre></div><p>bigint类型的几种声明方式，这里有一点需要注意：n后缀表示这是一个bigint类型的数值，而不是普通的number类型。100n表示数值一百。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a = <span style="color:#ff0;font-weight:bold">1234</span>n;
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a = <span style="color:#ff0;font-weight:bold">1234</span>n;
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> b: <span style="color:#fff;font-weight:bold">bigint</span> = <span style="color:#ff0;font-weight:bold">100</span>n;
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> c = <span style="color:#ff0;font-weight:bold">88.5</span>n; <span style="color:#007f7f">//Error TS1353: A bigint literal must be an integer
 </span></span></span></code></pre></div><p>symbol类型的几种声明方式。每次调用<code>Symbol()</code>都会生成一个新的、唯一的symbol。你可以选择性地给<code>Symbol()</code>函数传递一个描述字符串，这个字符串并不影响 symbol 的唯一性。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: <span style="color:#fff;font-weight:bold">symbol</span> = Symbol(<span style="color:#0ff;font-weight:bold">&#39;a&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: <span style="color:#fff;font-weight:bold">symbol</span> = Symbol(<span style="color:#0ff;font-weight:bold">&#39;a&#39;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> sym1 = Symbol(<span style="color:#0ff;font-weight:bold">&#34;key1&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> sym2 = Symbol(<span style="color:#0ff;font-weight:bold">&#34;key1&#34;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>console.log(sym1 === sym2);  <span style="color:#007f7f">// 输出：false
 </span></span></span></code></pre></div><h2 id="对象类型">对象类型<a hidden class="anchor" aria-hidden="true" href="#对象类型">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: <span style="color:#fff;font-weight:bold">object</span> = {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: <span style="color:#fff;font-weight:bold">object</span> = {
 </span></span><span style="display:flex;"><span>    b: <span style="color:#0ff;font-weight:bold">&#39;x&#39;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>console.log(a[<span style="color:#0ff;font-weight:bold">&#39;b&#39;</span>])
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// 这部分声明了一个变量c，并且指定了c的类型为一个对象。这个对象的结构被明确定义：它必须包含一个键d，且该键的值类型为string
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">let</span> c: { d : <span style="color:#fff;font-weight:bold">string</span> } = {
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> c: { d : <span style="color:#fff;font-weight:bold">string</span> } = {
 </span></span><span style="display:flex;"><span>    d: <span style="color:#0ff;font-weight:bold">&#39;y&#39;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>console.log(c.d)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// 两种容易碰到的报错情况
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">let</span> a: { b: <span style="color:#fff;font-weight:bold">number</span> }
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: { b: <span style="color:#fff;font-weight:bold">number</span> }
 </span></span><span style="display:flex;"><span>a = {} <span style="color:#007f7f">// 报错，不能声明一个空对象
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>a = {
+</span></span></span><span style="display:flex;"><span>a = {
 </span></span><span style="display:flex;"><span>    b: <span style="color:#fff;font-weight:bold">1</span>,
 </span></span><span style="display:flex;"><span>    c: <span style="color:#fff;font-weight:bold">2</span> <span style="color:#007f7f">// 报错，声明的时候没有c，所以会在c这个位置报错
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>那么不确定是个参数是否需要，或者调用的时候不一定会传入，怎么做？</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> a: {
 </span></span><span style="display:flex;"><span>    b: <span style="color:#fff;font-weight:bold">number</span>
 </span></span><span style="display:flex;"><span>    c?: <span style="color:#fff;font-weight:bold">string</span>
 </span></span><span style="display:flex;"><span>    [key: <span style="color:#fff;font-weight:bold">number</span>]: <span style="color:#fff;font-weight:bold">boolean</span>
@@ -938,7 +865,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>a = {b: <span style="color:#fff;font-weight:bold">1</span>, 10: <span style="color:#fff;font-weight:bold">true</span>}
 </span></span><span style="display:flex;"><span>a = {b: <span style="color:#fff;font-weight:bold">1</span>, c: <span style="color:#0ff;font-weight:bold">&#39;d&#39;</span>, 10: <span style="color:#fff;font-weight:bold">true</span>}
 </span></span></code></pre></div><p>声明的时候还可以吧变量写成readonly，这意味着一旦初始化后，就无法再次修改</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> user: {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> user: {
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">readonly</span> firstName: <span style="color:#fff;font-weight:bold">string</span>
 </span></span><span style="display:flex;"><span>} = {
 </span></span><span style="display:flex;"><span>    firstName: <span style="color:#0ff;font-weight:bold">&#39;abby&#39;</span>
@@ -946,7 +873,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>user.firstName = <span style="color:#0ff;font-weight:bold">&#39;martin&#39;</span> <span style="color:#007f7f">// 报错
 </span></span></span></code></pre></div><h2 id="aliases-unions-intersections">Aliases, Unions, Intersections<a hidden class="anchor" aria-hidden="true" href="#aliases-unions-intersections">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Age = <span style="color:#fff;font-weight:bold">number</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Age = <span style="color:#fff;font-weight:bold">number</span>
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Person = {
 </span></span><span style="display:flex;"><span>    name: <span style="color:#fff;font-weight:bold">string</span>,
 </span></span><span style="display:flex;"><span>    age: <span style="color:#fff;font-weight:bold">Age</span>
@@ -971,29 +898,29 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// b是cat和dog的intersection，所以要有cat和dog的全部属性
 </span></span></span></code></pre></div><h2 id="array">Array<a hidden class="anchor" aria-hidden="true" href="#array">#</a></h2>
 <p>数组的类型检查</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> f = [<span style="color:#0ff;font-weight:bold">&#39;red&#39;</span>]
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> f = [<span style="color:#0ff;font-weight:bold">&#39;red&#39;</span>]
 </span></span><span style="display:flex;"><span>f.push(<span style="color:#0ff;font-weight:bold">&#39;blue&#39;</span>)
 </span></span><span style="display:flex;"><span>f.push(<span style="color:#fff;font-weight:bold">true</span>) <span style="color:#007f7f">// error
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> g = []
 </span></span><span style="display:flex;"><span>g.push(<span style="color:#ff0;font-weight:bold">1</span>)
 </span></span><span style="display:flex;"><span>g.push(<span style="color:#0ff;font-weight:bold">&#39;red&#39;</span>)
 </span></span><span style="display:flex;"><span>g.push({x: <span style="color:#0ff;font-weight:bold">&#34;y&#34;</span>}) <span style="color:#007f7f">// 任何类型都能存入g
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> h: <span style="color:#fff;font-weight:bold">number</span>[] = []
 </span></span><span style="display:flex;"><span>h.push(<span style="color:#ff0;font-weight:bold">1</span>)
 </span></span><span style="display:flex;"><span>h.push(<span style="color:#0ff;font-weight:bold">&#39;red&#39;</span>) <span style="color:#007f7f">// error, 前面已经声明了只能存number类型
 </span></span></span></code></pre></div><h2 id="tuples">Tuples<a hidden class="anchor" aria-hidden="true" href="#tuples">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#007f7f">// rest elements
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">let</span> list : [<span style="color:#fff;font-weight:bold">number</span>, <span style="color:#fff;font-weight:bold">boolean</span>, ...<span style="color:#fff;font-weight:bold">string</span>[]] = [<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#fff;font-weight:bold">false</span>, <span style="color:#0ff;font-weight:bold">&#39;a&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;b&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;c&#39;</span>]
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#007f7f">// rest elements
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> list : [<span style="color:#fff;font-weight:bold">number</span>, <span style="color:#fff;font-weight:bold">boolean</span>, ...<span style="color:#fff;font-weight:bold">string</span>[]] = [<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#fff;font-weight:bold">false</span>, <span style="color:#0ff;font-weight:bold">&#39;a&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;b&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;c&#39;</span>]
 </span></span></code></pre></div><h2 id="function">Function<a hidden class="anchor" aria-hidden="true" href="#function">#</a></h2>
 <p>用&hellip;接收任意数量的参数</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">function</span> sumVariadicSafe(...numbers: <span style="color:#fff;font-weight:bold">number</span>[]): <span style="color:#fff;font-weight:bold">number</span> {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">function</span> sumVariadicSafe(...numbers: <span style="color:#fff;font-weight:bold">number</span>[]): <span style="color:#fff;font-weight:bold">number</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">number</span>.reduce((total, n) =&gt; total + n, <span style="color:#ff0;font-weight:bold">0</span>)
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>sumVariadicSafe(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">3</span>) <span style="color:#007f7f">// 输出6
 </span></span></span></code></pre></div><p>函数的type aliases</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> log = (message: <span style="color:#fff;font-weight:bold">string</span>, userId?: <span style="color:#fff;font-weight:bold">string</span>) =&gt; <span style="color:#fff;font-weight:bold">void</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> log = (message: <span style="color:#fff;font-weight:bold">string</span>, userId?: <span style="color:#fff;font-weight:bold">string</span>) =&gt; <span style="color:#fff;font-weight:bold">void</span>
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> log: <span style="color:#fff;font-weight:bold">Log</span> = (
 </span></span><span style="display:flex;"><span>    message,
 </span></span><span style="display:flex;"><span>    userId = <span style="color:#0ff;font-weight:bold">&#39;Not signed in&#39;</span>
@@ -1002,22 +929,22 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>    console.log(time, message, userId)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="generic-types泛型">Generic Types(泛型)<a hidden class="anchor" aria-hidden="true" href="#generic-types泛型">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Filter = {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Filter = {
 </span></span><span style="display:flex;"><span>    &lt;<span style="font-weight:bold">T</span>&gt;(array: <span style="color:#fff;font-weight:bold">T</span>[], f: (item: <span style="color:#fff;font-weight:bold">T</span>) =&gt; <span style="color:#fff;font-weight:bold">boolean</span>): T[]
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> myFilter: <span style="color:#fff;font-weight:bold">Filter</span> = (array, f) =&gt; array.filter(f)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// use myFilter function
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>console.log(myFilter([<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">3</span>], _ =&gt; _ &gt; <span style="color:#ff0;font-weight:bold">2</span>)) <span style="color:#007f7f">// output is 3
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>console.log(myFilter([<span style="color:#0ff;font-weight:bold">&#39;a&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;b&#39;</span>], _ =&gt; _ !== <span style="color:#0ff;font-weight:bold">&#39;b&#39;</span>)) <span style="color:#007f7f">// output is [&#39;a&#39;]
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">let</span> names = [
+</span></span></span><span style="display:flex;"><span>console.log(myFilter([<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">3</span>], _ =&gt; _ &gt; <span style="color:#ff0;font-weight:bold">2</span>)) <span style="color:#007f7f">// output is 3
+</span></span></span><span style="display:flex;"><span>console.log(myFilter([<span style="color:#0ff;font-weight:bold">&#39;a&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;b&#39;</span>], _ =&gt; _ !== <span style="color:#0ff;font-weight:bold">&#39;b&#39;</span>)) <span style="color:#007f7f">// output is [&#39;a&#39;]
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">let</span> names = [
 </span></span><span style="display:flex;"><span>    {firstName: <span style="color:#0ff;font-weight:bold">&#39;Beth&#39;</span>},
 </span></span><span style="display:flex;"><span>    {firstName: <span style="color:#0ff;font-weight:bold">&#39;Caitlin&#39;</span>},
 </span></span><span style="display:flex;"><span>    {firstName: <span style="color:#0ff;font-weight:bold">&#39;Xian&#39;</span>}
 </span></span><span style="display:flex;"><span>]
 </span></span><span style="display:flex;"><span>console.log(myFilter(names, _ =&gt; _.firstName.startsWith(<span style="color:#0ff;font-weight:bold">&#39;B&#39;</span>))) <span style="color:#007f7f">// output is [{firstName: &#39;Beth&#39;}]
 </span></span></span></code></pre></div><p>泛型定义的几种方式</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Filter1 = {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Filter1 = {
 </span></span><span style="display:flex;"><span>    &lt;<span style="font-weight:bold">T</span>&gt;(array: <span style="color:#fff;font-weight:bold">T</span>[], f: (item: <span style="color:#fff;font-weight:bold">T</span>) =&gt; <span style="color:#fff;font-weight:bold">boolean</span>): T[]
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Filter2&lt;<span style="font-weight:bold">T</span>&gt; = {
@@ -1025,7 +952,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// 不同在于Filter2会限制类型
 </span></span></span></code></pre></div><p>map函数定义就是一个泛型函数，把T类型的数组转换成U类型的数组</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">function</span> map&lt;<span style="font-weight:bold">T</span><span style="color:#f00">,</span> <span style="color:#007f7f">U</span>&gt;(array: <span style="color:#fff;font-weight:bold">T</span>[], f: (item: <span style="color:#fff;font-weight:bold">T</span>) =&gt; U): U[] {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">function</span> map&lt;<span style="font-weight:bold">T</span>, <span style="color:#007f7f">U</span>&gt;(array: <span style="color:#fff;font-weight:bold">T</span>[], f: (item: <span style="color:#fff;font-weight:bold">T</span>) =&gt; U): U[] {
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">let</span> result = []
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">let</span> i = <span style="color:#ff0;font-weight:bold">0</span>; i &lt; array.length; i++){
 </span></span><span style="display:flex;"><span>        result[i] = f(array[i])
@@ -1034,21 +961,21 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="classes">Classes<a hidden class="anchor" aria-hidden="true" href="#classes">#</a></h2>
 <p>以国际象棋♟️这个游戏为例</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Game{}
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Game{}
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Piece{}
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Position{}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> King <span style="color:#fff;font-weight:bold">extends</span> Piece{}
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Queen <span style="color:#fff;font-weight:bold">extends</span> Piece{}
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Bishop <span style="color:#fff;font-weight:bold">extends</span> Piece{} <span style="color:#007f7f">// 象
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">class</span> Knight <span style="color:#fff;font-weight:bold">extends</span> Piece{} <span style="color:#007f7f">// 马
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">class</span> Rook <span style="color:#fff;font-weight:bold">extends</span> Piece{} <span style="color:#007f7f">// 车
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">class</span> Pawn <span style="color:#fff;font-weight:bold">extends</span> Piece{} <span style="color:#007f7f">// 兵
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Knight <span style="color:#fff;font-weight:bold">extends</span> Piece{} <span style="color:#007f7f">// 马
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Rook <span style="color:#fff;font-weight:bold">extends</span> Piece{} <span style="color:#007f7f">// 车
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Pawn <span style="color:#fff;font-weight:bold">extends</span> Piece{} <span style="color:#007f7f">// 兵
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Color = <span style="color:#0ff;font-weight:bold">&#39;Black&#39;</span> | <span style="color:#0ff;font-weight:bold">&#39;White&#39;</span> <span style="color:#007f7f">//黑白两方
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">type</span> FileVal = <span style="color:#0ff;font-weight:bold">&#39;A&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;B&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;C&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;D&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;E&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;F&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;G&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;H&#39;</span> <span style="color:#007f7f">// 8列
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">type</span> RankVal = <span style="color:#ff0;font-weight:bold">1</span> | <span style="color:#ff0;font-weight:bold">2</span> | <span style="color:#ff0;font-weight:bold">3</span> | <span style="color:#ff0;font-weight:bold">4</span> | <span style="color:#ff0;font-weight:bold">5</span> | <span style="color:#ff0;font-weight:bold">6</span> | <span style="color:#ff0;font-weight:bold">7</span> | <span style="color:#ff0;font-weight:bold">8</span> <span style="color:#007f7f">// 8行
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> FileVal = <span style="color:#0ff;font-weight:bold">&#39;A&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;B&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;C&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;D&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;E&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;F&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;G&#39;</span>|<span style="color:#0ff;font-weight:bold">&#39;H&#39;</span> <span style="color:#007f7f">// 8列
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> RankVal = <span style="color:#ff0;font-weight:bold">1</span> | <span style="color:#ff0;font-weight:bold">2</span> | <span style="color:#ff0;font-weight:bold">3</span> | <span style="color:#ff0;font-weight:bold">4</span> | <span style="color:#ff0;font-weight:bold">5</span> | <span style="color:#ff0;font-weight:bold">6</span> | <span style="color:#ff0;font-weight:bold">7</span> | <span style="color:#ff0;font-weight:bold">8</span> <span style="color:#007f7f">// 8行
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Position {
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">constructor</span>(
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">private</span> file: <span style="color:#fff;font-weight:bold">FileVal</span>,
@@ -1058,13 +985,13 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> {
 </span></span><span style="display:flex;"><span>            rank: <span style="color:#fff;font-weight:bold">Math.abs</span>(position.rank - <span style="color:#fff;font-weight:bold">this</span>.rank),
 </span></span><span style="display:flex;"><span>            file: <span style="color:#fff;font-weight:bold">Math.abs</span>(position.file.charCodeAt(<span style="color:#ff0;font-weight:bold">0</span>) - <span style="color:#fff;font-weight:bold">this</span>.file.charCodeAt(<span style="color:#ff0;font-weight:bold">0</span>)) <span style="color:#007f7f">// 因为file是用字母表示的，所以要UniCode码相减。
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        }
+</span></span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Piece {
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">protected</span> position: <span style="color:#fff;font-weight:bold">Position</span> <span style="color:#007f7f">// protected类型可以在本类或子类中被访问
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">constructor</span>(
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">constructor</span>(
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">private</span> <span style="color:#fff;font-weight:bold">readonly</span> color: <span style="color:#fff;font-weight:bold">Color</span>,
 </span></span><span style="display:flex;"><span>        file: <span style="color:#fff;font-weight:bold">FileVal</span>,
 </span></span><span style="display:flex;"><span>        rank: <span style="color:#fff;font-weight:bold">RankVal</span>
@@ -1074,7 +1001,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// abstract class，可以实现方法或者抽象方法，抽象类不能被直接实例化，子类（非抽象类）可以被实例化
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">abstract</span> <span style="color:#fff;font-weight:bold">class</span> Piece {
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">abstract</span> <span style="color:#fff;font-weight:bold">class</span> Piece {
 </span></span><span style="display:flex;"><span>    moveTo(position: <span style="color:#fff;font-weight:bold">Position</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">this</span>.position = position
 </span></span><span style="display:flex;"><span>    }
@@ -1082,7 +1009,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// 抽象类中的抽象方法一定要在非抽象子类中实现
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">class</span> King <span style="color:#fff;font-weight:bold">extends</span> Piece {
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> King <span style="color:#fff;font-weight:bold">extends</span> Piece {
 </span></span><span style="display:flex;"><span>    canMoveTo(position: <span style="color:#fff;font-weight:bold">Position</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">let</span> distance = <span style="color:#fff;font-weight:bold">this</span>.position.distanceFrom(position)
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> distance.rank &lt; <span style="color:#ff0;font-weight:bold">2</span> &amp;&amp; distance.file &lt; <span style="color:#ff0;font-weight:bold">2</span>
@@ -1090,7 +1017,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// 对于一个类，其中的static方法只被创建一次，而不是每次实例化对象都被创建一次。
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">class</span> Game {
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Game {
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">private</span> pieces = Game.makePieces()
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">private</span> <span style="color:#fff;font-weight:bold">static</span> makePieces() {
 </span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">return</span> [
@@ -1101,19 +1028,19 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="interfaces">Interfaces<a hidden class="anchor" aria-hidden="true" href="#interfaces">#</a></h2>
 <p>接口提供了另一种定义对象的方式</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Sushi = {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Sushi = {
 </span></span><span style="display:flex;"><span>    calories: <span style="color:#fff;font-weight:bold">number</span>
 </span></span><span style="display:flex;"><span>    salty: <span style="color:#fff;font-weight:bold">boolean</span>
 </span></span><span style="display:flex;"><span>    tasty: <span style="color:#fff;font-weight:bold">boolean</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// 等价于
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">interface</span> Sushi {
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">interface</span> Sushi {
 </span></span><span style="display:flex;"><span>    calories: <span style="color:#fff;font-weight:bold">number</span>
 </span></span><span style="display:flex;"><span>    salty: <span style="color:#fff;font-weight:bold">boolean</span>
 </span></span><span style="display:flex;"><span>    tasty: <span style="color:#fff;font-weight:bold">boolean</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>前面说过type可以进行intersection或union。interface也可以做到</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Food = {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">type</span> Food = {
 </span></span><span style="display:flex;"><span>    calories: <span style="color:#fff;font-weight:bold">number</span>
 </span></span><span style="display:flex;"><span>    tasty: <span style="color:#fff;font-weight:bold">boolean</span>
 </span></span><span style="display:flex;"><span>}
@@ -1127,7 +1054,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>    salty: <span style="color:#fff;font-weight:bold">boolean</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>class可以实现接口，举例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">interface</span> Animal {
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">interface</span> Animal {
 </span></span><span style="display:flex;"><span>    eat(food: <span style="color:#fff;font-weight:bold">string</span>): <span style="color:#fff;font-weight:bold">void</span>
 </span></span><span style="display:flex;"><span>    sleep(hours: <span style="color:#fff;font-weight:bold">number</span>): <span style="color:#fff;font-weight:bold">void</span>
 </span></span><span style="display:flex;"><span>}
@@ -1146,9 +1073,9 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">// 类也可以实现多个接口
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">class</span> Cat <span style="color:#fff;font-weight:bold">implements</span> Animal, Feline {
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">class</span> Cat <span style="color:#fff;font-weight:bold">implements</span> Animal, Feline {
 </span></span><span style="display:flex;"><span>    <span style="color:#007f7f">// ...
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="kubernetes">Kubernetes<a hidden class="anchor" aria-hidden="true" href="#kubernetes">#</a></h1>
 <p>K8s，是一个开源的容器编排系统，用于自动化计算机应用的部署、扩展和管理。</p>
 <p>最流行的容器编排软件就是Kubernetes，它在数据中心服务器上运行，抽象掉了底层硬件的复杂性，为运行容器提供了一个简单的接口。正因如此，K8s经常被比作数据中心的操作系统。</p>
@@ -1163,8 +1090,7 @@ if (!doNotTrack) {
 <p>微服务架构是一种将应用分解为一组较小、独立服务的方法，每个服务执行应用的一个具体功能，并且独立部署。每个微服务通常围绕业务能力构建，运行在自己的进程中，服务之间通常通过网络调用进行通信。灵活可扩展，而且单个服务的失败不会影响整个应用。</p>
 <p>K8s集群由一组机器（节点）组成，每个节点上都运行容器化的应用。节点有两种类型：control plane和worker nodes。control plane负责管理集群，worker nodes负责运行容器。
 K8s集群架构如下图所示
-<img loading="lazy" src="/img/comp315/k8s.png" alt="Hypervisor"  />
-</p>
+<img alt="Hypervisor" loading="lazy" src="/img/comp315/k8s.png"></p>
 <h3 id="control-plane">Control Plane<a hidden class="anchor" aria-hidden="true" href="#control-plane">#</a></h3>
 <p>Control Plane包含以下组件</p>
 <ul>
@@ -1212,10 +1138,10 @@ K8s集群架构如下图所示
       <li><a href="https://martinspace.top/zh/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://martinspace.top/zh/egypt/">
+  <a class="prev" href="https://martinspace.top/zh/love_with_yoyo/">
     <span class="title">« 上一页</span>
     <br>
-    <span>埃及</span>
+    <span>Love with YOYO</span>
   </a>
   <a class="next" href="https://martinspace.top/zh/comp328/">
     <span class="title">下一页 »</span>
@@ -1223,15 +1149,6 @@ K8s集群架构如下图所示
     <span>高性能计算(COMP328)</span>
   </a>
 </nav>
-<script src="https://utteranc.es/client.js"
-        repo="oudushu/utterances"
-        issue-term="title"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
 
   </footer><script src="https://utteranc.es/client.js"
     repo="MartinRepo/utterancesInblog"
@@ -1245,24 +1162,13 @@ K8s集群架构如下图所示
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+        <span>&copy; 2026 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        <br> 
-        
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
     </span>
-    
-    <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv">
-        被访问了<span id="busuanzi_value_site_pv"></span>次
-    </span>
-    <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人
-    </span>
-    </div>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -1271,9 +1177,14 @@ K8s集群架构如下图所示
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -1314,11 +1225,12 @@ K8s集群架构如下图所示
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
@@ -1370,6 +1282,7 @@ K8s集群架构如下图所示
             codeblock.parentNode.appendChild(copybutton);
         }
     });
-</script></body>
+</script>
+</body>
 
 </html>

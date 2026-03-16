@@ -4,53 +4,67 @@
     <title>👨🏻‍💻 Tech on Martin&#39;s space</title>
     <link>https://martinspace.top/en/post_en/tech_en/</link>
     <description>Recent content in 👨🏻‍💻 Tech on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 09 Feb 2025 10:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/en/post_en/tech_en/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Feb 2025 10:39:49 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/en/post_en/tech_en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing</title>
       <link>https://martinspace.top/en/post_en/tech_en/dmrl-survey/</link>
       <pubDate>Sun, 09 Feb 2025 10:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/post_en/tech_en/dmrl-survey/</guid>
-      <description>Welcome any citation! 🎉</description>
+      <description>&lt;p&gt;Welcome any citation! 🎉&lt;/p&gt;
+&lt;embed src=&#34;https://martinspace.top/pdfs/RL_diffusion_model_survey.pdf&#34; type=&#34;application/pdf&#34; width=&#34;100%&#34; height=&#34;800px&#34; /&gt;</description>
     </item>
-    
     <item>
       <title>Kattis Rank Climbing Notes</title>
       <link>https://martinspace.top/en/post_en/tech_en/kattis/</link>
       <pubDate>Sun, 05 Nov 2023 22:31:02 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/post_en/tech_en/kattis/</guid>
       <description>Take note for some learned algorithms</description>
     </item>
-    
     <item>
       <title>Use of MapEntry in Java</title>
       <link>https://martinspace.top/en/post_en/tech_en/mapentry/</link>
       <pubDate>Sat, 04 Feb 2023 22:31:02 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/post_en/tech_en/mapentry/</guid>
-      <description>I met Map.Entry for many times when I was fighting with Leetcode. However, I did not understand it and it always confused me. I studied it today and write down to record it for myself. (:Click here for java documention:) Map.Entry is a internal interface of Map. It provides more convenient method for outputing key-value pair. How do we output key-value pair of a Map generally? First, get all keys</description>
+      <description>&lt;p&gt;I met Map.Entry for many times when I was fighting with Leetcode. However, I did not understand it and it always confused me. I studied it today and write down to record it for myself.&lt;/p&gt;
+&lt;p&gt;(:&lt;a href=&#34;https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/HashMap.html&#34;&gt;Click here for java documention&lt;/a&gt;:)&lt;/p&gt;
+&lt;p&gt;Map.Entry is a internal interface of Map. It provides more convenient method for outputing key-value pair.&lt;/p&gt;
+&lt;p&gt;How do we output key-value pair of a Map generally?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;First, get all keys as a set&lt;/li&gt;
+&lt;li&gt;Second, iterate to get every value according to keyset.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;If we have Map.Entry, we will get key and value at meantime.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Haskell</title>
       <link>https://martinspace.top/en/post_en/tech_en/haskell/</link>
       <pubDate>Fri, 20 Jan 2023 18:42:52 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/post_en/tech_en/haskell/</guid>
-      <description>Stack A modern, cross-platform build tool for Haskell code.</description>
+      <description>&lt;h1 id=&#34;stack&#34;&gt;Stack&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A modern, cross-platform build tool for Haskell code.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
-    
     <item>
       <title>Download APache Maven on MacOS</title>
       <link>https://martinspace.top/en/post_en/tech_en/maven/</link>
       <pubDate>Thu, 19 Jan 2023 00:15:03 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/post_en/tech_en/maven/</guid>
-      <description>I finally got maven installed, and the steps were generally easy, but I stepped in a few holes, I&amp;rsquo;ll record them. Download APache Maven Website📡: Apache-Maven Choose Binary zip archive and download it. Unzip the zip archive I unzip it into /Libaray on my computer. Configuration vi .bash_profile Add 2 lines into this profile export M2_HOME=/Library/apache-maven-3.8.7 // Or you can choose your</description>
+      <description>&lt;p&gt;I finally got maven installed, and the steps were generally easy, but I stepped in a few holes, I&amp;rsquo;ll record them.&lt;/p&gt;
+&lt;h1 id=&#34;download-apache-maven&#34;&gt;Download APache Maven&lt;/h1&gt;
+&lt;p&gt;Website📡: &lt;a href=&#34;https://maven.apache.org/download.cgi&#34;&gt;Apache-Maven&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Choose Binary zip archive and download it.&lt;/p&gt;
+&lt;h1 id=&#34;unzip-the-zip-archive&#34;&gt;Unzip the zip archive&lt;/h1&gt;
+&lt;p&gt;I unzip it into /Libaray on my computer.&lt;/p&gt;
+&lt;h1 id=&#34;configuration&#34;&gt;Configuration&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vi .bash_profile
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Add 2 lines into this profile&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;export&lt;/span&gt; M2_HOME=/Library/apache-maven-3.8.7 // Or you can choose your own path and folder
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fff;font-weight:bold&#34;&gt;export&lt;/span&gt; PATH=$PATH:$M2_HOME/bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then, type &lt;code&gt;:wq&lt;/code&gt;, save and quit vim.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

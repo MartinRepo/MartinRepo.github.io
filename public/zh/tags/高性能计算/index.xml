@@ -4,17 +4,74 @@
     <title>高性能计算 on Martin&#39;s space</title>
     <link>https://martinspace.top/zh/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/</link>
     <description>Recent content in 高性能计算 on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 03 Feb 2024 17:39:49 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Feb 2024 17:39:49 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>高性能计算(COMP328)</title>
       <link>https://martinspace.top/zh/comp328/</link>
       <pubDate>Sat, 03 Feb 2024 17:39:49 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/comp328/</guid>
-      <description>Week1 高性能计算的目标 对于有限的数据集，最小化解决时间 对于无限的数据集，最大化吞吐量(throughput) 有能力解决一些对于可用的内存来说太大</description>
+      <description>&lt;h1 id=&#34;week1&#34;&gt;Week1&lt;/h1&gt;
+&lt;p&gt;高性能计算的目标&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于有限的数据集，最小化解决时间&lt;/li&gt;
+&lt;li&gt;对于无限的数据集，最大化吞吐量(throughput)&lt;/li&gt;
+&lt;li&gt;有能力解决一些对于可用的内存来说太大的问题&lt;/li&gt;
+&lt;li&gt;最大化资源利用 - CPU/内存/网络/加速器(GPU)/电力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一些常用术语&#34;&gt;一些常用术语&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Parallelism vs Concurrency
+&lt;ul&gt;
+&lt;li&gt;Parallelism: 多个进程同时且独立执行&lt;/li&gt;
+&lt;li&gt;Concurrency: 多个进程同时执行且共享至少一种资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Processor, Die &amp;amp; Socket
+&lt;ul&gt;
+&lt;li&gt;Processor: 执行程序指令的电路。计算机系统中可能有许多处理器，例如图形处理器、视频处理器。在没有限定的情况下，通常指中央处理器&lt;/li&gt;
+&lt;li&gt;CPU: 计算机系统中主要的通用处理器（之一），而非特定用途（如视频解压缩）。&lt;/li&gt;
+&lt;li&gt;Die: 指硅晶片，包含处理器（通常是中央处理器）以及接口所需的其他组件（如内存控制器）。&lt;/li&gt;
+&lt;li&gt;Socket: 处理器和计算机主板之间的物理接口，它定义了处理器与主板连接的方式。不同的处理器和主板可能需要不同类型的Socket。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Core &amp;amp; Thread
+&lt;ul&gt;
+&lt;li&gt;Core: 核心是CPU内部的一个物理处理单元，能够独立执行计算任务。每个核心可以独立处理指令和执行计算操作。&lt;/li&gt;
+&lt;li&gt;Thread: 线程是操作系统能够进行计算调度的最小单位。它是程序执行流的一个单一顺序，可以被操作系统调度（启动、停止、挂起等）。&lt;/li&gt;
+&lt;li&gt;核心和线程共同定义了处理器的处理能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Node
+&lt;ul&gt;
+&lt;li&gt;指一个服务器节点（一台计算机）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Cluster/Supercomputer
+&lt;ul&gt;
+&lt;li&gt;成百上千个节点组成集群&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Single precision floating-point
+&lt;ul&gt;
+&lt;li&gt;通常占用32位（4字节）的存储空间，C语言中的float32类型，1符号位，8指数位，23有效数字位&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Double precision floating-point
+&lt;ul&gt;
+&lt;li&gt;通常占用64位（8字节）的存储空间，C语言中的float64类型，1符号位，11指数位，52有效数字位&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Flop
+&lt;ul&gt;
+&lt;li&gt;Floating-point operations per second&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;如何量化评估性能&#34;&gt;如何量化/评估性能&lt;/h2&gt;
+&lt;p&gt;公式如下👇&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

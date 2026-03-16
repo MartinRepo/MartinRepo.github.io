@@ -4,17 +4,16 @@
     <title>前端 on Martin&#39;s space</title>
     <link>https://martinspace.top/zh/tags/%E5%89%8D%E7%AB%AF/</link>
     <description>Recent content in 前端 on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 07 May 2023 08:42:27 +0000</lastBuildDate><atom:link href="https://martinspace.top/zh/tags/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 May 2023 08:42:27 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/zh/tags/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>前端刷题笔记</title>
       <link>https://martinspace.top/zh/front-end/</link>
       <pubDate>Sun, 07 May 2023 08:42:27 +0000</pubDate>
-      
       <guid>https://martinspace.top/zh/front-end/</guid>
       <description>记录刷前端时遇到的知识点</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +10,7 @@
 <meta name="description" content="🔬 研究记录 - Martin&#39;s space">
 <meta name="author" content="Martin">
 <link rel="canonical" href="https://martinspace.top/zh/post/2research/">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <meta name="referrer" content="no-referrer-when-downgrade">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3e848411f8e2e3b39fd084e8d998d9f2d9782118c440525c90992eaecdc9f0.css" integrity="sha256-vD6EhBH44uOzn9CE6NmY2fLZeCEYxEBSXJCZLq7NyfA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.33446ce70373ca1f19994ac816c97a1b65ae46bd7944d026cdb4b723d0bc5887.css" integrity="sha256-M0Rs5wNzyh8ZmUrIFsl6G2WuRr15RNAmzbS3I9C8WIc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://martinspace.top/icebear.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://martinspace.top/icebear.jpg">
@@ -21,7 +18,7 @@
 <link rel="mask-icon" href="https://martinspace.top/icebear.jpg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://martinspace.top/zh/post/2research/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://martinspace.top/zh/post/2research/index.xml" title="rss">
 <link rel="alternate" hreflang="zh" href="https://martinspace.top/zh/post/2research/">
 <noscript>
     <style>
@@ -40,58 +37,64 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+</noscript>
 <script>
-        MathJax = {
-          tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-          },
-          svg: {
-            fontCache: 'global'
-          }
-        };
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-J8TFFL1ZS7', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="🔬 研究记录" />
-<meta property="og:description" content="Martin的个人博客" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://martinspace.top/zh/post/2research/" />
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="🔬 研究记录"/>
-<meta name="twitter:description" content="Martin的个人博客"/>
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8TFFL1ZS7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-J8TFFL1ZS7');
+        }
+      </script><meta property="og:url" content="https://martinspace.top/zh/post/2research/">
+  <meta property="og:site_name" content="Martin&#39;s space">
+  <meta property="og:title" content="🔬 研究记录">
+  <meta property="og:description" content="Martin的个人博客">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="🔬 研究记录">
+  <meta name="twitter:description" content="Martin的个人博客">
 
 
 <script type="application/ld+json">
@@ -115,29 +118,15 @@ if (!doNotTrack) {
 }
 </script>
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://martinspace.top/zh/" accesskey="h" title="Martin&#39;s space (Alt + H)">
                 <img src="https://martinspace.top/icebear.jpg" alt="" aria-label="logo"
                     height="35">Martin&#39;s space</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -157,12 +146,12 @@ if (!doNotTrack) {
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://martinspace.top/en/" title="English"
-                            aria-label="English">English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://martinspace.top/en/" title="English"
+                                aria-label="English">English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
@@ -201,124 +190,94 @@ if (!doNotTrack) {
   </h1>
 </header>
 
-
-
-<article class="post-entry">
-  
-  <div class="post-info">
+<article class="post-entry"> 
+<figure class="entry-cover1"><img loading="lazy" src="https://martinspace.top/img/mlsys-ft/serverlessllm.png" alt="">
+        
+</figure>
   <header class="entry-header">
-    <h2>LoRA 微调的云上漂流
+    <h2 class="entry-hint-parent">LoRA 微调的云上漂流
     </h2>
   </header>
   <div class="entry-content">
-    <p>写在前面 Serverless &#43; 大模型推理，有什么难的？ 在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions），系统设计的核心...</p>
+    <p>写在前面 Serverless &#43; 大模型推理，有什么难的？
+在传统的serverless架构中（如 AWS Lambda、Google Cloud Functions），系统设计的核心诉求是：
+快速启动、短暂执行、高并发调度，主要针对 CPU-bound 轻量计算任务。 比如调用一个图像压缩函数、一个用户注册校验、一个数据库查询包装器等，这类请求大多数只需几百毫秒甚至几十毫秒，CPU 足够胜任。 但当我们把同样的「serverless」理念搬到大模型推理场景时，立刻面临三重冲击：
+...</p>
   </div>
-  <footer class="entry-footer">创建: 2025-05-25 | 更新: 2025-05-25 | 字数: 2771字 | 阅读时长: 6分钟 | 
-作者:Martin</footer>
-</div>
-  <a class="entry-link" aria-label="post link to LoRA 微调的云上漂流" href="https://martinspace.top/zh/serverless-lora/"></a> 
-<figure class="entry-cover"><img loading="lazy" src="https://martinspace.top/img/mlsys-ft/serverlessllm.png" alt="">
-</figure>
+  <footer class="entry-footer">Created: 2025-05-25 · Updated: 2025-05-25 · 6 分钟 · Martin</footer>
+  <a class="entry-link" aria-label="post link to LoRA 微调的云上漂流" href="https://martinspace.top/zh/serverless-lora/"></a>
 </article>
 
-
-
-<article class="post-entry">
-  
-  <div class="post-info">
+<article class="post-entry"> 
   <header class="entry-header">
-    <h2>Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing
+    <h2 class="entry-hint-parent">Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing
     </h2>
   </header>
   <div class="entry-content">
-    <p>欢迎引用 🎉</p>
+    <p>欢迎引用 🎉
+</p>
   </div>
-  <footer class="entry-footer">创建: 2025-02-09 | 更新: 2025-02-09 | 字数: 5字 | 阅读时长: 1分钟 | 
-作者:Martin</footer>
-</div>
-  <a class="entry-link" aria-label="post link to Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing" href="https://martinspace.top/zh/dmrl-survey/"></a> 
-<figure class="entry-cover"><img loading="lazy" src="https://martinspace.top/img/dmrl-survey.png" alt="">
-</figure>
+  <footer class="entry-footer">Created: 2025-02-09 · Updated: 2025-02-09 · 1 分钟 · Martin</footer>
+  <a class="entry-link" aria-label="post link to Preference Alignment on Diffusion Model: A Comprehensive Survey for Image Generation and Editing" href="https://martinspace.top/zh/dmrl-survey/"></a>
 </article>
 
-
-
-<article class="post-entry">
-  
-  <div class="post-info">
+<article class="post-entry"> 
+<figure class="entry-cover1"><img loading="lazy" src="https://martinspace.top/img/nluplus/whatisrnn.jpg" alt="">
+        
+</figure>
   <header class="entry-header">
-    <h2>从RNN到Transformers
+    <h2 class="entry-hint-parent">从RNN到Transformers
     </h2>
   </header>
   <div class="entry-content">
-    <p>递归神经网络 简单的神经网络由三部分组成：输入，隐藏层，输出 深度神经网络（DNN）一般是增加隐藏层的数量。 递归神经网络（RNN）更加关注的是隐...</p>
+    <p>递归神经网络 简单的神经网络由三部分组成：输入，隐藏层，输出
+深度神经网络（DNN）一般是增加隐藏层的数量。
+递归神经网络（RNN）更加关注的是隐藏层中每个神经元在时间上的成长与进步。
+...</p>
   </div>
-  <footer class="entry-footer">创建: 2025-02-01 | 更新: 2025-05-01 | 字数: 21981字 | 阅读时长: 44分钟 | 
-作者:Martin</footer>
-</div>
-  <a class="entry-link" aria-label="post link to 从RNN到Transformers" href="https://martinspace.top/zh/nluplus/"></a> 
-<figure class="entry-cover"><img loading="lazy" src="https://martinspace.top/img/nluplus/whatisrnn.jpg" alt="">
-</figure>
+  <footer class="entry-footer">Created: 2025-02-01 · Updated: 2025-05-01 · 44 分钟 · Martin</footer>
+  <a class="entry-link" aria-label="post link to 从RNN到Transformers" href="https://martinspace.top/zh/nluplus/"></a>
 </article>
 
-
-
-<article class="post-entry">
-  
-  <div class="post-info">
+<article class="post-entry"> 
+<figure class="entry-cover1"><img loading="lazy" src="https://martinspace.top/img/rl-note/whatisrl.png" alt="what-is-rl">
+        
+</figure>
   <header class="entry-header">
-    <h2>强化学习
+    <h2 class="entry-hint-parent">强化学习
     </h2>
   </header>
   <div class="entry-content">
-    <p>多臂老虎机问题(MAB) 符号&amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，...</p>
+    <p>多臂老虎机问题(MAB) 符号&amp;问题定义 大写斜体表示随机变量，例如$A, R, A_t, R_t$ 小写字母表示这些随机变量的实现，例如$a, r, a_t, r_t, Pr${$A_t=a_t$} 花体，区间等表示集合，例如$\mathcal{A}, [0, 1], \mathbb{N}$ Given: a set of k actions, $\mathcal{A}$, number of rounds T. Repeat for t in T rounds:
+...</p>
   </div>
-  <footer class="entry-footer">创建: 2025-02-01 | 更新: 2025-05-01 | 字数: 6572字 | 阅读时长: 14分钟 | 
-作者:Martin</footer>
-</div>
-  <a class="entry-link" aria-label="post link to 强化学习" href="https://martinspace.top/zh/rl-note/"></a> 
-<figure class="entry-cover"><img loading="lazy" src="https://martinspace.top/img/rl-note/whatisrl.png" alt="what-is-rl">
-</figure>
+  <footer class="entry-footer">Created: 2025-02-01 · Updated: 2025-05-01 · 14 分钟 · Martin</footer>
+  <a class="entry-link" aria-label="post link to 强化学习" href="https://martinspace.top/zh/rl-note/"></a>
 </article>
 
-
-
-<article class="post-entry">
-  
-  <div class="post-info">
+<article class="post-entry"> 
   <header class="entry-header">
-    <h2>时序分析/预测
+    <h2 class="entry-hint-parent">时序分析/预测
     </h2>
   </header>
   <div class="entry-content">
-    <p>记录一些基础方法 时间序列 可视化三种时间序列 Brownian motion (stochastic process) Lorenz attractor (chaotic system) Lotka-Volterra system (deterministic system of differential equations) 随机过程是一种非确定性的过程，即其未来状态依赖于概率分布，无法通过确...</p>
+    <p> 记录一些基础方法
+时间序列 可视化三种时间序列 Brownian motion (stochastic process) Lorenz attractor (chaotic system) Lotka-Volterra system (deterministic system of differential equations) 随机过程是一种非确定性的过程，即其未来状态依赖于概率分布，无法通过确定的数学公式精确预测。布朗运动（Brownian Motion）是一种典型的随机过程，常见于金融市场、分子扩散等领域。 混沌系统是一类确定性但不可预测的系统，即尽管系统是由确定性的方程描述的，但对初始条件极其敏感，导致长期行为难以预测。洛伦兹系统（Lorenz System）是一个经典的混沌系统，最早由 Edward Lorenz 研究气象现象时提出。其特征包括： 由确定性方程控制（如微分方程）。 对初始条件极其敏感（“蝴蝶效应”）。 具有某种结构（如吸引子），但长期行为是不可预测的。 确定性系统是完全由数学规则或方程所控制的系统，即 如果初始条件相同，每次运行都会得到相同的结果。洛特卡-沃尔泰拉（Lotka-Volterra）方程描述了捕食者（如狼）和被捕食者（如兔子）种群的动态变化。这类系统的特征包括： 未来状态由当前状态唯一决定。 没有随机性，系统演化完全可预测。 在生物学、物理学、化学等领域有广泛应用。 数据填充技术 这主要用于处理时间序列上的缺失值，主要有三种方法
+...</p>
   </div>
-  <footer class="entry-footer">创建: 2025-02-01 | 更新: 2025-02-01 | 字数: 2029字 | 阅读时长: 5分钟 | 
-作者:Martin</footer>
-</div>
-  <a class="entry-link" aria-label="post link to 时序分析/预测" href="https://martinspace.top/zh/data-analysis/"></a> 
+  <footer class="entry-footer">Created: 2025-02-01 · Updated: 2025-02-01 · 5 分钟 · Martin</footer>
+  <a class="entry-link" aria-label="post link to 时序分析/预测" href="https://martinspace.top/zh/data-analysis/"></a>
 </article>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span>
+        <span>&copy; 2026 <a href="https://martinspace.top/zh/">Martin&#39;s space</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        <br> 
-        
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank">辽 ICP 备 2022011010 号 -1</a>
     </span>
-    
-    <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv">
-        被访问了<span id="busuanzi_value_site_pv"></span>次
-    </span>
-    <span id="busuanzi_container_site_uv">
-        迎接了<span id="busuanzi_value_site_uv"></span>位客人
-    </span>
-    </div>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -327,9 +286,14 @@ if (!doNotTrack) {
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -370,15 +334,17 @@ if (!doNotTrack) {
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
 
-</script></body>
+</script>
+</body>
 
 </html>

@@ -4,17 +4,24 @@
     <title>Java on Martin&#39;s space</title>
     <link>https://martinspace.top/en/tags/java/</link>
     <description>Recent content in Java on Martin&#39;s space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Feb 2023 22:31:02 +0000</lastBuildDate><atom:link href="https://martinspace.top/en/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Feb 2023 22:31:02 +0000</lastBuildDate>
+    <atom:link href="https://martinspace.top/en/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Use of MapEntry in Java</title>
       <link>https://martinspace.top/en/post_en/tech_en/mapentry/</link>
       <pubDate>Sat, 04 Feb 2023 22:31:02 +0000</pubDate>
-      
       <guid>https://martinspace.top/en/post_en/tech_en/mapentry/</guid>
-      <description>I met Map.Entry for many times when I was fighting with Leetcode. However, I did not understand it and it always confused me. I studied it today and write down to record it for myself. (:Click here for java documention:) Map.Entry is a internal interface of Map. It provides more convenient method for outputing key-value pair. How do we output key-value pair of a Map generally? First, get all keys</description>
+      <description>&lt;p&gt;I met Map.Entry for many times when I was fighting with Leetcode. However, I did not understand it and it always confused me. I studied it today and write down to record it for myself.&lt;/p&gt;
+&lt;p&gt;(:&lt;a href=&#34;https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/HashMap.html&#34;&gt;Click here for java documention&lt;/a&gt;:)&lt;/p&gt;
+&lt;p&gt;Map.Entry is a internal interface of Map. It provides more convenient method for outputing key-value pair.&lt;/p&gt;
+&lt;p&gt;How do we output key-value pair of a Map generally?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;First, get all keys as a set&lt;/li&gt;
+&lt;li&gt;Second, iterate to get every value according to keyset.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;If we have Map.Entry, we will get key and value at meantime.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
