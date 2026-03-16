@@ -18,10 +18,6 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-# 谷歌统计
-googleAnalytics: G-J8TFFL1ZS7
-# Copyright: "@Martingale"
-
 paginate: 7
 
 minify:
